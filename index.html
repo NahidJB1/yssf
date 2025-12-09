@@ -388,8 +388,90 @@
   </div>
   </footer>
 
-  <script>
-// UNIVERSAL SUBJECT SEARCH DATA (UPDATED)
+ <script>
+  let ALL_PROGRAMS = []; // Global array to hold ALL universities and their programs
+  
+  // 1. Fetch data from the universities.json file on page load
+  async function fetchAllPrograms() {
+    try {
+      // The relative path is correct since universities.json is in the root
+      const response = await fetch('universities.json');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      ALL_PROGRAMS = await response.json();
+      console.log("Programs data loaded successfully.");
+    } catch (error) {
+      console.error("Could not fetch programs data:", error);
+      document.getElementById('searchResults').innerHTML = '<p style="color: red;">Error loading university data. Please try again later.</p>';
+    }
+  }
+
+  // 2. The Universal Search function
+  function searchUniversities() {
+    const input = document.getElementById("subjectInput").value.toLowerCase().trim();
+    const resultBox = document.getElementById("searchResults");
+    resultBox.innerHTML = "";
+    
+    if (input.length < 3) {
+      resultBox.innerHTML = "<p>Start typing a subject name (e.g., 'Law', 'Film', 'Nursing').</p>";
+      return;
+    }
+
+    let foundResults = [];
+    const searchTerms = input.split(' ').filter(term => term.length > 0);
+    
+    // Search ALL programs across ALL universities loaded from the JSON
+    ALL_PROGRAMS.forEach(uni => {
+      const universityName = uni.name;
+      const universityLink = uniLinks[universityName]; // Get link from hardcoded map
+      
+      uni.programs.forEach(program => {
+        const programNameLower = program.name.toLowerCase();
+        
+        // Check if ALL search terms exist in the program name
+        const allTermsMatch = searchTerms.every(term => programNameLower.includes(term));
+        
+        if (allTermsMatch) {
+          // Determine the campus/entity name for display, especially for groups like BAC
+          let campusName = program.campus ? ` (${program.campus})` : '';
+
+          // Add only unique program entries to the results array
+          const identifier = universityName + program.name + campusName;
+          if (!foundResults.some(item => item.identifier === identifier)) {
+            foundResults.push({
+              identifier: identifier,
+              uni: universityName,
+              campus: program.campus,
+              program: program.name,
+              link: universityLink
+            });
+          }
+        }
+      });
+    });
+
+    // 3. Display Results
+    if (foundResults.length > 0) {
+      foundResults.forEach(match => {
+        const campusDisplay = match.campus ? ` (${match.campus})` : '';
+        const encodedProgram = encodeURIComponent(match.program);
+        
+        // Use the uni link to create the 'Go to Fees' button
+        const linkButton = match.link 
+          ? `<button onclick="window.location.href='${match.link}?q=${encodedProgram}';" class="go-to-fees">Go to Fees</button>` 
+          : `<button disabled>Page not linked</button>`;
+          
+        resultBox.innerHTML += `
+          <p>${match.uni}${campusDisplay} offers ${match.program} ${linkButton}</p>
+        `;
+      });
+    } else {
+      resultBox.innerHTML = "<p style='color: red;'>No university program found matching your search term.</p>";
+    }
+  }
+
+  // Define uniLinks outside the function so the search can use it
   const uniLinks = {
     "City University Malaysia": "city-university.html",
     "Infrastructure University Kuala Lumpur (IUKL)": "iukl-fees.html",
@@ -403,259 +485,14 @@
     "SEGI UNIVERSITY MALAYSIA": "segi-university.html"
   };
 
-  const programmeMap = {
-    "science": [
-      { uni: "City University Malaysia", program: "Foundation in Science" },
-      { uni: "Infrastructure University Kuala Lumpur (IUKL)", program: "Foundation in Science" },
-      { uni: "University College MAIWP International (UCMI)", program: "Foundation in Science" },
-      { uni: "INTI International University", program: "Foundation in Science" },
-      { uni: "UNIVERSITY OF CYBERJAYA", program: "Foundation in Science (Medicine/Pharmacy) (FIS)" },
-      { uni: "University College MAIWP International (UCMI)", program: "Bachelor of Biomedical Science (Honours)" }
-    ],
-    "business": [
-      { uni: "City University Malaysia", program: "Foundation in Business" },
-      { uni: "City University Malaysia", program: "Diploma in Business Management" },
-      { uni: "City University Malaysia", program: "Bachelor of Business Admin (Hons)" },
-      { uni: "City University Malaysia", program: "Bachelor of Business & Management (Hons)" },
-      { uni: "Infrastructure University Kuala Lumpur (IUKL)", program: "Diploma in Business Administration" },
-      { uni: "Infrastructure University Kuala Lumpur (IUKL)", program: "BBA / BBA in Marketing / HRM (Hons)" },
-      { uni: "BAC EDUCATION GROUP", campus: "BAC COLLEGE", program: "Foundation in Business" },
-      { uni: "BAC EDUCATION GROUP", campus: "RELIANCE COLLEGE", program: "Diploma in Business Management" },
-      { uni: "BAC EDUCATION GROUP", campus: "VERITAS UNIVERSITY", program: "Bachelor in Business Administration (Hons)" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Foundation in Business" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "BA (HONOURS) Business Administration" },
-      { uni: "University College MAIWP International (UCMI)", program: "Diploma Business Management" },
-      { uni: "University College MAIWP International (UCMI)", program: "Bachelor of Business Administration (Honours)" },
-      { uni: "CYBERNETICS MALAYSIA (KTAC)", program: "Certificate of Business Management" },
-      { uni: "CYBERNETICS MALAYSIA (KTAC)", program: "Diploma in Business Management" },
-      { uni: "GENOVASI UNIVERSITY MALAYSIA", program: "Diploma in Business Management" },
-      { uni: "GENOVASI UNIVERSITY MALAYSIA", program: "Bachelor of Business Administration" },
-      { uni: "INTI International University", program: "Foundation in Business" },
-      { uni: "INTI International University", program: "Diploma in Business" },
-      { uni: "INTI International University", program: "Bachelor of Business (Hons)" },
-      { uni: "UNIVERSITY OF CYBERJAYA", program: "Bachelor of Business Administration (Hons) (BBA)" }
-    ],
-    "it": [
-      { uni: "City University Malaysia", program: "Foundation in Information Technology" },
-      { uni: "City University Malaysia", program: "Diploma in Information Technology" },
-      { uni: "City University Malaysia", program: "Bachelor of Information Technology (Hons)" },
-      { uni: "City University Malaysia", program: "Master of Information Technology (MIT)" },
-      { uni: "Infrastructure University Kuala Lumpur (IUKL)", program: "Master in Information Technology" },
-      { uni: "BAC EDUCATION GROUP", campus: "UNIMY", program: "Diploma in Information Technology (Cybersecurity)" },
-      { uni: "BAC EDUCATION GROUP", campus: "UNIMY", program: "Bachelor of Computer Science (Data Science)" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Diploma in Information Technology" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Bachelor of Information Technology (HONOURS)" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Bachelor in Computer Science (Cyber Security & Networks) (HONOURS)" },
-      { uni: "CYBERNETICS MALAYSIA (KTAC)", program: "Diploma in Computer Science" },
-      { uni: "INTI International University", program: "Foundation in Information Technology" },
-      { uni: "INTI International University", program: "Diploma in Information Technology" },
-      { uni: "INTI International University", program: "Bachelor of Computer Science (Hons)" },
-      { uni: "UNIVERSITY OF CYBERJAYA", program: "Foundation in Information Technology (FIIT)" },
-      { uni: "UNIVERSITY OF CYBERJAYA", program: "Bachelor of Technology (Hons) in Business Information System (BT-BIS)" },
-      { uni: "UNIVERSITY OF CYBERJAYA", program: "Master of Information Technology (MIT)" }
-    ],
-    "accounting": [
-      { uni: "City University Malaysia", program: "Diploma in Accounting" },
-      { uni: "City University Malaysia", program: "Bachelor of Accounting (Hons)" },
-      { uni: "City University Malaysia", program: "Bachelor of Accounting & Finance (Hons)" },
-      { uni: "City University Malaysia", program: "Master of Accounting (MACE)" },
-      { uni: "Infrastructure University Kuala Lumpur (IUKL)", program: "Diploma in Accounting" },
-      { uni: "Infrastructure University Kuala Lumpur (IUKL)", program: "Bachelor of Accountancy (Hons)" },
-      { uni: "BAC EDUCATION GROUP", campus: "VERITAS UNIVERSITY", program: "BA (Hons) Accounting & Finance" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Diploma in Accountancy" },
-      { uni: "CYBERNETICS MALAYSIA (KTAC)", program: "Diploma in Accounting" },
-      { uni: "GENOVASI UNIVERSITY MALAYSIA", program: "Diploma in Accounting" },
-      { uni: "GENOVASI UNIVERSITY MALAYSIA", program: "BSc (Hons) Accounting and Finance" },
-      { uni: "UNIVERSITY OF CYBERJAYA", program: "Bachelor of Accounting (Hons) (BACC)" }
-    ],
-    "engineering": [
-      { uni: "City University Malaysia", program: "Diploma in Civil Engineering" },
-      { uni: "City University Malaysia", program: "Bachelor of Civil Engineering (Hons)" },
-      { uni: "City University Malaysia", program: "Bachelor of Electrical & Electronic Engineering (Hons)" },
-      { uni: "City University Malaysia", program: "Master of Mechanical Engineering (MME)" },
-      { uni: "Infrastructure University Kuala Lumpur (IUKL)", program: "Diploma in Electrical & Electronics Engineering" },
-      { uni: "Infrastructure University Kuala Lumpur (IUKL)", program: "Bachelor of Civil Engineering (Hons)" },
-      { uni: "Infrastructure University Kuala Lumpur (IUKL)", program: "Master in Electronics Engineering (By Research)" },
-      { uni: "BAC EDUCATION GROUP", campus: "UNIMY", program: "Foundation in Computing & Engineering" },
-      { uni: "BAC EDUCATION GROUP", campus: "UNIMY", program: "Bachelor of Computer Engineering (Honours)" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Master of Philosophy in Engineering" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Doctor of Philosophy in Engineering" },
-      { uni: "INTI International University", program: "Diploma in Mechanical Engineering" },
-      { uni: "UNIVERSITY OF CYBERJAYA", program: "Bachelor of Biomedical Engineering (Hons) (BBME)" },
-      { uni: "UNIVERSITY OF CYBERJAYA", program: "Doctor of Philosophy (PhD) Engineering" }
-    ],
-    "communication": [
-      { uni: "City University Malaysia", program: "Foundation in Arts (Communication)" },
-      { uni: "City University Malaysia", program: "Diploma in Mass Communication" },
-      { uni: "City University Malaysia", program: "Bachelor of Mass Communication (Hons)" },
-      { uni: "Infrastructure University Kuala Lumpur (IUKL)", program: "Diploma in Corporate Communication" },
-      { uni: "Infrastructure University Kuala Lumpur (IUKL)", program: "Bachelor of Mass Communication (Hons)" },
-      { uni: "BAC EDUCATION GROUP", campus: "IACT COLLEGE", program: "Diploma in Mass Communication" },
-      { uni: "BAC EDUCATION GROUP", campus: "IACT COLLEGE", program: "BA Hons in Media Culture and Communication - University of Sunderland (3+0)" },
-      { uni: "BAC EDUCATION GROUP", campus: "VERITAS UNIVERSITY", program: "Bachelor of Communication (Hons) Branding & Digital Marketing" }
-    ],
-    "education": [
-      { uni: "City University Malaysia", program: "Diploma in Early Childhood Education" },
-      { uni: "City University Malaysia", program: "Bachelor of Education (Early Childhood Education) Honours" },
-      { uni: "City University Malaysia", program: "Master of Education (MED)" },
-      { uni: "BAC EDUCATION GROUP", campus: "UNIMY", program: "Master of Education" },
-      { uni: "BAC EDUCATION GROUP", campus: "VERITAS UNIVERSITY", program: "Diploma in Early Childhood Education" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Bachelor of Early Childhood Education (HONOURS)" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Master of Education" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Doctor of Education (DE)" },
-      { uni: "University College MAIWP International (UCMI)", program: "Diploma Early Childhood Education" },
-      { uni: "GENOVASI UNIVERSITY MALAYSIA", program: "Master of Education" },
-      { uni: "GENOVASI UNIVERSITY MALAYSIA", program: "Doctor of Philosophy in Education" }
-    ],
-    "law": [
-      { uni: "BAC EDUCATION GROUP", campus: "BAC COLLEGE", program: "Foundation in Law" },
-      { uni: "BAC EDUCATION GROUP", campus: "BAC COLLEGE", program: "LLB (3+0) University of London International Programmes" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Diploma in Law Enforcement" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Bachelor of Law Enforcement" }
-    ],
-    "media": [
-      { uni: "BAC EDUCATION GROUP", campus: "IACT COLLEGE", program: "Foundation in Media Studies" },
-      { uni: "BAC EDUCATION GROUP", campus: "IACT COLLEGE", program: "BA Hons in Social Media Management - University of Sunderland (3+0)" },
-      { uni: "BAC EDUCATION GROUP", campus: "UNIMY", program: "Diploma in Interactive & Digital Media" },
-      { uni: "GENOVASI UNIVERSITY MALAYSIA", program: "Bachelor of Arts in Media Technology" }
-    ],
-    "design": [
-      { uni: "City University Malaysia", program: "Diploma in Graphic Design" },
-      { uni: "City University Malaysia", program: "Bachelor of Graphic Design (Hons)" },
-      { uni: "City University Malaysia", program: "Diploma in Interior Design" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Foundation in Arts & Design" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Bachelor of Arts (HONOURS) Graphic Design" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Master of Art & Design (By Research)" },
-      { uni: "INTI International University", program: "Diploma in Graphic Design" }
-    ],
-    "health": [
-      { uni: "City University Malaysia", program: "Diploma in Occupational Safety & Health" },
-      { uni: "City University Malaysia", program: "Bachelor of Occupational Safety & Health (Hons)" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Diploma in Health Care Management" },
-      { uni: "University College MAIWP International (UCMI)", program: "Diploma in Environment Health" },
-      { uni: "University College MAIWP International (UCMI)", program: "Master of Health Science (Research Mode)" },
-      { uni: "UNIVERSITY OF CYBERJAYA", program: "Foundation in Occupational Safety and Health (FIOSH)" },
-      { uni: "UNIVERSITY OF CYBERJAYA", program: "Bachelor of Occupational Safety and Health (BOSH)" }
-    ],
-    "nursing": [
-      { uni: "City University Malaysia", program: "Diploma in Nursing" },
-      { uni: "City University Malaysia", program: "Bachelor of Nursing (Hons)" },
-      { uni: "University College MAIWP International (UCMI)", program: "Diploma Nursing Science" },
-      { uni: "University College MAIWP International (UCMI)", program: "Master of Nursing (Research Mode)" }
-    ],
-    "pharmacy": [
-      { uni: "University College MAIWP International (UCMI)", program: "Diploma in Pharmacy" },
-      { uni: "University College MAIWP International (UCMI)", program: "Bachelor of Pharmacy (Honours)" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Diploma in Pharmacy" },
-      { uni: "UNIVERSITY OF CYBERJAYA", program: "Bachelor of Pharmacy (Hons) (BPharm)" },
-      { uni: "UNIVERSITY OF CYBERJAYA", program: "Master of Clinical Pharmacy (MCP)" }
-    ],
-    "hotel": [
-      { uni: "City University Malaysia", program: "Diploma in Hotel Management" },
-      { uni: "City University Malaysia", program: "Bachelor of Hotel Management (Hons)" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Diploma in Hotel Management (WBL)" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Bachelor of Science (HONOURS) in Hospitality Management" },
-      { uni: "CYBERNETICS MALAYSIA (KTAC)", program: "Diploma in Hotel Management" },
-      { uni: "BAC EDUCATION GROUP", campus: "RELIANCE COLLEGE", program: "Diploma in Hotel Management" }
-    ],
-    "master": [
-      { uni: "City University Malaysia", program: "Master of Business Administration (MBA)" },
-      { uni: "Infrastructure University Kuala Lumpur (IUKL)", program: "Master of Business Administration (MBA)" },
-      { uni: "BAC EDUCATION GROUP", campus: "UNIMY", program: "Master of Business Administration (MBA) (By coursework)" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Master of Business Administration" },
-      { uni: "University College MAIWP International (UCMI)", program: "Master of Business Administration (MBA)" },
-      { uni: "GENOVASI UNIVERSITY MALAYSIA", program: "Master of Business Administration" },
-      { uni: "INTI International University", program: "Master of Business Administration (MBA)" },
-      { uni: "UNIVERSITY OF CYBERJAYA", program: "Master of Business Administration (MBA)" }
-    ],
-    "phd": [
-      { uni: "City University Malaysia", program: "Doctor of Business Administration (DBA)" },
-      { uni: "Infrastructure University Kuala Lumpur (IUKL)", program: "PhD in Business Administration" },
-      { uni: "BAC EDUCATION GROUP", campus: "UNIMY", program: "Doctor of Philosophy in Education" },
-      { uni: "ALFA UNIVERSITY MALAYSIA", program: "Doctor of Philosophy in Business Administration (PhDBA)" },
-      { uni: "University College MAIWP International (UCMI)", program: "Doctor of Philosophy in Nursing (Research Mode)" },
-      { uni: "GENOVASI UNIVERSITY MALAYSIA", program: "Doctor of Philosophy in Business" },
-      { uni: "INTI International University", program: "Doctor of Philosophy (PhD)" },
-      { uni: "UNIVERSITY OF CYBERJAYA", program: "Doctor of Business Administration (DBA)" }
-    ]
-  };
-  
-  function searchUniversities() {
-    const input = document.getElementById("subjectInput").value.toLowerCase().trim();
-    const resultBox = document.getElementById("searchResults");
-    resultBox.innerHTML = "";
-  
-    if (!input) {
-      resultBox.innerHTML = "<p>Please enter a subject name.</p>";
-      return;
-    }
-  
-    let foundResults = [];
-    const searchTerms = input.split(' ').filter(term => term.length > 2);
-    
-    // Iterate through the comprehensive map
-    for (const key in programmeMap) {
-      if (key.includes(input)) {
-        programmeMap[key].forEach(match => {
-          foundResults.push(match);
-        });
-        continue;
-      }
-      
-      programmeMap[key].forEach(match => {
-        const programNameLower = match.program.toLowerCase();
-        const allTermsMatch = searchTerms.every(term => programNameLower.includes(term));
-        
-        if (allTermsMatch) {
-          foundResults.push(match);
-        }
-      });
-    }
-
-    // Remove duplicates
-    const uniqueResults = [];
-    const seen = new Set();
-    foundResults.forEach(item => {
-      const identifier = item.uni + item.program + (item.campus || '');
-      if (!seen.has(identifier)) {
-        uniqueResults.push(item);
-        seen.add(identifier);
-      }
-    });
-  
-    if (uniqueResults.length > 0) {
-      uniqueResults.forEach(match => {
-        const universityName = match.uni;
-        const programName = match.program;
-        const campusName = match.campus ? ` (${match.campus})` : '';
-        const link = uniLinks[universityName];
-        
-        // --- THIS IS THE CRITICAL CHANGE ---
-        const encodedProgram = encodeURIComponent(programName);
-
-        const linkButton = link 
-          ? `<button onclick="window.location.href='${link}?q=${encodedProgram}';">Go to Fees</button>` 
-          : `<button disabled>Page coming soon</button>`;
-        // ---------------------------------
-          
-        resultBox.innerHTML += `
-  <p>
-    ${universityName}${campusName} offers ${programName} ${linkButton}
-  </p>
-`;
-      });
-    } else {
-      resultBox.innerHTML = "<p>No university program found matching your search term.</p>";
-    }
-  }
-
   function toggleMenu() {
     const menu = document.getElementById('navMenu');
     menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
   }
+
+  // Run the fetch function on page load
+  document.addEventListener('DOMContentLoaded', fetchAllPrograms);
 </script>
-
-
 
 </body>
 </html>
