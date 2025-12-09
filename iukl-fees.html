@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -89,6 +88,31 @@
     tr.highlight {
       background-color: #ffff99 !important;
     }
+    /* START ADDED DOWNLOAD BAR CSS */
+    .download-bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 15px;
+      padding: 5px 10px;
+      background: #e6f0ff;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      width: fit-content;
+      float: right;
+    }
+
+    .download-bar span {
+      margin-right: 5px;
+      font-weight: bold;
+      color: #004080;
+    }
+
+    .download-bar:hover {
+      background: #ffefe1;
+    }
+    /* END ADDED DOWNLOAD BAR CSS */
   </style>
 </head>
 <body>
@@ -105,7 +129,6 @@
     <input type="text" id="searchInput" placeholder="Search program name..." onkeyup="filterPrograms()" />
   </div>
 
-  <!-- FOUNDATION -->
   <button class="accordion"> FOUNDATION PROGRAMS</button>
   <div class="panel">
     <table>
@@ -120,11 +143,24 @@
       <tr><td>Incentive English Program</td><td>RM 12,000</td><td>None</td><td>RM 12,000</td></tr>
     </table>
     <div class="note">
-      <strong>Note:</strong> All fees are subject to change. Please contact admissions for latest fee structure.
-    </div>
+  <div class="download-bar" onclick="downloadPDF('iukl')">
+    <span>Download PDF</span>
+    <span>⬇️</span>
+  </div>
+  <strong>Initial Fees:</strong><br>
+  EMGS Fees: RM3,200 (Non-refundable)<br>
+  International Student Fees: RM8,000<br>
+  Caution Fees (Refundable): RM1,500<br>
+  Resource Fee: RM300/Semester (Diploma only)<br><br>
+  <strong>Total Initial Payment: RM12,700</strong><br>
+  (RM3,200 EMGS + RM8,000 Intl Fee + RM1,500 Caution Fee) <br><br>
+  <strong>Payment Schedule:</strong><br>
+  1st Payment: RM12,700 (EMGS, Intl Fee, Caution Fee) + 1st Semester Tuition Fees<br>
+  Visa Renewal Fee: RM1,000 per annum (from 2nd year onwards)<br>
+  Study Extension: Regular fees apply.
+</div>
   </div>
 
-  <!-- DIPLOMA -->
   <button class="accordion"> DIPLOMA PROGRAMS</button>
   <div class="panel">
     <table>
@@ -150,11 +186,24 @@
       <tr><td>Diploma in Sports Management</td><td>RM 24,100</td><td>RM 7,215</td><td>RM 16,885</td></tr>
     </table>
     <div class="note">
-      <strong>Note:</strong> Resource fee of RM300 per semester applies to all diploma programs.
-    </div>
+  <div class="download-bar" onclick="downloadPDF('iukl')">
+    <span>Download PDF</span>
+    <span>⬇️</span>
+  </div>
+  <strong>Initial Fees:</strong><br>
+  EMGS Fees: RM3,200 (Non-refundable)<br>
+  International Student Fees: RM8,000<br>
+  Caution Fees (Refundable): RM1,500<br>
+  Resource Fee: RM300/Semester (Diploma only)<br><br>
+  <strong>Total Initial Payment: RM12,700</strong><br>
+  (RM3,200 EMGS + RM8,000 Intl Fee + RM1,500 Caution Fee) <br><br>
+  <strong>Payment Schedule:</strong><br>
+  1st Payment: RM12,700 (EMGS, Intl Fee, Caution Fee) + 1st Semester Tuition Fees<br>
+  Visa Renewal Fee: RM1,000 per annum (from 2nd year onwards)<br>
+  Study Extension: Regular fees apply.
+</div>
   </div>
 
-  <!-- BACHELOR -->
   <button class="accordion"> BACHELOR PROGRAMS</button>
   <div class="panel">
     <table>
@@ -183,11 +232,24 @@
       <tr><td>Bachelor of Mass Communication (Hons)</td><td>4 years</td><td>RM 61,000</td><td>RM 18,300</td><td>RM 42,700</td></tr>
     </table>
     <div class="note">
-      <strong>Note:</strong> International students must pay visa processing fee of RM3,000 upon application.
-    </div>
+  <div class="download-bar" onclick="downloadPDF('iukl')">
+    <span>Download PDF</span>
+    <span>⬇️</span>
+  </div>
+  <strong>Initial Fees:</strong><br>
+  EMGS Fees: RM3,200 (Non-refundable)<br>
+  International Student Fees: RM8,000<br>
+  Caution Fees (Refundable): RM1,500<br>
+  Resource Fee: RM300/Semester (Diploma only)<br><br>
+  <strong>Total Initial Payment: RM12,700</strong><br>
+  (RM3,200 EMGS + RM8,000 Intl Fee + RM1,500 Caution Fee) <br><br>
+  <strong>Payment Schedule:</strong><br>
+  1st Payment: RM12,700 (EMGS, Intl Fee, Caution Fee) + 1st Semester Tuition Fees<br>
+  Visa Renewal Fee: RM1,000 per annum (from 2nd year onwards)<br>
+  Study Extension: Regular fees apply.
+</div>
   </div>
 
-  <!-- MASTER -->
   <button class="accordion"> MASTER PROGRAMS</button>
   <div class="panel">
     <table>
@@ -209,11 +271,24 @@
       <tr><td>Master in Water Resources</td><td>2 years</td><td>RM 31,200</td><td>RM 9,360</td><td>RM 19,280</td></tr>
     </table>
     <div class="note">
-      <strong>Note:</strong> Research fee of RM3,000 applies to all research-based master programs.
-    </div>
+  <div class="download-bar" onclick="downloadPDF('iukl')">
+    <span>Download PDF</span>
+    <span>⬇️</span>
+  </div>
+  <strong>Initial Fees:</strong><br>
+  EMGS Fees: RM3,200 (Non-refundable)<br>
+  International Student Fees: RM8,000<br>
+  Caution Fees (Refundable): RM1,500<br>
+  Resource Fee: RM300/Semester (Diploma only)<br><br>
+  <strong>Total Initial Payment: RM12,700</strong><br>
+  (RM3,200 EMGS + RM8,000 Intl Fee + RM1,500 Caution Fee) <br><br>
+  <strong>Payment Schedule:</strong><br>
+  1st Payment: RM12,700 (EMGS, Intl Fee, Caution Fee) + 1st Semester Tuition Fees<br>
+  Visa Renewal Fee: RM1,000 per annum (from 2nd year onwards)<br>
+  Study Extension: Regular fees apply.
+</div>
   </div>
 
-  <!-- PhD -->
   <button class="accordion"> PhD PROGRAMS</button>
   <div class="panel">
     <table>
@@ -230,8 +305,22 @@
       <tr><td>PhD in Information Technology</td><td>RM 36,240</td><td>RM 10,872</td><td>RM 24,888</td></tr>
     </table>
     <div class="note">
-      <strong>Note:</strong> PhD candidates must pay RM5,000 research fee upon registration.
-    </div>
+  <div class="download-bar" onclick="downloadPDF('iukl')">
+    <span>Download PDF</span>
+    <span>⬇️</span>
+  </div>
+  <strong>Initial Fees:</strong><br>
+  EMGS Fees: RM3,200 (Non-refundable)<br>
+  International Student Fees: RM8,000<br>
+  Caution Fees (Refundable): RM1,500<br>
+  Resource Fee: RM300/Semester (Diploma only)<br><br>
+  <strong>Total Initial Payment: RM12,700</strong><br>
+  (RM3,200 EMGS + RM8,000 Intl Fee + RM1,500 Caution Fee) <br><br>
+  <strong>Payment Schedule:</strong><br>
+  1st Payment: RM12,700 (EMGS, Intl Fee, Caution Fee) + 1st Semester Tuition Fees<br>
+  Visa Renewal Fee: RM1,000 per annum (from 2nd year onwards)<br>
+  Study Extension: Regular fees apply.
+</div>
   </div>
 </div>
 
@@ -250,57 +339,48 @@
     });
   });
 
-  // Search function
+  // Search function (Filter Programs)
   function filterPrograms() {
-    const input = document.getElementById("searchInput").value.toLowerCase();
+    const input = document.getElementById("searchInput").value.toLowerCase().trim();
     const tables = document.querySelectorAll("table");
-    
-    // First reset all rows and remove highlights
-    tables.forEach(table => {
-      const rows = table.querySelectorAll("tr");
-      rows.forEach(row => {
-        row.style.display = "";
-        row.classList.remove("highlight");
-      });
-    });
-    
-    // If search is empty, exit
-    if (input.trim() === "") return;
-    
-    let foundAny = false;
-    
-    // Search through all tables
+
     tables.forEach(table => {
       const rows = table.querySelectorAll("tr");
       let foundInTable = false;
-      
+
       // Skip header row (index 0)
       for (let i = 1; i < rows.length; i++) {
-        const rowText = rows[i].textContent.toLowerCase();
-        if (rowText.includes(input)) {
-          rows[i].classList.add("highlight");
+        const row = rows[i];
+        const rowText = row.textContent.toLowerCase();
+
+        if (rowText.includes(input) && input !== "") {
+          row.style.display = "";
+          row.classList.add("highlight");
           foundInTable = true;
-          foundAny = true;
+        } else if (input === "") {
+          // Show all rows if input is empty
+          row.style.display = "";
+          row.classList.remove("highlight");
+          foundInTable = true; 
         } else {
-          rows[i].style.display = "none";
+          row.style.display = "none";
+          row.classList.remove("highlight");
         }
       }
-      
-      // Show/hide the parent panel based on matches
+
       const panel = table.closest(".panel");
       const accordion = panel.previousElementSibling;
+
       if (foundInTable) {
         panel.style.display = "block";
         accordion.classList.add("active");
       } else {
-        // Only hide if no matches found in this panel
-        if (panel.style.display !== "block") {
-          panel.style.display = "none";
-          accordion.classList.remove("active");
-        }
+        panel.style.display = "none";
+        accordion.classList.remove("active");
       }
     });
   }
+
   // Function to get query parameter from URL
   function getQueryParam(name) {
     const urlParams = new URLSearchParams(window.location.search);
