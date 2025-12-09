@@ -339,11 +339,10 @@
     });
   });
 
-  // **START: ADDED FIX FOR DOWNLOAD BUTTON**
+  // **FIXED: downloadPDF function added to enable the download button**
   function downloadPDF(universityCode) {
-    // You should use the actual URL or relative path to your PDF file here.
-    // Assuming the PDF name is based on the university code and the year range.
-    const pdfFileName = `${universityCode}-fees-2025-2026.pdf`; 
+    // Using the specified filename: iukl-fees-2025.pdf
+    const pdfFileName = 'iukl-fees-2025.pdf'; 
     
     // Create an invisible anchor element
     const link = document.createElement('a');
@@ -359,7 +358,7 @@
     
     console.log("Attempting to download: " + pdfFileName);
   }
-  // **END: ADDED FIX FOR DOWNLOAD BUTTON**
+  // **END OF FIX**
 
 
   // Search function (Filter Programs)
