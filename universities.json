@@ -1,437 +1,3379 @@
+```python?code_reference&code_event_index=5
+import json
+
+# Read the original JSON file
+with open('universities.json', 'r') as f:
+    universities_data = json.load(f)
+
+# 1. Define the complete SEGI College program data
+# Data is extracted from 'segi-fees-2025.pdf'
+segi_programs = [
+    # Diploma Programs
+    {
+        "name": "Diploma in Accounting", "level": "Diploma", "duration": "2 Years",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "31,900", "grand_total_fees_myr": "56,994.00",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "34,087.50", "year_2": "19,046.50", "year_3": "N/A"}
+    },
+    {
+        "name": "Diploma in Business Administration", "level": "Diploma", "duration": "2 Years",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "31,900", "grand_total_fees_myr": "56,994.00",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "34,087.50", "year_2": "19,046.50", "year_3": "N/A"}
+    },
+    {
+        "name": "Diploma in Digital Marketing", "level": "Diploma", "duration": "2 Years",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "31,900", "grand_total_fees_myr": "56,994.00",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "34,087.50", "year_2": "19,046.50", "year_3": "N/A"}
+    },
+    {
+        "name": "Diploma in HR Management", "level": "Diploma", "duration": "2 Years",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "31,900", "grand_total_fees_myr": "56,994.00",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "34,087.50", "year_2": "19,046.50", "year_3": "N/A"}
+    },
+    {
+        "name": "Diploma in Graphic Design", "level": "Diploma", "duration": "3 Years",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "31,900", "grand_total_fees_myr": "58,868.50",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "28,452.50", "year_2": "13,279.00", "year_3": "13,277.00"}
+    },
+    {
+        "name": "Diploma in Multimedia Design", "level": "Diploma", "duration": "3 Years",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "31,900", "grand_total_fees_myr": "58,868.50",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "28,452.50", "year_2": "13,279.00", "year_3": "13,277.00"}
+    },
+    {
+        "name": "Diploma in Mass Communication", "level": "Diploma", "duration": "3 Years",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "31,900", "grand_total_fees_myr": "58,868.50",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "28,452.50", "year_2": "13,279.00", "year_3": "13,277.00"}
+    },
+    {
+        "name": "Diploma in Information Technology", "level": "Diploma", "duration": "2 Years",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "33,900", "grand_total_fees_myr": "59,114.00",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "35,147.50", "year_2": "20,106.50", "year_3": "N/A"}
+    },
+    {
+        "name": "Diploma in Computer Science", "level": "Diploma", "duration": "2 Years",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "33,900", "grand_total_fees_myr": "59,114.00",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "35,147.50", "year_2": "20,106.50", "year_3": "N/A"}
+    },
+    {
+        "name": "Diploma in Culinary Art", "level": "Diploma", "duration": "3 Years",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "31,900", "grand_total_fees_myr": "58,868.50",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "28,452.50", "year_2": "13,279.00", "year_3": "13,277.00"}
+    },
+    {
+        "name": "Diploma in Hotel Management", "level": "Diploma", "duration": "3 Years",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "31,900", "grand_total_fees_myr": "58,868.50",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "28,452.50", "year_2": "13,279.00", "year_3": "13,277.00"}
+    },
+    {
+        "name": "Diploma in Early Childhood Education", "level": "Diploma", "duration": "2 Years",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "25,900", "grand_total_fees_myr": "50,634.00",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "30,907.50", "year_2": "15,866.50", "year_3": "N/A"}
+    },
+    {
+        "name": "Diploma in Nursing", "level": "Diploma", "duration": "3 Years",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "40,250", "grand_total_fees_myr": "63,559.00",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "29,254.96", "year_2": "15,220.96", "year_3": "15,223.08"}
+    },
+    {
+        "name": "Diploma in Medical Lab Technology", "level": "Diploma", "duration": "3 Years",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "40,250", "grand_total_fees_myr": "63,559.00",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "29,254.96", "year_2": "15,220.96", "year_3": "15,223.08"}
+    },
+    {
+        "name": "Diploma in Occupational Safety & Health", "level": "Diploma", "duration": "3 Years",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "33,100", "grand_total_fees_myr": "57,570.00",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "27,260.04", "year_2": "13,226.04", "year_3": "13,223.92"}
+    },
+    # Certificate Programs (Combined fees)
+    {
+        "name": "Certificate in Business, Health Science, Hotel Operations, or Information Technology",
+        "level": "Certificate", "duration": "1 Year (Approx)",
+        "international_admin_fee_myr": "6,800", "tuition_exam_fees_myr": "11,450", "grand_total_fees_myr": "23,876.00",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "20,016.00", "year_2": "N/A", "year_3": "N/A"},
+        "note": "Fee is for the group of certificate programs. Grand total is estimated for the certificate duration."
+    },
+    # University of Greenwich (UOG) - 2+0 Scheme (Combined fees)
+    {
+        "name": "BA (Hons) Accounting & Finance and other UOG 2+0 programs", "level": "Degree", "duration": "2+0 Scheme (2 Years in Malaysia)",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "30,800", "grand_total_fees_myr": "69,745.80",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "38,189.70", "year_2": "27,696.10", "year_3": "N/A"},
+        "note": "Applies to BA (Hons) Business Management, BA (Hons) Advertising and Digital Marketing Communications, BA (Hons) HR Management, and BSc (Hons) Computing under the UOG 2+0 scheme."
+    },
+    # University of Greenwich (UOG) - 3+0 Scheme (Combined fees)
+    {
+        "name": "BA (Hons) Accounting & Finance and other UOG 3+0 programs", "level": "Degree", "duration": "3+0 Scheme (3 Years in Malaysia)",
+        "international_admin_fee_myr": "8,640", "tuition_exam_fees_myr": "46,200", "grand_total_fees_myr": "90,942.00",
+        "payment_scheme_myr": {"upon_reg": "3,860.00", "year_1": "35,916.00", "year_2": "23,222.90", "year_3": "27,943.10"},
+        "note": "Applies to BA (Hons) Business Management, BA (Hons) Advertising and Digital Marketing Communications, BA (Hons) HR Management, Bachelor of Early Years Education, and BSc (Hons) Computing under the UOG 3+0 scheme."
+    },
+    # University Sains Malaysia (USM) Program
+    {
+        "name": "Bachelor in Nursing (Hons) in Collaboration with University Sains Malaysia (USM) (USM BIN)",
+        "level": "Degree", "duration": "4 Years (Approx)",
+        "international_admin_fee_myr": "3,850", "tuition_exam_fees_myr": "66,000", "grand_total_fees_myr": "82,279.00",
+        "payment_scheme_myr": {"upon_reg": "4,708.00", "year_1": "22,101.00", "year_2_to_4_myr": "3 @18,490.00"},
+        "note": "Year 2 to 4 payment is 3 installments of 18,490.00 MYR."
+    }
+]
+
+# 2. Create the new SEGI College entry
+new_segi_entry = {
+    "name": "SEGI UNIVERSITY MALAYSIA", # Using the original name from the file
+    "campuses": ["Main Campus"],
+    "programs": segi_programs
+}
+
+# 3. Find and replace the old SEGI entry
+found_segi = False
+for i, university in enumerate(universities_data):
+    if "SEGI UNIVERSITY MALAYSIA" in university["name"]:
+        universities_data[i] = new_segi_entry
+        found_segi = True
+        break
+
+# 4. Print the complete, updated JSON
+print(json.dumps(universities_data, indent=2))
+
+```
+
+```text?code_stdout&code_event_index=5
 [
   {
     "name": "University College MAIWP International (UCMI)",
-    "campuses": ["Main Campus"],
+    "campuses": [
+      "Main Campus"
+    ],
     "programs": [
-      { "name": "Foundation in Science", "level": "Foundation", "duration": "1 Year" },
-      { "name": "Foundation in Business", "level": "Foundation", "duration": "1 Year" },
-      { "name": "Diploma in Medical Science", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma in Physiotherapy", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma in Environment Health", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma Health & Medical Science", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma Occupational Therapy", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma in Occupational Safety & Health", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma Medical Laboratory Technology", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma Nursing Science", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma in Pharmacy", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma Logistic Management", "level": "Diploma", "duration": "2.7 Years" },
-      { "name": "Diploma Human Resources Management", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma Business Management", "level": "Diploma", "duration": "2.6 Years" },
-      { "name": "Diploma Early Childhood Education", "level": "Diploma", "duration": "2.7 Years" },
-      { "name": "Diploma in Hotel Management", "level": "Diploma", "duration": "2.6 Years" },
-      { "name": "Diploma Psychology", "level": "Diploma", "duration": "2.7 Years" },
-      { "name": "Bachelor of Environmental Occupational Safety & Health (Honours)", "level": "Degree", "duration": "4 Years" },
-      { "name": "Bachelor of Biomedical Science (Honours)", "level": "Degree", "duration": "4 Years" },
-      { "name": "Bachelor of Nursing Science (Honours)", "level": "Degree", "duration": "4 Years" },
-      { "name": "Bachelor of Pharmacy (Honours)", "level": "Degree", "duration": "4 Years" },
-      { "name": "Bachelor of Science in Pharmaceutical Technology (Honours)", "level": "Degree", "duration": "3.6 Years" },
-      { "name": "Bachelor of International Supply Chain Management (Honours)", "level": "Degree", "duration": "3.6 Years" },
-      { "name": "Bachelor of Business Administration (Honours)", "level": "Degree", "duration": "3.6 Years" },
-      { "name": "Master of Health Science (Research Mode)", "level": "Master", "duration": "2-4 Years" },
-      { "name": "Master of Nursing (Research Mode)", "level": "Master", "duration": "2-4 Years" },
-      { "name": "Master of Business Administration (MBA)", "level": "Master", "duration": "1-3 Years" },
-      { "name": "Doctor of Philosophy in Nursing (Research Mode)", "level": "Doctorate", "duration": "3-4 Years" },
-      { "name": "Doctor of Philosophy in Science (Research Mode)", "level": "Doctorate", "duration": "3-6 Years" }
+      {
+        "name": "Foundation in Science",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Foundation in Business",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Diploma in Medical Science",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Physiotherapy",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Environment Health",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma Health & Medical Science",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma Occupational Therapy",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Occupational Safety & Health",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma Medical Laboratory Technology",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma Nursing Science",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Pharmacy",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma Logistic Management",
+        "level": "Diploma",
+        "duration": "2.7 Years"
+      },
+      {
+        "name": "Diploma Human Resources Management",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma Business Management",
+        "level": "Diploma",
+        "duration": "2.6 Years"
+      },
+      {
+        "name": "Diploma Early Childhood Education",
+        "level": "Diploma",
+        "duration": "2.7 Years"
+      },
+      {
+        "name": "Diploma in Hotel Management",
+        "level": "Diploma",
+        "duration": "2.6 Years"
+      },
+      {
+        "name": "Diploma Psychology",
+        "level": "Diploma",
+        "duration": "2.7 Years"
+      },
+      {
+        "name": "Bachelor of Environmental Occupational Safety & Health (Honours)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Bachelor of Biomedical Science (Honours)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Bachelor of Nursing Science (Honours)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Bachelor of Pharmacy (Honours)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Bachelor of Science in Pharmaceutical Technology (Honours)",
+        "level": "Degree",
+        "duration": "3.6 Years"
+      },
+      {
+        "name": "Bachelor of International Supply Chain Management (Honours)",
+        "level": "Degree",
+        "duration": "3.6 Years"
+      },
+      {
+        "name": "Bachelor of Business Administration (Honours)",
+        "level": "Degree",
+        "duration": "3.6 Years"
+      },
+      {
+        "name": "Master of Health Science (Research Mode)",
+        "level": "Master",
+        "duration": "2-4 Years"
+      },
+      {
+        "name": "Master of Nursing (Research Mode)",
+        "level": "Master",
+        "duration": "2-4 Years"
+      },
+      {
+        "name": "Master of Business Administration (MBA)",
+        "level": "Master",
+        "duration": "1-3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Nursing (Research Mode)",
+        "level": "Doctorate",
+        "duration": "3-4 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Science (Research Mode)",
+        "level": "Doctorate",
+        "duration": "3-6 Years"
+      }
     ]
   },
   {
     "name": "CYBERNETICS MALAYSIA (KTAC)",
-    "campuses": ["Kolej Teknologi Antarabangsa Cybernetics (KTAC)"],
+    "campuses": [
+      "Kolej Teknologi Antarabangsa Cybernetics (KTAC)"
+    ],
     "programs": [
-      { "name": "Certificate in Creative Multimedia", "level": "Certificate", "duration": "1–2 Years" },
-      { "name": "Certificate of Aviation Management", "level": "Certificate", "duration": "1–2 Years" },
-      { "name": "Certificate of Business Management", "level": "Certificate", "duration": "1–2 Years" },
-      { "name": "Diploma in Creative Multimedia", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma in Aviation Management", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma in Halal Industry Management", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma in Accounting", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma in Early Childhood Management", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma in Business Management", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma in Computer Science", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma of Shariah", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma in Hotel Management", "level": "Diploma", "duration": "3 Years" }
+      {
+        "name": "Certificate in Creative Multimedia",
+        "level": "Certificate",
+        "duration": "1\u20132 Years"
+      },
+      {
+        "name": "Certificate of Aviation Management",
+        "level": "Certificate",
+        "duration": "1\u20132 Years"
+      },
+      {
+        "name": "Certificate of Business Management",
+        "level": "Certificate",
+        "duration": "1\u20132 Years"
+      },
+      {
+        "name": "Diploma in Creative Multimedia",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Aviation Management",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Halal Industry Management",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Accounting",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Early Childhood Management",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Business Management",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Computer Science",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma of Shariah",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Hotel Management",
+        "level": "Diploma",
+        "duration": "3 Years"
+      }
     ]
   },
   {
     "name": "GENOVASI UNIVERSITY MALAYSIA",
-    "campuses": ["Main Campus"],
+    "campuses": [
+      "Main Campus"
+    ],
     "programs": [
-      { "name": "Foundation in Arts", "level": "Foundation", "duration": "1 Year" },
-      { "name": "Diploma in Business Management", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in Accounting", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Bachelor of Arts in Media Technology", "level": "Degree", "duration": "3 Years" },
-      { "name": "Bachelor of Business Administration", "level": "Degree", "duration": "3 Years" },
-      { "name": "Bachelor of Corporate Management", "level": "Degree", "duration": "3 Years" },
-      { "name": "Bachelor of Financial Intelligence", "level": "Degree", "duration": "3 Years" },
-      { "name": "BSc (Hons) Accounting and Finance", "level": "Degree", "duration": "3 Years" },
-      { "name": "Master of Business Administration", "level": "Master", "duration": "1.5 Years" },
-      { "name": "Master of Education", "level": "Master", "duration": "1.5 Years" },
-      { "name": "Doctor of Philosophy in Business", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Business Administration", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Philosophy in Education", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Philosophy in Art & Design", "level": "Doctorate", "duration": "3 Years" }
+      {
+        "name": "Foundation in Arts",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Diploma in Business Management",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Accounting",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Bachelor of Arts in Media Technology",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Business Administration",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Corporate Management",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Financial Intelligence",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "BSc (Hons) Accounting and Finance",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Master of Business Administration",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Master of Education",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Business",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Business Administration",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Education",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Art & Design",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      }
     ]
   },
   {
     "name": "BAC EDUCATION GROUP",
-    "campuses": ["UNIMY", "BAC COLLEGE", "IACT COLLEGE", "VERITAS UNIVERSITY", "RELIANCE COLLEGE"],
+    "campuses": [
+      "UNIMY",
+      "BAC COLLEGE",
+      "IACT COLLEGE",
+      "VERITAS UNIVERSITY",
+      "RELIANCE COLLEGE"
+    ],
     "programs": [
-      { "campus": "UNIMY", "name": "Foundation in Computing & Engineering", "level": "Foundation", "duration": "1 year" },
-      { "campus": "UNIMY", "name": "Diploma in Information Technology (Cybersecurity)", "level": "Diploma", "duration": "2.5 years" },
-      { "campus": "UNIMY", "name": "Diploma in Game Development", "level": "Diploma", "duration": "3 years" },
-      { "campus": "UNIMY", "name": "Diploma in Interactive & Digital Media", "level": "Diploma", "duration": "3 years" },
-      { "campus": "UNIMY", "name": "Diploma in Robotic & Automation", "level": "Diploma", "duration": "3 years" },
-      { "campus": "UNIMY", "name": "Diploma in Digital Marketing", "level": "Diploma", "duration": "3 years" },
-      { "campus": "UNIMY", "name": "Bachelor of Multimedia (Interactive Media)", "level": "Degree", "duration": "3 years" },
-      { "campus": "UNIMY", "name": "Bachelor of Computer Science (Data Science)", "level": "Degree", "duration": "3 years" },
-      { "campus": "UNIMY", "name": "Bachelor of Game Development (Game Technology)", "level": "Degree", "duration": "3 years" },
-      { "campus": "UNIMY", "name": "Bachelor of Computer Science (Honours)", "level": "Degree", "duration": "3 years" },
-      { "campus": "UNIMY", "name": "Bachelor of Software Engineering (Honours)", "level": "Degree", "duration": "3 years" },
-      { "campus": "UNIMY", "name": "Bachelor of Computer Engineering (Honours)", "level": "Degree", "duration": "4 years" },
-      { "campus": "UNIMY", "name": "Master of Business Administration (MBA) (By coursework)", "level": "Master", "duration": "1.5 years" },
-      { "campus": "UNIMY", "name": "Master of Education", "level": "Master", "duration": "1.5 years" },
-      { "campus": "UNIMY", "name": "Master in Computing (By research)", "level": "Master", "duration": "2 years" },
-      { "campus": "UNIMY", "name": "Master of Science in Engineering (By research)", "level": "Master", "duration": "2 years" },
-      { "campus": "UNIMY", "name": "Doctor of Philosophy in Education", "level": "Doctorate", "duration": "3 years" },
-      { "campus": "UNIMY", "name": "Doctor of Philosophy (Computing)", "level": "Doctorate", "duration": "3 years" },
-      { "campus": "UNIMY", "name": "Doctor of Philosophy in Engineering", "level": "Doctorate", "duration": "3 years" },
-      { "campus": "UNIMY", "name": "Doctor of Philosophy in Business Management", "level": "Doctorate", "duration": "3 years" },
-
-      { "campus": "BAC COLLEGE", "name": "Foundation in Business", "level": "Foundation", "duration": "1 year" },
-      { "campus": "BAC COLLEGE", "name": "Foundation in Law", "level": "Foundation", "duration": "1 year" },
-      { "campus": "BAC COLLEGE", "name": "A-Level (2 subjects)", "level": "Pre-University", "duration": "1.5 years" },
-      { "campus": "BAC COLLEGE", "name": "A-Level (3 subjects)", "level": "Pre-University", "duration": "1.5 years" },
-      { "campus": "BAC COLLEGE", "name": "A-Level (4 subjects)", "level": "Pre-University", "duration": "1.5 years" },
-      { "campus": "BAC COLLEGE", "name": "LLB (3+0) University of London International Programmes", "level": "Degree", "duration": "3 years" },
-      { "campus": "BAC COLLEGE", "name": "UK Transfer Degree Programme Law", "level": "Degree", "duration": "3 years" },
-      { "campus": "BAC COLLEGE", "name": "UK Transfer Degree Programme Business", "level": "Degree", "duration": "3 years" },
-
-      { "campus": "IACT COLLEGE", "name": "Foundation in Media Studies", "level": "Foundation", "duration": "1 year" },
-      { "campus": "IACT COLLEGE", "name": "Diploma in Broadcasting and Film", "level": "Diploma", "duration": "2 years" },
-      { "campus": "IACT COLLEGE", "name": "Diploma in Mass Communication", "level": "Diploma", "duration": "2 years" },
-      { "campus": "IACT COLLEGE", "name": "BA Hons (Film Production) - University of Sunderland (3+0)", "level": "Degree", "duration": "3 years" },
-      { "campus": "IACT COLLEGE", "name": "BA Hons in Advertising & Design - University of Sunderland (3+0)", "level": "Degree", "duration": "3 years" },
-      { "campus": "IACT COLLEGE", "name": "BA Hons in Media Culture and Communication - University of Sunderland (3+0)", "level": "Degree", "duration": "3 years" },
-      { "campus": "IACT COLLEGE", "name": "BA Hons in Social Media Management - University of Sunderland (3+0)", "level": "Degree", "duration": "3 years" },
-      { "campus": "IACT COLLEGE", "name": "UK Degree Transfer Programme (Mass Communication) (2+1)", "level": "Degree", "duration": "3 years" },
-
-      { "campus": "VERITAS UNIVERSITY", "name": "Foundation in Arts", "level": "Foundation", "duration": "1 year" },
-      { "campus": "VERITAS UNIVERSITY", "name": "Diploma in Early Childhood Education", "level": "Diploma", "duration": "2.5 years" },
-      { "campus": "VERITAS UNIVERSITY", "name": "BA (Hons) Accounting & Finance", "level": "Degree", "duration": "3 years" },
-      { "campus": "VERITAS UNIVERSITY", "name": "Bachelor of Communication (Hons) Branding & Digital Marketing", "level": "Degree", "duration": "3 years" },
-      { "campus": "VERITAS UNIVERSITY", "name": "Bachelor of Education (Early Childhood) with Honors", "level": "Degree", "duration": "3 years" },
-      { "campus": "VERITAS UNIVERSITY", "name": "Bachelor in Business Administration (Hons)", "level": "Degree", "duration": "3 years" },
-      { "campus": "VERITAS UNIVERSITY", "name": "Masters of Business Administration", "level": "Master", "duration": "1.5 years" },
-
-      { "campus": "RELIANCE COLLEGE", "name": "Diploma in Culinary Arts", "level": "Diploma", "duration": "2 years" },
-      { "campus": "RELIANCE COLLEGE", "name": "Diploma in Business Management", "level": "Diploma", "duration": "2.5 years" },
-      { "campus": "RELIANCE COLLEGE", "name": "Diploma in Hotel Management", "level": "Diploma", "duration": "2.5 years" }
+      {
+        "campus": "UNIMY",
+        "name": "Foundation in Computing & Engineering",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Diploma in Information Technology (Cybersecurity)",
+        "level": "Diploma",
+        "duration": "2.5 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Diploma in Game Development",
+        "level": "Diploma",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Diploma in Interactive & Digital Media",
+        "level": "Diploma",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Diploma in Robotic & Automation",
+        "level": "Diploma",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Diploma in Digital Marketing",
+        "level": "Diploma",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Bachelor of Multimedia (Interactive Media)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Bachelor of Computer Science (Data Science)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Bachelor of Game Development (Game Technology)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Bachelor of Computer Science (Honours)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Bachelor of Software Engineering (Honours)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Bachelor of Computer Engineering (Honours)",
+        "level": "Degree",
+        "duration": "4 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Master of Business Administration (MBA) (By coursework)",
+        "level": "Master",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Master of Education",
+        "level": "Master",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Master in Computing (By research)",
+        "level": "Master",
+        "duration": "2 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Master of Science in Engineering (By research)",
+        "level": "Master",
+        "duration": "2 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Doctor of Philosophy in Education",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Doctor of Philosophy (Computing)",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Doctor of Philosophy in Engineering",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Doctor of Philosophy in Business Management",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "Foundation in Business",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "Foundation in Law",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "A-Level (2 subjects)",
+        "level": "Pre-University",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "A-Level (3 subjects)",
+        "level": "Pre-University",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "A-Level (4 subjects)",
+        "level": "Pre-University",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "LLB (3+0) University of London International Programmes",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "UK Transfer Degree Programme Law",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "UK Transfer Degree Programme Business",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "Foundation in Media Studies",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "Diploma in Broadcasting and Film",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "Diploma in Mass Communication",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "BA Hons (Film Production) - University of Sunderland (3+0)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "BA Hons in Advertising & Design - University of Sunderland (3+0)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "BA Hons in Media Culture and Communication - University of Sunderland (3+0)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "BA Hons in Social Media Management - University of Sunderland (3+0)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "UK Degree Transfer Programme (Mass Communication) (2+1)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "VERITAS UNIVERSITY",
+        "name": "Foundation in Arts",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "VERITAS UNIVERSITY",
+        "name": "Diploma in Early Childhood Education",
+        "level": "Diploma",
+        "duration": "2.5 years"
+      },
+      {
+        "campus": "VERITAS UNIVERSITY",
+        "name": "BA (Hons) Accounting & Finance",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "VERITAS UNIVERSITY",
+        "name": "Bachelor of Communication (Hons) Branding & Digital Marketing",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "VERITAS UNIVERSITY",
+        "name": "Bachelor of Education (Early Childhood) with Honors",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "VERITAS UNIVERSITY",
+        "name": "Bachelor in Business Administration (Hons)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "VERITAS UNIVERSITY",
+        "name": "Masters of Business Administration",
+        "level": "Master",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "RELIANCE COLLEGE",
+        "name": "Diploma in Culinary Arts",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "RELIANCE COLLEGE",
+        "name": "Diploma in Business Management",
+        "level": "Diploma",
+        "duration": "2.5 years"
+      },
+      {
+        "campus": "RELIANCE COLLEGE",
+        "name": "Diploma in Hotel Management",
+        "level": "Diploma",
+        "duration": "2.5 years"
+      }
     ]
   },
   {
     "name": "ALFA UNIVERSITY MALAYSIA",
-    "campuses": ["Main Campus"],
+    "campuses": [
+      "Main Campus"
+    ],
     "programs": [
-      { "name": "Foundation in Business", "level": "Foundation", "duration": "1 Year" },
-      { "name": "Foundation in Arts & Design", "level": "Foundation", "duration": "1 Year" },
-      { "name": "Diploma in Accountancy", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in Business Administration", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in E-Business", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in Information Technology", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in Early Childhood", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in Early Childhood (ODL)", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in Graphic Design", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in Multimedia Design", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in Architecture", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma in Interior Design", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma in Culinary Arts", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in Tourism Management", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in Tourism Hajj and Umrah (WBL)", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in Hotel Management (WBL)", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in Retail Management (WBL)", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in Event Management", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in Law Enforcement", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in TESL", "level": "Diploma", "duration": "2.5 Years" },
-      { "name": "Diploma in Health Care Management", "level": "Diploma", "duration": "3 Years" },
-      { "name": "Diploma in Pharmacy", "level": "Diploma", "duration": "4 Years" },
-      { "name": "BA (HONOURS) Business Administration", "level": "Degree", "duration": "3 Years" },
-      { "name": "BA (HONOURS) Business Administration (ODL)", "level": "Degree", "duration": "3 Years" },
-      { "name": "Bachelor of Early Childhood Education (HONOURS)", "level": "Degree", "duration": "3 Years" },
-      { "name": "Bachelor of E-Business (HONOURS)", "level": "Degree", "duration": "3 Years" },
-      { "name": "Bachelor (HONOURS) Human Resource Management", "level": "Degree", "duration": "3 Years" },
-      { "name": "Bachelor of Information Technology (HONOURS)", "level": "Degree", "duration": "3 Years" },
-      { "name": "Bachelor of Science (HONOURS) in Hospitality Management", "level": "Degree", "duration": "3 Years" },
-      { "name": "Bachelor of Arts (HONOURS) Graphic Design", "level": "Degree", "duration": "3 Years" },
-      { "name": "Bachelor of Arts (HONOURS) Creative Multimedia", "level": "Degree", "duration": "3 Years" },
-      { "name": "Bachelor of Science (HONOURS) in Architecture", "level": "Degree", "duration": "3 Years" },
-      { "name": "Bachelor of Law Enforcement", "level": "Degree", "duration": "3 Years" },
-      { "name": "Bachelor in Computer Science (Cyber Security & Networks) (HONOURS)", "level": "Degree", "duration": "3 Years" },
-      { "name": "Graduate Certificate in English Proficiency", "level": "Graduate Certificate", "duration": "1 Year" },
-      { "name": "Graduate Diploma in Teaching as Second Language (TSL)", "level": "Graduate Diploma", "duration": "1.5 Year" },
-      { "name": "Graduate Diploma in Business Management", "level": "Graduate Diploma", "duration": "1.5 Year" },
-      { "name": "Master of Business Administration", "level": "Master", "duration": "1 Yr 4 Mo" },
-      { "name": "Master of Business Administration (International Business)", "level": "Master", "duration": "1 Yr 3 Mo" },
-      { "name": "Master of Business Administration (ODL)", "level": "Master", "duration": "1 Yr 4 Mo" },
-      { "name": "Master of Project Management", "level": "Master", "duration": "1 Yr 3 Mo" },
-      { "name": "Master in Information Technology", "level": "Master", "duration": "1 Yr 4 Mo" },
-      { "name": "Master of Education in Early Childhood Education (By Research)", "level": "Master", "duration": "2 Years" },
-      { "name": "Master of Education in TESL (By Research)", "level": "Master", "duration": "2 Years" },
-      { "name": "Master of Science in Management (By Research)", "level": "Master", "duration": "2–3 Years" },
-      { "name": "Master of Art & Design (By Research)", "level": "Master", "duration": "2–3 Years" },
-      { "name": "Master of Education", "level": "Master", "duration": "2 Years" },
-      { "name": "Master of Philosophy in Engineering", "level": "Master", "duration": "2–3 Years" },
-      { "name": "Master in Supply Chain Management", "level": "Master", "duration": "1 Yr 3 Mo" },
-      { "name": "Master of Business Administration in Oil & Gas", "level": "Master", "duration": "1 Yr 3 Mo" },
-      { "name": "Doctor of Business Administration (DBA)", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Education (DE)", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Philosophy in Business Administration (PhDBA)", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Philosophy in Design (PhD Design)", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Philosophy in Education (PhD Edu)", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Philosophy in Information Technology (PhD IT)", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Philosophy in Sport Studies (PhD SS)", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Philosophy in Performing Art (PhD PA)", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Philosophy in Built Environment (PhD BE)", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Philosophy in Engineering", "level": "Doctorate", "duration": "3 Years" }
+      {
+        "name": "Foundation in Business",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Foundation in Arts & Design",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Diploma in Accountancy",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Business Administration",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in E-Business",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Information Technology",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Early Childhood",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Early Childhood (ODL)",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Graphic Design",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Multimedia Design",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Architecture",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Interior Design",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Culinary Arts",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Tourism Management",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Tourism Hajj and Umrah (WBL)",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Hotel Management (WBL)",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Retail Management (WBL)",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Event Management",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Law Enforcement",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in TESL",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Health Care Management",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Pharmacy",
+        "level": "Diploma",
+        "duration": "4 Years"
+      },
+      {
+        "name": "BA (HONOURS) Business Administration",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "BA (HONOURS) Business Administration (ODL)",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Early Childhood Education (HONOURS)",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of E-Business (HONOURS)",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor (HONOURS) Human Resource Management",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Information Technology (HONOURS)",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Science (HONOURS) in Hospitality Management",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Arts (HONOURS) Graphic Design",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Arts (HONOURS) Creative Multimedia",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Science (HONOURS) in Architecture",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Law Enforcement",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor in Computer Science (Cyber Security & Networks) (HONOURS)",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Graduate Certificate in English Proficiency",
+        "level": "Graduate Certificate",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Graduate Diploma in Teaching as Second Language (TSL)",
+        "level": "Graduate Diploma",
+        "duration": "1.5 Year"
+      },
+      {
+        "name": "Graduate Diploma in Business Management",
+        "level": "Graduate Diploma",
+        "duration": "1.5 Year"
+      },
+      {
+        "name": "Master of Business Administration",
+        "level": "Master",
+        "duration": "1 Yr 4 Mo"
+      },
+      {
+        "name": "Master of Business Administration (International Business)",
+        "level": "Master",
+        "duration": "1 Yr 3 Mo"
+      },
+      {
+        "name": "Master of Business Administration (ODL)",
+        "level": "Master",
+        "duration": "1 Yr 4 Mo"
+      },
+      {
+        "name": "Master of Project Management",
+        "level": "Master",
+        "duration": "1 Yr 3 Mo"
+      },
+      {
+        "name": "Master in Information Technology",
+        "level": "Master",
+        "duration": "1 Yr 4 Mo"
+      },
+      {
+        "name": "Master of Education in Early Childhood Education (By Research)",
+        "level": "Master",
+        "duration": "2 Years"
+      },
+      {
+        "name": "Master of Education in TESL (By Research)",
+        "level": "Master",
+        "duration": "2 Years"
+      },
+      {
+        "name": "Master of Science in Management (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Art & Design (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Education",
+        "level": "Master",
+        "duration": "2 Years"
+      },
+      {
+        "name": "Master of Philosophy in Engineering",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master in Supply Chain Management",
+        "level": "Master",
+        "duration": "1 Yr 3 Mo"
+      },
+      {
+        "name": "Master of Business Administration in Oil & Gas",
+        "level": "Master",
+        "duration": "1 Yr 3 Mo"
+      },
+      {
+        "name": "Doctor of Business Administration (DBA)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Education (DE)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Business Administration (PhDBA)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Design (PhD Design)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Education (PhD Edu)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Information Technology (PhD IT)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Sport Studies (PhD SS)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Performing Art (PhD PA)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Built Environment (PhD BE)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Engineering",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      }
     ]
   },
   {
     "name": "INTI International University",
-    "campuses": ["PENANG CAMPUS", "NILAI CAMPUS", "SUBANG CAMPUS"],
+    "campuses": [
+      "PENANG CAMPUS",
+      "NILAI CAMPUS",
+      "SUBANG CAMPUS"
+    ],
     "programs": [
-      { "campus": "PENANG CAMPUS", "name": "Foundation in Business", "level": "Foundation", "duration": "1 year" },
-      { "campus": "PENANG CAMPUS", "name": "Foundation in Information Technology", "level": "Foundation", "duration": "1 year" },
-      { "campus": "PENANG CAMPUS", "name": "Foundation in Science", "level": "Foundation", "duration": "1 year" },
-      { "campus": "PENANG CAMPUS", "name": "Cambridge A-Level (3 Subjects)", "level": "Pre-University", "duration": "1.5 years" },
-      { "campus": "PENANG CAMPUS", "name": "Cambridge A-Level (4 Subjects)", "level": "Pre-University", "duration": "1.5 years" },
-      { "campus": "PENANG CAMPUS", "name": "American Degree Transfer Program (AUP)", "level": "Degree Transfer", "duration": "2 years" },
-      { "campus": "PENANG CAMPUS", "name": "Diploma in Business", "level": "Diploma", "duration": "2 years" },
-      { "campus": "PENANG CAMPUS", "name": "Diploma in Finance", "level": "Diploma", "duration": "2 years" },
-      { "campus": "PENANG CAMPUS", "name": "Diploma in Marketing", "level": "Diploma", "duration": "2 years" },
-      { "campus": "PENANG CAMPUS", "name": "Diploma in Mass Communication", "level": "Diploma", "duration": "2 years" },
-      { "campus": "PENANG CAMPUS", "name": "Diploma in Culinary Arts", "level": "Diploma", "duration": "2 years" },
-      { "campus": "PENANG CAMPUS", "name": "Diploma in Information Technology", "level": "Diploma", "duration": "2 years" },
-      { "campus": "PENANG CAMPUS", "name": "Diploma in Computer Science", "level": "Diploma", "duration": "2 years" },
-      { "campus": "PENANG CAMPUS", "name": "PhD (By Research)", "level": "Doctorate", "duration": "3 years" },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Foundation in Business",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Foundation in Information Technology",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Foundation in Science",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Cambridge A-Level (3 Subjects)",
+        "level": "Pre-University",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Cambridge A-Level (4 Subjects)",
+        "level": "Pre-University",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "American Degree Transfer Program (AUP)",
+        "level": "Degree Transfer",
+        "duration": "2 years"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Diploma in Business",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Diploma in Finance",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Diploma in Marketing",
+        "level": "Diploma",
+        ...
+```
 
-      { "campus": "NILAI CAMPUS", "name": "Foundation in Business", "level": "Foundation", "duration": "1 year" },
-      { "campus": "NILAI CAMPUS", "name": "Foundation in Arts", "level": "Foundation", "duration": "1 year" },
-      { "campus": "NILAI CAMPUS", "name": "Diploma in Business", "level": "Diploma", "duration": "2 years" },
-      { "campus": "NILAI CAMPUS", "name": "Bachelor of Business (Hons)", "level": "Degree", "duration": "3 years" },
-      { "campus": "NILAI CAMPUS", "name": "Diploma in Mechanical Engineering", "level": "Diploma", "duration": "2.5 years" },
-      { "campus": "NILAI CAMPUS", "name": "Diploma in Information Technology", "level": "Diploma", "duration": "2 years" },
-      { "campus": "NILAI CAMPUS", "name": "Bachelor of Computer Science (Hons)", "level": "Degree", "duration": "3 years" },
-      { "campus": "NILAI CAMPUS", "name": "Master of Business Administration (MBA)", "level": "Master", "duration": "1–2 years" },
-      { "campus": "NILAI CAMPUS", "name": "Doctor of Philosophy (PhD)", "level": "Doctorate", "duration": "3 years" },
+I have updated the JSON code to include all the programs and fee structure details for **SEGI UNIVERSITY MALAYSIA** (extracted from your `segi-fees-2025.pdf`), while ensuring all previous university data is also included.
 
-      { "campus": "SUBANG CAMPUS", "name": "Foundation in Business", "level": "Foundation", "duration": "1 year" },
-      { "campus": "SUBANG CAMPUS", "name": "Foundation in Information Technology", "level": "Foundation", "duration": "1 year" },
-      { "campus": "SUBANG CAMPUS", "name": "Diploma in Graphic Design", "level": "Diploma", "duration": "2.3 years" },
-      { "campus": "SUBANG CAMPUS", "name": "Diploma in Business", "level": "Diploma", "duration": "2 years" },
-      { "campus": "SUBANG CAMPUS", "name": "Diploma in Mass Communication", "level": "Diploma", "duration": "2 years" },
-      { "campus": "SUBANG CAMPUS", "name": "Diploma in Information Technology", "level": "Diploma", "duration": "2 years" },
-      { "campus": "SUBANG CAMPUS", "name": "Diploma in Culinary Arts", "level": "Diploma", "duration": "2 years" },
-      { "campus": "SUBANG CAMPUS", "name": "BA in Psychology (SNHU – US)", "level": "Degree", "duration": "4 years" },
-      { "campus": "SUBANG CAMPUS", "name": "PhD (By Research)", "level": "Doctorate", "duration": "3 years" }
+Here is the complete, updated JSON code for you to use:
+
+```json
+[
+  {
+    "name": "University College MAIWP International (UCMI)",
+    "campuses": [
+      "Main Campus"
+    ],
+    "programs": [
+      {
+        "name": "Foundation in Science",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Foundation in Business",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Diploma in Medical Science",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Physiotherapy",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Environment Health",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma Health & Medical Science",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma Occupational Therapy",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Occupational Safety & Health",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma Medical Laboratory Technology",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma Nursing Science",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Pharmacy",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma Logistic Management",
+        "level": "Diploma",
+        "duration": "2.7 Years"
+      },
+      {
+        "name": "Diploma Human Resources Management",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma Business Management",
+        "level": "Diploma",
+        "duration": "2.6 Years"
+      },
+      {
+        "name": "Diploma Early Childhood Education",
+        "level": "Diploma",
+        "duration": "2.7 Years"
+      },
+      {
+        "name": "Diploma in Hotel Management",
+        "level": "Diploma",
+        "duration": "2.6 Years"
+      },
+      {
+        "name": "Diploma Psychology",
+        "level": "Diploma",
+        "duration": "2.7 Years"
+      },
+      {
+        "name": "Bachelor of Environmental Occupational Safety & Health (Honours)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Bachelor of Biomedical Science (Honours)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Bachelor of Nursing Science (Honours)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Bachelor of Pharmacy (Honours)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Bachelor of Science in Pharmaceutical Technology (Honours)",
+        "level": "Degree",
+        "duration": "3.6 Years"
+      },
+      {
+        "name": "Bachelor of International Supply Chain Management (Honours)",
+        "level": "Degree",
+        "duration": "3.6 Years"
+      },
+      {
+        "name": "Bachelor of Business Administration (Honours)",
+        "level": "Degree",
+        "duration": "3.6 Years"
+      },
+      {
+        "name": "Master of Health Science (Research Mode)",
+        "level": "Master",
+        "duration": "2-4 Years"
+      },
+      {
+        "name": "Master of Nursing (Research Mode)",
+        "level": "Master",
+        "duration": "2-4 Years"
+      },
+      {
+        "name": "Master of Business Administration (MBA)",
+        "level": "Master",
+        "duration": "1-3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Nursing (Research Mode)",
+        "level": "Doctorate",
+        "duration": "3-4 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Science (Research Mode)",
+        "level": "Doctorate",
+        "duration": "3-6 Years"
+      }
+    ]
+  },
+  {
+    "name": "CYBERNETICS MALAYSIA (KTAC)",
+    "campuses": [
+      "Kolej Teknologi Antarabangsa Cybernetics (KTAC)"
+    ],
+    "programs": [
+      {
+        "name": "Certificate in Creative Multimedia",
+        "level": "Certificate",
+        "duration": "1\u20132 Years"
+      },
+      {
+        "name": "Certificate of Aviation Management",
+        "level": "Certificate",
+        "duration": "1\u20132 Years"
+      },
+      {
+        "name": "Certificate of Business Management",
+        "level": "Certificate",
+        "duration": "1\u20132 Years"
+      },
+      {
+        "name": "Diploma in Creative Multimedia",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Aviation Management",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Halal Industry Management",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Accounting",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Early Childhood Management",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Business Management",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Computer Science",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma of Shariah",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Hotel Management",
+        "level": "Diploma",
+        "duration": "3 Years"
+      }
+    ]
+  },
+  {
+    "name": "GENOVASI UNIVERSITY MALAYSIA",
+    "campuses": [
+      "Main Campus"
+    ],
+    "programs": [
+      {
+        "name": "Foundation in Arts",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Diploma in Business Management",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Accounting",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Bachelor of Arts in Media Technology",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Business Administration",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Corporate Management",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Financial Intelligence",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "BSc (Hons) Accounting and Finance",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Master of Business Administration",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Master of Education",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Business",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Business Administration",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Education",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Art & Design",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      }
+    ]
+  },
+  {
+    "name": "BAC EDUCATION GROUP",
+    "campuses": [
+      "UNIMY",
+      "BAC COLLEGE",
+      "IACT COLLEGE",
+      "VERITAS UNIVERSITY",
+      "RELIANCE COLLEGE"
+    ],
+    "programs": [
+      {
+        "campus": "UNIMY",
+        "name": "Foundation in Computing & Engineering",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Diploma in Information Technology (Cybersecurity)",
+        "level": "Diploma",
+        "duration": "2.5 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Diploma in Game Development",
+        "level": "Diploma",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Diploma in Interactive & Digital Media",
+        "level": "Diploma",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Diploma in Robotic & Automation",
+        "level": "Diploma",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Diploma in Digital Marketing",
+        "level": "Diploma",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Bachelor of Multimedia (Interactive Media)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Bachelor of Computer Science (Data Science)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Bachelor of Game Development (Game Technology)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Bachelor of Computer Science (Honours)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Bachelor of Software Engineering (Honours)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Bachelor of Computer Engineering (Honours)",
+        "level": "Degree",
+        "duration": "4 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Master of Business Administration (MBA) (By coursework)",
+        "level": "Master",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Master of Education",
+        "level": "Master",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Master in Computing (By research)",
+        "level": "Master",
+        "duration": "2 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Master of Science in Engineering (By research)",
+        "level": "Master",
+        "duration": "2 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Doctor of Philosophy in Education",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Doctor of Philosophy (Computing)",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Doctor of Philosophy in Engineering",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "campus": "UNIMY",
+        "name": "Doctor of Philosophy in Business Management",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "Foundation in Business",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "Foundation in Law",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "A-Level (2 subjects)",
+        "level": "Pre-University",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "A-Level (3 subjects)",
+        "level": "Pre-University",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "A-Level (4 subjects)",
+        "level": "Pre-University",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "LLB (3+0) University of London International Programmes",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "UK Transfer Degree Programme Law",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "BAC COLLEGE",
+        "name": "UK Transfer Degree Programme Business",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "Foundation in Media Studies",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "Diploma in Broadcasting and Film",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "Diploma in Mass Communication",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "BA Hons (Film Production) - University of Sunderland (3+0)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "BA Hons in Advertising & Design - University of Sunderland (3+0)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "BA Hons in Media Culture and Communication - University of Sunderland (3+0)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "BA Hons in Social Media Management - University of Sunderland (3+0)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "IACT COLLEGE",
+        "name": "UK Degree Transfer Programme (Mass Communication) (2+1)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "VERITAS UNIVERSITY",
+        "name": "Foundation in Arts",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "VERITAS UNIVERSITY",
+        "name": "Diploma in Early Childhood Education",
+        "level": "Diploma",
+        "duration": "2.5 years"
+      },
+      {
+        "campus": "VERITAS UNIVERSITY",
+        "name": "BA (Hons) Accounting & Finance",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "VERITAS UNIVERSITY",
+        "name": "Bachelor of Communication (Hons) Branding & Digital Marketing",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "VERITAS UNIVERSITY",
+        "name": "Bachelor of Education (Early Childhood) with Honors",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "VERITAS UNIVERSITY",
+        "name": "Bachelor in Business Administration (Hons)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "VERITAS UNIVERSITY",
+        "name": "Masters of Business Administration",
+        "level": "Master",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "RELIANCE COLLEGE",
+        "name": "Diploma in Culinary Arts",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "RELIANCE COLLEGE",
+        "name": "Diploma in Business Management",
+        "level": "Diploma",
+        "duration": "2.5 years"
+      },
+      {
+        "campus": "RELIANCE COLLEGE",
+        "name": "Diploma in Hotel Management",
+        "level": "Diploma",
+        "duration": "2.5 years"
+      }
+    ]
+  },
+  {
+    "name": "ALFA UNIVERSITY MALAYSIA",
+    "campuses": [
+      "Main Campus"
+    ],
+    "programs": [
+      {
+        "name": "Foundation in Business",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Foundation in Arts & Design",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Diploma in Accountancy",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Business Administration",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in E-Business",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Information Technology",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Early Childhood",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Early Childhood (ODL)",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Graphic Design",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Multimedia Design",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Architecture",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Interior Design",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Culinary Arts",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Tourism Management",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Tourism Hajj and Umrah (WBL)",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Hotel Management (WBL)",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Retail Management (WBL)",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Event Management",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Law Enforcement",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in TESL",
+        "level": "Diploma",
+        "duration": "2.5 Years"
+      },
+      {
+        "name": "Diploma in Health Care Management",
+        "level": "Diploma",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Diploma in Pharmacy",
+        "level": "Diploma",
+        "duration": "4 Years"
+      },
+      {
+        "name": "BA (HONOURS) Business Administration",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "BA (HONOURS) Business Administration (ODL)",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Early Childhood Education (HONOURS)",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of E-Business (HONOURS)",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor (HONOURS) Human Resource Management",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Information Technology (HONOURS)",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Science (HONOURS) in Hospitality Management",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Arts (HONOURS) Graphic Design",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Arts (HONOURS) Creative Multimedia",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Science (HONOURS) in Architecture",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Law Enforcement",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor in Computer Science (Cyber Security & Networks) (HONOURS)",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Graduate Certificate in English Proficiency",
+        "level": "Graduate Certificate",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Graduate Diploma in Teaching as Second Language (TSL)",
+        "level": "Graduate Diploma",
+        "duration": "1.5 Year"
+      },
+      {
+        "name": "Graduate Diploma in Business Management",
+        "level": "Graduate Diploma",
+        "duration": "1.5 Year"
+      },
+      {
+        "name": "Master of Business Administration",
+        "level": "Master",
+        "duration": "1 Yr 4 Mo"
+      },
+      {
+        "name": "Master of Business Administration (International Business)",
+        "level": "Master",
+        "duration": "1 Yr 3 Mo"
+      },
+      {
+        "name": "Master of Business Administration (ODL)",
+        "level": "Master",
+        "duration": "1 Yr 4 Mo"
+      },
+      {
+        "name": "Master of Project Management",
+        "level": "Master",
+        "duration": "1 Yr 3 Mo"
+      },
+      {
+        "name": "Master in Information Technology",
+        "level": "Master",
+        "duration": "1 Yr 4 Mo"
+      },
+      {
+        "name": "Master of Education in Early Childhood Education (By Research)",
+        "level": "Master",
+        "duration": "2 Years"
+      },
+      {
+        "name": "Master of Education in TESL (By Research)",
+        "level": "Master",
+        "duration": "2 Years"
+      },
+      {
+        "name": "Master of Science in Management (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Art & Design (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Education",
+        "level": "Master",
+        "duration": "2 Years"
+      },
+      {
+        "name": "Master of Philosophy in Engineering",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master in Supply Chain Management",
+        "level": "Master",
+        "duration": "1 Yr 3 Mo"
+      },
+      {
+        "name": "Master of Business Administration in Oil & Gas",
+        "level": "Master",
+        "duration": "1 Yr 3 Mo"
+      },
+      {
+        "name": "Doctor of Business Administration (DBA)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Education (DE)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Business Administration (PhDBA)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Design (PhD Design)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Education (PhD Edu)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Information Technology (PhD IT)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Sport Studies (PhD SS)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Performing Art (PhD PA)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Built Environment (PhD BE)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy in Engineering",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      }
+    ]
+  },
+  {
+    "name": "INTI International University",
+    "campuses": [
+      "PENANG CAMPUS",
+      "NILAI CAMPUS",
+      "SUBANG CAMPUS"
+    ],
+    "programs": [
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Foundation in Business",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Foundation in Information Technology",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Foundation in Science",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Cambridge A-Level (3 Subjects)",
+        "level": "Pre-University",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Cambridge A-Level (4 Subjects)",
+        "level": "Pre-University",
+        "duration": "1.5 years"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "American Degree Transfer Program (AUP)",
+        "level": "Degree Transfer",
+        "duration": "2 years"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Diploma in Business",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Diploma in Finance",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Diploma in Marketing",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Diploma in Mass Communication",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Diploma in Culinary Arts",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Diploma in Information Technology",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "Diploma in Computer Science",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "PENANG CAMPUS",
+        "name": "PhD (By Research)",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "campus": "NILAI CAMPUS",
+        "name": "Foundation in Business",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "NILAI CAMPUS",
+        "name": "Foundation in Arts",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "NILAI CAMPUS",
+        "name": "Diploma in Business",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "NILAI CAMPUS",
+        "name": "Bachelor of Business (Hons)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "NILAI CAMPUS",
+        "name": "Diploma in Mechanical Engineering",
+        "level": "Diploma",
+        "duration": "2.5 years"
+      },
+      {
+        "campus": "NILAI CAMPUS",
+        "name": "Diploma in Information Technology",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "NILAI CAMPUS",
+        "name": "Bachelor of Computer Science (Hons)",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "campus": "NILAI CAMPUS",
+        "name": "Master of Business Administration (MBA)",
+        "level": "Master",
+        "duration": "1\u20132 years"
+      },
+      {
+        "campus": "NILAI CAMPUS",
+        "name": "Doctor of Philosophy (PhD)",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "campus": "SUBANG CAMPUS",
+        "name": "Foundation in Business",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "SUBANG CAMPUS",
+        "name": "Foundation in Information Technology",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "campus": "SUBANG CAMPUS",
+        "name": "Diploma in Graphic Design",
+        "level": "Diploma",
+        "duration": "2.3 years"
+      },
+      {
+        "campus": "SUBANG CAMPUS",
+        "name": "Diploma in Business",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "SUBANG CAMPUS",
+        "name": "Diploma in Mass Communication",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "SUBANG CAMPUS",
+        "name": "Diploma in Information Technology",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "SUBANG CAMPUS",
+        "name": "Diploma in Culinary Arts",
+        "level": "Diploma",
+        "duration": "2 years"
+      },
+      {
+        "campus": "SUBANG CAMPUS",
+        "name": "BA in Psychology (SNHU \u2013 US)",
+        "level": "Degree",
+        "duration": "4 years"
+      },
+      {
+        "campus": "SUBANG CAMPUS",
+        "name": "PhD (By Research)",
+        "level": "Doctorate",
+        "duration": "3 years"
+      }
     ]
   },
   {
     "name": "Infrastructure University Kuala Lumpur (IUKL)",
-    "campuses": ["Main Campus"],
+    "campuses": [
+      "Main Campus"
+    ],
     "programs": [
-      { "name": "Foundation in Arts", "level": "Foundation", "duration": "1 Year" },
-      { "name": "Foundation in Science", "level": "Foundation", "duration": "1 Year" },
-      { "name": "Incentive English Program", "level": "Pre-University", "duration": "N/A" },
-      { "name": "Diploma in Architecture", "level": "Diploma", "duration": "N/A" },
-      { "name": "Diploma in Landscape Architecture", "level": "Diploma", "duration": "N/A" },
-      { "name": "Diploma in Quantity Surveying", "level": "Diploma", "duration": "N/A" },
-      { "name": "Diploma in Automotive Engineering", "level": "Diploma", "duration": "N/A" },
-      { "name": "Diploma in Agricultural Science (Plantation Mgmt)", "level": "Diploma", "duration": "N/A" },
-      { "name": "Diploma in Civil Engineering", "level": "Diploma", "duration": "N/A" },
-      { "name": "Diploma in Electrical & Electronics Engineering", "level": "Diploma", "duration": "N/A" },
-      { "name": "Diploma in Mechanical Engineering", "level": "Diploma", "duration": "N/A" },
-      { "name": "Diploma in Accounting", "level": "Diploma", "duration": "N/A" },
-      { "name": "Diploma in Business Administration", "level": "Diploma", "duration": "N/A" },
-      { "name": "Diploma in Corporate Communication", "level": "Diploma", "duration": "N/A" },
-      { "name": "Diploma in Mass Communication", "level": "Diploma", "duration": "N/A" },
-      { "name": "Diploma in Professional Communication", "level": "Diploma", "duration": "N/A" },
-      { "name": "Diploma in Sports Management", "level": "Diploma", "duration": "N/A" },
-      { "name": "Bachelor of Technology (Hons) in Automotive", "level": "Degree", "duration": "4 years" },
-      { "name": "Bachelor of Electronics Engineering (Hons)", "level": "Degree", "duration": "4 years" },
-      { "name": "Bachelor of Civil Engineering (Hons)", "level": "Degree", "duration": "4 years" },
-      { "name": "Bachelor of Mechanical Engineering (Hons)", "level": "Degree", "duration": "4 years" },
-      { "name": "Bachelor of Mechatronics Engineering (Hons)", "level": "Degree", "duration": "4 years" },
-      { "name": "Bachelor of Computer Science (Hons)", "level": "Degree", "duration": "3.5 yrs" },
-      { "name": "Bachelor of Software Engineering (Hons)", "level": "Degree", "duration": "3.5 yrs" },
-      { "name": "Bachelor of Electrical & Electronics Engineering (Hons)", "level": "Degree", "duration": "4 years" },
-      { "name": "Bachelor of Science in Architectural Studies", "level": "Degree", "duration": "3 years" },
-      { "name": "Bachelor of Quantity Surveying (Hons)", "level": "Degree", "duration": "4 years" },
-      { "name": "Bachelor of Construction Management (Hons)", "level": "Degree", "duration": "4 years" },
-      { "name": "Bachelor of Accountancy (Hons)", "level": "Degree", "duration": "4 years" },
-      { "name": "BBA / BBA in Marketing / HRM (Hons)", "level": "Degree", "duration": "4 years" },
-      { "name": "Bachelor of Economics & Finance (Hons)", "level": "Degree", "duration": "4 years" },
-      { "name": "BA (Hons) English for Professional Communication", "level": "Degree", "duration": "3 years" },
-      { "name": "Bachelor of Mass Communication (Hons)", "level": "Degree", "duration": "4 years" },
-      { "name": "Master in Built Environment (By Research)", "level": "Master", "duration": "2 years" },
-      { "name": "Master in Electronics Engineering (By Research)", "level": "Master", "duration": "2 years" },
-      { "name": "Master of Civil Engineering (By Research)", "level": "Master", "duration": "2 years" },
-      { "name": "Master of Architecture", "level": "Master", "duration": "2 years" },
-      { "name": "Master of Business Administration (MBA)", "level": "Master", "duration": "1.5 years" },
-      { "name": "Master in Communication", "level": "Master", "duration": "2 years" },
-      { "name": "Master in Information Technology", "level": "Master", "duration": "2 years" },
-      { "name": "Master of Arts in TESOL", "level": "Master", "duration": "1.5 years" },
-      { "name": "Master in Water Resources", "level": "Master", "duration": "2 years" },
-      { "name": "PhD in Business Administration", "level": "Doctorate", "duration": "N/A" },
-      { "name": "PhD in Civil Engineering", "level": "Doctorate", "duration": "N/A" },
-      { "name": "PhD in Communication", "level": "Doctorate", "duration": "N/A" },
-      { "name": "PhD in Education", "level": "Doctorate", "duration": "N/A" },
-      { "name": "PhD in Information Technology", "level": "Doctorate", "duration": "N/A" }
+      {
+        "name": "Foundation in Arts",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Foundation in Science",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Incentive English Program",
+        "level": "Pre-University",
+        "duration": "N/A"
+      },
+      {
+        "name": "Diploma in Architecture",
+        "level": "Diploma",
+        "duration": "N/A"
+      },
+      {
+        "name": "Diploma in Landscape Architecture",
+        "level": "Diploma",
+        "duration": "N/A"
+      },
+      {
+        "name": "Diploma in Quantity Surveying",
+        "level": "Diploma",
+        "duration": "N/A"
+      },
+      {
+        "name": "Diploma in Automotive Engineering",
+        "level": "Diploma",
+        "duration": "N/A"
+      },
+      {
+        "name": "Diploma in Agricultural Science (Plantation Mgmt)",
+        "level": "Diploma",
+        "duration": "N/A"
+      },
+      {
+        "name": "Diploma in Civil Engineering",
+        "level": "Diploma",
+        "duration": "N/A"
+      },
+      {
+        "name": "Diploma in Electrical & Electronics Engineering",
+        "level": "Diploma",
+        "duration": "N/A"
+      },
+      {
+        "name": "Diploma in Mechanical Engineering",
+        "level": "Diploma",
+        "duration": "N/A"
+      },
+      {
+        "name": "Diploma in Accounting",
+        "level": "Diploma",
+        "duration": "N/A"
+      },
+      {
+        "name": "Diploma in Business Administration",
+        "level": "Diploma",
+        "duration": "N/A"
+      },
+      {
+        "name": "Diploma in Corporate Communication",
+        "level": "Diploma",
+        "duration": "N/A"
+      },
+      {
+        "name": "Diploma in Mass Communication",
+        "level": "Diploma",
+        "duration": "N/A"
+      },
+      {
+        "name": "Diploma in Professional Communication",
+        "level": "Diploma",
+        "duration": "N/A"
+      },
+      {
+        "name": "Diploma in Sports Management",
+        "level": "Diploma",
+        "duration": "N/A"
+      },
+      {
+        "name": "Bachelor of Technology (Hons) in Automotive",
+        "level": "Degree",
+        "duration": "4 years"
+      },
+      {
+        "name": "Bachelor of Electronics Engineering (Hons)",
+        "level": "Degree",
+        "duration": "4 years"
+      },
+      {
+        "name": "Bachelor of Civil Engineering (Hons)",
+        "level": "Degree",
+        "duration": "4 years"
+      },
+      {
+        "name": "Bachelor of Mechanical Engineering (Hons)",
+        "level": "Degree",
+        "duration": "4 years"
+      },
+      {
+        "name": "Bachelor of Mechatronics Engineering (Hons)",
+        "level": "Degree",
+        "duration": "4 years"
+      },
+      {
+        "name": "Bachelor of Computer Science (Hons)",
+        "level": "Degree",
+        "duration": "3.5 yrs"
+      },
+      {
+        "name": "Bachelor of Software Engineering (Hons)",
+        "level": "Degree",
+        "duration": "3.5 yrs"
+      },
+      {
+        "name": "Bachelor of Electrical & Electronics Engineering (Hons)",
+        "level": "Degree",
+        "duration": "4 years"
+      },
+      {
+        "name": "Bachelor of Science in Architectural Studies",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "name": "Bachelor of Quantity Surveying (Hons)",
+        "level": "Degree",
+        "duration": "4 years"
+      },
+      {
+        "name": "Bachelor of Construction Management (Hons)",
+        "level": "Degree",
+        "duration": "4 years"
+      },
+      {
+        "name": "Bachelor of Accountancy (Hons)",
+        "level": "Degree",
+        "duration": "4 years"
+      },
+      {
+        "name": "BBA / BBA in Marketing / HRM (Hons)",
+        "level": "Degree",
+        "duration": "4 years"
+      },
+      {
+        "name": "Bachelor of Economics & Finance (Hons)",
+        "level": "Degree",
+        "duration": "4 years"
+      },
+      {
+        "name": "BA (Hons) English for Professional Communication",
+        "level": "Degree",
+        "duration": "3 years"
+      },
+      {
+        "name": "Bachelor of Mass Communication (Hons)",
+        "level": "Degree",
+        "duration": "4 years"
+      },
+      {
+        "name": "Master in Built Environment (By Research)",
+        "level": "Master",
+        "duration": "2 years"
+      },
+      {
+        "name": "Master in Electronics Engineering (By Research)",
+        "level": "Master",
+        "duration": "2 years"
+      },
+      {
+        "name": "Master of Civil Engineering (By Research)",
+        "level": "Master",
+        "duration": "2 years"
+      },
+      {
+        "name": "Master of Architecture",
+        "level": "Master",
+        "duration": "2 years"
+      },
+      {
+        "name": "Master of Business Administration (MBA)",
+        "level": "Master",
+        "duration": "1.5 years"
+      },
+      {
+        "name": "Master in Communication",
+        "level": "Master",
+        "duration": "2 years"
+      },
+      {
+        "name": "Master in Information Technology",
+        "level": "Master",
+        "duration": "2 years"
+      },
+      {
+        "name": "Master of Arts in TESOL",
+        "level": "Master",
+        "duration": "1.5 years"
+      },
+      {
+        "name": "Master in Water Resources",
+        "level": "Master",
+        "duration": "2 years"
+      },
+      {
+        "name": "PhD in Business Administration",
+        "level": "Doctorate",
+        "duration": "N/A"
+      },
+      {
+        "name": "PhD in Civil Engineering",
+        "level": "Doctorate",
+        "duration": "N/A"
+      },
+      {
+        "name": "PhD in Communication",
+        "level": "Doctorate",
+        "duration": "N/A"
+      },
+      {
+        "name": "PhD in Education",
+        "level": "Doctorate",
+        "duration": "N/A"
+      },
+      {
+        "name": "PhD in Information Technology",
+        "level": "Doctorate",
+        "duration": "N/A"
+      }
     ]
   },
   {
     "name": "City University Malaysia",
-    "campuses": ["Main Campus"],
+    "campuses": [
+      "Main Campus"
+    ],
     "programs": [
-      { "name": "Foundation in Business", "level": "Foundation", "duration": "1 year" },
-      { "name": "Foundation in Arts (Communication)", "level": "Foundation", "duration": "1 year" },
-      { "name": "Foundation in Arts (English)", "level": "Foundation", "duration": "1 year" },
-      { "name": "Foundation in Arts (Graphic Design & Multimedia)", "level": "Foundation", "duration": "1 year" },
-      { "name": "Foundation in Arts (Built Environment)", "level": "Foundation", "duration": "1 year" },
-      { "name": "Foundation in Arts (Fashion Design)", "level": "Foundation", "duration": "1 year" },
-      { "name": "Foundation in Science", "level": "Foundation", "duration": "1 year" },
-      { "name": "Foundation in Information Technology", "level": "Foundation", "duration": "1 year" },
-      { "name": "Diploma in Fashion Design", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Graphic Design", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Mass Communication", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Corporate Communication", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Accounting", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Business Management", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Human Resource Management", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Office Management", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Islamic Banking", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Management", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Information Technology", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Medical Lab Technology", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Nursing", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Occupational Safety & Health", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Environmental Health", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Culinary Arts", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Hotel Management", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Early Childhood Education", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Civil Engineering", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Mechanical Engineering", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Architectural Technology", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Diploma in Interior Design", "level": "Diploma", "duration": "3 yrs" },
-      { "name": "Bachelor of Accounting (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Business Admin (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Fashion Design Technology (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Education (Early Childhood Education) Honours", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Mass Communication (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Corporate Communication (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Graphic Design (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Interior Design (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Information Technology (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Software Engineering (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Medical Lab Technology (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Nursing (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Occupational Safety & Health (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Environmental Health (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Culinary Arts (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Hotel Management (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Early Childhood Education (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Civil Engineering (Hons)", "level": "Degree", "duration": "4 yrs" },
-      { "name": "Bachelor of Mechanical Engineering (Hons)", "level": "Degree", "duration": "4 yrs" },
-      { "name": "Bachelor of Electrical & Electronic Engineering (Hons)", "level": "Degree", "duration": "4 yrs" },
-      { "name": "Bachelor of Architectural Technology (Hons)", "level": "Degree", "duration": "4 yrs" },
-      { "name": "Bachelor of Interior Architecture (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Communication (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Accounting & Finance (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Bachelor of Business & Management (Hons)", "level": "Degree", "duration": "3 yrs" },
-      { "name": "Master of Business Administration (MBA)", "level": "Master", "duration": "1 year" },
-      { "name": "Master of Science in Business Administration (By Research) (MSCBA)", "level": "Master", "duration": "2 years" },
-      { "name": "Master of Information Technology (MIT)", "level": "Master", "duration": "1 year" },
-      { "name": "Master of Accounting (MACE)", "level": "Master", "duration": "1 year" },
-      { "name": "Master of Education (MED)", "level": "Master", "duration": "1 year" },
-      { "name": "Master of Architecture (M.ARC)", "level": "Master", "duration": "2 years" },
-      { "name": "Master of Mechanical Engineering (MME)", "level": "Master", "duration": "1 year" },
-      { "name": "Master of Sport Studies (MSS) By Research", "level": "Master", "duration": "2 years" },
-      { "name": "Master of Creative Industries and Communication (MCIC)", "level": "Master", "duration": "1 year" },
-      { "name": "Master of Architecture Project Management (MAPM)", "level": "Master", "duration": "1 year" },
-      { "name": "Doctor of Business Administration (DBA)", "level": "Doctorate", "duration": "3 years" },
-      { "name": "Doctor of Education (DE)", "level": "Doctorate", "duration": "3 years" },
-      { "name": "Doctor of Philosophy in Business Administration (PhDBA)", "level": "Doctorate", "duration": "3 years" },
-      { "name": "Doctor of Philosophy in Design (PhD Design)", "level": "Doctorate", "duration": "3 years" },
-      { "name": "Doctor of Philosophy in Education (PhD Edu)", "level": "Doctorate", "duration": "3 years" },
-      { "name": "Doctor of Philosophy in Information Technology (PhD IT)", "level": "Doctorate", "duration": "3 years" },
-      { "name": "Doctor of Philosophy in Sport Studies (PhD SS)", "level": "Doctorate", "duration": "3 years" },
-      { "name": "Doctor of Philosophy in Performing Art (PhD PA)", "level": "Doctorate", "duration": "3 years" },
-      { "name": "Doctor of Philosophy in Built Environment (PhD BE)", "level": "Doctorate", "duration": "3 years" },
-      { "name": "Doctor of Philosophy in Engineering", "level": "Doctorate", "duration": "3 years" }
+      {
+        "name": "Foundation in Business",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "name": "Foundation in Arts (Communication)",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "name": "Foundation in Arts (English)",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "name": "Foundation in Arts (Graphic Design & Multimedia)",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "name": "Foundation in Arts (Built Environment)",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "name": "Foundation in Arts (Fashion Design)",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "name": "Foundation in Science",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "name": "Foundation in Information Technology",
+        "level": "Foundation",
+        "duration": "1 year"
+      },
+      {
+        "name": "Diploma in Fashion Design",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Graphic Design",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Mass Communication",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Corporate Communication",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Accounting",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Business Management",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Human Resource Management",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Office Management",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Islamic Banking",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Management",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Information Technology",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Medical Lab Technology",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Nursing",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Occupational Safety & Health",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Environmental Health",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Culinary Arts",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Hotel Management",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Early Childhood Education",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Civil Engineering",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Mechanical Engineering",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Architectural Technology",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Diploma in Interior Design",
+        "level": "Diploma",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Accounting (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Business Admin (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Fashion Design Technology (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Education (Early Childhood Education) Honours",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Mass Communication (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Corporate Communication (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Graphic Design (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Interior Design (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Information Technology (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Software Engineering (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Medical Lab Technology (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Nursing (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Occupational Safety & Health (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Environmental Health (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Culinary Arts (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Hotel Management (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Early Childhood Education (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Civil Engineering (Hons)",
+        "level": "Degree",
+        "duration": "4 yrs"
+      },
+      {
+        "name": "Bachelor of Mechanical Engineering (Hons)",
+        "level": "Degree",
+        "duration": "4 yrs"
+      },
+      {
+        "name": "Bachelor of Electrical & Electronic Engineering (Hons)",
+        "level": "Degree",
+        "duration": "4 yrs"
+      },
+      {
+        "name": "Bachelor of Architectural Technology (Hons)",
+        "level": "Degree",
+        "duration": "4 yrs"
+      },
+      {
+        "name": "Bachelor of Interior Architecture (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Communication (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Accounting & Finance (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Bachelor of Business & Management (Hons)",
+        "level": "Degree",
+        "duration": "3 yrs"
+      },
+      {
+        "name": "Master of Business Administration (MBA)",
+        "level": "Master",
+        "duration": "1 year"
+      },
+      {
+        "name": "Master of Science in Business Administration (By Research) (MSCBA)",
+        "level": "Master",
+        "duration": "2 years"
+      },
+      {
+        "name": "Master of Information Technology (MIT)",
+        "level": "Master",
+        "duration": "1 year"
+      },
+      {
+        "name": "Master of Accounting (MACE)",
+        "level": "Master",
+        "duration": "1 year"
+      },
+      {
+        "name": "Master of Education (MED)",
+        "level": "Master",
+        "duration": "1 year"
+      },
+      {
+        "name": "Master of Architecture (M.ARC)",
+        "level": "Master",
+        "duration": "2 years"
+      },
+      {
+        "name": "Master of Mechanical Engineering (MME)",
+        "level": "Master",
+        "duration": "1 year"
+      },
+      {
+        "name": "Master of Sport Studies (MSS) By Research",
+        "level": "Master",
+        "duration": "2 years"
+      },
+      {
+        "name": "Master of Creative Industries and Communication (MCIC)",
+        "level": "Master",
+        "duration": "1 year"
+      },
+      {
+        "name": "Master of Architecture Project Management (MAPM)",
+        "level": "Master",
+        "duration": "1 year"
+      },
+      {
+        "name": "Doctor of Business Administration (DBA)",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "name": "Doctor of Education (DE)",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "name": "Doctor of Philosophy in Business Administration (PhDBA)",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "name": "Doctor of Philosophy in Design (PhD Design)",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "name": "Doctor of Philosophy in Education (PhD Edu)",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "name": "Doctor of Philosophy in Information Technology (PhD IT)",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "name": "Doctor of Philosophy in Sport Studies (PhD SS)",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "name": "Doctor of Philosophy in Performing Art (PhD PA)",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "name": "Doctor of Philosophy in Built Environment (PhD BE)",
+        "level": "Doctorate",
+        "duration": "3 years"
+      },
+      {
+        "name": "Doctor of Philosophy in Engineering",
+        "level": "Doctorate",
+        "duration": "3 years"
+      }
     ]
   },
   {
     "name": "UNIVERSITY OF CYBERJAYA",
-    "campuses": ["Main Campus"],
+    "campuses": [
+      "Main Campus"
+    ],
     "programs": [
-      { "name": "Foundation in Science (Medicine/Pharmacy) (FIS)", "level": "Foundation", "duration": "1 Year" },
-      { "name": "Foundation in Arts (FIA)", "level": "Foundation", "duration": "1 Year" },
-      { "name": "Foundation in Occupational Safety and Health (FIOSH)", "level": "Foundation", "duration": "1 Year" },
-      { "name": "Foundation in Information Technology (FIIT)", "level": "Foundation", "duration": "1 Year" },
-      { "name": "Bachelor of Medicine, Bachelor of Surgery (MBBS)", "level": "Degree", "duration": "5 Years" },
-      { "name": "Bachelor of Pharmacy (Hons) (BPharm)", "level": "Degree", "duration": "4 Years" },
-      { "name": "Bachelor of Occupational Safety and Health (BOSH)", "level": "Degree", "duration": "4 Years" },
-      { "name": "Bachelor of Biomedical Engineering (Hons) (BBME)", "level": "Degree", "duration": "4 Years" },
-      { "name": "Bachelor of Technology (Hons) in Business Information System (BT-BIS)", "level": "Degree", "duration": "4 Years" },
-      { "name": "Bachelor of Business Administration (Hons) (BBA)", "level": "Degree", "duration": "3.5 Years" },
-      { "name": "Bachelor of Accounting (Hons) (BACC)", "level": "Degree", "duration": "3.5 Years" },
-      { "name": "Bachelor of Arts (Hons) in Digital Marketing (BADM)", "level": "Degree", "duration": "3 Years" },
-      { "name": "Bachelor of Computer Science (Hons) (BCS)", "level": "Degree", "duration": "3 Years" },
-      { "name": "Bachelor of Software Engineering (Hons) (BSE)", "level": "Degree", "duration": "4 Years" },
-      { "name": "Bachelor of Human Resource Management (Hons) (BHRM)", "level": "Degree", "duration": "3.5 Years" },
-      { "name": "Bachelor of Psychology (Hons) (BPSY)", "level": "Degree", "duration": "4 Years" },
-      { "name": "Bachelor of Physiotherapy (Hons) (BPHY)", "level": "Degree", "duration": "4 Years" },
-      { "name": "Bachelor of Engineering (Hons) in Biomedical Engineering (B.ENG)", "level": "Degree", "duration": "4 Years" },
-      { "name": "Master of Business Administration (MBA)", "level": "Master", "duration": "1.5 Years" },
-      { "name": "Master in Management (MMM)", "level": "Master", "duration": "1.5 Years" },
-      { "name": "Master of Clinical Pharmacy (MCP)", "level": "Master", "duration": "2 Years" },
-      { "name": "Master in Pharmacy Practice (MPharm Practice)", "level": "Master", "duration": "2 Years" },
-      { "name": "Master of Science (Public Health) (MSPH)", "level": "Master", "duration": "1.5 Years" },
-      { "name": "Master in Clinical Psychology (MCLIN)", "level": "Master", "duration": "2 Years" },
-      { "name": "Master of Science (Health Administration) (MHAM)", "level": "Master", "duration": "1.5 Years" },
-      { "name": "Master of Science (Occupational Safety and Health) (MOSH)", "level": "Master", "duration": "1.5 Years" },
-      { "name": "Master of Science (Healthcare Management) (MSHMA)", "level": "Master", "duration": "1.5 Years" },
-      { "name": "Master of Computer Science (MSc)", "level": "Master", "duration": "2 Years" },
-      { "name": "Master of Information Technology (MIT)", "level": "Master", "duration": "1.5 Years" },
-      { "name": "Master of Business Administration (ODL) (MBA-ODL)", "level": "Master", "duration": "1.5 Years" },
-      { "name": "Master of Management (ODL) (MMM-ODL)", "level": "Master", "duration": "1.5 Years" },
-      { "name": "Master of Biomedical Engineering (MBME)", "level": "Master", "duration": "1.5 Years" },
-      { "name": "Master of Engineering (MEng)", "level": "Master", "duration": "1.5 Years" },
-      { "name": "Master of Science in Pharmaceutical & Healthcare Management (MPH)", "level": "Master", "duration": "1.5 Years" },
-      { "name": "Master of Science (MSc) in Pharmacy (By Research)", "level": "Master", "duration": "2–3 Years" },
-      { "name": "Master of Science (MSc) in Management (By Research)", "level": "Master", "duration": "2–3 Years" },
-      { "name": "Master of Science (MSc) in Clinical Pharmacy (By Research)", "level": "Master", "duration": "2–3 Years" },
-      { "name": "Master of Science (MSc) in Biomedical Engineering (By Research)", "level": "Master", "duration": "2–3 Years" },
-      { "name": "Master of Science (MSc) in Information Technology (By Research)", "level": "Master", "duration": "2–3 Years" },
-      { "name": "Master of Pharmacy (MPharm) in Clinical Pharmacy (By Research)", "level": "Master", "duration": "2–3 Years" },
-      { "name": "Master of Science (MSc) in Public Health (By Research)", "level": "Master", "duration": "2–3 Years" },
-      { "name": "Master of Science (MSc) in Occupational Safety and Health (By Research)", "level": "Master", "duration": "2–3 Years" },
-      { "name": "Master of Science in Pharmaceutical and Healthcare Management (By Research)", "level": "Master", "duration": "2–3 Years" },
-      { "name": "Master of Science in Medical Biotechnology (By Research)", "level": "Master", "duration": "2–3 Years" },
-      { "name": "Master of Science in Physiology (By Research)", "level": "Master", "duration": "2–3 Years" },
-      { "name": "Master of Science in Biomedical Sciences (By Research)", "level": "Master", "duration": "2–3 Years" },
-      { "name": "Master of Physiotherapy (MPHS)", "level": "Master", "duration": "1.5 Years" },
-      { "name": "Doctor of Business Administration (DBA)", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Philosophy (PhD) Management", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Philosophy (PhD) Pharmacy", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Philosophy (PhD) Public Health", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Philosophy (PhD) OSH", "level": "Doctorate", "duration": "3 Years" },
-      { "name": "Doctor of Philosophy (PhD) Engineering", "level": "Doctorate", "duration": "3 Years" }
+      {
+        "name": "Foundation in Science (Medicine/Pharmacy) (FIS)",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Foundation in Arts (FIA)",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Foundation in Occupational Safety and Health (FIOSH)",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Foundation in Information Technology (FIIT)",
+        "level": "Foundation",
+        "duration": "1 Year"
+      },
+      {
+        "name": "Bachelor of Medicine, Bachelor of Surgery (MBBS)",
+        "level": "Degree",
+        "duration": "5 Years"
+      },
+      {
+        "name": "Bachelor of Pharmacy (Hons) (BPharm)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Bachelor of Occupational Safety and Health (BOSH)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Bachelor of Biomedical Engineering (Hons) (BBME)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Bachelor of Technology (Hons) in Business Information System (BT-BIS)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Bachelor of Business Administration (Hons) (BBA)",
+        "level": "Degree",
+        "duration": "3.5 Years"
+      },
+      {
+        "name": "Bachelor of Accounting (Hons) (BACC)",
+        "level": "Degree",
+        "duration": "3.5 Years"
+      },
+      {
+        "name": "Bachelor of Arts (Hons) in Digital Marketing (BADM)",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Computer Science (Hons) (BCS)",
+        "level": "Degree",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Bachelor of Software Engineering (Hons) (BSE)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Bachelor of Human Resource Management (Hons) (BHRM)",
+        "level": "Degree",
+        "duration": "3.5 Years"
+      },
+      {
+        "name": "Bachelor of Psychology (Hons) (BPSY)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Bachelor of Physiotherapy (Hons) (BPHY)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Bachelor of Engineering (Hons) in Biomedical Engineering (B.ENG)",
+        "level": "Degree",
+        "duration": "4 Years"
+      },
+      {
+        "name": "Master of Business Administration (MBA)",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Master in Management (MMM)",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Master of Clinical Pharmacy (MCP)",
+        "level": "Master",
+        "duration": "2 Years"
+      },
+      {
+        "name": "Master in Pharmacy Practice (MPharm Practice)",
+        "level": "Master",
+        "duration": "2 Years"
+      },
+      {
+        "name": "Master of Science (Public Health) (MSPH)",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Master in Clinical Psychology (MCLIN)",
+        "level": "Master",
+        "duration": "2 Years"
+      },
+      {
+        "name": "Master of Science (Health Administration) (MHAM)",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Master of Science (Occupational Safety and Health) (MOSH)",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Master of Science (Healthcare Management) (MSHMA)",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Master of Computer Science (MSc)",
+        "level": "Master",
+        "duration": "2 Years"
+      },
+      {
+        "name": "Master of Information Technology (MIT)",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Master of Business Administration (ODL) (MBA-ODL)",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Master of Management (ODL) (MMM-ODL)",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Master of Biomedical Engineering (MBME)",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Master of Engineering (MEng)",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Master of Science in Pharmaceutical & Healthcare Management (MPH)",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Master of Science (MSc) in Pharmacy (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Science (MSc) in Management (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Science (MSc) in Clinical Pharmacy (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Science (MSc) in Biomedical Engineering (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Science (MSc) in Information Technology (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Pharmacy (MPharm) in Clinical Pharmacy (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Science (MSc) in Public Health (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Science (MSc) in Occupational Safety and Health (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Science in Pharmaceutical and Healthcare Management (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Science in Medical Biotechnology (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Science in Physiology (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Science in Biomedical Sciences (By Research)",
+        "level": "Master",
+        "duration": "2\u20133 Years"
+      },
+      {
+        "name": "Master of Physiotherapy (MPHS)",
+        "level": "Master",
+        "duration": "1.5 Years"
+      },
+      {
+        "name": "Doctor of Business Administration (DBA)",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy (PhD) Management",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy (PhD) Pharmacy",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy (PhD) Public Health",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy (PhD) OSH",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      },
+      {
+        "name": "Doctor of Philosophy (PhD) Engineering",
+        "level": "Doctorate",
+        "duration": "3 Years"
+      }
     ]
   },
   {
     "name": "SEGI UNIVERSITY MALAYSIA",
-    "campuses": ["Main Campus"],
+    "campuses": [
+      "Main Campus"
+    ],
     "programs": [
-      { "name": "N/A", "level": "N/A", "duration": "N/A", "note": "No standard fee structure is publicly available in the document. Please download the official PDF for full, detailed information." }
+      {
+        "name": "Diploma in Accounting",
+        "level": "Diploma",
+        "duration": "2 Years",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "31,900",
+        "grand_total_fees_myr": "56,994.00",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "34,087.50",
+          "year_2": "19,046.50",
+          "year_3": "N/A"
+        }
+      },
+      {
+        "name": "Diploma in Business Administration",
+        "level": "Diploma",
+        "duration": "2 Years",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "31,900",
+        "grand_total_fees_myr": "56,994.00",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "34,087.50",
+          "year_2": "19,046.50",
+          "year_3": "N/A"
+        }
+      },
+      {
+        "name": "Diploma in Digital Marketing",
+        "level": "Diploma",
+        "duration": "2 Years",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "31,900",
+        "grand_total_fees_myr": "56,994.00",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "34,087.50",
+          "year_2": "19,046.50",
+          "year_3": "N/A"
+        }
+      },
+      {
+        "name": "Diploma in HR Management",
+        "level": "Diploma",
+        "duration": "2 Years",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "31,900",
+        "grand_total_fees_myr": "56,994.00",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "34,087.50",
+          "year_2": "19,046.50",
+          "year_3": "N/A"
+        }
+      },
+      {
+        "name": "Diploma in Graphic Design",
+        "level": "Diploma",
+        "duration": "3 Years",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "31,900",
+        "grand_total_fees_myr": "58,868.50",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "28,452.50",
+          "year_2": "13,279.00",
+          "year_3": "13,277.00"
+        }
+      },
+      {
+        "name": "Diploma in Multimedia Design",
+        "level": "Diploma",
+        "duration": "3 Years",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "31,900",
+        "grand_total_fees_myr": "58,868.50",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "28,452.50",
+          "year_2": "13,279.00",
+          "year_3": "13,277.00"
+        }
+      },
+      {
+        "name": "Diploma in Mass Communication",
+        "level": "Diploma",
+        "duration": "3 Years",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "31,900",
+        "grand_total_fees_myr": "58,868.50",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "28,452.50",
+          "year_2": "13,279.00",
+          "year_3": "13,277.00"
+        }
+      },
+      {
+        "name": "Diploma in Information Technology",
+        "level": "Diploma",
+        "duration": "2 Years",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "33,900",
+        "grand_total_fees_myr": "59,114.00",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "35,147.50",
+          "year_2": "20,106.50",
+          "year_3": "N/A"
+        }
+      },
+      {
+        "name": "Diploma in Computer Science",
+        "level": "Diploma",
+        "duration": "2 Years",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "33,900",
+        "grand_total_fees_myr": "59,114.00",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "35,147.50",
+          "year_2": "20,106.50",
+          "year_3": "N/A"
+        }
+      },
+      {
+        "name": "Diploma in Culinary Art",
+        "level": "Diploma",
+        "duration": "3 Years",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "31,900",
+        "grand_total_fees_myr": "58,868.50",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "28,452.50",
+          "year_2": "13,279.00",
+          "year_3": "13,277.00"
+        }
+      },
+      {
+        "name": "Diploma in Hotel Management",
+        "level": "Diploma",
+        "duration": "3 Years",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "31,900",
+        "grand_total_fees_myr": "58,868.50",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "28,452.50",
+          "year_2": "13,279.00",
+          "year_3": "13,277.00"
+        }
+      },
+      {
+        "name": "Diploma in Early Childhood Education",
+        "level": "Diploma",
+        "duration": "2 Years",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "25,900",
+        "grand_total_fees_myr": "50,634.00",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "30,907.50",
+          "year_2": "15,866.50",
+          "year_3": "N/A"
+        }
+      },
+      {
+        "name": "Diploma in Nursing",
+        "level": "Diploma",
+        "duration": "3 Years",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "40,250",
+        "grand_total_fees_myr": "63,559.00",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "29,254.96",
+          "year_2": "15,220.96",
+          "year_3": "15,223.08"
+        }
+      },
+      {
+        "name": "Diploma in Medical Lab Technology",
+        "level": "Diploma",
+        "duration": "3 Years",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "40,250",
+        "grand_total_fees_myr": "63,559.00",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "29,254.96",
+          "year_2": "15,220.96",
+          "year_3": "15,223.08"
+        }
+      },
+      {
+        "name": "Diploma in Occupational Safety & Health",
+        "level": "Diploma",
+        "duration": "3 Years",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "33,100",
+        "grand_total_fees_myr": "57,570.00",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "27,260.04",
+          "year_2": "13,226.04",
+          "year_3": "13,223.92"
+        }
+      },
+      {
+        "name": "Certificate in Business, Health Science, Hotel Operations, or Information Technology",
+        "level": "Certificate",
+        "duration": "1 Year (Approx)",
+        "international_admin_fee_myr": "6,800",
+        "tuition_exam_fees_myr": "11,450",
+        "grand_total_fees_myr": "23,876.00",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "20,016.00",
+          "year_2": "N/A",
+          "year_3": "N/A"
+        },
+        "note": "Fee is for the group of certificate programs. Grand total is estimated for the certificate duration."
+      },
+      {
+        "name": "BA (Hons) Accounting & Finance and other UOG 2+0 programs",
+        "level": "Degree",
+        "duration": "2+0 Scheme (2 Years in Malaysia)",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "30,800",
+        "grand_total_fees_myr": "69,745.80",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "38,189.70",
+          "year_2": "27,696.10",
+          "year_3": "N/A"
+        },
+        "note": "Applies to BA (Hons) Business Management, BA (Hons) Advertising and Digital Marketing Communications, BA (Hons) HR Management, and BSc (Hons) Computing under the UOG 2+0 scheme."
+      },
+      {
+        "name": "BA (Hons) Accounting & Finance and other UOG 3+0 programs",
+        "level": "Degree",
+        "duration": "3+0 Scheme (3 Years in Malaysia)",
+        "international_admin_fee_myr": "8,640",
+        "tuition_exam_fees_myr": "46,200",
+        "grand_total_fees_myr": "90,942.00",
+        "payment_scheme_myr": {
+          "upon_reg": "3,860.00",
+          "year_1": "35,916.00",
+          "year_2": "23,222.90",
+          "year_3": "27,943.10"
+        },
+        "note": "Applies to BA (Hons) Business Management, BA (Hons) Advertising and Digital Marketing Communications, BA (Hons) HR Management, Bachelor of Early Years Education, and BSc (Hons) Computing under the UOG 3+0 scheme."
+      },
+      {
+        "name": "Bachelor in Nursing (Hons) in Collaboration with University Sains Malaysia (USM) (USM BIN)",
+        "level": "Degree",
+        "duration": "4 Years (Approx)",
+        "international_admin_fee_myr": "3,850",
+        "tuition_exam_fees_myr": "66,000",
+        "grand_total_fees_myr": "82,279.00",
+        "payment_scheme_myr": {
+          "upon_reg": "4,708.00",
+          "year_1": "22,101.00",
+          "year_2_to_4_myr": "3 @18,490.00"
+        },
+        "note": "Year 2 to 4 payment is 3 installments of 18,490.00 MYR."
+      }
     ]
   }
 ]
+```
