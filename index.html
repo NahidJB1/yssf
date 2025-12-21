@@ -12,9 +12,11 @@
       font-family: Arial, sans-serif;
     }
     body {
-      background-color: #f8f8f8;
-      color: #333;
-    }
+  background-color: #f8f8f8;
+  color: #333;
+  overflow-x: hidden; /* Add this to prevent horizontal scrolling */
+  width: 100%;        /* Ensure it stays locked to viewport width */
+}
     header {
       position: relative;
       height: 100vh;
@@ -246,8 +248,8 @@
 
 .search-bar {
   padding: 10px 15px;
-  width: 250px;
-  max-width: 80%;
+  width: 100%;      /* Change from 250px */
+  max-width: 400px; /* Allows it to grow on desktop but stay contained */
   border: 2px solid #007BFF;
   border-radius: 25px;
   font-size: 16px;
@@ -281,11 +283,12 @@
 }
 .uni-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columns */
-  grid-template-rows: repeat(2, auto);   /* 2 rows */
+  /* This automatically fits as many 150px columns as possible */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
   gap: 10px;
   max-width: 1000px;
   margin: 10px auto 0;
+  width: 90%; /* Ensures it doesn't touch screen edges on mobile */
 }
 
 .uni-grid div {
@@ -571,7 +574,6 @@
   transform: rotate(calc(360deg / -8 * var(--i))); 
 }
 
-/* --- NEW CONTACT SECTION STYLES --- */
 .contact-cta-section {
   display: flex;
   align-items: center;
@@ -580,6 +582,8 @@
   background-color: #ffffff;
   gap: 50px;
   flex-wrap: wrap;
+  overflow: hidden; /* Add this to "clip" the plane and fireworks */
+  position: relative;
 }
 
 .contact-left {
@@ -691,14 +695,21 @@
   z-index: 5;
 }
 
-@media (max-width: 768px) {
-  .contact-cta-section {
-    text-align: center;
-    padding: 60px 20px;
+@media (max-width: 480px) {
+  .text-overlay h1 {
+    font-size: 20px; /* Smaller font for small phones */
   }
-  .contact-right {
-    order: -1; 
-    margin-bottom: 30px;
+  .text-overlay {
+    top: 20%; /* Move up slightly to avoid covering faces in background */
+  }
+  .contact-left h2 {
+    font-size: 32px; /* Prevent massive title from breaking layout */
+  }
+  .whatsapp-btn {
+    padding: 15px 25px;
+    font-size: 16px;
+    width: 100%; /* Full width button is easier to click on mobile */
+    justify-content: center;
   }
 }
 
