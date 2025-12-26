@@ -281,31 +281,73 @@
 #searchResults button:hover {
   background-color: #0056b3;
 }
+/* Container adjustment for stability and look */
 .uni-grid {
   display: grid;
-  /* Reduced 150px to 130px to ensure all 10 items fit in rows on most screens */
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); 
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+  gap: 20px;
   max-width: 1100px;
-  margin: 20px auto 0;
-  width: 95%; 
+  margin: 30px auto 0;
+  width: 95%;
+  padding: 10px;
 }
 
+/* Stylish Animated Buttons */
 .uni-grid div {
-  background-color: #fff;
-  padding: 20px 10px; /* Increased padding for better vertical centering */
-  border: 1px solid #ccc;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px; /* Smooth rounded corners */
+  padding: 0; /* Let the link handle padding */
   text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  min-height: 80px;
+}
+
+/* Make the entire box clickable and styled */
+.uni-grid div a {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100px; /* Ensures all boxes have the same height */
-  transition: transform 0.2s ease;
+  width: 100%;
+  height: 100%;
+  padding: 20px 15px;
+  text-decoration: none;
+  color: #004080; /* Professional brand blue */
+  font-weight: 600;
+  font-size: 15px;
+  z-index: 2;
+  transition: color 0.3s ease;
 }
 
+/* Hover Effects */
 .uni-grid div:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transform: translateY(-8px); /* Lifts the card up */
+  box-shadow: 0 12px 20px rgba(0, 64, 128, 0.15);
+  border-color: #007BFF;
+}
+
+/* Subtle Animated Background Gradient on Hover */
+.uni-grid div::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(0, 123, 255, 0.05), transparent);
+  transition: all 0.6s ease;
+}
+
+.uni-grid div:hover::before {
+  left: 100%;
+}
+
+.uni-grid div:hover a {
+  color: #007BFF; /* Brightens text on hover */
 }
 
 /* Creative Square Card Design */
@@ -765,6 +807,24 @@
   }
   header {
     height: 80vh; /* Shorter header on mobile for better focus */
+  }
+}
+
+/* Specific fixes for mobile phones */
+@media (max-width: 500px) {
+  .uni-grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* Force 2 columns */
+    gap: 10px;
+    width: 98%;
+  }
+  
+  .uni-grid div {
+    min-height: 80px;
+  }
+
+  .uni-grid div a {
+    font-size: 13px;
+    padding: 10px 5px;
   }
 }
 
