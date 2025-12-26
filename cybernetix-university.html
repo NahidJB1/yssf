@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>CYBERNETICS COLLEGE – International Fee Structure 2025</title>
-  <style>
-    body {
-body {
+<style>
+   body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0 0 80px 0; /* space for footer */
@@ -43,78 +42,184 @@ body {
   flex-direction: column;
 }
 
+/* --- STABILIZED CONTAINER --- *//* --- STABILIZED FULL-WIDTH CONTAINER --- */
 .container {
-  flex: 1;
+  max-width: 1100px; /* This is the standard "Big" size of your table */
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 95%; /* Responsive fall-back */
 }
 
-    h1, h2 {
-      margin: 0;
-    }
-    .container {
-      max-width: 1100px;
-      margin: 20px auto;
-      padding: 0 15px;
-    }
-    .accordion {
-      background-color: #0066cc;
-      color: white;
-      cursor: pointer;
-      padding: 16px;
-      margin-bottom: 10px;
-      border: none;
-      outline: none;
-      text-align: left;
-      font-size: 18px;
-      transition: 0.4s;
-      border-radius: 5px;
-    }
-    .active, .accordion:hover {
-      background-color: #005bb5;
-    }
-    .panel {
-      padding: 0 15px;
-      background-color: white;
-      display: none;
-      overflow: hidden;
-      border-left: 5px solid #005bb5;
-      margin-bottom: 15px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 15px 0;
-      font-size: 14px;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
-    th {
-      background-color: #f2f2f2;
-    }
+/* --- ALWAYS BIG PROGRAMME BARS --- */
+.accordion {
+  background: #ffffff;
+  color: #004080;
+  cursor: pointer;
+  padding: 25px 35px; /* Large padding for a substantial feel */
+  margin-bottom: 15px;
+  
+  /* FIXED WIDTH LOGIC */
+  width: 100%; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  
+  border: 1px solid #e0e6ed;
+  outline: none;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+/* When the bar is clicked, it stays the same size but changes color */
+.accordion.active {
+  background: #004080;
+  color: #ffffff;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0; /* Connects directly to the table below */
+  box-shadow: none;
+}
+
+/* --- MATCHING PANEL --- */
+.panel {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 30px 30px 30px; /* Padding for the table inside */
+  background-color: white;
+  display: none;
+  overflow: hidden;
+  border: 1px solid #e0e6ed;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  margin-bottom: 25px;
+  /* Smooth Fade-in */
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- TABLE TWEAK --- */
+table {
+  width: 100%;
+  margin: 30px 0; /* Spacing inside the panel */
+  /* Remove existing table width/margin if they conflict */
+}
+
+    /* --- MODERN TABLE DESIGN --- */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 25px 0;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  overflow: hidden; /* Ensures rounded corners work */
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+th {
+  background-color: #004080;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 15px 12px;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #f0f2f5;
+  color: #444;
+  font-size: 14px;
+}
+
+/* Zebra striping for readability */
+tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* Hover effect for rows */
+tr:hover {
+  background-color: #f1f7ff !important;
+  transition: background-color 0.2s ease;
+}
+
+/* Search highlight style */
+tr.highlight {
+  background-color: #fff9c4 !important; /* Soft yellow */
+  font-weight: bold;
+}
+
+/* Remove bottom border from the last row to keep it clean */
+tr:last-child td {
+  border-bottom: none;
+}
     .note {
-      background: #fff8e1;
-      border-left: 4px solid #ffeb3b;
-      padding: 10px;
-      margin: 15px 0;
-    }
-    .divider {
-      border-top: 2px solid #ccc;
-      margin: 20px 0;
-    }
-    .search-container {
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    .search-container input[type="text"] {
-      padding: 10px;
-      width: 100%;
-      max-width: 500px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-    }
+  background: #f8f9fa; /* Professional light grey */
+  border-left: 6px solid #004080; /* Bold Navy accent */
+  padding: 25px;
+  margin: 25px 0;
+  border-radius: 12px;
+  color: #333;
+  line-height: 1.6;
+  font-size: 15px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+  position: relative;
+}
+    /* --- MODERN SEARCH ZONE --- */
+.search-container {
+  background: #f1f3f5; /* Subtle grey background bar */
+  margin: 0 auto 30px auto;
+  padding: 30px 20px;
+  text-align: center;
+  width: 100vw; /* Full width of the viewport */
+  margin-left: calc(50% - 50vw); /* Centers the full-width bar */
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+  border-bottom: 1px solid #e9ecef;
+}
+
+.search-container input[type="text"] {
+  padding: 15px 25px;
+  width: 100%;
+  max-width: 600px;
+  border: 2px solid #dde2e7;
+  border-radius: 50px; /* Pill shape */
+  font-size: 16px;
+  background: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  color: #333;
+}
+
+/* Animation when the user clicks the search bar */
+.search-container input[type="text"]:focus {
+  outline: none;
+  border-color: #0066cc;
+  width: 100%;
+  max-width: 650px; /* Expands slightly when active */
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Subtle placeholder styling */
+.search-container input[type="text"]::placeholder {
+  color: #adb5bd;
+  transition: opacity 0.3s;
+}
+
+.search-container input[type="text"]:focus::placeholder {
+  opacity: 0.5;
+}
     tr.highlight {
       background-color: #ffff99 !important;
     }
@@ -128,28 +233,41 @@ body {
   opacity: 0.8;
 }
 .download-bar {
-  display: flex;
-  justify-content: flex-end;
+  display: inline-flex;
   align-items: center;
-  margin-top: 15px;
-  padding: 5px 10px;
-  background: #e6f0ff;
-  border-radius: 5px;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: #0066cc; /* Action Blue for clickability */
+  color: #ffffff !important;
+  border-radius: 50px; /* Modern Pill Shape */
   font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
-  width: fit-content;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   float: right;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
 }
 
 .download-bar span {
-  margin-right: 5px;
-  font-weight: bold;
-  color: #004080;
+  color: #ffffff !important;
+  margin: 0 !important; /* Resetting your previous margin */
 }
 
 .download-bar:hover {
-  background: #ffefe1;
+  background: #004080; /* Switches to Navy on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 64, 128, 0.3);
 }
+
+/* Clearfix to ensure the float doesn't break the box layout */
+.note::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
   </style>
 </head>
 <body>
@@ -229,13 +347,17 @@ body {
     btn.addEventListener("click", function() {
       this.classList.toggle("active");
       const panel = this.nextElementSibling;
-      panel.style.display = panel.style.display === "block" ? "none" : "block";
+      
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
     });
   });
 
-  // Search function
-  function filterPrograms() {
-  const input = document.getElementById("searchInput").value.toLowerCase();
+function filterPrograms() {
+  const input = document.getElementById("searchInput").value.toLowerCase().trim();
   const tables = document.querySelectorAll("table");
 
   tables.forEach(table => {
@@ -244,14 +366,21 @@ body {
 
     // Skip header row
     for (let i = 1; i < rows.length; i++) {
-      const rowText = rows[i].textContent.toLowerCase();
-      if (rowText.includes(input)) {
-        rows[i].style.display = "";
-        rows[i].classList.add("highlight");
+      const row = rows[i];
+      const rowText = row.textContent.toLowerCase();
+
+      if (rowText.includes(input) && input !== "") {
+        row.style.display = "";
+        row.classList.add("highlight");
         foundInTable = true;
+      } else if (input === "") {
+        // Show all rows if input is empty
+        row.style.display = "";
+        row.classList.remove("highlight");
+        foundInTable = true; // so panel stays open when input is cleared
       } else {
-        rows[i].style.display = "none";
-        rows[i].classList.remove("highlight");
+        row.style.display = "none";
+        row.classList.remove("highlight");
       }
     }
 
@@ -262,17 +391,18 @@ body {
     if (foundInTable) {
       panel.style.display = "block";
       accordion.classList.add("active");
-      if (note) note.style.display = "block"; // show note
+      if (note) note.style.display = "block";
     } else {
       panel.style.display = "none";
       accordion.classList.remove("active");
-      if (note) note.style.display = "none"; // hide note
+      if (note) note.style.display = "none";
     }
   });
 }
 
+
 function downloadPDF(programKey) {
-  const key = "cybernetics_pdf_download_time_" + programKey;
+  const key = "cityu_pdf_download_time_" + programKey;
   const lastDownload = localStorage.getItem(key);
   const now = new Date().getTime();
 
@@ -286,8 +416,8 @@ function downloadPDF(programKey) {
 
   // Trigger file download
   const link = document.createElement("a");
-  link.href = "cybernetics-fees-2025.pdf"; // replace with actual link
-  link.download = "cybernetics_Fee_Structure_2025.pdf";
+  link.href = "city-fees-2025.pdf"; // replace with actual link
+  link.download = "CityU_Fee_Structure_2025.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
