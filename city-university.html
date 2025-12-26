@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>City University Malaysia – International Fee Structure 2025</title>
-  <style>
+<style>
    body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -497,7 +497,12 @@ tr:last-child td {
     btn.addEventListener("click", function() {
       this.classList.toggle("active");
       const panel = this.nextElementSibling;
-      panel.style.display = panel.style.display === "block" ? "none" : "block";
+      
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
     });
   });
 
