@@ -268,9 +268,31 @@ tr:last-child td {
   clear: both;
 }
 
+/* Desktop Suggestion Bar */
+.desktop-bar {
+  background: #ffcc00;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  display: none; /* Hidden by default, shown on mobile via JS */
+}
+
+@media (max-width: 768px) {
+  .desktop-bar {
+    display: block;
+  }
+}
+
+
   </style>
 </head>
 <body>
+
+<div class="desktop-bar" id="desktopBar">
+  For a better experience, please switch to <b>Desktop Site</b> in your browser settings.
+</div>
 
 <header>
   <h1>SEGI UNIVERSITY MALAYSIA</h1>
@@ -561,6 +583,21 @@ function downloadPDF(programKey) {
       searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   });
+
+  // Function to show desktop suggestion popup
+function showDesktopPopup() {
+  if (window.innerWidth <= 768) {
+    alert("Pro Tip: Switch to 'Desktop Site' in your browser settings to view the full fee table clearly!");
+  }
+}
+
+// Attach the popup to accordion clicks
+document.querySelectorAll(".accordion").forEach(btn => {
+  btn.addEventListener("click", function() {
+    showDesktopPopup();
+  });
+});
+
 
 </script>
 
