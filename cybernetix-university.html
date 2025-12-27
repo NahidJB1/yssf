@@ -402,7 +402,7 @@ function filterPrograms() {
 
 
 function downloadPDF(programKey) {
-  const key = "cityu_pdf_download_time_" + programKey;
+  const key = "cybernetics_pdf_download_time_" + programKey;
   const lastDownload = localStorage.getItem(key);
   const now = new Date().getTime();
 
@@ -416,8 +416,8 @@ function downloadPDF(programKey) {
 
   // Trigger file download
   const link = document.createElement("a");
-  link.href = "city-fees-2025.pdf"; // replace with actual link
-  link.download = "CityU_Fee_Structure_2025.pdf";
+  link.href = "cybernetics-fees-2025.pdf"; // replace with actual link
+  link.download = "cybernetics_Fee_Structure_2025.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
