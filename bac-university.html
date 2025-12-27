@@ -73,6 +73,8 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
 }
+  border: 2px solid #dde2e7;
+  border-radius: 50px; /* Pill shape */
   font-size: 16px;
   background: #ffffff;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -364,103 +366,117 @@ body {
 
 <!-- JavaScript to handle accordion and search -->
 <script>
-let isDesktopMode = false;
-
-// 1. Desktop View Toggle Logic
-function toggleDesktopView() {
-  const viewport = document.querySelector('meta[name="viewport"]');
-  const btn = document.getElementById('desktop-toggle-btn');
-  
-  if (!isDesktopMode) {
-    viewport.setAttribute('content', 'width=1200, initial-scale=0.3');
-    document.body.classList.add('force-desktop');
-    btn.innerHTML = "📱 Switch Back to Mobile View";
-    btn.style.background = "#4CAF50";
-    isDesktopMode = true;
-  } else {
-    viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
-    document.body.classList.remove('force-desktop');
-    btn.innerHTML = "🖥️ Switch to Desktop View for Better Table Layout";
-    btn.style.background = "#ff9800";
-    isDesktopMode = false;
-  }
-}
-
-// 2. Combined Accordion and Popup Logic
-document.addEventListener("DOMContentLoaded", function() {
-  const acc = document.querySelectorAll(".accordion");
-  acc.forEach(btn => {
-    btn.addEventListener("click", function() {
-      // Show popup ONLY if on mobile and NOT already in desktop mode
-      if (window.innerWidth < 1000 && !isDesktopMode) {
-        const wantDesktop = confirm("Tip: This table looks best in Desktop View. Switch now?");
-        if (wantDesktop) { toggleDesktopView(); return; } 
-      }
-      
-      this.classList.toggle("active");
       const panel = this.nextElementSibling;
-      panel.style.display = (panel.style.display === "block") ? "none" : "block";
+      
+      // Open or Close the panel
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+        
+        // ONLY trigger the desktop tip if opening a panel on mobile
+        if (window.innerWidth < 1000 && !isDesktopMode) {
+          // Use a small timeout so the panel opens first, then the alert shows
+          setTimeout(() => {
+            const wantDesktop = confirm("Tip: These tables are large and look best in Desktop View. Switch now?");
+            if (wantDesktop) {
+              toggleDesktopView();
+            }
+          }, 300);
+        }
+      }
     });
   });
 
-  // Auto-run search from URL
-  const searchTerm = new URLSearchParams(window.location.search).get('q');
-  if (searchTerm) {
-    const input = document.getElementById('searchInput');
-    input.value = decodeURIComponent(searchTerm);
-    filterPrograms();
-    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
-});
-
-// 3. Search Logic
-function filterPrograms() {
-  const input = document.getElementById("searchInput").value.toLowerCase().trim();
-  const tables = document.querySelectorAll("table");
-
-  tables.forEach(table => {
-    const rows = table.querySelectorAll("tr");
-    let foundInTable = false;
-
-    for (let i = 1; i < rows.length; i++) {
-      const row = rows[i];
-      if (row.textContent.toLowerCase().includes(input) && input !== "") {
-        row.style.display = "";
-        row.classList.add("highlight");
-        foundInTable = true;
-      } else if (input === "") {
-        row.style.display = "";
-        row.classList.remove("highlight");
-        foundInTable = true;
-      } else {
-        row.style.display = "none";
-        row.classList.remove("highlight");
+  // 2. Desktop View Toggle Function
+  function toggleDesktopView() {
+    const viewport = document.querySelector('meta[name="viewport"]');
+    const btn = document.getElementById('desktop-toggle-btn');
+    
+    if (!isDesktopMode) {
+      viewport.setAttribute('content', 'width=1200, initial-scale=0.3');
+      document.body.classList.add('force-desktop');
+      if(btn) {
+        btn.innerHTML = "📱 Switch Back to Mobile View";
+        btn.style.background = "#4CAF50";
       }
+      isDesktopMode = true;
+    } else {
+      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+      document.body.classList.remove('force-desktop');
+      if(btn) {
+        btn.innerHTML = "🖥️ Switch to Desktop View for Better Table Layout";
+        btn.style.background = "#ff9800";
+      }
+      isDesktopMode = false;
     }
+  }
 
-    const panel = table.closest(".panel") || table.nextElementSibling; // Fallback for non-accordion tables
-    const accordion = panel ? panel.previousElementSibling : null;
+  // 3. Search Filter Logic
+  function filterPrograms() {
+    const input = document.getElementById("searchInput").value.toLowerCase().trim();
+    const tables = document.querySelectorAll("table");
 
-    if (foundInTable && input !== "") {
-      if (panel) panel.style.display = "block";
-      if (accordion && accordion.classList.contains('accordion')) accordion.classList.add("active");
+    tables.forEach(table => {
+      const rows = table.querySelectorAll("tr");
+      let foundInTable = false;
+
+      for (let i = 1; i < rows.length; i++) {
+        const rowText = rows[i].textContent.toLowerCase();
+        if (rowText.includes(input) && input !== "") {
+          rows[i].style.display = "";
+          rows[i].classList.add("highlight");
+          foundInTable = true;
+        } else if (input === "") {
+          rows[i].style.display = "";
+          rows[i].classList.remove("highlight");
+          foundInTable = false; 
+        } else {
+          rows[i].style.display = "none";
+          rows[i].classList.remove("highlight");
+        }
+      }
+
+      const panel = table.closest(".panel");
+      const accordion = panel.previousElementSibling;
+      
+      if (foundInTable && input !== "") {
+        panel.style.display = "block";
+        accordion.classList.add("active");
+      } else if (input === "") {
+        panel.style.display = "none";
+        accordion.classList.remove("active");
+      }
+    });
+  }
+
+  // 4. PDF Download Logic
+  function downloadPDF(programKey) {
+    const key = "cityu_pdf_download_time_" + programKey;
+    const lastDownload = localStorage.getItem(key);
+    if (lastDownload) {
+      if (!confirm("You already downloaded this. Download again?")) return;
+    }
+    localStorage.setItem(key, new Date().getTime());
+    const link = document.createElement("a");
+    link.href = "bac-fees-2025.pdf"; 
+    link.download = "BAC_Fee_Structure_2025.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  // 5. Handle URL parameters (Auto-search)
+  document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTerm = urlParams.get('q');
+    if (searchTerm) {
+      const searchInput = document.getElementById('searchInput');
+      searchInput.value = decodeURIComponent(searchTerm); 
+      filterPrograms();
+      searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   });
-}
-
-// 4. Download Logic (Update 'filename' per university)
-function downloadPDF(programKey) {
-  const key = "download_time_" + programKey;
-  if (localStorage.getItem(key) && !confirm("Download again?")) return;
-  localStorage.setItem(key, new Date().getTime());
-
-  const link = document.createElement("a");
-  link.href = "bac-fees-2025.pdf"; // Change this line for each file
-  link.download = "BAC_Fee_Structure_2025.pdf";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
 </script>
 
 </body>
