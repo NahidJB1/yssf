@@ -268,22 +268,33 @@ tr:last-child td {
   clear: both;
 }
 
-/* Desktop Suggestion Bar */
-.desktop-bar {
-  background: #ffcc00;
-  color: #333;
-  text-align: center;
-  padding: 10px;
+/* --- FIX: DESKTOP TOGGLE STYLES --- */
+#desktop-toggle-btn {
+  display: none; 
+  background: #ff9800;
+  color: white;
+  border: none;
+  padding: 12px 15px;
+  border-radius: 8px;
   font-weight: bold;
-  font-size: 14px;
-  display: none; /* Hidden by default, shown on mobile via JS */
+  margin: 15px auto;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background 0.3s;
 }
 
-@media (max-width: 768px) {
-  .desktop-bar {
+@media (max-width: 1000px) {
+  #desktop-toggle-btn {
     display: block;
+    width: 95%;
   }
 }
+
+.force-desktop {
+  min-width: 1200px !important;
+}
+/* --- END FIX --- */
 
   </style>
 </head>
@@ -300,6 +311,10 @@ tr:last-child td {
 </header>
 
 <div class="container">
+
+  <button id="desktop-toggle-btn" onclick="toggleDesktopView()">
+    🖥️ Switch to Desktop View for Better Table Layout
+  </button>
 
   <div class="search-container">
     <input type="text" id="searchInput" placeholder="Search program name..." onkeyup="filterPrograms()" />
@@ -457,21 +472,56 @@ tr:last-child td {
 
 <!-- JavaScript to handle accordion and search -->
 <script>
-  // Initialize accordions
+let isDesktopMode = false;
+
+// 1. Desktop View Toggle Logic
+function toggleDesktopView() {
+  const viewport = document.querySelector('meta[name="viewport"]');
+  const btn = document.getElementById('desktop-toggle-btn');
+  
+  if (!isDesktopMode) {
+    viewport.setAttribute('content', 'width=1200, initial-scale=0.3');
+    document.body.classList.add('force-desktop');
+    btn.innerHTML = "📱 Switch Back to Mobile View";
+    btn.style.background = "#4CAF50";
+    isDesktopMode = true;
+  } else {
+    viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+    document.body.classList.remove('force-desktop');
+    btn.innerHTML = "🖥️ Switch to Desktop View for Better Table Layout";
+    btn.style.background = "#ff9800";
+    isDesktopMode = false;
+  }
+}
+
+// 2. Combined Accordion and Popup Logic
+document.addEventListener("DOMContentLoaded", function() {
   const acc = document.querySelectorAll(".accordion");
   acc.forEach(btn => {
     btn.addEventListener("click", function() {
+      // Show popup ONLY if on mobile and NOT already in desktop mode
+      if (window.innerWidth < 1000 && !isDesktopMode) {
+        const wantDesktop = confirm("Tip: This table looks best in Desktop View. Switch now?");
+        if (wantDesktop) { toggleDesktopView(); return; } 
+      }
+      
       this.classList.toggle("active");
       const panel = this.nextElementSibling;
-      
-      if (panel.style.display === "block") {
-        panel.style.display = "none";
-      } else {
-        panel.style.display = "block";
-      }
+      panel.style.display = (panel.style.display === "block") ? "none" : "block";
     });
   });
 
+  // Auto-run search from URL
+  const searchTerm = new URLSearchParams(window.location.search).get('q');
+  if (searchTerm) {
+    const input = document.getElementById('searchInput');
+    input.value = decodeURIComponent(searchTerm);
+    filterPrograms();
+    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+
+// 3. Search Logic
 function filterPrograms() {
   const input = document.getElementById("searchInput").value.toLowerCase().trim();
   const tables = document.querySelectorAll("table");
@@ -480,101 +530,45 @@ function filterPrograms() {
     const rows = table.querySelectorAll("tr");
     let foundInTable = false;
 
-    // Skip header row
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
-      const rowText = row.textContent.toLowerCase();
-
-      if (rowText.includes(input) && input !== "") {
+      if (row.textContent.toLowerCase().includes(input) && input !== "") {
         row.style.display = "";
         row.classList.add("highlight");
         foundInTable = true;
       } else if (input === "") {
-        // Show all rows if input is empty
         row.style.display = "";
         row.classList.remove("highlight");
-        foundInTable = true; // so panel stays open when input is cleared
+        foundInTable = true;
       } else {
         row.style.display = "none";
         row.classList.remove("highlight");
       }
     }
 
-    const panel = table.closest(".panel");
-    const accordion = panel.previousElementSibling;
-    const note = panel.querySelector(".note");
+    const panel = table.closest(".panel") || table.nextElementSibling; // Fallback for non-accordion tables
+    const accordion = panel ? panel.previousElementSibling : null;
 
-    if (foundInTable) {
-      panel.style.display = "block";
-      accordion.classList.add("active");
-      if (note) note.style.display = "block";
-    } else {
-      panel.style.display = "none";
-      accordion.classList.remove("active");
-      if (note) note.style.display = "none";
+    if (foundInTable && input !== "") {
+      if (panel) panel.style.display = "block";
+      if (accordion && accordion.classList.contains('accordion')) accordion.classList.add("active");
     }
   });
 }
 
-
+// 4. Download Logic (Update 'filename' per university)
 function downloadPDF(programKey) {
-  const key = "ucmi_pdf_download_time_" + programKey;
-  const lastDownload = localStorage.getItem(key);
-  const now = new Date().getTime();
+  const key = "download_time_" + programKey;
+  if (localStorage.getItem(key) && !confirm("Download again?")) return;
+  localStorage.setItem(key, new Date().getTime());
 
-  if (lastDownload) {
-    const confirmDownload = confirm("You already downloaded this Fees Structure. Download again?");
-    if (!confirmDownload) return; // user clicked NO
-  }
-
-  // Store timestamp
-  localStorage.setItem(key, now);
-
-  // Trigger file download
   const link = document.createElement("a");
-  link.href = "ucmi-fees-2025.pdf"; // replace with actual link
-  link.download = "ucmi_Fee_Structure_2025.pdf";
+  link.href = "ucmi-fees-2025.pdf"; // Change this line for each file
+  link.download = "UCMI_Fee_Structure_2025.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 }
-
-// Function to get query parameter from URL
-  function getQueryParam(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
-  }
-
-  // Auto-run search on page load if query parameter exists
-  document.addEventListener("DOMContentLoaded", function() {
-    const searchTerm = getQueryParam('q');
-    if (searchTerm) {
-      const searchInput = document.getElementById('searchInput');
-      // Decode and set the search input value
-      searchInput.value = decodeURIComponent(searchTerm); 
-      
-      // Manually trigger the filter function
-      filterPrograms();
-      
-      // Optional: scroll the page to the search input area
-      searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  });
-
-  // Function to show desktop suggestion popup
-function showDesktopPopup() {
-  if (window.innerWidth <= 768) {
-    alert("Pro Tip: Switch to 'Desktop Site' in your browser settings to view the full fee table clearly!");
-  }
-}
-
-// Attach the popup to accordion clicks
-document.querySelectorAll(".accordion").forEach(btn => {
-  btn.addEventListener("click", function() {
-    showDesktopPopup();
-  });
-});
-
 </script>
 </body>
 </html>
