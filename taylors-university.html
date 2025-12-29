@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taylor's University – International Fee Structure 2025</title>
+<style>
+   body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0 0 80px 0; /* space for footer */
+  background: #f9f9f9;
+}
+
+    /* --- FINAL FIX FOR FULL-WIDTH HEADER AND FOOTER --- */
+    header {
+  background: #004080;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  width: 100vw; /* Force width to 100% of viewport width */
+  margin-left: calc(50% - 50vw); /* Compensate for potential body centering */
+}
+footer {
+  background: #004080;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  width: 100vw; /* Force width to 100% of viewport width */
+  margin-left: calc(50% - 50vw); /* Compensate for potential body centering */
+  margin-top: auto;
+}
+/* --- END FINAL FIX --- */
+
+html, body {
+  height: 100%;
+  overflow-x: hidden; /* Important: Prevents horizontal scrollbar from 100vw trick */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- STABILIZED CONTAINER --- *//* --- STABILIZED FULL-WIDTH CONTAINER --- */
+.container {
+  max-width: 1100px; /* This is the standard "Big" size of your table */
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 95%; /* Responsive fall-back */
+}
+
+/* --- ALWAYS BIG PROGRAMME BARS --- */
+.accordion {
+  background: #ffffff;
+  color: #004080;
+  cursor: pointer;
+  padding: 25px 35px; /* Large padding for a substantial feel */
+  margin-bottom: 15px;
+  
+  /* FIXED WIDTH LOGIC */
+  width: 100%; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  
+  border: 1px solid #e0e6ed;
+  outline: none;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+/* When the bar is clicked, it stays the same size but changes color */
+.accordion.active {
+  background: #004080;
+  color: #ffffff;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0; /* Connects directly to the table below */
+  box-shadow: none;
+}
+
+/* --- MATCHING PANEL --- */
+.panel {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 30px 30px 30px; /* Padding for the table inside */
+  background-color: white;
+  display: none;
+  overflow: hidden;
+  border: 1px solid #e0e6ed;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  margin-bottom: 25px;
+  /* Smooth Fade-in */
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- TABLE TWEAK --- */
+table {
+  width: 100%;
+  margin: 30px 0; /* Spacing inside the panel */
+  /* Remove existing table width/margin if they conflict */
+}
+
+    /* --- MODERN TABLE DESIGN --- */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 25px 0;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  overflow: hidden; /* Ensures rounded corners work */
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+th {
+  background-color: #004080;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 15px 12px;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #f0f2f5;
+  color: #444;
+  font-size: 14px;
+}
+
+/* Zebra striping for readability */
+tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* Hover effect for rows */
+tr:hover {
+  background-color: #f1f7ff !important;
+  transition: background-color 0.2s ease;
+}
+
+/* Search highlight style */
+tr.highlight {
+  background-color: #fff9c4 !important; /* Soft yellow */
+  font-weight: bold;
+}
+
+/* Remove bottom border from the last row to keep it clean */
+tr:last-child td {
+  border-bottom: none;
+}
+    .note {
+  background: #f8f9fa; /* Professional light grey */
+  border-left: 6px solid #004080; /* Bold Navy accent */
+  padding: 25px;
+  margin: 25px 0;
+  border-radius: 12px;
+  color: #333;
+  line-height: 1.6;
+  font-size: 15px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+  position: relative;
+}
+    /* --- MODERN SEARCH ZONE --- */
+.search-container {
+  background: #f1f3f5; /* Subtle grey background bar */
+  margin: 0 auto 30px auto;
+  padding: 30px 20px;
+  text-align: center;
+  width: 100vw; /* Full width of the viewport */
+  margin-left: calc(50% - 50vw); /* Centers the full-width bar */
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+  border-bottom: 1px solid #e9ecef;
+}
+
+.search-container input[type="text"] {
+  padding: 15px 25px;
+  width: 100%;
+  max-width: 600px;
+  border: 2px solid #dde2e7;
+  border-radius: 50px; /* Pill shape */
+  font-size: 16px;
+  background: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  color: #333;
+}
+
+/* Animation when the user clicks the search bar */
+.search-container input[type="text"]:focus {
+  outline: none;
+  border-color: #0066cc;
+  width: 100%;
+  max-width: 650px; /* Expands slightly when active */
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Subtle placeholder styling */
+.search-container input[type="text"]::placeholder {
+  color: #adb5bd;
+  transition: opacity 0.3s;
+}
+
+.search-container input[type="text"]:focus::placeholder {
+  opacity: 0.5;
+}
+    tr.highlight {
+      background-color: #ffff99 !important;
+    }
+    .download-icon {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.download-icon:hover {
+  opacity: 0.8;
+}
+.download-bar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: #0066cc; /* Action Blue for clickability */
+  color: #ffffff !important;
+  border-radius: 50px; /* Modern Pill Shape */
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  float: right;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+}
+
+.download-bar span {
+  color: #ffffff !important;
+  margin: 0 !important; /* Resetting your previous margin */
+}
+
+.download-bar:hover {
+  background: #004080; /* Switches to Navy on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 64, 128, 0.3);
+}
+
+/* Clearfix to ensure the float doesn't break the box layout */
+.note::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Desktop View Toggle Styles */
+#desktop-toggle-btn {
+  display: none; /* Hidden by default */
+  background: #ff9800;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin: 10px auto;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Only show the button on screens smaller than 1000px */
+@media (max-width: 1000px) {
+  #desktop-toggle-btn {
+    display: block;
+    width: 90%;
+  }
+}
+
+/* Class to force desktop width via JS */
+.force-desktop {
+  min-width: 1200px !important;
+}
+
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Taylor's University</h1>
+  <h2>International Fee Structure 2025</h2>
+  <p>Valid from 1st January 2025 until 31st December 2025</p>
+</header>
+
+<div class="container">
+
+<button id="desktop-toggle-btn" onclick="toggleDesktopView()">
+    🖥️ Switch to Desktop View for Better Table Layout
+  </button>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search program name..." onkeyup="filterPrograms()" />
+  </div>
+
+
+  <button class="accordion">FOUNDATION PROGRAMS</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th><th>Programme</th><th>Duration</th><th>Tuition Fees (Total)</th><th>Enrolment Fee</th><th>Total (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Foundation in Business</td><td>1 year</td><td>RM28,600</td><td>RM2,800</td><td>RM44,044</td></tr>
+      <tr><td>2</td><td>Foundation in Arts</td><td>1 year</td><td>RM28,600</td><td>RM2,800</td><td>RM44,044</td></tr>
+      <tr><td>3</td><td>Foundation in Design</td><td>1 year</td><td>RM28,600</td><td>RM2,800</td><td>RM44,044</td></tr>
+      <tr><td>4</td><td>Foundation in Computing</td><td>1 year</td><td>RM25,600</td><td>RM2,800</td><td>RM41,044</td></tr>
+      <tr><td>5</td><td>Foundation in Science</td><td>1 year</td><td>RM31,600</td><td>RM2,800</td><td>RM47,044</td></tr>
+      <tr><td>6</td><td>Foundation in Engineering</td><td>1 year</td><td>RM31,600</td><td>RM2,800</td><td>RM47,044</td></tr>
+      <tr><td>7</td><td>Foundation in Natural & Built Environments</td><td>1 year</td><td>RM28,600</td><td>RM2,800</td><td>RM44,044</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('taylors_foundation')">
+        <span>Download PDF</span>
+        <span>⬇️</span>
+      </div>
+      <strong>International Entry Fees (Paid in Sem 1):</strong><br>
+      Enrolment Fee: RM2,800<br>
+      International Student Charge: RM3,000<br>
+      EMGS Visa Application Fee: RM1,360<br>
+      Security Deposit (ISD): RM3,000<br>
+      <strong>Note:</strong> Total fees are approximate and subject to a 6% Service Tax starting 1 July 2025.
+    </div>
+  </div>
+
+  <button class="accordion">DIPLOMA PROGRAMS</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th><th>Programme</th><th>Duration</th><th>Total Fee (RM)</th><th>Total Fee (USD)</th>
+      </tr>
+      <tr><td>1</td><td>Diploma in Accounting</td><td>2 years</td><td>RM73,806</td><td>$17,164</td></tr>
+      <tr><td>2</td><td>Diploma in Business</td><td>2 years</td><td>RM73,806</td><td>$17,164</td></tr>
+      <tr><td>3</td><td>Diploma in Communication</td><td>2 years</td><td>RM73,806</td><td>$17,164</td></tr>
+      <tr><td>4</td><td>Diploma in Information Technology</td><td>2 years</td><td>RM73,806</td><td>$17,164</td></tr>
+      <tr><td>5</td><td>Diploma in Interior Design</td><td>2.5 years</td><td>RM73,806</td><td>$17,164</td></tr>
+      <tr><td>6</td><td>Diploma in Hotel Management</td><td>2 years</td><td>RM73,806</td><td>$17,164</td></tr>
+      <tr><td>7</td><td>Diploma in Culinary Arts</td><td>2 years</td><td>RM79,136</td><td>$18,404</td></tr>
+      <tr><td>8</td><td>Diploma in Early Childhood Education</td><td>2 years</td><td>RM55,848</td><td>$12,988</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('taylors_diploma')">
+        <span>Download PDF</span>
+        <span>⬇️</span>
+      </div>
+      <strong>Note:</strong> Grand totals include tuition, enrolment, EMGS visa, and medical insurance for the minimum duration.
+    </div>
+  </div>
+
+  <button class="accordion">BACHELOR PROGRAMS</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th><th>Programme</th><th>Duration</th><th>Total Fee (RM)</th><th>Total Fee (USD)</th>
+      </tr>
+      <tr><td>1</td><td>Bachelor of Business (Hons)</td><td>3 years</td><td>RM143,946</td><td>$33,476</td></tr>
+      <tr><td>2</td><td>Bachelor of Accounting & Finance (Hons)</td><td>3 years</td><td>RM139,042</td><td>$32,335</td></tr>
+      <tr><td>3</td><td>Bachelor of Laws (Hons)</td><td>3 years</td><td>RM146,106</td><td>$33,978</td></tr>
+      <tr><td>4</td><td>Bachelor of Computer Science (Hons)</td><td>3 years</td><td>RM135,738</td><td>$31,567</td></tr>
+      <tr><td>5</td><td>Bachelor of Software Engineering (Hons)</td><td>3 years</td><td>RM135,738</td><td>$31,567</td></tr>
+      <tr><td>6</td><td>Bachelor of Mechanical Engineering (Hons)</td><td>4 years</td><td>RM183,562</td><td>$42,689</td></tr>
+      <tr><td>7</td><td>Bachelor of Pharmacy (Hons)</td><td>4 years</td><td>RM213,194</td><td>$49,580</td></tr>
+      <tr><td>8</td><td>Bachelor of Medicine, Bachelor of Surgery (MBBS)</td><td>5 years</td><td>RM456,934</td><td>$106,264</td></tr>
+      <tr><td>9</td><td>Bachelor of Psychology (Hons)</td><td>3 years</td><td>RM124,506</td><td>$28,955</td></tr>
+      <tr><td>10</td><td>Bachelor of Mass Communication (Hons)</td><td>3 years</td><td>RM133,794</td><td>$31,115</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('taylors_bachelor')">
+        <span>Download PDF</span>
+        <span>⬇️</span>
+      </div>
+      <strong>Dual Awards:</strong> Many programs offer Dual Awards with University of the West of England (UK) or University of Toulouse (France).
+    </div>
+  </div>
+
+  <button class="accordion">MASTERS PROGRAMS</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th><th>Programme</th><th>Duration</th><th>Total Fee (RM)</th><th>Total Fee (USD)</th>
+      </tr>
+      <tr><td>1</td><td>Master of Business Administration (MBA)</td><td>1 year</td><td>RM70,014</td><td>$16,282</td></tr>
+      <tr><td>2</td><td>Master of Management</td><td>1 year</td><td>RM70,014</td><td>$16,282</td></tr>
+      <tr><td>3</td><td>Master of Communication</td><td>1.5 years</td><td>RM59,284</td><td>$13,787</td></tr>
+      <tr><td>4</td><td>Master of Applied Computing</td><td>1 year</td><td>RM61,105</td><td>$14,210</td></tr>
+      <tr><td>5</td><td>Master of International Hospitality Management</td><td>1.5 years</td><td>RM73,724</td><td>$17,145</td></tr>
+      <tr><td>6</td><td>Master of Computer Science (Research)</td><td>2 years</td><td>RM50,694</td><td>$11,789</td></tr>
+      <tr><td>7</td><td>Master of Science (Research)</td><td>2 years</td><td>RM50,694</td><td>$11,789</td></tr>
+      <tr><td>8</td><td>Postgraduate Certificate in Teaching & Learning</td><td>9 months</td><td>RM35,474</td><td>$8,250</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('taylors_masters')">
+        <span>Download PDF</span>
+        <span>⬇️</span>
+      </div>
+      <strong>Masters Misc Fees:</strong> Application & EMGS: RM3,810; Student Charge: RM8,000.
+    </div>
+  </div>
+
+  <button class="accordion">PHD PROGRAMS</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th><th>Programme</th><th>Duration</th><th>Total Fee (RM)</th><th>Total Fee (USD)</th>
+      </tr>
+      <tr><td>1</td><td>Doctor of Business Administration (DBA)</td><td>3 years</td><td>RM91,614</td><td>$21,306</td></tr>
+      <tr><td>2</td><td>PhD in Business (Research)</td><td>3 years</td><td>RM68,944</td><td>$16,033</td></tr>
+      <tr><td>3</td><td>PhD in Computer Science (Research)</td><td>3 years</td><td>RM68,944</td><td>$16,033</td></tr>
+      <tr><td>4</td><td>PhD in Education (Research)</td><td>3 years</td><td>RM68,944</td><td>$16,033</td></tr>
+      <tr><td>5</td><td>PhD in Engineering (Research)</td><td>3 years</td><td>RM68,944</td><td>$16,033</td></tr>
+      <tr><td>6</td><td>PhD in Law (Research)</td><td>3 years</td><td>RM68,944</td><td>$16,033</td></tr>
+      <tr><td>7</td><td>PhD (Prior Publication track)</td><td>-</td><td>RM49,562</td><td>$11,526</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('taylors_phd')">
+        <span>Download PDF</span>
+        <span>⬇️</span>
+      </div>
+      <strong>Note:</strong> Prior Publication track is available for experienced researchers and has a lower total fee.
+    </div>
+  </div>
+
+
+
+<footer>
+  <p>&copy; 2025 Taylor's University.</p>
+</footer>
+
+<!-- JavaScript to handle accordion and search -->
+<script>
+  let isDesktopMode = false;
+
+  // 1. Unified Accordion & Desktop Tip Logic
+  const acc = document.querySelectorAll(".accordion");
+  acc.forEach(btn => {
+    btn.addEventListener("click", function() {
+      // Toggle the Active class for the button
+      this.classList.toggle("active");
+      const panel = this.nextElementSibling;
+      
+      // Open or Close the panel
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+        
+        // ONLY trigger the desktop tip if opening a panel on mobile
+        if (window.innerWidth < 1000 && !isDesktopMode) {
+          // Use a small timeout so the panel opens first, then the alert shows
+          setTimeout(() => {
+            const wantDesktop = confirm("Tip: These tables are large and look best in Desktop View. Switch now?");
+            if (wantDesktop) {
+              toggleDesktopView();
+            }
+          }, 300);
+        }
+      }
+    });
+  });
+
+  // 2. Desktop View Toggle Function
+  function toggleDesktopView() {
+    const viewport = document.querySelector('meta[name="viewport"]');
+    const btn = document.getElementById('desktop-toggle-btn');
+    
+    if (!isDesktopMode) {
+      viewport.setAttribute('content', 'width=1200, initial-scale=0.3');
+      document.body.classList.add('force-desktop');
+      if(btn) {
+        btn.innerHTML = "📱 Switch Back to Mobile View";
+        btn.style.background = "#4CAF50";
+      }
+      isDesktopMode = true;
+    } else {
+      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+      document.body.classList.remove('force-desktop');
+      if(btn) {
+        btn.innerHTML = "🖥️ Switch to Desktop View for Better Table Layout";
+        btn.style.background = "#ff9800";
+      }
+      isDesktopMode = false;
+    }
+  }
+
+  // 3. Search Filter Logic
+  function filterPrograms() {
+    const input = document.getElementById("searchInput").value.toLowerCase().trim();
+    const tables = document.querySelectorAll("table");
+
+    tables.forEach(table => {
+      const rows = table.querySelectorAll("tr");
+      let foundInTable = false;
+
+      for (let i = 1; i < rows.length; i++) {
+        const rowText = rows[i].textContent.toLowerCase();
+        if (rowText.includes(input) && input !== "") {
+          rows[i].style.display = "";
+          rows[i].classList.add("highlight");
+          foundInTable = true;
+        } else if (input === "") {
+          rows[i].style.display = "";
+          rows[i].classList.remove("highlight");
+          foundInTable = false; 
+        } else {
+          rows[i].style.display = "none";
+          rows[i].classList.remove("highlight");
+        }
+      }
+
+      const panel = table.closest(".panel");
+      const accordion = panel.previousElementSibling;
+      
+      if (foundInTable && input !== "") {
+        panel.style.display = "block";
+        accordion.classList.add("active");
+      } else if (input === "") {
+        panel.style.display = "none";
+        accordion.classList.remove("active");
+      }
+    });
+  }
+
+  // 4. PDF Download Logic
+  function downloadPDF(programKey) {
+    const key = "tayloru_pdf_download_time_" + programKey;
+    const lastDownload = localStorage.getItem(key);
+    if (lastDownload) {
+      if (!confirm("You already downloaded this. Download again?")) return;
+    }
+    localStorage.setItem(key, new Date().getTime());
+    const link = document.createElement("a");
+    link.href = "taylor-fees-2025.pdf"; 
+    link.download = "Taylor_Fee_Structure_2025.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  // 5. Handle URL parameters (Auto-search)
+  document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTerm = urlParams.get('q');
+    if (searchTerm) {
+      const searchInput = document.getElementById('searchInput');
+      searchInput.value = decodeURIComponent(searchTerm); 
+      filterPrograms();
+      searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+</script>
+
+</body>
+</html>

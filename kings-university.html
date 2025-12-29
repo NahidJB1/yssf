@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kings University College – International Fee Structure 2025</title>
+<style>
+   body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0 0 80px 0; /* space for footer */
+  background: #f9f9f9;
+}
+
+    /* --- FINAL FIX FOR FULL-WIDTH HEADER AND FOOTER --- */
+    header {
+  background: #004080;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  width: 100vw; /* Force width to 100% of viewport width */
+  margin-left: calc(50% - 50vw); /* Compensate for potential body centering */
+}
+footer {
+  background: #004080;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  width: 100vw; /* Force width to 100% of viewport width */
+  margin-left: calc(50% - 50vw); /* Compensate for potential body centering */
+  margin-top: auto;
+}
+/* --- END FINAL FIX --- */
+
+html, body {
+  height: 100%;
+  overflow-x: hidden; /* Important: Prevents horizontal scrollbar from 100vw trick */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- STABILIZED CONTAINER --- *//* --- STABILIZED FULL-WIDTH CONTAINER --- */
+.container {
+  max-width: 1100px; /* This is the standard "Big" size of your table */
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 95%; /* Responsive fall-back */
+}
+
+/* --- ALWAYS BIG PROGRAMME BARS --- */
+.accordion {
+  background: #ffffff;
+  color: #004080;
+  cursor: pointer;
+  padding: 25px 35px; /* Large padding for a substantial feel */
+  margin-bottom: 15px;
+  
+  /* FIXED WIDTH LOGIC */
+  width: 100%; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  
+  border: 1px solid #e0e6ed;
+  outline: none;
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+/* When the bar is clicked, it stays the same size but changes color */
+.accordion.active {
+  background: #004080;
+  color: #ffffff;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0; /* Connects directly to the table below */
+  box-shadow: none;
+}
+
+/* --- MATCHING PANEL --- */
+.panel {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 30px 30px 30px; /* Padding for the table inside */
+  background-color: white;
+  display: none;
+  overflow: hidden;
+  border: 1px solid #e0e6ed;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  margin-bottom: 25px;
+  /* Smooth Fade-in */
+  animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- TABLE TWEAK --- */
+table {
+  width: 100%;
+  margin: 30px 0; /* Spacing inside the panel */
+  /* Remove existing table width/margin if they conflict */
+}
+
+    /* --- MODERN TABLE DESIGN --- */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 25px 0;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  overflow: hidden; /* Ensures rounded corners work */
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+th {
+  background-color: #004080;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 15px 12px;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #f0f2f5;
+  color: #444;
+  font-size: 14px;
+}
+
+/* Zebra striping for readability */
+tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+/* Hover effect for rows */
+tr:hover {
+  background-color: #f1f7ff !important;
+  transition: background-color 0.2s ease;
+}
+
+/* Search highlight style */
+tr.highlight {
+  background-color: #fff9c4 !important; /* Soft yellow */
+  font-weight: bold;
+}
+
+/* Remove bottom border from the last row to keep it clean */
+tr:last-child td {
+  border-bottom: none;
+}
+    .note {
+  background: #f8f9fa; /* Professional light grey */
+  border-left: 6px solid #004080; /* Bold Navy accent */
+  padding: 25px;
+  margin: 25px 0;
+  border-radius: 12px;
+  color: #333;
+  line-height: 1.6;
+  font-size: 15px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+  position: relative;
+}
+    /* --- MODERN SEARCH ZONE --- */
+.search-container {
+  background: #f1f3f5; /* Subtle grey background bar */
+  margin: 0 auto 30px auto;
+  padding: 30px 20px;
+  text-align: center;
+  width: 100vw; /* Full width of the viewport */
+  margin-left: calc(50% - 50vw); /* Centers the full-width bar */
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+  border-bottom: 1px solid #e9ecef;
+}
+
+.search-container input[type="text"] {
+  padding: 15px 25px;
+  width: 100%;
+  max-width: 600px;
+  border: 2px solid #dde2e7;
+  border-radius: 50px; /* Pill shape */
+  font-size: 16px;
+  background: #ffffff;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  color: #333;
+}
+
+/* Animation when the user clicks the search bar */
+.search-container input[type="text"]:focus {
+  outline: none;
+  border-color: #0066cc;
+  width: 100%;
+  max-width: 650px; /* Expands slightly when active */
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Subtle placeholder styling */
+.search-container input[type="text"]::placeholder {
+  color: #adb5bd;
+  transition: opacity 0.3s;
+}
+
+.search-container input[type="text"]:focus::placeholder {
+  opacity: 0.5;
+}
+    tr.highlight {
+      background-color: #ffff99 !important;
+    }
+    .download-icon {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.download-icon:hover {
+  opacity: 0.8;
+}
+.download-bar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: #0066cc; /* Action Blue for clickability */
+  color: #ffffff !important;
+  border-radius: 50px; /* Modern Pill Shape */
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  float: right;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+}
+
+.download-bar span {
+  color: #ffffff !important;
+  margin: 0 !important; /* Resetting your previous margin */
+}
+
+.download-bar:hover {
+  background: #004080; /* Switches to Navy on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 64, 128, 0.3);
+}
+
+/* Clearfix to ensure the float doesn't break the box layout */
+.note::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Desktop Suggestion Bar */
+.desktop-bar {
+  background: #ffcc00;
+  color: #333;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  display: none; /* Hidden by default, shown on mobile via JS */
+}
+
+@media (max-width: 768px) {
+  .desktop-bar {
+    display: block;
+  }
+}
+  </style>
+</head>
+<body>
+
+<div class="desktop-bar" id="desktopBar">
+  For a better experience, please switch to <b>Desktop Site</b> in your browser settings.
+</div>
+
+<header>
+  <h1>Kings University College</h1>
+  <h2>International Fee Structure 2025</h2>
+  <p>Valid from 1st January 2025 until 31st December 2025</p>
+</header>
+
+<div class="container">
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search program name..." onkeyup="filterPrograms()" />
+  </div>
+
+<table>
+  <tr>
+    <th>No</th>
+    <th>Programme</th>
+    <th>Level</th>
+    <th>Duration</th>
+    <th>Year 1 (RM)</th>
+    <th>Year 2 (RM)</th>
+    <th>Year 3 (RM)</th>
+    <th>Total (RM)</th>
+  </tr>
+
+  <tr><td>1</td><td>Doctor of Philosophy in Management</td><td>PhD</td><td>3 Years</td><td>17,000</td><td>15,000</td><td>15,000</td><td>50,000</td></tr>
+  <tr><td>2</td><td>Doctor in Business Administration (DBA)</td><td>PhD</td><td>3 Years</td><td>17,000</td><td>15,000</td><td>15,000</td><td>50,000</td></tr>
+
+  <tr><td>3</td><td>Master of Education</td><td>Master</td><td>1 Year</td><td>17,000</td><td>9,000 (Sem 2)</td><td>3,000 (Sem 3)</td><td>29,000</td></tr>
+  <tr><td>4</td><td>Master of Business Administration (Dual Degree UWS)</td><td>Master</td><td>1 Year</td><td>17,000</td><td>9,000 (Sem 2)</td><td>3,000 (Sem 3)</td><td>29,000</td></tr>
+  <tr><td>5</td><td>Master of Business Administration (MQA/FA 16519)</td><td>Master</td><td>1 Year</td><td>17,000</td><td>9,000 (Sem 2)</td><td>3,000 (Sem 3)</td><td>29,000</td></tr>
+
+  <tr><td>6</td><td>Bachelor in AI</td><td>Bachelor</td><td>3 Years</td><td>17,000</td><td>12,000</td><td>13,000</td><td>45,000</td></tr>
+  <tr><td>7</td><td>BBA</td><td>Bachelor</td><td>3 Years</td><td>17,000</td><td>12,000</td><td>13,000</td><td>45,000</td></tr>
+  <tr><td>8</td><td>Bachelor in Accounting</td><td>Bachelor</td><td>3 Years</td><td>17,000</td><td>12,000</td><td>13,000</td><td>45,000</td></tr>
+  <tr><td>9</td><td>Bachelor in Law Enforcement</td><td>Bachelor</td><td>3 Years</td><td>17,000</td><td>12,000</td><td>13,000</td><td>45,000</td></tr>
+  <tr><td>10</td><td>Bachelor in Early Childhood Education</td><td>Bachelor</td><td>3 Years</td><td>17,000</td><td>12,000</td><td>13,000</td><td>45,000</td></tr>
+  <tr><td>11</td><td>Bachelor in Psychology</td><td>Bachelor</td><td>3 Years</td><td>17,000</td><td>12,000</td><td>13,000</td><td>45,000</td></tr>
+
+  <tr><td>12</td><td>Diploma in Accounting</td><td>Diploma</td><td>2.5 Years</td><td>16,000</td><td>5,000</td><td>5,000</td><td>29,000</td></tr>
+  <tr><td>13</td><td>Diploma in Law Enforcement</td><td>Diploma</td><td>2 Years</td><td>16,000</td><td>10,000</td><td>-</td><td>29,000</td></tr>
+  <tr><td>14</td><td>Diploma in Business Administration</td><td>Diploma</td><td>2 Years</td><td>16,000</td><td>10,000</td><td>-</td><td>29,000</td></tr>
+  <tr><td>15</td><td>Diploma in Information System</td><td>Diploma</td><td>2 Years</td><td>16,000</td><td>10,000</td><td>-</td><td>29,000</td></tr>
+  <tr><td>16</td><td>Diploma in Hotel Management / (WBL)</td><td>Diploma</td><td>2.5 Years</td><td>16,000</td><td>5,000</td><td>5,000</td><td>29,000</td></tr>
+  <tr><td>17</td><td>Diploma in Early Childhood Education</td><td>Diploma</td><td>2.5 Years</td><td>16,000</td><td>5,000</td><td>5,000</td><td>29,000</td></tr>
+  <tr><td>18</td><td>Diploma in Psychology</td><td>Diploma</td><td>2.5 Years</td><td>16,000</td><td>5,000</td><td>5,000</td><td>29,000</td></tr>
+</table>
+
+<div class="note">
+
+  <div class="download-bar" onclick="downloadPDF('kings')">
+    <span>Download PDF</span>
+    <span>⬇️</span>
+  </div>
+
+  <strong>Initial Payment Requirements:</strong><br>
+  • <strong>EMGS Fee:</strong> RM 3,000 (Required for all programs)<br>
+
+  <strong>Important Notes:</strong><br>
+  • All first-year fees must be settled in full prior to arrival in Malaysia.<br>
+  • First-year fees are strictly non-refundable once the student has entered Malaysia.<br>
+  • For Master's programs, fees are broken down into three semester payments.
+</div>
+
+
+<footer>
+  <p>&copy; 2025 Kings University College</p>
+</footer>
+
+<!-- JavaScript to handle accordion and search -->
+<script>
+  // Initialize accordions
+  const acc = document.querySelectorAll(".accordion");
+  acc.forEach(btn => {
+    btn.addEventListener("click", function() {
+      this.classList.toggle("active");
+      const panel = this.nextElementSibling;
+      
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  });
+
+function filterPrograms() {
+  const input = document.getElementById("searchInput").value.toLowerCase().trim();
+  const tables = document.querySelectorAll("table");
+
+  tables.forEach(table => {
+    const rows = table.querySelectorAll("tr");
+    let foundInTable = false;
+
+    // Skip header row
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i];
+      const rowText = row.textContent.toLowerCase();
+
+      if (rowText.includes(input) && input !== "") {
+        row.style.display = "";
+        row.classList.add("highlight");
+        foundInTable = true;
+      } else if (input === "") {
+        // Show all rows if input is empty
+        row.style.display = "";
+        row.classList.remove("highlight");
+        foundInTable = true; // so panel stays open when input is cleared
+      } else {
+        row.style.display = "none";
+        row.classList.remove("highlight");
+      }
+    }
+
+    const panel = table.closest(".panel");
+    const accordion = panel.previousElementSibling;
+    const note = panel.querySelector(".note");
+
+    if (foundInTable) {
+      panel.style.display = "block";
+      accordion.classList.add("active");
+      if (note) note.style.display = "block";
+    } else {
+      panel.style.display = "none";
+      accordion.classList.remove("active");
+      if (note) note.style.display = "none";
+    }
+  });
+}
+
+
+function downloadPDF(programKey) {
+  const key = "kings_pdf_download_time_" + programKey;
+  const lastDownload = localStorage.getItem(key);
+  const now = new Date().getTime();
+
+  if (lastDownload) {
+    const confirmDownload = confirm("You already downloaded this Fees Structure. Download again?");
+    if (!confirmDownload) return; // user clicked NO
+  }
+
+  // Store timestamp
+  localStorage.setItem(key, now);
+
+  // Trigger file download
+  const link = document.createElement("a");
+  link.href = "kings_fees_Structure_2025.pdf"; // replace with actual link
+  link.download = "kings_fees_Structure_2025.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+// Function to get query parameter from URL
+  function getQueryParam(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+
+  // Auto-run search on page load if query parameter exists
+  document.addEventListener("DOMContentLoaded", function() {
+    const searchTerm = getQueryParam('q');
+    if (searchTerm) {
+      const searchInput = document.getElementById('searchInput');
+      // Decode and set the search input value
+      searchInput.value = decodeURIComponent(searchTerm); 
+      
+      // Manually trigger the filter function
+      filterPrograms();
+      
+      // Optional: scroll the page to the search input area
+      searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+
+  // Function to show desktop suggestion popup
+function showDesktopPopup() {
+  if (window.innerWidth <= 768) {
+    alert("Pro Tip: Switch to 'Desktop Site' in your browser settings to view the full fee table clearly!");
+  }
+}
+
+// Attach the popup to accordion clicks
+document.querySelectorAll(".accordion").forEach(btn => {
+  btn.addEventListener("click", function() {
+    showDesktopPopup();
+  });
+});
+
+</script>
+</body>
+</html>
