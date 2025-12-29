@@ -268,29 +268,40 @@ tr:last-child td {
   clear: both;
 }
 
-/* Desktop Suggestion Bar */
-.desktop-bar {
-  background: #ffcc00;
-  color: #333;
-  text-align: center;
-  padding: 10px;
+/* --- UPDATED DESKTOP TOGGLE STYLES --- */
+#desktop-toggle-btn {
+  display: none; /* Hidden by default */
+  background: #ff9800;
+  color: white;
+  border: none;
+  padding: 12px 15px;
+  border-radius: 8px;
   font-weight: bold;
-  font-size: 14px;
-  display: none; /* Hidden by default, shown on mobile via JS */
+  margin: 15px auto;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
-@media (max-width: 768px) {
-  .desktop-bar {
+/* Show button on mobile/tablets */
+@media (max-width: 1000px) {
+  #desktop-toggle-btn {
     display: block;
+    width: 90%;
   }
+}
+
+/* Force width when toggled */
+.force-desktop {
+  min-width: 1200px !important;
 }
   </style>
 </head>
 <body>
 
-<div class="desktop-bar" id="desktopBar">
-  For a better experience, please switch to <b>Desktop Site</b> in your browser settings.
-</div>
+<button id="desktop-toggle-btn" onclick="toggleDesktopView()">
+  🖥️ Switch to Desktop View for Better Table Layout
+</button>
 
 <header>
   <h1>
