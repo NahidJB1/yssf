@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CYBERNETICS COLLEGE – International Fee Structure 2025</title>
+  <title>GENOVASI UNIVERSITY – International Fee Structure 2025</title>
 <style>
    body {
   font-family: Arial, sans-serif;
@@ -12,28 +12,29 @@
   background: #f9f9f9;
 }
 
-    /* --- FINAL FIX FOR FULL-WIDTH HEADER AND FOOTER --- */
-    header {
+ header {
   background: #004080;
   color: white;
-  padding: 20px;
+  padding: 30px 20px;
   text-align: center;
-  width: 100vw; 
-  margin-left: calc(50% - 50vw); 
+  width: 100%;
+  box-sizing: border-box; /* Ensures padding doesn't add to width */
 }
+
 footer {
   background: #004080;
   color: white;
   padding: 20px;
   text-align: center;
-  width: 100vw; 
-  margin-left: calc(50% - 50vw); 
+  width: 100%;
+  box-sizing: border-box;
   margin-top: auto;
 }
+/* --- END FINAL FIX --- */
 
 html, body {
   height: 100%;
-  overflow-x: hidden; 
+  overflow-x: hidden; /* Important: Prevents horizontal scrollbar from 100vw trick */
 }
 
 body {
@@ -41,28 +42,20 @@ body {
   flex-direction: column;
 }
 
+/* --- STABILIZED CONTAINER --- *//* --- STABILIZED FULL-WIDTH CONTAINER --- */
 .container {
-  max-width: 1100px; 
+  max-width: 1100px; /* This is the standard "Big" size of your table */
   margin: 0 auto;
   padding: 0 20px;
-  width: 95%; 
+  width: 95%; /* Responsive fall-back */
 }
 
-/* NEW: Table scroll wrapper */
-.table-responsive {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  margin-bottom: 20px;
-  border-radius: 12px;
-}
-
-.accordion {
+/* --- ALWAYS BIG PROGRAMME BARS --- */.accordion {
   background: #ffffff;
   color: #004080;
   cursor: pointer;
-  padding: 25px 35px; 
-  margin-bottom: 15px;
+  padding: 18px 20px; /* Reduced for mobile comfort */
+  margin-bottom: 12px;
   width: 100%; 
   display: flex;
   justify-content: space-between;
@@ -70,41 +63,47 @@ body {
   box-sizing: border-box;
   border: 1px solid #e0e6ed;
   outline: none;
-  font-size: 20px;
+  font-size: 16px; /* Scaled down from 20px */
   font-weight: 700;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
+  text-align: left; /* Ensures text starts from left on small screens */
 }
 
+/* When the bar is clicked, it stays the same size but changes color */
 .accordion.active {
   background: #004080;
   color: #ffffff;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  margin-bottom: 0; 
+  margin-bottom: 0; /* Connects directly to the table below */
   box-shadow: none;
 }
 
+/* --- MATCHING PANEL --- */
 .panel {
   width: 100%;
   box-sizing: border-box;
-  padding: 10px 30px 30px 30px; 
+  padding: 15px; /* Reduced padding for more screen real estate */
   background-color: white;
   display: none;
-  overflow: hidden;
   border: 1px solid #e0e6ed;
   border-top: none;
   border-radius: 0 0 12px 12px;
   margin-bottom: 25px;
-  animation: fadeIn 0.4s ease-out;
+  /* Added these two lines for scrolling: */
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch; 
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
+table {
+  min-width: 600px; /* Forces the table to maintain a readable width, triggering the scroll */
+  width: 100%;
+  border-collapse: collapse;
 }
 
+    /* --- MODERN TABLE DESIGN --- */
 table {
   width: 100%;
   border-collapse: separate;
@@ -112,10 +111,9 @@ table {
   margin: 25px 0;
   border: 1px solid #e0e6ed;
   border-radius: 12px;
-  overflow: hidden; 
+  overflow: hidden; /* Ensures rounded corners work */
   background-color: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  min-width: 800px; /* Ensures the table doesn't squash and triggers scroll */
 }
 
 th {
@@ -126,6 +124,7 @@ th {
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: 0.5px;
+  border: none;
 }
 
 td {
@@ -135,35 +134,50 @@ td {
   font-size: 14px;
 }
 
+/* Zebra striping for readability */
 tr:nth-child(even) {
   background-color: #f8f9fa;
 }
 
+/* Hover effect for rows */
 tr:hover {
   background-color: #f1f7ff !important;
   transition: background-color 0.2s ease;
 }
 
-.note {
-  background: #f8f9fa; 
-  border-left: 6px solid #004080; 
+/* Search highlight style */
+tr.highlight {
+  background-color: #fff9c4 !important; /* Soft yellow */
+  font-weight: bold;
+}
+
+/* Remove bottom border from the last row to keep it clean */
+tr:last-child td {
+  border-bottom: none;
+}
+    .note {
+  background: #f8f9fa; /* Professional light grey */
+  border-left: 6px solid #004080; /* Bold Navy accent */
   padding: 25px;
   margin: 25px 0;
   border-radius: 12px;
   color: #333;
   line-height: 1.6;
   font-size: 15px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
   position: relative;
 }
-
+/* --- UPDATED MOBILE-FRIENDLY SEARCH ZONE --- */
 .search-container {
-  background: #f1f3f5; 
+  background: #f1f3f5;
   margin: 0 auto 30px auto;
   padding: 30px 20px;
   text-align: center;
-  width: 100vw; 
-  margin-left: calc(50% - 50vw); 
+  width: 100%; /* Changed from 100vw */
+  box-sizing: border-box; /* Prevents overflow */
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
   border-bottom: 1px solid #e9ecef;
+  border-radius: 12px; /* Matches the rest of the UI */
 }
 
 .search-container input[type="text"] {
@@ -171,51 +185,85 @@ tr:hover {
   width: 100%;
   max-width: 600px;
   border: 2px solid #dde2e7;
-  border-radius: 50px; 
+  border-radius: 50px;
   font-size: 16px;
   background: #ffffff;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-sizing: border-box; /* Crucial for mobile */
 }
 
+/* Animation when the user clicks the search bar */
+.search-container input[type="text"]:focus {
+  outline: none;
+  border-color: #0066cc;
+  width: 100%;
+  max-width: 650px; /* Expands slightly when active */
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Subtle placeholder styling */
+.search-container input[type="text"]::placeholder {
+  color: #adb5bd;
+  transition: opacity 0.3s;
+}
+
+.search-container input[type="text"]:focus::placeholder {
+  opacity: 0.5;
+}
+    tr.highlight {
+      background-color: #ffff99 !important;
+    }
+    .download-icon {
+  float: right;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.download-icon:hover {
+  opacity: 0.8;
+}
 .download-bar {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   padding: 12px 24px;
-  background: #0066cc; 
+  background: #0066cc; /* Action Blue for clickability */
   color: #ffffff !important;
-  border-radius: 50px; 
+  border-radius: 50px; /* Modern Pill Shape */
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   float: right;
   border: none;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
 }
 
-.desktop-bar {
-  background: #ffcc00;
-  color: #333;
-  text-align: center;
-  padding: 10px;
-  font-weight: bold;
-  font-size: 14px;
-  display: none; 
+.download-bar span {
+  color: #ffffff !important;
+  margin: 0 !important; /* Resetting your previous margin */
 }
 
-@media (max-width: 768px) {
-  .desktop-bar {
-    display: block;
-  }
+.download-bar:hover {
+  background: #004080; /* Switches to Navy on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 64, 128, 0.3);
+}
+
+/* Clearfix to ensure the float doesn't break the box layout */
+.note::after {
+  content: "";
+  display: table;
+  clear: both;
 }
   </style>
+
 </head>
 <body>
-<div class="desktop-bar" id="desktopBar">
-  For a better experience, please switch to <b>Desktop Site</b> or scroll the table left/right.
-</div>
+
 <header>
-  <h1>CYBERNETICS MALAYSIA</h1>
+  <h1>GENOVASI UNIVERSITY MALAYSIA</h1>
   <h2>International Fee Structure 2025</h2>
   <p>Valid from 1st January 2025 until 31st December 2025</p>
 </header>
@@ -226,9 +274,8 @@ tr:hover {
     <input type="text" id="searchInput" placeholder="Search program name..." onkeyup="filterPrograms()" />
   </div>
 
-<h2 style="text-align:center; margin-top:10px;">Kolej Teknologi Antarabangsa Cybernetics (KTAC)</h2>
+ <!-- GENOVASI UNIVERSITY COLLEGE -->
 
-<div class="table-responsive">
 <table>
   <tr>
     <th>No</th>
@@ -241,89 +288,115 @@ tr:hover {
     <th>Total (RM)</th>
   </tr>
 
-  <tr><td>1</td><td>Certificate in Creative Multimedia</td><td>Certificate</td><td>1–2 Years</td><td>13,100</td><td>8,750</td><td>-</td><td>21,850</td></tr>
-  <tr><td>2</td><td>Certificate of Aviation Management</td><td>Certificate</td><td>1–2 Years</td><td>13,100</td><td>8,750</td><td>-</td><td>21,850</td></tr>
-  <tr><td>3</td><td>Certificate of Business Management</td><td>Certificate</td><td>1–2 Years</td><td>13,100</td><td>8,750</td><td>-</td><td>21,850</td></tr>
+  <tr><td>1</td><td>Foundation in Arts</td><td>Foundation</td><td>1 Year</td><td>10,000</td><td>10,000</td><td>-</td><td>20,000</td></tr>
 
-  <tr><td>4</td><td>Diploma in Creative Multimedia</td><td>Diploma</td><td>3 Years</td><td>14,200</td><td>9,750</td><td>10,250</td><td>34,200</td></tr>
-  <tr><td>5</td><td>Diploma in Aviation Management</td><td>Diploma</td><td>3 Years</td><td>14,200</td><td>9,750</td><td>10,250</td><td>34,200</td></tr>
-  <tr><td>6</td><td>Diploma in Halal Industry Management</td><td>Diploma</td><td>3 Years</td><td>14,200</td><td>9,750</td><td>10,250</td><td>34,200</td></tr>
-  <tr><td>7</td><td>Diploma in Accounting</td><td>Diploma</td><td>3 Years</td><td>14,200</td><td>9,750</td><td>10,250</td><td>34,200</td></tr>
-  <tr><td>8</td><td>Diploma in Early Childhood Management</td><td>Diploma</td><td>3 Years</td><td>14,200</td><td>9,750</td><td>10,250</td><td>34,200</td></tr>
-  <tr><td>9</td><td>Diploma in Business Management</td><td>Diploma</td><td>3 Years</td><td>14,200</td><td>9,750</td><td>10,250</td><td>34,200</td></tr>
-  <tr><td>10</td><td>Diploma in Computer Science</td><td>Diploma</td><td>3 Years</td><td>14,200</td><td>9,750</td><td>10,250</td><td>34,200</td></tr>
-  <tr><td>11</td><td>Diploma of Shariah</td><td>Diploma</td><td>3 Years</td><td>14,200</td><td>9,750</td><td>10,250</td><td>34,200</td></tr>
-  <tr><td>12</td><td>Diploma in Hotel Management</td><td>Diploma</td><td>3 Years</td><td>14,200</td><td>9,750</td><td>10,250</td><td>34,200</td></tr>
+  <tr><td>2</td><td>Diploma in Business Management</td><td>Diploma</td><td>2.5 Years</td><td>8,000</td><td>8,500</td><td>8,500</td><td>25,000</td></tr>
+  <tr><td>3</td><td>Diploma in Accounting</td><td>Diploma</td><td>2.5 Years</td><td>8,000</td><td>8,500</td><td>8,500</td><td>25,000</td></tr>
+
+  <tr><td>4</td><td>Bachelor of Arts in Media Technology</td><td>Bachelor</td><td>3 Years</td><td>11,000</td><td>12,000</td><td>12,000</td><td>35,000</td></tr>
+  <tr><td>5</td><td>Bachelor of Business Administration</td><td>Bachelor</td><td>3 Years</td><td>11,000</td><td>12,000</td><td>12,000</td><td>35,000</td></tr>
+  <tr><td>6</td><td>Bachelor of Corporate Management</td><td>Bachelor</td><td>3 Years</td><td>11,000</td><td>12,000</td><td>12,000</td><td>35,000</td></tr>
+  <tr><td>7</td><td>Bachelor of Financial Intelligence</td><td>Bachelor</td><td>3 Years</td><td>11,000</td><td>12,000</td><td>12,000</td><td>35,000</td></tr>
+  <tr><td>8</td><td>BSc (Hons) Accounting and Finance</td><td>Bachelor</td><td>3 Years</td><td>11,000</td><td>12,000</td><td>12,000</td><td>35,000</td></tr>
+
+  <tr><td>9</td><td>Master of Business Administration</td><td>Master</td><td>1.5 Years</td><td>11,000</td><td>12,000</td><td>-</td><td>23,000</td></tr>
+  <tr><td>10</td><td>Master of Education</td><td>Master</td><td>1.5 Years</td><td>11,000</td><td>12,000</td><td>-</td><td>23,000</td></tr>
+
+  <tr><td>11</td><td>Doctor of Philosophy in Business</td><td>PhD</td><td>3 Years</td><td>11,000</td><td>12,000</td><td>12,000</td><td>35,000</td></tr>
+  <tr><td>12</td><td>Doctor of Business Administration</td><td>PhD</td><td>3 Years</td><td>11,000</td><td>12,000</td><td>12,000</td><td>35,000</td></tr>
+  <tr><td>13</td><td>Doctor of Philosophy in Education</td><td>PhD</td><td>3 Years</td><td>11,000</td><td>12,000</td><td>12,000</td><td>35,000</td></tr>
+  <tr><td>14</td><td>Doctor of Philosophy in Art & Design</td><td>PhD</td><td>3 Years</td><td>11,000</td><td>12,000</td><td>12,000</td><td>35,000</td></tr>
 </table>
-</div>
 
 <div class="note">
-  <div class="download-bar" onclick="downloadPDF('ktac')">
+
+  <div class="download-bar" onclick="downloadPDF('genovasi')">
     <span>Download PDF</span>
     <span>⬇️</span>
   </div>
 
   <strong>First Payment (Upon Registration):</strong><br>
-  Certificate: RM13,100<br>
-  Diploma: RM14,200<br><br>
-
-  <strong>Includes:</strong><br>
-  EMGS Fee, Personal Bond, Application Fee, International Student Fee,
-  Registration Fee & First Year Tuition.<br><br>
+  Diploma: RM14,500<br>
+  Bachelor / Master / PhD: RM17,500<br><br>
 
   <strong>Important Notes:</strong><br>
   • EMGS fee is non-refundable.<br>
-  • English course required if no certificate (RM3,000).
+  • English course required if no proficiency certificate (RM3,000).
 </div>
 
+
+
 <footer>
-  <p>&copy; 2025 CYBERNETICS COLLEGE MALAYSIA.</p>
+  <p>&copy; 2025 GENOVASI University Malaysia.</p>
 </footer>
 
+<!-- JavaScript to handle accordion and search -->
 <script>
-  // JavaScript remains unchanged as the filter logic works with the new structure
-  const acc = document.querySelectorAll(".accordion");
-  acc.forEach(btn => {
-    btn.addEventListener("click", function() {
-      this.classList.toggle("active");
-      const panel = this.nextElementSibling;
-      panel.style.display = (panel.style.display === "block") ? "none" : "block";
-    });
+// 1. Unified Accordion Logic (No Desktop Prompt)
+const acc = document.querySelectorAll(".accordion");
+acc.forEach(btn => {
+  btn.addEventListener("click", function() {
+    this.classList.toggle("active");
+    const panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
   });
+});
 
+// 2. Search Filter Logic
 function filterPrograms() {
   const input = document.getElementById("searchInput").value.toLowerCase().trim();
   const tables = document.querySelectorAll("table");
+
   tables.forEach(table => {
     const rows = table.querySelectorAll("tr");
     let foundInTable = false;
+
     for (let i = 1; i < rows.length; i++) {
-      const row = rows[i];
-      const rowText = row.textContent.toLowerCase();
-      if (rowText.includes(input) && input !== "") {
-        row.style.display = "";
-        row.classList.add("highlight");
+      const rowText = rows[i].textContent.toLowerCase();
+      if (input !== "" && rowText.includes(input)) {
+        rows[i].style.display = "";
+        rows[i].classList.add("highlight");
         foundInTable = true;
       } else if (input === "") {
-        row.style.display = "";
-        row.classList.remove("highlight");
-        foundInTable = true;
+        rows[i].style.display = "";
+        rows[i].classList.remove("highlight");
       } else {
-        row.style.display = "none";
-        row.classList.remove("highlight");
+        rows[i].style.display = "none";
+        rows[i].classList.remove("highlight");
       }
+    }
+
+    const panel = table.closest(".panel");
+    const accordion = panel.previousElementSibling;
+    
+    if (foundInTable && input !== "") {
+      panel.style.display = "block";
+      accordion.classList.add("active");
+    } else if (input === "") {
+      panel.style.display = "none";
+      accordion.classList.remove("active");
     }
   });
 }
 
+// 4. Download Logic (Update 'filename' per university)
 function downloadPDF(programKey) {
+  const key = "download_time_" + programKey;
+  if (localStorage.getItem(key) && !confirm("Download again?")) return;
+  localStorage.setItem(key, new Date().getTime());
+
   const link = document.createElement("a");
-  link.href = "cybernetics-fees-2025.pdf"; 
-  link.download = "cybernetics_Fee_Structure_2025.pdf";
+  link.href = "genovasi-fees-2025.pdf"; // Change this line for each file
+  link.download = "Genovasi_Fee_Structure_2025.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 }
+
 </script>
 </body>
 </html>
