@@ -12,22 +12,22 @@
   background: #f9f9f9;
 }
 
- header {
+    /* --- FINAL FIX FOR FULL-WIDTH HEADER AND FOOTER --- */
+    header {
   background: #004080;
   color: white;
-  padding: 30px 20px;
+  padding: 20px;
   text-align: center;
-  width: 100%;
-  box-sizing: border-box; /* Ensures padding doesn't add to width */
+  width: 100vw; /* Force width to 100% of viewport width */
+  margin-left: calc(50% - 50vw); /* Compensate for potential body centering */
 }
-
 footer {
   background: #004080;
   color: white;
   padding: 20px;
   text-align: center;
-  width: 100%;
-  box-sizing: border-box;
+  width: 100vw; /* Force width to 100% of viewport width */
+  margin-left: calc(50% - 50vw); /* Compensate for potential body centering */
   margin-top: auto;
 }
 /* --- END FINAL FIX --- */
@@ -50,25 +50,28 @@ body {
   width: 95%; /* Responsive fall-back */
 }
 
-/* --- ALWAYS BIG PROGRAMME BARS --- */.accordion {
+/* --- ALWAYS BIG PROGRAMME BARS --- */
+.accordion {
   background: #ffffff;
   color: #004080;
   cursor: pointer;
-  padding: 18px 20px; /* Reduced for mobile comfort */
-  margin-bottom: 12px;
+  padding: 25px 35px; /* Large padding for a substantial feel */
+  margin-bottom: 15px;
+  
+  /* FIXED WIDTH LOGIC */
   width: 100%; 
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+  
   border: 1px solid #e0e6ed;
   outline: none;
-  font-size: 16px; /* Scaled down from 20px */
+  font-size: 20px;
   font-weight: 700;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
-  text-align: left; /* Ensures text starts from left on small screens */
 }
 
 /* When the bar is clicked, it stays the same size but changes color */
@@ -85,22 +88,28 @@ body {
 .panel {
   width: 100%;
   box-sizing: border-box;
-  padding: 15px; /* Reduced padding for more screen real estate */
+  padding: 10px 30px 30px 30px; /* Padding for the table inside */
   background-color: white;
   display: none;
+  overflow: hidden;
   border: 1px solid #e0e6ed;
   border-top: none;
   border-radius: 0 0 12px 12px;
   margin-bottom: 25px;
-  /* Added these two lines for scrolling: */
-  overflow-x: auto; 
-  -webkit-overflow-scrolling: touch; 
+  /* Smooth Fade-in */
+  animation: fadeIn 0.4s ease-out;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- TABLE TWEAK --- */
 table {
-  min-width: 600px; /* Forces the table to maintain a readable width, triggering the scroll */
   width: 100%;
-  border-collapse: collapse;
+  margin: 30px 0; /* Spacing inside the panel */
+  /* Remove existing table width/margin if they conflict */
 }
 
     /* --- MODERN TABLE DESIGN --- */
@@ -167,17 +176,16 @@ tr:last-child td {
   box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
   position: relative;
 }
-/* --- UPDATED MOBILE-FRIENDLY SEARCH ZONE --- */
+    /* --- MODERN SEARCH ZONE --- */
 .search-container {
-  background: #f1f3f5;
+  background: #f1f3f5; /* Subtle grey background bar */
   margin: 0 auto 30px auto;
   padding: 30px 20px;
   text-align: center;
-  width: 100%; /* Changed from 100vw */
-  box-sizing: border-box; /* Prevents overflow */
+  width: 100vw; /* Full width of the viewport */
+  margin-left: calc(50% - 50vw); /* Centers the full-width bar */
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
   border-bottom: 1px solid #e9ecef;
-  border-radius: 12px; /* Matches the rest of the UI */
 }
 
 .search-container input[type="text"] {
@@ -185,10 +193,12 @@ tr:last-child td {
   width: 100%;
   max-width: 600px;
   border: 2px solid #dde2e7;
-  border-radius: 50px;
+  border-radius: 50px; /* Pill shape */
   font-size: 16px;
   background: #ffffff;
-  box-sizing: border-box; /* Crucial for mobile */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  color: #333;
 }
 
 /* Animation when the user clicks the search bar */
@@ -257,12 +267,38 @@ tr:last-child td {
   display: table;
   clear: both;
 }
+
+/* Desktop View Toggle Styles */
+#desktop-toggle-btn {
+  display: none; /* Hidden by default */
+  background: #ff9800;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin: 10px auto;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Only show the button on screens smaller than 1000px */
+@media (max-width: 1000px) {
+  #desktop-toggle-btn {
+    display: block;
+    width: 90%;
+  }
+}
+
+/* Class to force desktop width via JS */
+.force-desktop {
+  min-width: 1200px !important;
+}
+
   </style>
-
-
-  
 </head>
 <body>
+
 <header>
   <h1>BAC EDUCATION GROUP</h1>
   <h2>International Fee Structure 2025</h2>
@@ -271,15 +307,18 @@ tr:last-child td {
 
 <div class="container">
 
+<button id="desktop-toggle-btn" onclick="toggleDesktopView()">
+    🖥️ Switch to Desktop View for Better Table Layout
+  </button>
+
   <div class="search-container">
     <input type="text" id="searchInput" placeholder="Search program name..." onkeyup="filterPrograms()" />
   </div>
 
-  
-  <!-- UNIMY -->
-<button class="accordion">UNIMY</button>
-<div class="panel">
-  <table>
+  <!-- FOUNDATION -->
+  <button class="accordion">UNIMI</button>
+  <div class="panel">
+    <table>
     <tr>
       <th>No</th><th>Programme</th><th>Duration</th><th>Tuition Fees (1st Year)</th><th>Tuition Fees (Following Years)</th><th>Total Tuition Fee</th>
     </tr>
@@ -304,11 +343,11 @@ tr:last-child td {
     <tr><td>19</td><td>Doctor of Philosophy in Engineering</td><td>3 years</td><td>RM16,168</td><td>RM9,000 / 2nd & 3rd year</td><td>RM34,168</td></tr>
     <tr><td>20</td><td>Doctor of Philosophy in Business Management</td><td>3 years</td><td>RM16,168</td><td>RM9,000 / 2nd & 3rd year</td><td>RM34,168</td></tr>
   </table>
-  <div class="note">
-    <div class="download-bar" onclick="downloadPDF('unimy')">
-      <span>Download PDF</span>
-      <span>⬇️</span>
-    </div>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('foundation')">
+  <span>Download PDF</span>
+  <span>⬇️</span>
+</div>
     <strong>Other Fees:</strong><br>
     EMGS & Application Fee: RM4,800 (Non-refundable)<br>
     Visa Renewal Fee: RM1,200 / year (Non-refundable)<br>
@@ -319,12 +358,11 @@ tr:last-child td {
     Bachelor of Computer Engineering: May, Sep<br>
     Postgraduate Programs: Feb, May, Sep (Course Work); Open throughout the year (Research)
   </div>
-</div>
+  </div>
 
-  <!-- BAC -->
 <button class="accordion">BAC COLLEGE</button>
-<div class="panel">
-  <table>
+  <div class="panel">
+    <table>
     <tr>
       <th>No</th><th>Programme</th><th>Duration</th><th>Tuition Fees (1st Year)</th><th>Tuition Fees (Following Years)</th><th>Total Tuition Fee</th>
     </tr>
@@ -337,11 +375,11 @@ tr:last-child td {
     <tr><td>7</td><td>UK Transfer Degree Programme Law</td><td>3 years</td><td>RM36,168 + UK Partner Fees</td><td>RM35,000 + UK Partner Fees</td><td>RM71,168 + UK Partner Fees</td></tr>
     <tr><td>8</td><td>UK Transfer Degree Programme Business</td><td>3 years</td><td>RM27,168 + UK Partner Fees</td><td>RM26,000 + UK Partner Fees</td><td>RM53,168 + UK Partner Fees</td></tr>
   </table>
-  <div class="note">
-    <div class="download-bar" onclick="downloadPDF('bac')">
-      <span>Download PDF</span>
-      <span>⬇️</span>
-    </div>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('foundation')">
+  <span>Download PDF</span>
+  <span>⬇️</span>
+</div>
     <strong>Misc Fees:</strong><br>
     EMGS & Application Fee: RM4,800<br>
     Resource Fee: RM1,000 / per year<br>
@@ -349,12 +387,12 @@ tr:last-child td {
     Personal Bond: RM750<br>
     <strong>Total Misc Fees: RM7,750 + yearly Resource & Visa fees</strong>
   </div>
-</div>
+  </div>
 
-<!-- IACT -->
-<button class="accordion">IACT COLLEGE</button>
-<div class="panel">
-  <table>
+  <!-- BACHELOR -->
+  <button class="accordion">IACT COLLEGE</button>
+  <div class="panel">
+    <table>
     <tr>
       <th>No</th><th>Programme</th><th>Duration</th><th>Tuition Fees (1st Year)</th><th>Tuition Fees (Following Years)</th><th>Total Tuition Fee</th>
     </tr>
@@ -367,11 +405,11 @@ tr:last-child td {
     <tr><td>7</td><td>BA Hons in Social Media Management - University of Sunderland (3+0)</td><td>3 years</td><td>RM29,768</td><td>RM28,600 / 2nd year, RM29,800 / 3rd year</td><td>RM88,168</td></tr>
     <tr><td>8</td><td>UK Degree Transfer Programme (Mass Communication) (2+1)</td><td>3 years</td><td>RM28,168 + UK Partner Fees</td><td>RM27,000 + UK Partner Fees</td><td>RM55,168 + UK Partner Fees</td></tr>
   </table>
-  <div class="note">
-    <div class="download-bar" onclick="downloadPDF('iact')">
-      <span>Download PDF</span>
-      <span>⬇️</span>
-    </div>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('foundation')">
+  <span>Download PDF</span>
+  <span>⬇️</span>
+</div>
     <strong>Misc Fees:</strong><br>
     EMGS & Application Fee: RM4,800<br>
     Resource Fee: RM1,000 / per year<br>
@@ -379,9 +417,10 @@ tr:last-child td {
     Personal Bond: RM750<br>
     <strong>Total Misc Fees: RM7,750 + yearly Resource & Visa fees</strong>
   </div>
-</div>
+  </div>
 
-<!-- VERITAS -->
+
+  <!-- MASTERS -->
 <button class="accordion">VERITAS UNIVERSITY</button>
 <div class="panel">
   <table>
@@ -397,10 +436,10 @@ tr:last-child td {
     <tr><td>7</td><td>Masters of Business Administration</td><td>1.5 years</td><td>RM16,168</td><td>RM9,000</td><td>RM25,168</td></tr>
   </table>
   <div class="note">
-    <div class="download-bar" onclick="downloadPDF('veritas')">
-      <span>Download PDF</span>
-      <span>⬇️</span>
-    </div>
+    <div class="download-bar" onclick="downloadPDF('foundation')">
+  <span>Download PDF</span>
+  <span>⬇️</span>
+</div>
     <strong>Other Fees:</strong><br>
     EMGS & Application Fee: RM4,800 (Non-refundable)<br>
     Resource Fee: RM1,000 / year (Non-refundable)<br>
@@ -413,7 +452,7 @@ tr:last-child td {
   </div>
 </div>
 
-<!-- RELIANCE -->
+<!-- PHD -->
 <button class="accordion">RELIANCE COLLEGE</button>
 <div class="panel">
   <table>
@@ -425,9 +464,9 @@ tr:last-child td {
     <tr><td>3</td><td>Diploma in Hotel Management</td><td>2.5 years</td><td>RM16,168</td><td>RM13,000</td><td>RM29,168</td></tr>
   </table>
   <div class="note">
-    <div class="download-bar" onclick="downloadPDF('reliance')">
-      <span>Download PDF</span>
-      <span>⬇️</span>
+    <div class="download-bar" onclick="downloadPDF('foundation')">
+  <span>Download PDF</span>
+  <span>⬇️</span>
     </div>
     <strong>Other Fees:</strong><br>
     EMGS & Application Fee: RM4,800 (Non-refundable)<br>
@@ -439,77 +478,131 @@ tr:last-child td {
 </div>
 
 
-
 <footer>
-  <p>&copy; 2025 BAC EDUCATION GROUP.</p>
+  <p>&copy; 2025 City University Malaysia.</p>
 </footer>
 
 <!-- JavaScript to handle accordion and search -->
 <script>
-// 1. Unified Accordion Logic (No Desktop Prompt)
-const acc = document.querySelectorAll(".accordion");
-acc.forEach(btn => {
-  btn.addEventListener("click", function() {
-    this.classList.toggle("active");
-    const panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-});
+  let isDesktopMode = false;
 
-// 2. Search Filter Logic
-function filterPrograms() {
-  const input = document.getElementById("searchInput").value.toLowerCase().trim();
-  const tables = document.querySelectorAll("table");
-
-  tables.forEach(table => {
-    const rows = table.querySelectorAll("tr");
-    let foundInTable = false;
-
-    for (let i = 1; i < rows.length; i++) {
-      const rowText = rows[i].textContent.toLowerCase();
-      if (input !== "" && rowText.includes(input)) {
-        rows[i].style.display = "";
-        rows[i].classList.add("highlight");
-        foundInTable = true;
-      } else if (input === "") {
-        rows[i].style.display = "";
-        rows[i].classList.remove("highlight");
+  // 1. Unified Accordion & Desktop Tip Logic
+  const acc = document.querySelectorAll(".accordion");
+  acc.forEach(btn => {
+    btn.addEventListener("click", function() {
+      // Toggle the Active class for the button
+      this.classList.toggle("active");
+      const panel = this.nextElementSibling;
+      
+      // Open or Close the panel
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
       } else {
-        rows[i].style.display = "none";
-        rows[i].classList.remove("highlight");
+        panel.style.display = "block";
+        
+        // ONLY trigger the desktop tip if opening a panel on mobile
+        if (window.innerWidth < 1000 && !isDesktopMode) {
+          // Use a small timeout so the panel opens first, then the alert shows
+          setTimeout(() => {
+            const wantDesktop = confirm("Tip: These tables are large and look best in Desktop View. Switch now?");
+            if (wantDesktop) {
+              toggleDesktopView();
+            }
+          }, 300);
+        }
       }
-    }
+    });
+  });
 
-    const panel = table.closest(".panel");
-    const accordion = panel.previousElementSibling;
+  // 2. Desktop View Toggle Function
+  function toggleDesktopView() {
+    const viewport = document.querySelector('meta[name="viewport"]');
+    const btn = document.getElementById('desktop-toggle-btn');
     
-    if (foundInTable && input !== "") {
-      panel.style.display = "block";
-      accordion.classList.add("active");
-    } else if (input === "") {
-      panel.style.display = "none";
-      accordion.classList.remove("active");
+    if (!isDesktopMode) {
+      viewport.setAttribute('content', 'width=1200, initial-scale=0.3');
+      document.body.classList.add('force-desktop');
+      if(btn) {
+        btn.innerHTML = "📱 Switch Back to Mobile View";
+        btn.style.background = "#4CAF50";
+      }
+      isDesktopMode = true;
+    } else {
+      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+      document.body.classList.remove('force-desktop');
+      if(btn) {
+        btn.innerHTML = "🖥️ Switch to Desktop View for Better Table Layout";
+        btn.style.background = "#ff9800";
+      }
+      isDesktopMode = false;
+    }
+  }
+
+  // 3. Search Filter Logic
+  function filterPrograms() {
+    const input = document.getElementById("searchInput").value.toLowerCase().trim();
+    const tables = document.querySelectorAll("table");
+
+    tables.forEach(table => {
+      const rows = table.querySelectorAll("tr");
+      let foundInTable = false;
+
+      for (let i = 1; i < rows.length; i++) {
+        const rowText = rows[i].textContent.toLowerCase();
+        if (rowText.includes(input) && input !== "") {
+          rows[i].style.display = "";
+          rows[i].classList.add("highlight");
+          foundInTable = true;
+        } else if (input === "") {
+          rows[i].style.display = "";
+          rows[i].classList.remove("highlight");
+          foundInTable = false; 
+        } else {
+          rows[i].style.display = "none";
+          rows[i].classList.remove("highlight");
+        }
+      }
+
+      const panel = table.closest(".panel");
+      const accordion = panel.previousElementSibling;
+      
+      if (foundInTable && input !== "") {
+        panel.style.display = "block";
+        accordion.classList.add("active");
+      } else if (input === "") {
+        panel.style.display = "none";
+        accordion.classList.remove("active");
+      }
+    });
+  }
+
+  // 4. PDF Download Logic
+  function downloadPDF(programKey) {
+    const key = "cityu_pdf_download_time_" + programKey;
+    const lastDownload = localStorage.getItem(key);
+    if (lastDownload) {
+      if (!confirm("You already downloaded this. Download again?")) return;
+    }
+    localStorage.setItem(key, new Date().getTime());
+    const link = document.createElement("a");
+    link.href = "city-fees-2025.pdf"; 
+    link.download = "CityU_Fee_Structure_2025.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  // 5. Handle URL parameters (Auto-search)
+  document.addEventListener("DOMContentLoaded", function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTerm = urlParams.get('q');
+    if (searchTerm) {
+      const searchInput = document.getElementById('searchInput');
+      searchInput.value = decodeURIComponent(searchTerm); 
+      filterPrograms();
+      searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   });
-}
-
-// 4. Download Logic (Update 'filename' per university)
-function downloadPDF(programKey) {
-  const key = "download_time_" + programKey;
-  if (localStorage.getItem(key) && !confirm("Download again?")) return;
-  localStorage.setItem(key, new Date().getTime());
-
-  const link = document.createElement("a");
-  link.href = "university-fees-2025.pdf"; // Change this line for each file
-  link.download = "Fee_Structure_2025.pdf";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-}
 </script>
 
 </body>
