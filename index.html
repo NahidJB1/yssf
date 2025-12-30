@@ -52,66 +52,23 @@
 .menu-icon {
   position: static !important;
 }
-    /* --- MODERN FULL-SCREEN NAVIGATION --- */
-.nav-menu {
-  position: fixed;
-  top: 0;
-  right: -100%; /* Hidden by default */
-  width: 100%;
-  height: 100vh;
-  background: rgba(0, 64, 128, 0.95); /* Your brand blue with transparency */
-  backdrop-filter: blur(10px); /* Modern blur effect */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-  transition: right 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-}
-
-.nav-menu.active {
-  right: 0; /* Slides in */
-}
-
-.nav-menu a {
-  color: white;
-  font-size: 28px;
-  font-weight: bold;
-  text-decoration: none;
-  margin: 15px 0;
-  padding: 10px 20px;
-  position: relative;
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-/* Staggered animation for links when menu opens */
-.nav-menu.active a {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Delay each link slightly for a "waterfall" effect */
-.nav-menu.active a:nth-child(1) { transition-delay: 0.2s; }
-.nav-menu.active a:nth-child(2) { transition-delay: 0.3s; }
-.nav-menu.active a:nth-child(3) { transition-delay: 0.4s; }
-.nav-menu.active a:nth-child(4) { transition-delay: 0.5s; }
-
-.nav-menu a:hover {
-  color: #FFD700; /* Gold */
-  letter-spacing: 2px;
-}
-
-/* Add a Close Button icon inside the menu */
-.close-menu {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  font-size: 35px;
-  color: white;
-  cursor: pointer;
-}
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: rgba(0, 0, 0, 0.9);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      z-index: 1000;
+    }
+    .nav-menu a {
+      display: block;
+      color: white;
+      margin-bottom: 10px;
+      text-decoration: none;
+    }
 
     header img {
       position: absolute;
@@ -380,6 +337,8 @@
   background: #FFD700;
   color: #004080;
 }
+
+
 /* Container adjustment for stability and look */
 .uni-grid {
   display: grid;
@@ -1193,12 +1152,11 @@
   </div>
 
   <div class="nav-menu" id="navMenu">
-  <div class="close-menu" onclick="toggleMenu()">&times;</div>
-  <a href="#" onclick="toggleMenu()">Home</a>
-  <a href="#about" onclick="toggleMenu()">About Us</a>
-  <a href="university-requirements.html" onclick="toggleMenu()">Learn Requirements</a>
-  <a href="#contact" onclick="toggleMenu()">Contact Us</a>
-</div>
+    <a href="#">Home</a>
+    <a href="#about">About Us</a>
+    <a href="university-requirements.html">Learn Requirements</a>
+    <a href="#contact">Contact Us</a>
+  </div>
   
   <img src="yscover.png" alt="YS Cover">
   <div class="text-overlay">
@@ -1246,9 +1204,9 @@
 
 <section class="search-section">
   <h2><i class="fas fa-graduation-cap"></i> Find Your Perfect Program</h2>
-  <p style="margin-bottom: 20px; color: #666;">Enter a subject (e.g. "Business", "IT", "Engineering") to see available universities.</p>
+  <p style="margin-bottom: 20px; color: #666;">Enter a subject (e.g. "Business", "IT") to see available universities.</p>
   <div class="search-box">
-    <input type="text" id="subjectInput" placeholder="What do you want to study?" class="search-bar" oninput="searchUniversities()">
+    <input type="text" id="subjectInput" placeholder="What do you want to study?" class="search-bar" onkeyup="searchUniversities()">
     <button onclick="searchUniversities()">
       <i class="fas fa-search"></i> Search
     </button>
@@ -1665,92 +1623,9 @@
   </footer>
 
  <script>
-  let ALL_PROGRAMS = []; // Global array to hold ALL universities and their programs
-  
-  // 1. Fetch data from the universities.json file on page load
-  async function fetchAllPrograms() {
-    try {
-      // The relative path is correct since universities.json is in the root
-      const response = await fetch('universities.json');
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      ALL_PROGRAMS = await response.json();
-      console.log("Programs data loaded successfully.");
-    } catch (error) {
-      console.error("Could not fetch programs data:", error);
-      document.getElementById('searchResults').innerHTML = '<p style="color: red;">Error loading university data. Please try again later.</p>';
-    }
-  }
+let ALL_PROGRAMS = []; 
 
-  // 2. The Universal Search function
-  function searchUniversities() {
-    const input = document.getElementById("subjectInput").value.toLowerCase().trim();
-    const resultBox = document.getElementById("searchResults");
-    resultBox.innerHTML = "";
-    
-    if (input.length < 3) {
-      resultBox.innerHTML = "<p>Start typing a subject name (e.g., 'Law', 'Film', 'Nursing').</p>";
-      return;
-    }
-
-    let foundResults = [];
-    const searchTerms = input.split(' ').filter(term => term.length > 0);
-    
-    // Search ALL programs across ALL universities loaded from the JSON
-    ALL_PROGRAMS.forEach(uni => {
-      const universityName = uni.name;
-      const universityLink = uniLinks[universityName]; // Get link from hardcoded map
-      
-      uni.programs.forEach(program => {
-        const programNameLower = program.name.toLowerCase();
-        
-        // Check if ALL search terms exist in the program name
-        const allTermsMatch = searchTerms.every(term => programNameLower.includes(term));
-        
-        if (allTermsMatch) {
-          // Determine the campus/entity name for display, especially for groups like BAC
-          let campusName = program.campus ? ` (${program.campus})` : '';
-
-          // Add only unique program entries to the results array
-          const identifier = universityName + program.name + campusName;
-          if (!foundResults.some(item => item.identifier === identifier)) {
-            foundResults.push({
-              identifier: identifier,
-              uni: universityName,
-              campus: program.campus,
-              program: program.name,
-              link: universityLink
-            });
-          }
-        }
-      });
-    });
-
-// 3. Display Results (Updated for modern card look)
-    if (foundResults.length > 0) {
-      foundResults.forEach(match => {
-        const campusDisplay = match.campus ? ` <small style="color:#888;">— ${match.campus}</small>` : '';
-        const encodedProgram = encodeURIComponent(match.program);
-        
-        const linkButton = match.link 
-          ? `<button onclick="window.location.href='${match.link}?q=${encodedProgram}';" class="go-to-fees">View Fees</button>` 
-          : `<button disabled>Contact Agent</button>`;
-          
-        resultBox.innerHTML += `
-          <div class="search-result-item">
-            <div>
-               <strong style="color:#004080; display:block; font-size: 1.1em;">${match.program}</strong>
-               <span style="font-size: 0.9em; color: #555;">${match.uni}${campusDisplay}</span>
-            </div>
-            ${linkButton}
-          </div>
-        `;
-      });
-    } else {
-      resultBox.innerHTML = "<div style='padding:20px; color:#d9534f; background:#fff5f5; border-radius:10px;'>No programs found. Try searching for 'Business' or 'Science'.</div>";
-    }
-
+  // Move the links object OUTSIDE so the function can always see it
   const uniLinks = {
     "City University Malaysia": "city-university.html",
     "Infrastructure University Kuala Lumpur (IUKL)": "iukl-fees.html",
@@ -1764,22 +1639,81 @@
     "SEGI UNIVERSITY MALAYSIA": "segi-university.html",
     "Taylor's University": "taylors-university.html",
     "Binary University": "binary-university.html",
-    "King's University": "kings-university.html", // <-- ADD THIS COMMA
-    "Binary University of Management & Entrepreneurship": "binary-duniversity.html", 
+    "King's University": "kings-university.html",
+    "Binary University of Management & Entrepreneurship": "binary-university.html", 
     "Kings University College": "kings-university.html"
   };
 
-  function toggleMenu() {
-  const menu = document.getElementById('navMenu');
-  menu.classList.toggle('active');
-  
-  // Optional: Prevent background scrolling when menu is open
-  if (menu.classList.contains('active')) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = 'auto';
+  async function fetchAllPrograms() {
+    try {
+      const response = await fetch('universities.json');
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      ALL_PROGRAMS = await response.json();
+      console.log("Programs data loaded successfully.");
+    } catch (error) {
+      console.error("Could not fetch programs data:", error);
+      document.getElementById('searchResults').innerHTML = '<p style="color: red;">Error loading university data.</p>';
+    }
   }
-}
+
+  function searchUniversities() {
+    const input = document.getElementById("subjectInput").value.toLowerCase().trim();
+    const resultBox = document.getElementById("searchResults");
+    
+    resultBox.innerHTML = "";
+    
+    if (input.length < 2) {
+      return; // Wait for at least 2 characters
+    }
+
+    let foundResults = [];
+    const searchTerms = input.split(' ').filter(term => term.length > 0);
+    
+    ALL_PROGRAMS.forEach(uni => {
+      const universityName = uni.name;
+      // Use the global uniLinks map
+      const universityLink = uniLinks[universityName] || "#"; 
+      
+      uni.programs.forEach(program => {
+        const programNameLower = program.name.toLowerCase();
+        const allTermsMatch = searchTerms.every(term => programNameLower.includes(term));
+        
+        if (allTermsMatch) {
+          foundResults.push({
+            uni: universityName,
+            campus: program.campus,
+            program: program.name,
+            link: universityLink
+          });
+        }
+      });
+    });
+
+    if (foundResults.length > 0) {
+      // Limit to top 10 results for performance
+      foundResults.slice(0, 10).forEach(match => {
+        const campusDisplay = match.campus ? ` — ${match.campus}` : '';
+        const encodedProgram = encodeURIComponent(match.program);
+        
+        resultBox.innerHTML += `
+          <div class="search-result-item">
+            <div>
+               <strong style="color:#004080; display:block; font-size: 1.1em;">${match.program}</strong>
+               <span style="font-size: 0.9em; color: #555;">${match.uni}${campusDisplay}</span>
+            </div>
+            <button onclick="window.location.href='${match.link}?q=${encodedProgram}';" class="go-to-fees">View Fees</button>
+          </div>
+        `;
+      });
+    } else {
+      resultBox.innerHTML = "<div style='padding:20px; color:#666; background:white; border-radius:10px;'>No results found. Try 'Business' or 'IT'.</div>";
+    }
+  }
+
+  function toggleMenu() {
+    const menu = document.getElementById('navMenu');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+  }
 
   // Run the fetch function on page load
   document.addEventListener('DOMContentLoaded', fetchAllPrograms);
