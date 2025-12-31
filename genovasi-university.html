@@ -12,23 +12,67 @@
   background: #f9f9f9;
 }
 
-    /* --- FINAL FIX FOR FULL-WIDTH HEADER AND FOOTER --- */
-    header {
+ /* --- UPDATED RESPONSIVE HEADER & FOOTER --- */
+/* --- FIXED FULL-WIDTH HEADER & FOOTER --- */
+header {
   background: #004080;
   color: white;
-  padding: 20px;
+  padding: 30px 20px;
   text-align: center;
-  width: 100vw; /* Force width to 100% of viewport width */
-  margin-left: calc(50% - 50vw); /* Compensate for potential body centering */
+  width: 100%;
+  box-sizing: border-box;
 }
+
 footer {
   background: #004080;
   color: white;
   padding: 20px;
   text-align: center;
-  width: 100vw; /* Force width to 100% of viewport width */
-  margin-left: calc(50% - 50vw); /* Compensate for potential body centering */
+  width: 100%;
+  box-sizing: border-box;
   margin-top: auto;
+}
+
+/* --- MOBILE RESPONSIVE PANEL WITH SCROLLBAR --- */
+.panel {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  background-color: white;
+  display: none;
+  border: 1px solid #e0e6ed;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  margin-bottom: 25px;
+  /* Horizontal scroll enabled */
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch; 
+}
+
+/* --- TABLE PROTECTION --- */
+table {
+  min-width: 800px; /* Ensures table remains readable while scrolling */
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 15px 0;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+/* --- TABLE FIX --- */
+table {
+  min-width: 700px; /* Forces table to be wide enough to scroll on mobile */
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 10px 0;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff;
 }
 /* --- END FINAL FIX --- */
 
@@ -50,28 +94,25 @@ body {
   width: 95%; /* Responsive fall-back */
 }
 
-/* --- ALWAYS BIG PROGRAMME BARS --- */
-.accordion {
+/* --- ALWAYS BIG PROGRAMME BARS --- */.accordion {
   background: #ffffff;
   color: #004080;
   cursor: pointer;
-  padding: 25px 35px; /* Large padding for a substantial feel */
-  margin-bottom: 15px;
-  
-  /* FIXED WIDTH LOGIC */
+  padding: 18px 20px; /* Reduced for mobile comfort */
+  margin-bottom: 12px;
   width: 100%; 
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  
   border: 1px solid #e0e6ed;
   outline: none;
-  font-size: 20px;
+  font-size: 16px; /* Scaled down from 20px */
   font-weight: 700;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
+  text-align: left; /* Ensures text starts from left on small screens */
 }
 
 /* When the bar is clicked, it stays the same size but changes color */
@@ -82,34 +123,6 @@ body {
   border-bottom-right-radius: 0;
   margin-bottom: 0; /* Connects directly to the table below */
   box-shadow: none;
-}
-
-/* --- MATCHING PANEL --- */
-.panel {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px 30px 30px 30px; /* Padding for the table inside */
-  background-color: white;
-  display: none;
-  overflow: hidden;
-  border: 1px solid #e0e6ed;
-  border-top: none;
-  border-radius: 0 0 12px 12px;
-  margin-bottom: 25px;
-  /* Smooth Fade-in */
-  animation: fadeIn 0.4s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- TABLE TWEAK --- */
-table {
-  width: 100%;
-  margin: 30px 0; /* Spacing inside the panel */
-  /* Remove existing table width/margin if they conflict */
 }
 
     /* --- MODERN TABLE DESIGN --- */
@@ -176,16 +189,17 @@ tr:last-child td {
   box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
   position: relative;
 }
-    /* --- MODERN SEARCH ZONE --- */
+/* --- UPDATED MOBILE-FRIENDLY SEARCH ZONE --- */
 .search-container {
-  background: #f1f3f5; /* Subtle grey background bar */
+  background: #f1f3f5;
   margin: 0 auto 30px auto;
   padding: 30px 20px;
   text-align: center;
-  width: 100vw; /* Full width of the viewport */
-  margin-left: calc(50% - 50vw); /* Centers the full-width bar */
+  width: 100%; /* Changed from 100vw */
+  box-sizing: border-box; /* Prevents overflow */
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
   border-bottom: 1px solid #e9ecef;
+  border-radius: 12px; /* Matches the rest of the UI */
 }
 
 .search-container input[type="text"] {
@@ -193,12 +207,10 @@ tr:last-child td {
   width: 100%;
   max-width: 600px;
   border: 2px solid #dde2e7;
-  border-radius: 50px; /* Pill shape */
+  border-radius: 50px;
   font-size: 16px;
   background: #ffffff;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  color: #333;
+  box-sizing: border-box; /* Crucial for mobile */
 }
 
 /* Animation when the user clicks the search bar */
@@ -267,34 +279,6 @@ tr:last-child td {
   display: table;
   clear: both;
 }
-
-/* --- FIX: DESKTOP TOGGLE STYLES --- */
-#desktop-toggle-btn {
-  display: none; 
-  background: #ff9800;
-  color: white;
-  border: none;
-  padding: 12px 15px;
-  border-radius: 8px;
-  font-weight: bold;
-  margin: 15px auto;
-  cursor: pointer;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: background 0.3s;
-}
-
-@media (max-width: 1000px) {
-  #desktop-toggle-btn {
-    display: block;
-    width: 95%;
-  }
-}
-
-.force-desktop {
-  min-width: 1200px !important;
-}
-/* --- END FIX --- */
   </style>
 </head>
 <body>
@@ -310,10 +294,6 @@ tr:last-child td {
 </header>
 
 <div class="container">
-
-  <button id="desktop-toggle-btn" onclick="toggleDesktopView()">
-    🖥️ Switch to Desktop View for Better Table Layout
-  </button>
 
   <div class="search-container">
     <input type="text" id="searchInput" placeholder="Search program name..." onkeyup="filterPrograms()" />
@@ -444,7 +424,7 @@ document.addEventListener("DOMContentLoaded", function() {
 function downloadPDF(programKey) {
   const link = document.createElement("a");
   link.href = "genovasi-fees-2025.pdf"; 
-  link.download = "genovasi_Fee_Structure_2025.pdf";
+  link.download = "Genovasi_Fee_Structure_2025.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
