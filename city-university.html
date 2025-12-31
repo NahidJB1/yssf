@@ -15,6 +15,7 @@
 }
 
  /* --- UPDATED RESPONSIVE HEADER & FOOTER --- */
+/* --- FIXED FULL-WIDTH HEADER & FOOTER --- */
 header {
   background: #004080;
   color: white;
@@ -34,7 +35,7 @@ footer {
   margin-top: auto;
 }
 
-/* --- UPDATED PANEL FOR HORIZONTAL SCROLLING --- */
+/* --- MOBILE RESPONSIVE PANEL WITH SCROLLBAR --- */
 .panel {
   width: 100%;
   box-sizing: border-box;
@@ -45,9 +46,22 @@ footer {
   border-top: none;
   border-radius: 0 0 12px 12px;
   margin-bottom: 25px;
-  /* Key features for mobile scroll: */
+  /* Horizontal scroll enabled */
   overflow-x: auto; 
   -webkit-overflow-scrolling: touch; 
+}
+
+/* --- TABLE PROTECTION --- */
+table {
+  min-width: 800px; /* Ensures table remains readable while scrolling */
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 15px 0;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff;
 }
 
 /* --- TABLE FIX --- */
@@ -493,7 +507,7 @@ tr:last-child td {
 
 <!-- JavaScript to handle accordion and search -->
 <script>
-// 1. Clean Accordion Logic (No Desktop Prompts)
+// 1. Restore Original Accordion Logic
 const acc = document.querySelectorAll(".accordion");
 acc.forEach(btn => {
   btn.addEventListener("click", function() {
@@ -507,7 +521,7 @@ acc.forEach(btn => {
   });
 });
 
-// 2. Search Filter Logic
+// 2. Restore Search Filter & Highlight Feature
 function filterPrograms() {
   const input = document.getElementById("searchInput").value.toLowerCase().trim();
   const tables = document.querySelectorAll("table");
@@ -520,7 +534,7 @@ function filterPrograms() {
       const rowText = rows[i].textContent.toLowerCase();
       if (input !== "" && rowText.includes(input)) {
         rows[i].style.display = "";
-        rows[i].classList.add("highlight");
+        rows[i].classList.add("highlight"); // Restore Highlight
         foundInTable = true;
       } else if (input === "") {
         rows[i].style.display = "";
@@ -534,6 +548,7 @@ function filterPrograms() {
     const panel = table.closest(".panel");
     const accordion = panel.previousElementSibling;
     
+    // Auto-open accordion if a match is found (needed for search from index)
     if (foundInTable && input !== "") {
       panel.style.display = "block";
       accordion.classList.add("active");
@@ -544,11 +559,22 @@ function filterPrograms() {
   });
 }
 
-// 3. PDF Download Logic for Alfa
+// 3. Restore URL Parameter Logic (View Chart Feature)
+document.addEventListener("DOMContentLoaded", function() {
+  const searchTerm = new URLSearchParams(window.location.search).get('q');
+  if (searchTerm) {
+    const input = document.getElementById('searchInput');
+    input.value = decodeURIComponent(searchTerm);
+    filterPrograms(); // This triggers the highlight and opens the correct chart
+    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+
+// 4. Original PDF Download Logic
 function downloadPDF(programKey) {
   const link = document.createElement("a");
-  link.href = "alfa-fees-2025.pdf"; 
-  link.download = "Alfa_Fee_Structure_2025.pdf";
+  link.href = "city-fees-2025.pdf"; 
+  link.download = "City_Fee_Structure_2025.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
