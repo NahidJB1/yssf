@@ -12,23 +12,67 @@
   background: #f9f9f9;
 }
 
-    /* --- FINAL FIX FOR FULL-WIDTH HEADER AND FOOTER --- */
-    header {
+ /* --- UPDATED RESPONSIVE HEADER & FOOTER --- */
+/* --- FIXED FULL-WIDTH HEADER & FOOTER --- */
+header {
   background: #004080;
   color: white;
-  padding: 20px;
+  padding: 30px 20px;
   text-align: center;
-  width: 100vw; /* Force width to 100% of viewport width */
-  margin-left: calc(50% - 50vw); /* Compensate for potential body centering */
+  width: 100%;
+  box-sizing: border-box;
 }
+
 footer {
   background: #004080;
   color: white;
   padding: 20px;
   text-align: center;
-  width: 100vw; /* Force width to 100% of viewport width */
-  margin-left: calc(50% - 50vw); /* Compensate for potential body centering */
+  width: 100%;
+  box-sizing: border-box;
   margin-top: auto;
+}
+
+/* --- MOBILE RESPONSIVE PANEL WITH SCROLLBAR --- */
+.panel {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  background-color: white;
+  display: none;
+  border: 1px solid #e0e6ed;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  margin-bottom: 25px;
+  /* Horizontal scroll enabled */
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch; 
+}
+
+/* --- TABLE PROTECTION --- */
+table {
+  min-width: 800px; /* Ensures table remains readable while scrolling */
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 15px 0;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+/* --- TABLE FIX --- */
+table {
+  min-width: 700px; /* Forces table to be wide enough to scroll on mobile */
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 10px 0;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff;
 }
 /* --- END FINAL FIX --- */
 
@@ -50,28 +94,25 @@ body {
   width: 95%; /* Responsive fall-back */
 }
 
-/* --- ALWAYS BIG PROGRAMME BARS --- */
-.accordion {
+/* --- ALWAYS BIG PROGRAMME BARS --- */.accordion {
   background: #ffffff;
   color: #004080;
   cursor: pointer;
-  padding: 25px 35px; /* Large padding for a substantial feel */
-  margin-bottom: 15px;
-  
-  /* FIXED WIDTH LOGIC */
+  padding: 18px 20px; /* Reduced for mobile comfort */
+  margin-bottom: 12px;
   width: 100%; 
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  
   border: 1px solid #e0e6ed;
   outline: none;
-  font-size: 20px;
+  font-size: 16px; /* Scaled down from 20px */
   font-weight: 700;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
+  text-align: left; /* Ensures text starts from left on small screens */
 }
 
 /* When the bar is clicked, it stays the same size but changes color */
@@ -82,34 +123,6 @@ body {
   border-bottom-right-radius: 0;
   margin-bottom: 0; /* Connects directly to the table below */
   box-shadow: none;
-}
-
-/* --- MATCHING PANEL --- */
-.panel {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px 30px 30px 30px; /* Padding for the table inside */
-  background-color: white;
-  display: none;
-  overflow: hidden;
-  border: 1px solid #e0e6ed;
-  border-top: none;
-  border-radius: 0 0 12px 12px;
-  margin-bottom: 25px;
-  /* Smooth Fade-in */
-  animation: fadeIn 0.4s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- TABLE TWEAK --- */
-table {
-  width: 100%;
-  margin: 30px 0; /* Spacing inside the panel */
-  /* Remove existing table width/margin if they conflict */
 }
 
     /* --- MODERN TABLE DESIGN --- */
@@ -176,16 +189,17 @@ tr:last-child td {
   box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
   position: relative;
 }
-    /* --- MODERN SEARCH ZONE --- */
+/* --- UPDATED MOBILE-FRIENDLY SEARCH ZONE --- */
 .search-container {
-  background: #f1f3f5; /* Subtle grey background bar */
+  background: #f1f3f5;
   margin: 0 auto 30px auto;
   padding: 30px 20px;
   text-align: center;
-  width: 100vw; /* Full width of the viewport */
-  margin-left: calc(50% - 50vw); /* Centers the full-width bar */
+  width: 100%; /* Changed from 100vw */
+  box-sizing: border-box; /* Prevents overflow */
   box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
   border-bottom: 1px solid #e9ecef;
+  border-radius: 12px; /* Matches the rest of the UI */
 }
 
 .search-container input[type="text"] {
@@ -193,12 +207,10 @@ tr:last-child td {
   width: 100%;
   max-width: 600px;
   border: 2px solid #dde2e7;
-  border-radius: 50px; /* Pill shape */
+  border-radius: 50px;
   font-size: 16px;
   background: #ffffff;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  color: #333;
+  box-sizing: border-box; /* Crucial for mobile */
 }
 
 /* Animation when the user clicks the search bar */
@@ -267,35 +279,6 @@ tr:last-child td {
   display: table;
   clear: both;
 }
-
-/* --- FIX: DESKTOP TOGGLE STYLES --- */
-#desktop-toggle-btn {
-  display: none; 
-  background: #ff9800;
-  color: white;
-  border: none;
-  padding: 12px 15px;
-  border-radius: 8px;
-  font-weight: bold;
-  margin: 15px auto;
-  cursor: pointer;
-  text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  transition: background 0.3s;
-}
-
-@media (max-width: 1000px) {
-  #desktop-toggle-btn {
-    display: block;
-    width: 95%;
-  }
-}
-
-.force-desktop {
-  min-width: 1200px !important;
-}
-/* --- END FIX --- */
-
   </style>
 </head>
 <body>
@@ -307,10 +290,6 @@ tr:last-child td {
 </header>
 
 <div class="container">
-
-  <button id="desktop-toggle-btn" onclick="toggleDesktopView()">
-    🖥️ Switch to Desktop View for Better Table Layout
-  </button>
 
   <div class="search-container">
     <input type="text" id="searchInput" placeholder="Search program name..." onkeyup="filterPrograms()" />
@@ -371,57 +350,22 @@ tr:last-child td {
   <p>&copy; 2025 CYBERNETICS COLLEGE MALAYSIA.</p>
 </footer>
 
-<!-- JavaScript to handle accordion and search -->
-let isDesktopMode = false;
-
-// 1. Desktop View Toggle Logic
-function toggleDesktopView() {
-  const viewport = document.querySelector('meta[name="viewport"]');
-  const btn = document.getElementById('desktop-toggle-btn');
-  
-  if (!isDesktopMode) {
-    viewport.setAttribute('content', 'width=1200, initial-scale=0.3');
-    document.body.classList.add('force-desktop');
-    btn.innerHTML = "📱 Switch Back to Mobile View";
-    btn.style.background = "#4CAF50";
-    isDesktopMode = true;
-  } else {
-    viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
-    document.body.classList.remove('force-desktop');
-    btn.innerHTML = "🖥️ Switch to Desktop View for Better Table Layout";
-    btn.style.background = "#ff9800";
-    isDesktopMode = false;
-  }
-}
-
-// 2. Combined Accordion and Popup Logic
-document.addEventListener("DOMContentLoaded", function() {
-  const acc = document.querySelectorAll(".accordion");
-  acc.forEach(btn => {
-    btn.addEventListener("click", function() {
-      // Show popup ONLY if on mobile and NOT already in desktop mode
-      if (window.innerWidth < 1000 && !isDesktopMode) {
-        const wantDesktop = confirm("Tip: This table looks best in Desktop View. Switch now?");
-        if (wantDesktop) { toggleDesktopView(); return; } 
-      }
-      
-      this.classList.toggle("active");
-      const panel = this.nextElementSibling;
-      panel.style.display = (panel.style.display === "block") ? "none" : "block";
-    });
+<script>
+// 1. Restore Original Accordion Logic
+const acc = document.querySelectorAll(".accordion");
+acc.forEach(btn => {
+  btn.addEventListener("click", function() {
+    this.classList.toggle("active");
+    const panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
   });
-
-  // Auto-run search from URL
-  const searchTerm = new URLSearchParams(window.location.search).get('q');
-  if (searchTerm) {
-    const input = document.getElementById('searchInput');
-    input.value = decodeURIComponent(searchTerm);
-    filterPrograms();
-    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  }
 });
 
-// 3. Search Logic
+// 2. Restore Search Filter & Highlight Feature
 function filterPrograms() {
   const input = document.getElementById("searchInput").value.toLowerCase().trim();
   const tables = document.querySelectorAll("table");
@@ -431,40 +375,50 @@ function filterPrograms() {
     let foundInTable = false;
 
     for (let i = 1; i < rows.length; i++) {
-      const row = rows[i];
-      if (row.textContent.toLowerCase().includes(input) && input !== "") {
-        row.style.display = "";
-        row.classList.add("highlight");
+      const rowText = rows[i].textContent.toLowerCase();
+      if (input !== "" && rowText.includes(input)) {
+        rows[i].style.display = "";
+        rows[i].classList.add("highlight"); // Restore Highlight
         foundInTable = true;
       } else if (input === "") {
-        row.style.display = "";
-        row.classList.remove("highlight");
-        foundInTable = true;
+        rows[i].style.display = "";
+        rows[i].classList.remove("highlight");
       } else {
-        row.style.display = "none";
-        row.classList.remove("highlight");
+        rows[i].style.display = "none";
+        rows[i].classList.remove("highlight");
       }
     }
 
-    const panel = table.closest(".panel") || table.nextElementSibling; // Fallback for non-accordion tables
-    const accordion = panel ? panel.previousElementSibling : null;
-
+    const panel = table.closest(".panel");
+    const accordion = panel.previousElementSibling;
+    
+    // Auto-open accordion if a match is found (needed for search from index)
     if (foundInTable && input !== "") {
-      if (panel) panel.style.display = "block";
-      if (accordion && accordion.classList.contains('accordion')) accordion.classList.add("active");
+      panel.style.display = "block";
+      accordion.classList.add("active");
+    } else if (input === "") {
+      panel.style.display = "none";
+      accordion.classList.remove("active");
     }
   });
 }
 
-// 4. Download Logic (Update 'filename' per university)
-function downloadPDF(programKey) {
-  const key = "download_time_" + programKey;
-  if (localStorage.getItem(key) && !confirm("Download again?")) return;
-  localStorage.setItem(key, new Date().getTime());
+// 3. Restore URL Parameter Logic (View Chart Feature)
+document.addEventListener("DOMContentLoaded", function() {
+  const searchTerm = new URLSearchParams(window.location.search).get('q');
+  if (searchTerm) {
+    const input = document.getElementById('searchInput');
+    input.value = decodeURIComponent(searchTerm);
+    filterPrograms(); // This triggers the highlight and opens the correct chart
+    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
 
+// 4. Original PDF Download Logic
+function downloadPDF(programKey) {
   const link = document.createElement("a");
-  link.href = "cybernetics-fees-2025.pdf"; // Change this line for each file
-  link.download = "cybernetics_Fee_Structure_2025.pdf";
+  link.href = "cybernetics-fees-2025.pdf"; 
+  link.download = "Cybernet_Fee_Structure_2025.pdf";
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
