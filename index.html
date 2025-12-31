@@ -72,14 +72,39 @@
       text-decoration: none;
     }
 
-    header img {
+    /* Header Slider Styles */
+    .header-slider {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
       z-index: 0;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out; /* Smooth cross-fade */
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    /* Darken the images slightly so text is readable */
+    .header-slider::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4); 
+      z-index: 1;
     }
 
     .text-overlay {
@@ -1090,7 +1115,6 @@
     <div class="action-icon" onclick="scrollToSearch()" title="Search">
       <i class="fas fa-search"></i>
     </div>
-    
     <div class="action-icon menu-icon" onclick="toggleMenu()" title="Menu">
       <i class="fas fa-bars"></i>
     </div>
@@ -1103,7 +1127,17 @@
     <a href="#contact">Contact Us</a>
   </div>
   
-  <img src="yscover.png" alt="YS Cover">
+  <div class="header-slider">
+    <img src="cityu_main.jpg" class="slide active" alt="City University">
+    <img src="iukl_main.jpg" class="slide" alt="IUKL">
+    <img src="cyberjaya_main.jpg" class="slide" alt="University of Cyberjaya">
+    <img src="inti_main.jpg" class="slide" alt="INTI">
+    <img src="segi_main.jpg" class="slide" alt="SEGi">
+    <img src="binary_main.jpg" class="slide" alt="Binary">
+    <img src="taylors_main.jpg" class="slide" alt="Taylors">
+    <img src="kings_main.jpg" class="slide" alt="Kings">
+  </div>
+
   <div class="text-overlay">
     <h3>STUDENT GATEWAY TO MALAYSIA</h3>
     <h1>YS STUDY FOCUS, THE BEST AND THE MOST TRUSTED PLACE TO START YOUR PROCESSING FOR MALAYSIA</h1>
@@ -1800,5 +1834,25 @@ function revealUniversities() {
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+
+  function nextSlide() {
+    // Remove active class from current image
+    slides[currentSlide].classList.remove('active');
+    
+    // Move to next image (loop back to 0 at the end)
+    currentSlide = (currentSlide + 1) % slides.length;
+    
+    // Add active class to new image
+    slides[currentSlide].classList.add('active');
+  }
+
+  // Change image every 4 seconds
+  setInterval(nextSlide, 4000);
+</script>
+
 </body>
 </html>
