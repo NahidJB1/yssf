@@ -27,6 +27,39 @@
       display: flex;
       align-items: center; /* Centers text overlay vertically */
     }
+
+    /* Logo positioning */
+    .header-logo-link {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      z-index: 1002; /* Ensures it stays above the slider and overlays */
+      display: block;
+    }
+
+    .header-logo {
+      height: 60px; /* Adjust this to make the logo bigger or smaller */
+      width: auto;
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5)); /* Adds shadow for visibility */
+      transition: transform 0.3s ease;
+    }
+
+    .header-logo:hover {
+      transform: scale(1.05);
+    }
+
+    /* Responsive adjustment for mobile */
+    @media (max-width: 600px) {
+      .header-logo {
+        height: 45px; 
+      }
+      .header-logo-link {
+        top: 20px;
+        left: 15px;
+      }
+    }
+
+
     /* Container for top right icons */
 .top-right-actions {
   position: absolute;
@@ -1143,6 +1176,18 @@
     <h1>YS STUDY FOCUS, THE BEST AND THE MOST TRUSTED PLACE TO START YOUR PROCESSING FOR MALAYSIA</h1>
     <a href="https://forms.gle/iFXQ3ohvY4JqCbWA9" target="_blank" class="start-btn">START YOUR PROCESSING</a>
   </div>
+
+  <a href="index.html" class="header-logo-link">
+    <img src="ys_logo.png" alt="YS Logo" class="header-logo">
+  </a>
+
+  <div class="top-right-actions">
+    <div class="action-icon" onclick="scrollToSearch()" title="Search">
+      <i class="fas fa-search"></i>
+    </div>
+    <div class="action-icon menu-icon" onclick="toggleMenu()" title="Menu">
+      <i class="fas fa-bars"></i>
+    </div>
 </header>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
