@@ -500,42 +500,31 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
- // 4. Updated PDF Download Logic
-function downloadPDF(programKey) {
-  const key = "tayloru_pdf_download_time_" + programKey;
+// 4. FIXED: INTI-Specific Multi-File Download Logic
+function downloadPDF(campusName, pdfFileName) {
+  const key = "inti_download_" + campusName.toLowerCase();
   const lastDownload = localStorage.getItem(key);
-  
+
+  // Optional: Check if they've downloaded it before
   if (lastDownload) {
-    if (!confirm("You already downloaded this. Download again?")) return;
-  }
-  
-  localStorage.setItem(key, new Date().getTime());
-  
-  let fileName = "";
-  
-  // Logic to select the specific PDF based on the button clicked
-  switch(programKey) {
-    case 'taylors_diploma':
-      fileName = "Taylors Diploma fee 2025.pdf";
-      break;
-    case 'taylors_masters':
-      fileName = "taylors-master-in-hospitality-management-fees-pg-usd-v030524.pdf";
-      break;
-    case 'taylors_masters_research':
-      fileName = "taylors-master-research-pg-fees-usd-v030524.pdf";
-      break;
-    case 'taylors_phd':
-      fileName = "taylors-fees-dr-philosophy-research-pg-usd-v130825.pdf";
-      break;
-    default:
-      // Fallback for Foundation or Bachelor if no specific file exists
-      fileName = "Taylors Diploma fee 2025.pdf"; 
+      const oneHour = 60 * 60 * 1000;
+      const now = new Date().getTime();
+      if (now - lastDownload < oneHour) {
+          if (!confirm(`You recently downloaded the ${campusName} Fees. Download again?`)) {
+              return;
+          }
+      }
   }
 
+  localStorage.setItem(key, new Date().getTime());
+
+  // Create a temporary link and trigger the download
   const link = document.createElement("a");
-  // If your PDFs are in a folder, add the folder path here, e.g., "pdfs/" + fileName
-  link.href = fileName; 
-  link.download = fileName;
+  
+  // FIX: Removed "pdf/" because files are in the main GitHub folder
+  link.href = pdfFileName; 
+  
+  link.download = pdfFileName;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
