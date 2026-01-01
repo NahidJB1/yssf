@@ -300,30 +300,71 @@
   margin-bottom: 15px;
 }
 
+/* --- NEW Search Bar Styling (Button Inside) --- */
+
+/* The Container - acts as the anchor */
 .search-box {
-  display: inline-flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content: center;
+  position: relative;        /* Necessary for absolute positioning of the button */
+  display: block;            
+  width: 95%;                /* Responsive width */
+  max-width: 600px;          /* Maximum width on desktop */
+  margin: 0 auto;            /* Center the box */
 }
 
+/* The Input Field - now larger and pill-shaped */
 .search-bar {
-  padding: 10px 15px;
-  width: 250px;
-  max-width: 80%;
-  border: 2px solid #007BFF;
-  border-radius: 25px;
-  font-size: 16px;
+  width: 100%;
+  padding: 18px 140px 18px 30px; /* Right padding is huge to make room for the button */
+  border: 2px solid #007BFF;     /* Blue border */
+  border-radius: 50px;           /* Full rounded corners */
+  font-size: 17px;
+  outline: none;                 /* Remove default browser outline */
+  background: white;
+  box-shadow: 0 5px 20px rgba(0, 123, 255, 0.05); /* Subtle shadow */
+  transition: all 0.3s ease;
 }
 
-.search-box button {
-  padding: 10px 20px;
-  cursor: pointer;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
+/* Add a glow when the user clicks to type */
+.search-bar:focus {
+  box-shadow: 0 5px 20px rgba(0, 123, 255, 0.15);
+  border-color: #0056b3;
 }
+
+/* The Search Button - Floating inside */
+.search-box button {
+  position: absolute;        /* Floats over the input */
+  top: 6px;                  /* Spacing from top */
+  right: 6px;                /* Spacing from right */
+  bottom: 6px;               /* Spacing from bottom (stretches height auto) */
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 40px;       /* Inner pill shape */
+  padding: 0 35px;           /* Width of the button */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+}
+
+.search-box button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.02);    /* Subtle pop effect */
+}
+
+/* Mobile Adjustment: Make text smaller if screen is tiny */
+@media (max-width: 500px) {
+  .search-bar {
+    padding: 15px 110px 15px 20px;
+    font-size: 15px;
+  }
+  .search-box button {
+    padding: 0 20px;
+    font-size: 14px;
+  }
+}
+
 /* Container for search results */
 #searchResults {
   max-width: 500px;
