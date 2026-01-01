@@ -1919,39 +1919,105 @@ function initTestimonialSlider() {
   const slider = document.getElementById('testimonialSlider');
   if (!slider) return;
 
+  // --- 1. CLONE CONTENT FOR ENDLESS LOOP ---
+  // We duplicate the inner HTML so the list is twice as long.
+  // When we scroll past the halfway point (the end of the original list),
+  // we instantly reset to 0. This creates the illusion of an infinite loop.
+  if (!slider.getAttribute('data-cloned')) {
+    slider.innerHTML += slider.innerHTML;
+    slider.setAttribute('data-cloned', 'true');
+  }
+
+  // --- Configuration ---
+  const RESUME_DELAY = 10000; // 10 seconds wait time
+  const SCROLL_SPEED = 1;     // Higher number = faster scroll
+  const REFRESH_RATE = 20;    // Update every 20ms
+
+  let autoScrollInterval;
+  let resumeTimeout;
+  let isAutoScrolling = true;
+
+  // --- Drag Variables ---
   let isDown = false;
   let startX;
   let scrollLeft;
 
-  // Mouse Drag functionality for desktop users
+  // 2. The Auto Scroll Loop
+  function startLoop() {
+    clearInterval(autoScrollInterval); 
+    autoScrollInterval = setInterval(() => {
+
+      if (slider.scrollLeft >= slider.scrollWidth / 2) {
+  slider.scrollLeft = 0;
+}
+      // Logic: Infinite Scroll Check
+      // If we have scrolled past half the total width (meaning we finished the original set),
+      // we reset to 0 immediately. This happens invisibly.
+      if (slider.scrollLeft >= slider.scrollWidth / 2) {
+        slider.scrollLeft = 0;
+      }
+
+      if (isAutoScrolling) {
+        slider.scrollLeft += SCROLL_SPEED;
+      }
+    }, REFRESH_RATE);
+  }
+
+  // 3. Pause Logic (Stops scroll, waits 10s, then resumes)
+  function triggerPause() {
+    isAutoScrolling = false; 
+    clearTimeout(resumeTimeout); 
+
+    resumeTimeout = setTimeout(() => {
+      isAutoScrolling = true; 
+    }, RESUME_DELAY);
+  }
+
+  // --- Event Listeners for Interaction ---
+
+  // Mouse Down (Start of Drag)
   slider.addEventListener('mousedown', (e) => {
+    triggerPause();
     isDown = true;
     slider.style.cursor = 'grabbing';
     startX = e.pageX - slider.offsetLeft;
     scrollLeft = slider.scrollLeft;
   });
 
+  // Mouse Leave
   slider.addEventListener('mouseleave', () => {
     isDown = false;
     slider.style.cursor = 'default';
   });
 
+  // Mouse Up
   slider.addEventListener('mouseup', () => {
     isDown = false;
     slider.style.cursor = 'default';
   });
 
+  // Mouse Move (Dragging)
   slider.addEventListener('mousemove', (e) => {
     if (!isDown) return;
+    triggerPause();
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
-    const walk = (x - startX) * 2; // Scroll speed multiplier
+    const walk = (x - startX) * 2;
     slider.scrollLeft = scrollLeft - walk;
   });
+
+  // Touch & Wheel Events
+  slider.addEventListener('touchstart', triggerPause, { passive: true });
+  slider.addEventListener('touchmove', triggerPause, { passive: true });
+  slider.addEventListener('wheel', triggerPause, { passive: true });
+
+  // Initialize
+  startLoop();
 }
 
-// Call the function
+// Run the function
 document.addEventListener('DOMContentLoaded', initTestimonialSlider);
+
 
 function revealUniversities() {
   // Find all cards with the hidden-card class
