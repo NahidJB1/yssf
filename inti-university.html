@@ -335,7 +335,9 @@ tr:last-child td {
   </table>
 
   <div class="note">
-    <div class="download-bar" onclick="downloadPDF('inti-penang')"><span>Download PDF</span><span>⬇️</span></div>
+    <div class="download-bar" onclick="downloadPDF('Penang', 'inti-penang-fees-2025.pdf')">
+  <span>Download PDF</span><span>⬇️</span>
+</div>
     <strong>Misc Fees:</strong><br>
     Application Fee: RM600<br>
     EMGS Fee: RM2,520<br>
@@ -380,7 +382,9 @@ tr:last-child td {
   </table>
 
   <div class="note">
-    <div class="download-bar" onclick="downloadPDF('inti-nilai')"><span>Download PDF</span><span>⬇️</span></div>
+    <div class="download-bar" onclick="downloadPDF('Nilai', 'inti-nilai-fees-2025.pdf')">
+  <span>Download PDF</span><span>⬇️</span>
+</div>
     <strong>Misc Fees:</strong><br>
     Application Fee: RM600<br>
     EMGS Fee: RM2,520<br>
@@ -421,7 +425,9 @@ tr:last-child td {
   </table>
 
   <div class="note">
-    <div class="download-bar" onclick="downloadPDF('inti-subang')"><span>Download PDF</span><span>⬇️</span></div>
+    <div class="download-bar" onclick="downloadPDF('Subang', 'inti-subang-fees-2025.pdf')">
+  <span>Download PDF</span><span>⬇️</span>
+</div>
     <strong>Misc Fees:</strong><br>
     Application Fee: RM600<br>
     EMGS Fee: RM2,520<br>
@@ -505,14 +511,16 @@ function downloadPDF(campusName, pdfFileName) {
   const key = "inti_download_" + campusName.toLowerCase();
   const lastDownload = localStorage.getItem(key);
 
+  // Optional: Check if they've downloaded it before
   if (lastDownload && !confirm(`You already downloaded the ${campusName} Fees. Download again?`)) {
     return;
   }
 
   localStorage.setItem(key, new Date().getTime());
 
+  // Create a temporary link and trigger the download
   const link = document.createElement("a");
-  link.href = pdfFileName; 
+  link.href = "pdf/" + pdfFileName; // Assumes your PDFs are in a folder named 'pdf'
   link.download = pdfFileName;
   document.body.appendChild(link);
   link.click();
