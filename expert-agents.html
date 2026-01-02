@@ -24,7 +24,7 @@
     /* --- BRILLIANT HERO HEADER --- */
     .hero-section {
       height: 70vh;
-      background: linear-gradient(rgba(0, 64, 128, 0.9), rgba(0, 26, 51, 0.95)), url('office-bg.jpg'); /* Add a subtle office background image */
+      background: linear-gradient(rgba(0, 64, 128, 0.9), rgba(0, 26, 51, 0.95)), url('office-bg.jpg'); 
       background-size: cover;
       background-position: center;
       display: flex;
@@ -94,7 +94,7 @@
       overflow: hidden;
     }
 
-    /* Glowing Border Effect (Subtle version of your Snake) */
+    /* Glowing Border Effect */
     .agent-card::before {
       content: '';
       position: absolute;
@@ -221,54 +221,44 @@
       to { transform: rotate(360deg); }
     }
 
-    /* --- FOOTER (Matches Index) --- */
-    footer {
-      background: #001a33;
-      color: white;
-      padding: 60px 20px 20px;
+    /* --- SUPPORTING AGENTS SECTION --- */
+    .supporting-section-title {
       text-align: center;
+      color: var(--brand-blue);
+      font-size: 2rem;
+      margin: 60px 0 40px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
-    .footer-logo img { width: 150px; margin-bottom: 20px; }
+    .supporting-wrapper {
+      max-width: 1200px;
+      margin: 0 auto 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
 
-    /* --- SUPPORTING AGENTS SECTION --- */
-.supporting-section-title {
-  text-align: center;
-  color: var(--brand-blue);
-  font-size: 2rem;
-  margin: 60px 0 40px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
+    /* Square Card Modifier */
+    .agent-card.square {
+      border-radius: 15px;
+      padding: 30px 20px;
+    }
 
-.supporting-wrapper {
-  max-width: 1200px;
-  margin: 0 auto 100px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  padding: 0 20px;
-}
+    .agent-card.square .profile-frame {
+      border-radius: 10px;
+      width: 120px;
+      height: 120px;
+    }
 
-/* Square Card Modifier */
-.agent-card.square {
-  border-radius: 15px; /* Square with slight rounding */
-  padding: 30px 20px;
-}
+    .agent-card.square .profile-frame img {
+      border-radius: 8px;
+    }
 
-.agent-card.square .profile-frame {
-  border-radius: 10px; /* Square profile frame */
-  width: 120px;
-  height: 120px;
-}
-
-.agent-card.square .profile-frame img {
-  border-radius: 8px; /* Square image */
-}
-
-.agent-card.square::before {
-  border-radius: 15px; /* Adjust glow to square shape */
-}
+    .agent-card.square::before {
+      border-radius: 15px;
+    }
 
     /* --- RESPONSIVE --- */
     @media (max-width: 768px) {
@@ -277,67 +267,205 @@
     }
 
     /* --- SABRINA'S SPECIAL BORDER ANIMATION --- */
+    .active-glow {
+      position: relative;
+      background: #fff; 
+      z-index: 1;
+    }
 
-.active-glow {
-  position: relative;
-  /* Ensure the background of the card covers the animation inside */
-  background: #fff; 
-  z-index: 1;
-}
+    .active-glow::before {
+      content: '';
+      position: absolute;
+      top: -2px; 
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: conic-gradient(
+        from 0deg,
+        transparent 0%,
+        transparent 70%,
+        var(--brand-gold) 100%
+      );
+      border-radius: 32px;
+      z-index: -1;
+      animation: rotateGlow 4s linear infinite;
+    }
 
-/* The Rotating Light Source */
-.active-glow::before {
-  content: '';
-  position: absolute;
-  top: -2px; 
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: conic-gradient(
-    from 0deg,
-    transparent 0%,
-    transparent 70%,
-    var(--brand-gold) 100%
-  );
-  border-radius: 32px; /* Matches card radius + offset */
-  z-index: -1;
-  animation: rotateGlow 4s linear infinite;
-}
+    .active-glow::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      background: #fff;
+      border-radius: 28px;
+      z-index: -1;
+    }
 
-/* Inner Mask to keep the border thin and clean */
-.active-glow::after {
-  content: '';
-  position: absolute;
-  inset: 2px; /* Thickness of the border */
-  background: #fff; /* Matches card background */
-  border-radius: 28px;
-  z-index: -1;
-}
+    @keyframes rotateGlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
 
-/* Smooth Rotation Keyframes */
-@keyframes rotateGlow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+    .center-card {
+      transform: translateY(-40px);
+      z-index: 10;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); 
+    }
 
-/* Center Card Specific Positioning (Sabrina Higher) */
-.center-card {
-  transform: translateY(-40px);
-  z-index: 10;
-  /* Add a soft outer shadow to the glow */
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); 
-}
+    .center-card:hover {
+      transform: translateY(-55px) scale(1.02);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+    }
 
-.center-card:hover {
-  transform: translateY(-55px) scale(1.02);
-  box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
-}
+    .left-card, .right-card {
+      transform: translateY(20px);
+      z-index: 5;
+    }
 
-/* Side Cards Positioning (Nahid & Adnan Lower) */
-.left-card, .right-card {
-  transform: translateY(20px);
-  z-index: 5;
-}
+    /* --- NEW FOOTER STYLES (Copied from Index) --- */
+    footer {
+      background-color: #004080;
+      color: white;
+      padding: 30px 20px 10px 20px;
+      text-align: left; /* Reset alignment for new layout */
+    }
+    
+    .footer-container {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      order: 2; /* Logo in the middle */
+      flex: 0 0 auto;
+      text-align: center;
+    }
+
+    .footer-logo img {
+      width: 130px; 
+      height: auto;
+      margin-bottom: 0; /* Override old margin */
+    }
+
+    .office {
+      flex: 1;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .office.left {
+      order: 1;
+      text-align: left;
+    }
+
+    .office.right {
+      order: 3;
+      text-align: right;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      min-height: 80px; 
+      position: relative;
+      transition: padding 0.5s ease;
+    }
+
+    /* Developer Bar */
+    .developer-bar {
+      background-color: #001a33; 
+      color: #888; 
+      padding: 5px 0; 
+      text-align: center; 
+      font-size: 11px; 
+      width: 100%;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .office.left, .office.right {
+        text-align: center;
+        order: 3;
+      }
+      .footer-logo {
+        order: 1;
+        margin-bottom: 15px;
+      }
+    }
+
+    /* Menu Toggle Styles */
+    .footer-bottom:has(.menu.active) {
+      padding: 100px 0; 
+    }
+
+    .menu {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .menu .toggle {
+      position: relative;
+      height: 60px;
+      width: 60px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: 1.25s;
+      z-index: 5;
+    }
+
+    .menu.active .toggle { transform: rotate(315deg); }
+
+    .menu li {
+      position: absolute;
+      list-style: none;
+      transition: 0.5s;
+      transform: rotate(calc(360deg / 8 * var(--i))) translateX(0px);
+      scale: 0;
+      opacity: 0;
+    }
+
+    .menu.active li {
+      transform: rotate(calc(360deg / 8 * var(--i))) translateX(-95px); 
+      scale: 1;
+      opacity: 1;
+    }
+
+    .menu li a {
+      width: 50px;
+      height: 50px;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      color: var(--clr);
+      box-shadow: 0 3px 4px rgba(0,0,0,0.15);
+      transition: 0.5s;
+      transform: rotate(calc(360deg / -8 * var(--i))); 
+    }
+
   </style>
 </head>
 <body>
@@ -352,54 +480,53 @@
   <div class="agents-wrapper">
     
     <div class="agent-card left-card">
-  <div class="profile-frame">
-    <img src="agent2.jpg" alt="Nahid Jahan">
-    <div class="agent-status"></div>
-  </div>
-  <h3>Nahid Jahan</h3>
-  <span class="agent-role">Lead Consultant</span>
-  <div class="contact-icons">
-    <a href="https://wa.me/601119359497"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.facebook.com/share/1HgdrevJLH/"><i class="fab fa-facebook-messenger"></i></a>
-    <a href="mailto:nahidjahan696@gmail.com"><i class="fas fa-envelope"></i></a>
-  </div>
-  <a href="https://forms.gle/iFXQ3ohvY4JqCbWA9" class="consult-btn">Book Consult With Nahid</a>
-</div>
+      <div class="profile-frame">
+        <img src="agent2.jpg" alt="Nahid Jahan">
+        <div class="agent-status"></div>
+      </div>
+      <h3>Nahid Jahan</h3>
+      <span class="agent-role">Lead Consultant</span>
+      <div class="contact-icons">
+        <a href="https://wa.me/601119359497"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/share/1HgdrevJLH/"><i class="fab fa-facebook-messenger"></i></a>
+        <a href="mailto:nahidjahan696@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+      <a href="https://forms.gle/iFXQ3ohvY4JqCbWA9" class="consult-btn">Book Consult With Nahid</a>
+    </div>
 
     <div class="agent-card center-card middle-card">
-  <div class="profile-frame">
-    <img src="agent1.jpg" alt="Sabrina Jannat">
-    <div class="agent-status"></div>
-  </div>
-  <h3>Sabrina Jannat</h3>
-  <span class="agent-role">Founder & Executive</span>
-  <div class="contact-icons">
-    <a href="https://wa.me/601151114520"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.facebook.com/share/17qGtjTTiH/"><i class="fab fa-facebook-messenger"></i></a>
-    <a href="mailto:sabrinajannat367@gmail.com"><i class="fas fa-envelope"></i></a>
-  </div>
-  <a href="https://forms.gle/iFXQ3ohvY4JqCbWA9" class="consult-btn">Book Consult With Sabrina</a>
-</div>
+      <div class="profile-frame">
+        <img src="agent1.jpg" alt="Sabrina Jannat">
+        <div class="agent-status"></div>
+      </div>
+      <h3>Sabrina Jannat</h3>
+      <span class="agent-role">Founder & Executive</span>
+      <div class="contact-icons">
+        <a href="https://wa.me/601151114520"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/share/17qGtjTTiH/"><i class="fab fa-facebook-messenger"></i></a>
+        <a href="mailto:sabrinajannat367@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+      <a href="https://forms.gle/iFXQ3ohvY4JqCbWA9" class="consult-btn">Book Consult With Sabrina</a>
+    </div>
 
     <div class="agent-card right-card">
-  <div class="profile-frame">
-    <img src="student_profile5.jpg" alt="Ismam Zaman">
-    <div class="agent-status"></div>
+      <div class="profile-frame">
+        <img src="student_profile5.jpg" alt="Ismam Zaman">
+        <div class="agent-status"></div>
+      </div>
+      <h3>Ismam Zaman</h3>
+      <span class="agent-role">Student Coordinator</span>
+      <div class="contact-icons">
+        <a href="https://wa.me/601151142045"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/share/1ARZ6NPRib/"><i class="fab fa-facebook-messenger"></i></a>
+        <a href="mailto:ismamzamanshuptooo@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+      <a href="https://forms.gle/iFXQ3ohvY4JqCbWA9" class="consult-btn">Book Consult With Ismam</a>
+    </div>
+
   </div>
-  <h3>Ismam Zaman</h3>
-  <span class="agent-role">Student Coordinator</span>
-  <div class="contact-icons">
-    <a href="https://wa.me/601151142045"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.facebook.com/share/1ARZ6NPRib/"><i class="fab fa-facebook-messenger"></i></a>
-    <a href="mailto:ismamzamanshuptooo@gmail.com"><i class="fas fa-envelope"></i></a>
-  </div>
-  <a href="https://forms.gle/iFXQ3ohvY4JqCbWA9" class="consult-btn">Book Consult With Ismam</a>
-</div>
 
-
-</div>
-
-<h2 class="supporting-section-title">Support Team</h2>
+  <h2 class="supporting-section-title">Support Team</h2>
   <div class="supporting-wrapper">
     
     <div class="agent-card square">
@@ -452,12 +579,63 @@
 
   </div>
 
-  <footer>
-    <div class="footer-logo">
-      <img src="ys_logo.png" alt="YS Logo">
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="office left">
+        <p><strong>Bangladesh Office</strong><br>
+        Aot# A5, House: 16, Road: 2/3, Block L<br>
+        Bonani, Chairman Bari, Dhanmondi 1213</p>
+      </div>
+
+      <div class="footer-logo">
+        <img src="ys_logo.png" alt="YS Logo">
+      </div>
+
+      <div class="office right">
+        <p><strong>Malaysia Office</strong><br>
+        De Tropicana, 52, Jalan Kuchai Maju 13<br>
+        Kuchai Entrepreneurs Park<br>
+        58200 Kuala Lumpur, Malaysia</p>
+      </div>
     </div>
-    <p>&copy; 2025 YS Study Focus. Trusted Gateway to Malaysia.</p>
+
+    <div class="footer-bottom">
+      <div class="menu">
+        <div class="toggle">
+          <ion-icon name="share-social"></ion-icon>
+        </div>
+        <li style="--i: 0; --clr: #1877f2">
+          <a href="https://web.facebook.com/people/YS-Study-Focus/61571694410231/?_rdc=1&_rdr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </li>
+        <li style="--i: 2; --clr: #25d366">
+          <a href="https://wa.me/601139660706" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        </li>
+        <li style="--i: 4; --clr: #ff0000">
+          <a href="https://youtube.com/@sabrina367sabu?si=GRfgbwVUAxxH5Ke_" target="_blank"><i class="fab fa-youtube"></i></a>
+        </li>
+        <li style="--i: 6; --clr: #000000">
+          <a href="https://www.tiktok.com/@sabu_555?_r=1&_t=ZS-92OvdlsEIcy" target="_blank"><i class="fab fa-tiktok"></i></a>
+        </li>
+      </div>
+    </div>
   </footer>
+
+  <div class="developer-bar">
+    Developed by: Bhuiyan Mohamed Nahid Jahan.
+  </div>
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    const menu = document.querySelector(".menu");
+    const toggle = document.querySelector(".toggle");
+    if(toggle) {
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("active");
+      });
+    }
+  </script>
 
 </body>
 </html>
