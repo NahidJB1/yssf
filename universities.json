@@ -609,5 +609,48 @@
       { "name": "PhD in Law (Research)", "level": "PhD", "duration": "3 Years" },
       { "name": "PhD (Prior Publication track)", "level": "PhD", "duration": "N/A" }
     ]
+  },
+  {
+    "name": "Universiti Tun Abdul Razak (UNIRAZAK)",
+    "campuses": [
+      "Main Campus"
+    ],
+    "programs": [
+      { "name": "Foundation in Arts", "level": "Foundation", "duration": "N/A" },
+      { "name": "Diploma in Management", "level": "Diploma", "duration": "N/A" },
+      { "name": "Diploma in Information Technology", "level": "Diploma", "duration": "N/A" },
+      { "name": "Bachelor of Management (Honours)", "level": "Degree", "duration": "N/A" },
+      { "name": "Bachelor of Business Management (Entrepreneurship) (Honours)", "level": "Degree", "duration": "N/A" },
+      { "name": "Bachelor of Business Administration (Islamic Banking & Finance) (Honours)", "level": "Degree", "duration": "N/A" },
+      { "name": "Bachelor of Business Administration (Honours)", "level": "Degree", "duration": "N/A" },
+      { "name": "Bachelor of Information Technology (Honours)", "level": "Degree", "duration": "N/A" },
+      { "name": "Diploma in Accounting", "level": "Diploma", "duration": "N/A" },
+      { "name": "Bachelor of Accounting (Honours)", "level": "Degree", "duration": "N/A" },
+      { "name": "Bachelor in Accounting", "level": "Degree", "duration": "N/A" },
+      { "name": "Bachelor of Taxation (Honours)", "level": "Degree", "duration": "N/A" },
+      { "name": "Diploma in Social Work", "level": "Diploma", "duration": "N/A" },
+      { "name": "Bachelor of Arts in Public Management", "level": "Degree", "duration": "N/A" },
+      { "name": "Bachelor of Economics", "level": "Degree", "duration": "N/A" },
+      { "name": "Master in Public Management", "level": "Master", "duration": "N/A" },
+      { "name": "Master in Strategic Human Resource Management", "level": "Master", "duration": "N/A" },
+      { "name": "Master of Philosophy", "level": "Master", "duration": "N/A" },
+      { "name": "Master of Public Policy", "level": "Master", "duration": "N/A" },
+      { "name": "Master of Business Administration", "level": "Master", "duration": "N/A" },
+      { "name": "Master of Business Administration (Online)", "level": "Master", "duration": "N/A" },
+      { "name": "Master in Management", "level": "Master", "duration": "N/A" },
+      { "name": "Master of Philosophy (MPhil) + Doctor of Philosophy", "level": "Master", "duration": "N/A" },
+      { "name": "Master of Education (TESL)", "level": "Master", "duration": "N/A" },
+      { "name": "Master in Early Childhood Education", "level": "Master", "duration": "N/A" },
+      { "name": "Master of Education", "level": "Master", "duration": "N/A" },
+      { "name": "Doctor of Philosophy (PhD)", "level": "Doctorate", "duration": "N/A" },
+      { "name": "Doctor of Philosophy (PhD) (Online)", "level": "Doctorate", "duration": "N/A" },
+      { "name": "Doctor of Philosophy in Education", "level": "Doctorate", "duration": "N/A" },
+      { "name": "Diploma in Psychology", "level": "Diploma", "duration": "N/A" },
+      { "name": "Diploma in Early Childhood Education", "level": "Diploma", "duration": "N/A" },
+      { "name": "Bachelor of Education (Honours)", "level": "Degree", "duration": "N/A" },
+      { "name": "Bachelor of Education (Early Childhood Education)", "level": "Degree", "duration": "N/A" },
+      { "name": "Bachelor of Psychology", "level": "Degree", "duration": "N/A" },
+      { "name": "Post Graduate Diploma Education (ODL)", "level": "Postgraduate Diploma", "duration": "N/A" }
+    ]
   }
 ]
