@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Profile | Nahid Jahan</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --card-bg: rgba(30, 41, 59, 0.7);
+      --accent-blue: #38bdf8;
+      --accent-gold: #fbbf24;
+      --text-main: #f1f5f9;
+      --text-sub: #94a3b8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(251, 191, 36, 0.1) 0%, transparent 20%);
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    /* Floating Particles Background (Simple CSS implementation) */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      z-index: -1;
+    }
+
+    /* --- MAIN CARD --- */
+    .profile-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      animation: float-entry 1s ease-out;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Top decorative line */
+    .profile-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 4px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold));
+    }
+
+    /* --- IMAGE SECTION --- */
+    .img-container {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto 25px;
+    }
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 4px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+      transition: transform 0.3s;
+    }
+
+    .img-container:hover .profile-img {
+      transform: scale(1.05);
+      border-color: var(--accent-blue);
+    }
+
+    /* Rotating Ring */
+    .ring {
+      position: absolute;
+      top: -10px; left: -10px; right: -10px; bottom: -10px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-top-color: var(--accent-gold);
+      border-right-color: var(--accent-blue);
+      animation: spin 3s linear infinite;
+    }
+
+    /* --- TEXT CONTENT --- */
+    h1 {
+      font-size: 28px;
+      margin-bottom: 5px;
+      color: #fff;
+    }
+    
+    .role-badge {
+      display: inline-block;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent-blue);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .education-box {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+      text-align: left;
+      border-left: 3px solid var(--accent-gold);
+    }
+
+    .edu-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .edu-text {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #e2e8f0;
+    }
+
+    /* --- TECH STACK ICONS --- */
+    .tech-stack {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+      font-size: 24px;
+      color: var(--text-sub);
+    }
+    .tech-stack i:hover { color: var(--accent-blue); transform: translateY(-3px); transition: 0.3s; }
+
+    /* --- SOCIAL ACTIONS --- */
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 12px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+
+    .btn-primary {
+      background: var(--accent-blue);
+      color: #0f172a;
+    }
+    .btn-primary:hover { background: #7dd3fc; transform: translateY(-2px); }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+    .full-width { grid-column: span 2; }
+
+    /* --- BACK BTN --- */
+    .back-btn {
+      position: absolute;
+      top: 20px; left: 20px;
+      color: var(--text-sub);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+    .back-btn:hover { color: #fff; }
+
+    /* --- ANIMATIONS --- */
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    @keyframes float-entry {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 480px) {
+      .profile-card { padding: 30px 20px; }
+      h1 { font-size: 24px; }
+      .actions { grid-template-columns: 1fr; }
+      .full-width { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Website</a>
+
+  <div class="profile-card">
+    
+    <div class="img-container">
+      <div class="ring"></div>
+      <img src="agent2.jpg" alt="Nahid Jahan" class="profile-img">
+    </div>
+
+    <h1>Bhuiyan Mohamed Nahid Jahan</h1>
+    <span class="role-badge">Lead Consultant & Developer</span>
+
+    <div class="education-box">
+      <div class="edu-title"><i class="fas fa-graduation-cap"></i> Education</div>
+      <div class="edu-text">
+        Studied <b>Bachelor of Information Technology</b><br>
+        at City University Malaysia.
+      </div>
+    </div>
+
+    <div class="tech-stack">
+      <i class="fab fa-html5" title="HTML5"></i>
+      <i class="fab fa-css3-alt" title="CSS3"></i>
+      <i class="fab fa-js" title="JavaScript"></i>
+      <i class="fab fa-react" title="React"></i>
+      <i class="fas fa-database" title="Database"></i>
+    </div>
+
+    <div class="actions">
+      <a href="https://wa.me/601119359497" class="btn btn-primary full-width">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+      <a href="https://www.facebook.com/share/1HgdrevJLH/" class="btn btn-secondary">
+        <i class="fab fa-facebook-messenger"></i> Messenger
+      </a>
+      <a href="mailto:nahidjahan696@gmail.com" class="btn btn-secondary">
+        <i class="fas fa-envelope"></i> Email
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>
