@@ -1326,6 +1326,87 @@
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+     /* --- UPDATED DEVELOPER BAR STYLES --- */
+.dev-bar-container {
+  width: 100%;
+  background-color: #001220; /* Very dark blue */
+  padding: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.dev-bar-link {
+  display: block;
+  text-decoration: none;
+  padding: 12px 0;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(90deg, #001220, #002540, #001220);
+  background-size: 200% 100%;
+  animation: bg-shift 5s infinite linear;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.dev-bar-link:hover {
+  padding: 18px 0; /* Expands slightly on hover */
+  background-color: #002540;
+}
+
+.dev-content {
+  font-family: 'Courier New', monospace; /* Code-like font */
+  font-size: 13px;
+  color: #8899a6;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s;
+}
+
+.dev-bar-link:hover .dev-content {
+  color: #FFD700; /* Turns Gold on Hover */
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+.dev-name {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.code-icon {
+  opacity: 0.5;
+  font-size: 14px;
+}
+
+/* A subtle "shine" effect passing through */
+.dev-bar-link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+  transform: skewX(-25deg);
+  animation: shine-pass 3s infinite;
+}
+
+@keyframes bg-shift {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@keyframes shine-pass {
+  0% { left: -100%; }
+  20% { left: 200%; } /* Fast pass */
+  100% { left: 200%; } /* Wait */
+}
+
+/* Mobile Tweak */
+@media (max-width: 600px) {
+  .dev-content { font-size: 11px; }
+}
   </style>
 </head>
 <body>
@@ -1835,8 +1916,14 @@
     </div>
   </footer>
 
-<div class="developer-bar" style="background-color: #002040; color: #ccc; padding: 10px 0; text-align: center; font-size: 12px; width: 100%;">
-  Developed by: Bhuiyan Mohamed Nahid Jahan.
+<div class="dev-bar-container">
+  <a href="developer-profile.html" class="dev-bar-link" title="Click to view Developer Profile">
+    <span class="dev-content">
+      <i class="fas fa-code code-icon"></i>
+      Developed by: <span class="dev-name">&lt; Bhuiyan Mohamed Nahid Jahan /&gt;</span>
+      <i class="fas fa-external-link-alt" style="font-size: 10px; margin-left: 5px;"></i>
+    </span>
+  </a>
 </div>
   </footer>
 
