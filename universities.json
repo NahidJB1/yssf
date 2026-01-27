@@ -652,5 +652,18 @@
       { "name": "Bachelor of Psychology", "level": "Degree", "duration": "N/A" },
       { "name": "Post Graduate Diploma Education (ODL)", "level": "Postgraduate Diploma", "duration": "N/A" }
     ]
+  },
+  {
+    "name": "VISION University College",
+    "campuses": ["Main Campus"],
+    "programs": [
+      { "name": "Bachelor in Criminology with Cybersecurity", "level": "Degree", "duration": "3 Years" },
+      { "name": "Bachelor in Computer Science (Honours)", "level": "Degree", "duration": "3 Years" },
+      { "name": "Bachelor in Business Administration (Honours) in e-commerce", "level": "Degree", "duration": "3 Years" },
+      { "name": "Master in Business Administration (MBA)", "level": "Master", "duration": "2 Years" },
+      { "name": "Master in Law Enforcement and Cybersecurity", "level": "Master", "duration": "2 Years" },
+      { "name": "Doctorate in International Business Management", "level": "Doctorate", "duration": "3 Years" },
+      { "name": "Doctorate in Business Administration", "level": "Doctorate", "duration": "3 Years" }
+    ]
   }
 ]
