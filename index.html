@@ -1407,6 +1407,107 @@
 @media (max-width: 600px) {
   .dev-content { font-size: 11px; }
 }
+
+
+/* --- CUSTOM RECRUITMENT MODAL STYLES --- */
+.recruitment-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 20, 40, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.recruitment-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.recruitment-modal-box {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 35px 25px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  transform: translateY(-30px) scale(0.95);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+.recruitment-modal-overlay.active .recruitment-modal-box {
+  transform: translateY(0) scale(1);
+}
+
+.recruitment-modal-box i.warning-icon {
+  font-size: 45px;
+  color: #ff3b30;
+  margin-bottom: 15px;
+}
+
+.recruitment-modal-box h3 {
+  color: #004080;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.recruitment-modal-box p {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.recruitment-modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-return-index {
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  flex: 1;
+  min-width: 140px;
+}
+
+.btn-return-index:hover {
+  background: #e0e0e0;
+}
+
+.btn-view-anyway {
+  background: #004080;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  flex: 1;
+  min-width: 140px;
+}
+
+.btn-view-anyway:hover {
+  background: #007BFF;
+}
   </style>
 </head>
 <body>
@@ -1516,64 +1617,25 @@
     <h2>University Programmes and Tuition Fees</h2>
 
 <div class="uni-grid">
-  <div id="city-university">
-    <a href="city-university.html">City University</a>
-  </div>
+  <div id="city-university"><a href="city-university.html">City University</a></div>
+  <div id="iukl"><a href="iukl-fees.html">IUKL</a></div>
+  <div id="bac"><a href="bac-university.html">BAC</a></div>
+  <div id="alfa-university"><a href="alfa-university.html">Alfa University</a></div>
+  <div id="university-of-cyberjaya"><a href="university-of-cyberjaya.html">University of Cyberjaya</a></div>
+  <div id="inti"><a href="inti-university.html">INTI</a></div>
+  <div id="segi"><a href="segi-university.html">SEGi</a></div>
+  <div id="taylors-university"><a href="taylors-university.html">Taylor's University</a></div>
+  <div id="unirazak"><a href="unirazak-university.html">UniRazak</a></div>
+  <div id="kings-university"><a href="kings-university.html">King's University</a></div>
+  <div id="unikl"><a href="unikl.html">UniKL</a></div>
+  <div id="lsbf"><a href="lsbf.html">LSBF</a></div>
 
-  <div id="iukl">
-    <a href="iukl-fees.html">IUKL</a>
-  </div>
 
-  <div id="bac">
-    <a href="bac-university.html">BAC</a>
-  </div>
-
-  <div id="alfa-university">
-    <a href="alfa-university.html">Alfa University</a>
-  </div>
-
-  <div id="university-of-cyberjaya">
-    <a href="university-of-cyberjaya.html">University of Cyberjaya</a>
-  </div>
-
-  <div id="inti">
-    <a href="inti-university.html">INTI</a>
-  </div>
-
-  <div id="segi">
-    <a href="segi-university.html">SEGi</a>
-  </div>
-
-  <div id="genovasi">
-    <a href="genovasi-university.html">Genovasi</a>
-  </div>
-
-  <div id="cybernetics">
-    <a href="cybernetics-university.html">Cybernetics</a>
-  </div>
-
-  <div id="ucmi">
-    <a href="ucmi-university.html">UCMI</a>
-  </div>
-
-  <div id="taylors-university">
-    <a href="taylors-university.html">Taylor's University</a>
-  </div>
-
-  <div id="unirazak">
-    <a href="unirazak-university.html">UniRazak</a>
-  </div>
-
-  <div id="binary-university">
-    <a href="binary-university.html">Binary University</a>
-  </div>
-
-  <div id="kings-university">
-    <a href="kings-university.html">King's University</a>
-  </div>
- <div id="VISION University">
-    <a href="vision-fees.html">Vision University</a>
-  </div>
+  <div id="genovasi"><a href="genovasi-university.html" class="paused-recruitment">Genovasi</a></div>
+  <div id="cybernetics"><a href="cybernetics-university.html" class="paused-recruitment">Cybernetics</a></div>
+  <div id="ucmi"><a href="ucmi-university.html" class="paused-recruitment">UCMI</a></div>
+  <div id="binary-university"><a href="binary-university.html" class="paused-recruitment">Binary University</a></div>
+  <div id="VISION University"><a href="vision-fees.html" class="paused-recruitment">Vision University</a></div>
 </div>
  
 
@@ -1770,18 +1832,7 @@
       </div>
     </div>
 
-    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="binary_main.jpg" alt="Binary">
-          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Binary University</span></div>
-        </div>
-        <div class="flip-card-back">
-          <p>Specializing in Management and Entrepreneurship with industry placement.</p>
-          <a href="binary-details.html" class="study-btn">Study in Binary &rarr;</a>
-        </div>
-      </div>
-    </div>
+   
 
     <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
       <div class="flip-card-inner">
@@ -1796,18 +1847,7 @@
       </div>
     </div>
 
-    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="ucmi_main.jpg" alt="UCMI">
-          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>UCMI</span></div>
-        </div>
-        <div class="flip-card-back">
-          <p>University College MAIWP International focuses on healthcare and business.</p>
-          <a href="ucmi-details.html" class="study-btn">Study in UCMI &rarr;</a>
-        </div>
-      </div>
-    </div>
+ 
 
     <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
       <div class="flip-card-inner">
@@ -1822,6 +1862,33 @@
       </div>
     </div>
 
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="binary_main.jpg" alt="Binary">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Binary University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Specializing in Management and Entrepreneurship with industry placement.</p>
+          <a href="binary-details.html" class="study-btn paused-recruitment">Study in Binary &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="ucmi_main.jpg" alt="UCMI">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>UCMI</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>University College MAIWP International focuses on healthcare and business.</p>
+          <a href="ucmi-details.html" class="study-btn paused-recruitment">Study in UCMI &rarr;</a>
+        </div>
+      </div>
+    </div>
+
     <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
       <div class="flip-card-inner">
         <div class="flip-card-front">
@@ -1830,7 +1897,7 @@
         </div>
         <div class="flip-card-back">
           <p>A design-thinking university that fosters innovation and creative solving.</p>
-          <a href="genovasi-details.html" class="study-btn">Study in Genovasi &rarr;</a>
+          <a href="genovasi-details.html" class="study-btn paused-recruitment">Study in Genovasi &rarr;</a>
         </div>
       </div>
     </div>
@@ -1843,10 +1910,13 @@
         </div>
         <div class="flip-card-back">
           <p>Leading the way in technical and vocational training with modern facilities.</p>
-          <a href="cybernetics-details.html" class="study-btn">Study in Cybernetics &rarr;</a>
+          <a href="cybernetics-details.html" class="study-btn paused-recruitment">Study in Cybernetics &rarr;</a>
         </div>
       </div>
     </div>
+
+ 
+ 
 
   </div> <div class="see-more-container">
     <button id="seeMoreBtn" onclick="revealUniversities()">See More Universities</button>
@@ -2450,7 +2520,52 @@ document.querySelectorAll('.nav-menu a').forEach(link => {
      menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
   });
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const pausedLinks = document.querySelectorAll('.paused-recruitment');
+  const modalOverlay = document.getElementById('recruitmentOverlay');
+  const proceedBtn = document.getElementById('proceedToUniBtn');
+  let pendingUrl = '';
+
+  pausedLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+      // Stop the link from opening immediately
+      event.preventDefault(); 
+      // Stop flip-card from flipping back when clicking the button
+      event.stopPropagation(); 
+      
+      pendingUrl = link.getAttribute('href');
+      modalOverlay.classList.add('active');
+    });
+  });
+
+  // Handle "View Anyway" click
+  proceedBtn.addEventListener('click', () => {
+    if (pendingUrl) {
+      window.location.href = pendingUrl;
+    }
+  });
+});
+
+// Handle "See another university" click
+function closeRecruitmentModal() {
+  document.getElementById('recruitmentOverlay').classList.remove('active');
+}
 </script>
+
+
+<div class="recruitment-modal-overlay" id="recruitmentOverlay">
+  <div class="recruitment-modal-box">
+    <i class="fas fa-exclamation-triangle warning-icon"></i>
+    <h3>Admission Paused</h3>
+    <p>This university is currently not recruiting students. Would you like to view another university instead?</p>
+    <div class="recruitment-modal-buttons">
+      <button class="btn-return-index" onclick="closeRecruitmentModal()">See another</button>
+      <button class="btn-view-anyway" id="proceedToUniBtn">View Anyway</button>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
