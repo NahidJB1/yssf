@@ -1,0 +1,64 @@
+/* global.css */
+/* Base reset for consistency */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Universal Top Navbar for sub-pages */
+.global-navbar {
+  background: #002244;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+.global-navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.global-navbar .nav-brand {
+  font-size: 24px;
+  color: #FFD700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.global-navbar .nav-brand img {
+  height: 40px;
+}
+
+.global-navbar .nav-back {
+  font-size: 16px;
+  background: rgba(255,255,255,0.1);
+  padding: 8px 20px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.global-navbar .nav-back:hover {
+  background: #FFD700;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* Global responsive adjustments */
+@media (max-width: 600px) {
+  .global-navbar {
+    padding: 10px 15px;
+  }
+  .global-navbar .nav-brand {
+    font-size: 20px;
+  }
+}

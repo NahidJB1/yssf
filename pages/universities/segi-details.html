@@ -132,8 +132,15 @@
       .office.right { text-align: center; }
     }
   </style>
+  <link rel="stylesheet" href="../../assets/css/global.css">
 </head>
 <body>
+
+<div class="global-navbar">
+  <a href="../../index.html" class="nav-brand">YSSF</a>
+  <a href="../../index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+</div>
+
 
   <section class="hero">
     <div class="hero-content">
@@ -281,13 +288,14 @@
     </div>
 </footer>
 
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
 <script>
   const menu = document.querySelector(".menu");
   const toggle = document.querySelector(".toggle");
   toggle.onclick = () => menu.classList.toggle("active");
 </script>
 
+  <script src="../../assets/js/global.js"></script>
 </body>
 </html>

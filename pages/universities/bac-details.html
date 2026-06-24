@@ -155,8 +155,15 @@
       .campus-grid { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="stylesheet" href="../../assets/css/global.css">
 </head>
 <body>
+
+<div class="global-navbar">
+  <a href="../../index.html" class="nav-brand">YSSF</a>
+  <a href="../../index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+</div>
+
 
   <section class="hero">
     <div class="hero-content">
@@ -282,9 +289,7 @@
   <i class="fab fa-whatsapp"></i> Apply via YSSF
 </a>
 
-<a href="../../index.html" style="position: absolute; top: 20px; left: 20px; color: white; text-decoration: none; font-weight: bold;">
-  <i class="fas fa-arrow-left"></i> Back Home
-</a>
+
 
 <footer id="contact">
     <div class="footer-container">
@@ -305,10 +310,10 @@
     <div class="footer-bottom">
       <div class="menu">
         <div class="toggle"><ion-icon name="share-social"></ion-icon></div>
-        <li style="--i: 0; --clr: #1877f2"><a href="https://web.facebook.com/people/YS-Study-Focus/61571694410231/?_rdc=1&_rdr" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-        <li style="--i: 2; --clr: #25d366"><a href="https://wa.me/601139660706" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-        <li style="--i: 4; --clr: #ff0000"><a href="https://youtube.com/@sabrina367sabu" target="_blank"><i class="fab fa-youtube"></i></a></li>
-        <li style="--i: 6; --clr: #000000"><a href="https://www.tiktok.com/@sabu_555" target="_blank"><i class="fab fa-tiktok"></i></a></li>
+        <li style="--i: 0; --clr: #1877f2"><a href="https://web.facebook.com/people/YS-Study-Focus/61571694410231/?_rdc=1&_rdr" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a></li>
+        <li style="--i: 2; --clr: #25d366"><a href="https://wa.me/601139660706" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a></li>
+        <li style="--i: 4; --clr: #ff0000"><a href="https://youtube.com/@sabrina367sabu" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a></li>
+        <li style="--i: 6; --clr: #000000"><a href="https://www.tiktok.com/@sabu_555" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a></li>
       </div>
     </div>
     <div class="developer-bar" style="background-color: #002040; color: #ccc; padding: 10px 0; text-align: center; font-size: 12px; width: 100%;">
@@ -316,13 +321,14 @@
     </div>
 </footer>
 
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
 <script>
   const menu = document.querySelector(".menu");
   const toggle = document.querySelector(".toggle");
   if(toggle) { toggle.addEventListener("click", () => { menu.classList.toggle("active"); }); }
 </script>
 
+  <script src="../../assets/js/global.js"></script>
 </body>
 </html>
