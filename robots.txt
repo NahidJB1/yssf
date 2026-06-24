@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://ysstudyfocus.com/sitemaps .xml
+Sitemap: https://ysstudyfocus.com/sitemap.xml
