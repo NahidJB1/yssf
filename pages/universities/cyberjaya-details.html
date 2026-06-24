@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BAC Education Group | YS Study Focus</title>
+  <title>University of Cyberjaya | YS Study Focus</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
       --brand-blue: #004080;
       --brand-yellow: #FFD700;
-      --bac-crimson: #d1275b; /* Requested theme color */
+      --uoc-purple: #341539; /* Requested theme color */
       --text-dark: #333;
       --light-bg: #f4f7f9;
     }
@@ -20,7 +20,7 @@
     /* Hero Section */
     .hero {
       height: 60vh;
-      background: linear-gradient(rgba(0, 64, 128, 0.7), rgba(0, 64, 128, 0.7)), url('bac_main.jpg');
+      background: linear-gradient(rgba(0, 64, 128, 0.7), rgba(0, 64, 128, 0.7)), url('../../assets/images/cyberjaya_main.jpg');
       background-size: cover;
       background-position: center;
       display: flex;
@@ -60,9 +60,9 @@
     .info-card i { color: var(--brand-blue); font-size: 32px; }
     .info-card div span { display: block; font-size: 18px; font-weight: 800; color: #444; }
 
-    /* Campus Crimson Bar */
-    .campus-crimson-bar {
-      background-color: var(--bac-crimson);
+    /* Campus Purple Bar */
+    .campus-purple-bar {
+      background-color: var(--uoc-purple);
       color: white;
       padding: 60px 0;
       margin: 60px 0;
@@ -70,49 +70,15 @@
     }
 
     .campus-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-/* Updated Campus Header to fit Logos */
-.campus-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; /* Centers the image vertically with the text */
-  margin-bottom: 40px;
-  gap: 30px;
-}
-
-.campus-header-text {
-  flex: 1; /* Text takes up 40% */
-}
-
-.campus-header-image {
-  flex: 1.5; /* Image takes up the large empty space */
-  background: white;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.campus-header-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-/* Mobile Responsive adjustment */
-@media (max-width: 900px) {
-  .campus-header {
-    flex-direction: column;
-    text-align: center;
-  }
-} h2 { font-size: 36px; line-height: 1.1; flex: 1; }
+    .campus-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; gap: 40px; }
+    .campus-header h2 { font-size: 36px; line-height: 1.1; flex: 1; }
+    .campus-header p { flex: 1.5; font-size: 16px; opacity: 0.9; }
 
     .campus-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-    .campus-item { position: relative; overflow: hidden; border-radius: 4px; background: #fff; color: #333; }
+    .campus-item { position: relative; overflow: hidden; border-radius: 4px; }
     .campus-item img { width: 100%; height: 220px; object-fit: cover; }
-    .campus-name { padding: 15px; font-weight: bold; font-size: 18px; color: var(--text-dark); }
-    .campus-name span { display: block; font-weight: normal; font-size: 14px; color: #666; }
+    .campus-name { padding: 15px 0; font-weight: bold; font-size: 18px; }
+    .campus-name span { display: block; font-weight: normal; font-size: 14px; }
 
     /* Table Section */
     .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
@@ -125,15 +91,11 @@
     table { width: 100%; border-collapse: collapse; }
     th { background-color: var(--brand-blue); color: white; padding: 15px; text-align: left; }
     td { padding: 15px; border-bottom: 1px solid #eee; }
-    .fee-tag { background: #fee2e2; color: #991b1b; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 14px; }
+    .fee-tag { background: #f3e8ff; color: #6b21a8; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 14px; }
 
     .table-fade-overlay { position: absolute; bottom: 0; left: 0; width: 100%; height: 150px; background: linear-gradient(to bottom, transparent, white); z-index: 2; }
-    .table-action-bar { background: #fff1f2; padding: 20px; text-align: center; border-top: 1px solid #e0e0e0; }
+    .table-action-bar { background: #faf5ff; padding: 20px; text-align: center; border-top: 1px solid #e0e0e0; }
     .full-chart-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--brand-blue); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; }
-
-    /* Sticky Button */
-    .sticky-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; animation: bounce 2s infinite; display: flex; align-items: center; gap: 10px; }
-    @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} }
 
     /* Footer Styles */
     footer { background-color: #004080; color: white; padding: 30px 20px 10px 20px; }
@@ -148,67 +110,66 @@
     .menu li { position: absolute; list-style: none; transition: 0.5s; transform: rotate(calc(360deg / 8 * var(--i))) translateX(0px); scale: 0; opacity: 0; }
     .menu.active li { transform: rotate(calc(360deg / 8 * var(--i))) translateX(-95px); scale: 1; opacity: 1; }
     .menu li a { width: 50px; height: 50px; background-color: #fff; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.5rem; color: var(--clr); transform: rotate(calc(360deg / -8 * var(--i))); }
+.sticky-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; animation: bounce 2s infinite; display: flex; align-items: center; gap: 10px; }
+    @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} }
 
     @media (max-width: 768px) {
       .hero-content h1 { font-size: 2rem; }
       .info-bar { flex-direction: column; }
       .campus-grid { grid-template-columns: 1fr; }
     }
+  
   </style>
 </head>
 <body>
 
   <section class="hero">
     <div class="hero-content">
-      <h1>BAC Education Group</h1>
-      <p>Malaysia's No. 1 Law & Business School</p>
+      <h1>University of Cyberjaya</h1>
+      <p>A Top Tier Healthcare & Science University in Malaysia</p>
     </div>
   </section>
 
-  <div class="info-bar">
-    <div class="info-card">
-      <i class="fas fa-map-marker-alt"></i>
-      <div><span>Location</span><p>KL & Petaling Jaya</p></div>
-    </div>
-    <div class="info-card">
-      <i class="fas fa-calendar-alt"></i>
-      <div><span>Intakes</span><p>Jan, April, Sept</p></div>
-    </div>
-    <div class="info-card">
-      <i class="fas fa-university"></i>
-      <div><span>Partners</span><p>UK Degree Transfer</p></div>
-    </div>
+<div class="info-bar">
+  <div class="info-card">
+    <i class="fas fa-map-marker-alt"></i>
+    <div><span>Location</span><p>Cyberjaya, Selangor</p></div>
+  </div>
+  
+  <div class="info-card">
+    <i class="fas fa-calendar-alt"></i>
+    <div><span>Intakes</span><p>Jan, May, Oct</p></div>
   </div>
 
-<section class="campus-crimson-bar">
+  <div class="info-card">
+    <i class="fas fa-trophy"></i>
+    <div><span>Global Ranking</span><p>Top 601+ (THE)</p></div>
+  </div>
+</div>
+
+<section class="campus-purple-bar">
   <div class="campus-container">
     <div class="campus-header">
-      <div class="campus-header-text">
-        <h2>BAC GLOBAL CAMPUS<br>& STUDENT LIFE</h2>
-        <p>Experience a world-class education at BAC's urban campuses. From state-of-the-art moot courts for law students to digital labs at UNIMY, we provide the perfect ecosystem for academic excellence and industry readiness.</p>
-      </div>
-      
-      <div class="campus-header-image">
-         <img src="bac_group_logos.png" alt="The BAC Education Group">
-      </div>
+      <h2>UoC MALAYSIA<br>CAMPUS EXPERIENCE</h2>
+      <p>Located in the heart of Malaysia's global tech hub, our campus offers an exceptional environment for healthcare and science education. With high-fidelity clinical simulation labs, modern research facilities, and a diverse student community, UoC provides an immersive academic experience.</p>
     </div>
 
     <div class="campus-grid">
       <div class="campus-item">
-        <img src="bac_campus.jpg" alt="BAC Campus">
-        <div class="campus-name">KL Main Campus<span>Kuala Lumpur</span></div>
+        <img src="../../assets/images/cyberjaya_campus_view.jpg" alt="UoC Campus">
+        <div class="campus-name">Main Campus<span>Cyberjaya</span></div>
       </div>
       <div class="campus-item">
-        <img src="bac_moot.jpg" alt="Moot Court">
-        <div class="campus-name">Moot Court<span>Law Practice</span></div>
+        <img src="../../assets/images/uoc_simulation_lab.jpg" alt="Clinical Lab">
+        <div class="campus-name">Simulation Lab<span>Clinical Training</span></div>
       </div>
       <div class="campus-item">
-        <img src="bac_unimy.jpg" alt="UNIMY Lab">
-        <div class="campus-name">Digital Tech Hub<span>UNIMY Lab</span></div>
+        <img src="../../assets/images/uoc_student_life.jpg" alt="Student Life">
+        <div class="campus-name">Student Plaza<span>Campus Hub</span></div>
       </div>
       <div class="campus-item">
-        <img src="bac_events.jpg" alt="Student Life">
-        <div class="campus-name">Career Fairs<span>Global Networking</span></div>
+        <img src="../../assets/images/uoc_library.jpg" alt="Library">
+        <div class="campus-name">Resource Centre<span>Research & Study</span></div>
       </div>
     </div>
   </div>
@@ -226,39 +187,39 @@
           <tr>
             <th>Course Name</th>
             <th>Duration</th>
-            <th>1st Year Tuition Fee</th>
+            <th>1st Year Tuition (RM)</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Foundation in Computing & Engineering (UNIMY)</td>
+            <td>Bachelor of Pharmacy (Hons)</td>
+            <td>4 Years</td>
+            <td><span class="fee-tag">25,500</span></td>
+          </tr>
+          <tr>
+            <td>Bachelor of Psychology (Hons)</td>
+            <td>4 Years</td>
+            <td><span class="fee-tag">28,000</span></td>
+          </tr>
+          <tr>
+            <td>Bachelor of Business Administration (Hons)</td>
+            <td>3.6 Years</td>
+            <td><span class="fee-tag">11,800</span></td>
+          </tr>
+          <tr>
+            <td>Bachelor of Information Technology (Hons)</td>
+            <td>3.5 Years</td>
+            <td><span class="fee-tag">18,286</span></td>
+          </tr>
+          <tr>
+            <td>Diploma in Nursing</td>
+            <td>3 Years</td>
+            <td><span class="fee-tag">20,400</span></td>
+          </tr>
+          <tr>
+            <td>Foundation in Science (FIS)</td>
             <td>1 Year</td>
-            <td><span class="fee-tag">RM 17,168</span></td>
-          </tr>
-          <tr>
-            <td>Bachelor of Software Engineering (UNIMY)</td>
-            <td>3 Years</td>
-            <td><span class="fee-tag">RM 16,168</span></td>
-          </tr>
-          <tr>
-            <td>UK Transfer Degree Programme (Law)</td>
-            <td>3 Years</td>
-            <td><span class="fee-tag">RM 36,168</span></td>
-          </tr>
-          <tr>
-            <td>Bachelor of Business & Management (Veritas)</td>
-            <td>3 Years</td>
-            <td><span class="fee-tag">RM 16,168</span></td>
-          </tr>
-          <tr>
-            <td>BA Hons Social Media Management (IACT)</td>
-            <td>3 Years</td>
-            <td><span class="fee-tag">RM 29,768</span></td>
-          </tr>
-          <tr>
-            <td>Diploma in Culinary Arts (Reliance)</td>
-            <td>2 Years</td>
-            <td><span class="fee-tag">RM 16,168</span></td>
+            <td><span class="fee-tag">18,700</span></td>
           </tr>
         </tbody>
       </table>
@@ -266,15 +227,15 @@
     </div>
 
     <div class="table-action-bar">
-      <a href="bac-university.html" class="full-chart-btn">
+      <a href="../../pages/universities/university-of-cyberjaya.html" class="full-chart-btn">
         <i class="fas fa-unlock-alt"></i> View Detailed Fee Chart & Full List
       </a>
     </div>
   </div>
 
   <div style="margin-top: 50px; background: white; padding: 40px; border-radius: 20px;">
-    <h3 style="color: var(--brand-blue); margin-bottom: 15px;">Why Study at BAC?</h3>
-    <p>BAC Education Group is Malaysia's fastest-growing education group, offering over 300 qualifications across various disciplines. Whether you choose Law at BAC, Digital Tech at UNIMY, or Creative Arts at IACT, you are choosing a pathway to global employability.</p>
+    <h3 style="color: var(--brand-blue); margin-bottom: 15px;">Choose wisely!</h3>
+    <p>With over 30 programmes to choose from, you’ll be spoilt for choice! Our leading programmes range from medicine and pharmacy to business and occupational safety and health. There’s plenty of careers to choose from that’s of an essential service to the community.</p>
   </div>
 </div>
 
@@ -282,7 +243,7 @@
   <i class="fab fa-whatsapp"></i> Apply via YSSF
 </a>
 
-<a href="index.html" style="position: absolute; top: 20px; left: 20px; color: white; text-decoration: none; font-weight: bold;">
+<a href="../../index.html" style="position: absolute; top: 20px; left: 20px; color: white; text-decoration: none; font-weight: bold;">
   <i class="fas fa-arrow-left"></i> Back Home
 </a>
 
@@ -293,7 +254,7 @@
         Aot# A5, House: 16, Road: 2/3, Block L<br>
         Bonani, Chairman Bari, Dhanmondi 1213</p>
       </div>
-      <div class="footer-logo"><img src="ys_logo.png" alt="YS Logo"></div>
+      <div class="footer-logo"><img src="../../assets/images/ys_logo.png" alt="YS Logo"></div>
       <div class="office right">
         <p><strong>Malaysia Office</strong><br>
         De Tropicana, 52, Jalan Kuchai Maju 13<br>

@@ -3,25 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IUKL | YS Study Focus</title>
+  <title>BAC Education Group | YS Study Focus</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     :root {
       --brand-blue: #004080;
       --brand-yellow: #FFD700;
-      --iukl-navy: #040452; /* Requested theme color */
+      --bac-crimson: #d1275b; /* Requested theme color */
       --text-dark: #333;
       --light-bg: #f4f7f9;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-
     body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.6; }
 
     /* Hero Section */
     .hero {
       height: 60vh;
-      background: linear-gradient(rgba(0, 64, 128, 0.7), rgba(0, 64, 128, 0.7)), url('iukl_main.jpg');
+      background: linear-gradient(rgba(0, 64, 128, 0.7), rgba(0, 64, 128, 0.7)), url('../../assets/images/bac_main.jpg');
       background-size: cover;
       background-position: center;
       display: flex;
@@ -33,7 +32,6 @@
     }
 
     .hero-content h1 { font-size: 3.5rem; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
-    .hero-content p { font-size: 1.2rem; opacity: 0.9; font-weight: 300; }
 
     /* Static Info Bar */
     .info-bar {
@@ -56,17 +54,15 @@
       align-items: center;
       gap: 15px;
       min-width: 250px;
-      transition: transform 0.3s ease;
       border: 1px solid rgba(0,0,0,0.05);
     }
 
     .info-card i { color: var(--brand-blue); font-size: 32px; }
     .info-card div span { display: block; font-size: 18px; font-weight: 800; color: #444; }
-    .info-card div p { font-size: 16px; color: #666; margin: 0; }
 
-    /* Campus Navy Bar */
-    .campus-navy-bar {
-      background-color: var(--iukl-navy);
+    /* Campus Crimson Bar */
+    .campus-crimson-bar {
+      background-color: var(--bac-crimson);
       color: white;
       padding: 60px 0;
       margin: 60px 0;
@@ -74,15 +70,49 @@
     }
 
     .campus-container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-    .campus-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; gap: 40px; }
-    .campus-header h2 { font-size: 36px; line-height: 1.1; flex: 1; }
-    .campus-header p { flex: 1.5; font-size: 16px; opacity: 0.9; }
+/* Updated Campus Header to fit Logos */
+.campus-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Centers the image vertically with the text */
+  margin-bottom: 40px;
+  gap: 30px;
+}
+
+.campus-header-text {
+  flex: 1; /* Text takes up 40% */
+}
+
+.campus-header-image {
+  flex: 1.5; /* Image takes up the large empty space */
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.campus-header-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Mobile Responsive adjustment */
+@media (max-width: 900px) {
+  .campus-header {
+    flex-direction: column;
+    text-align: center;
+  }
+} h2 { font-size: 36px; line-height: 1.1; flex: 1; }
 
     .campus-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
-    .campus-item { position: relative; overflow: hidden; border-radius: 4px; }
-    .campus-item img { width: 100%; height: 220px; object-fit: cover; transition: transform 0.5s ease; }
-    .campus-item:hover img { transform: scale(1.05); }
-    .campus-name { padding: 15px 0; font-weight: bold; font-size: 18px; }
+    .campus-item { position: relative; overflow: hidden; border-radius: 4px; background: #fff; color: #333; }
+    .campus-item img { width: 100%; height: 220px; object-fit: cover; }
+    .campus-name { padding: 15px; font-weight: bold; font-size: 18px; color: var(--text-dark); }
+    .campus-name span { display: block; font-weight: normal; font-size: 14px; color: #666; }
 
     /* Table Section */
     .container { max-width: 1100px; margin: 60px auto; padding: 0 20px; }
@@ -95,19 +125,21 @@
     table { width: 100%; border-collapse: collapse; }
     th { background-color: var(--brand-blue); color: white; padding: 15px; text-align: left; }
     td { padding: 15px; border-bottom: 1px solid #eee; }
-    .fee-tag { background: #e7f3ff; color: #004080; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 14px; }
+    .fee-tag { background: #fee2e2; color: #991b1b; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 14px; }
 
     .table-fade-overlay { position: absolute; bottom: 0; left: 0; width: 100%; height: 150px; background: linear-gradient(to bottom, transparent, white); z-index: 2; }
-    .table-action-bar { background: #f0f8ff; padding: 20px; text-align: center; border-top: 1px solid #e0e0e0; }
-    .full-chart-btn { display: inline-flex; align-items: center; gap: 12px; background: #004080; color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 18px; }
+    .table-action-bar { background: #fff1f2; padding: 20px; text-align: center; border-top: 1px solid #e0e0e0; }
+    .full-chart-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--brand-blue); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; }
+
+    /* Sticky Button */
+    .sticky-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; animation: bounce 2s infinite; display: flex; align-items: center; gap: 10px; }
+    @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} }
 
     /* Footer Styles */
     footer { background-color: #004080; color: white; padding: 30px 20px 10px 20px; }
     .footer-container { max-width: 1100px; margin: auto; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-    .footer-logo img { width: 130px; height: auto; }
-.office { flex: 1; font-size: 14px; line-height: 1.4; }
-.office.left { text-align: left; }
-.office.right { text-align: right; }
+    .footer-logo img { width: 130px; }
+    .office { flex: 1; font-size: 14px; }
     .footer-bottom { position: relative; padding: 20px 0; display: flex; justify-content: center; }
     .footer-bottom:has(.menu.active) { padding: 100px 0; }
     .menu { position: relative; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; z-index: 10; }
@@ -116,9 +148,6 @@
     .menu li { position: absolute; list-style: none; transition: 0.5s; transform: rotate(calc(360deg / 8 * var(--i))) translateX(0px); scale: 0; opacity: 0; }
     .menu.active li { transform: rotate(calc(360deg / 8 * var(--i))) translateX(-95px); scale: 1; opacity: 1; }
     .menu li a { width: 50px; height: 50px; background-color: #fff; display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 1.5rem; color: var(--clr); transform: rotate(calc(360deg / -8 * var(--i))); }
-
-    .sticky-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; animation: bounce 2s infinite; }
-    @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} }
 
     @media (max-width: 768px) {
       .hero-content h1 { font-size: 2rem; }
@@ -131,49 +160,55 @@
 
   <section class="hero">
     <div class="hero-content">
-      <h1>Infrastructure University Kuala Lumpur</h1>
-      <p>The Premiere Infrastructure University in the Region</p>
+      <h1>BAC Education Group</h1>
+      <p>Malaysia's No. 1 Law & Business School</p>
     </div>
   </section>
 
   <div class="info-bar">
     <div class="info-card">
       <i class="fas fa-map-marker-alt"></i>
-      <div><span>Location</span><p>Kajang, Selangor</p></div>
+      <div><span>Location</span><p>KL & Petaling Jaya</p></div>
     </div>
     <div class="info-card">
       <i class="fas fa-calendar-alt"></i>
-      <div><span>Intakes</span><p>March, June, Nov</p></div>
+      <div><span>Intakes</span><p>Jan, April, Sept</p></div>
     </div>
     <div class="info-card">
-      <i class="fas fa-award"></i>
-      <div><span>Scholarship</span><p>Up to 30% Waiver</p></div>
+      <i class="fas fa-university"></i>
+      <div><span>Partners</span><p>UK Degree Transfer</p></div>
     </div>
   </div>
 
-<section class="campus-navy-bar">
+<section class="campus-crimson-bar">
   <div class="campus-container">
     <div class="campus-header">
-      <h2>IUKL MALAYSIA<br>CAMPUS LIFE</h2>
-      <p>IUKL provides a unique learning environment with a focus on practical infrastructure knowledge. Our campus in Kajang is equipped with specialized labs, vibrant student activity centers, and modern facilities to support your academic journey.</p>
+      <div class="campus-header-text">
+        <h2>BAC GLOBAL CAMPUS<br>& STUDENT LIFE</h2>
+        <p>Experience a world-class education at BAC's urban campuses. From state-of-the-art moot courts for law students to digital labs at UNIMY, we provide the perfect ecosystem for academic excellence and industry readiness.</p>
+      </div>
+      
+      <div class="campus-header-image">
+         <img src="../../assets/images/bac_group_logos.png" alt="The BAC Education Group">
+      </div>
     </div>
 
     <div class="campus-grid">
       <div class="campus-item">
-        <img src="iukl_campus.jpg" alt="IUKL Campus">
-        <div class="campus-name">Main Campus<span>Kajang</span></div>
+        <img src="../../assets/images/bac_campus.jpg" alt="BAC Campus">
+        <div class="campus-name">KL Main Campus<span>Kuala Lumpur</span></div>
       </div>
       <div class="campus-item">
-        <img src="iukl_activity1.jpg" alt="Student Activity">
-        <div class="campus-name">Student Hub<span>Activities</span></div>
+        <img src="../../assets/images/bac_moot.jpg" alt="Moot Court">
+        <div class="campus-name">Moot Court<span>Law Practice</span></div>
       </div>
       <div class="campus-item">
-        <img src="iukl_activity2.jpg" alt="Lab Work">
-        <div class="campus-name">Engineering Lab<span>Practical Training</span></div>
+        <img src="../../assets/images/bac_unimy.jpg" alt="UNIMY Lab">
+        <div class="campus-name">Digital Tech Hub<span>UNIMY Lab</span></div>
       </div>
       <div class="campus-item">
-        <img src="iukl_activity3.jpg" alt="Campus Event">
-        <div class="campus-name">International Day<span>Cultural Exchange</span></div>
+        <img src="../../assets/images/bac_events.jpg" alt="Student Life">
+        <div class="campus-name">Career Fairs<span>Global Networking</span></div>
       </div>
     </div>
   </div>
@@ -191,39 +226,39 @@
           <tr>
             <th>Course Name</th>
             <th>Duration</th>
-            <th>1st Year Total Payment</th>
+            <th>1st Year Tuition Fee</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Bachelor of Civil Engineering (Hons)</td>
-            <td>4 Years</td>
-            <td><span class="fee-tag">RM 12,700 + Sem 1</span></td>
+            <td>Foundation in Computing & Engineering (UNIMY)</td>
+            <td>1 Year</td>
+            <td><span class="fee-tag">RM 17,168</span></td>
           </tr>
           <tr>
-            <td>Bachelor of Computer Science (Hons)</td>
-            <td>3.5 Years</td>
-            <td><span class="fee-tag">RM 12,700 + Sem 1</span></td>
+            <td>Bachelor of Software Engineering (UNIMY)</td>
+            <td>3 Years</td>
+            <td><span class="fee-tag">RM 16,168</span></td>
           </tr>
           <tr>
-            <td>Bachelor of Software Engineering (Hons)</td>
-            <td>3.5 Years</td>
-            <td><span class="fee-tag">RM 12,700 + Sem 1</span></td>
+            <td>UK Transfer Degree Programme (Law)</td>
+            <td>3 Years</td>
+            <td><span class="fee-tag">RM 36,168</span></td>
           </tr>
           <tr>
-            <td>Bachelor of Accountancy (Hons)</td>
-            <td>4 Years</td>
-            <td><span class="fee-tag">RM 12,700 + Sem 1</span></td>
+            <td>Bachelor of Business & Management (Veritas)</td>
+            <td>3 Years</td>
+            <td><span class="fee-tag">RM 16,168</span></td>
           </tr>
           <tr>
-            <td>Bachelor of Quantity Surveying (Hons)</td>
-            <td>4 Years</td>
-            <td><span class="fee-tag">RM 12,700 + Sem 1</span></td>
+            <td>BA Hons Social Media Management (IACT)</td>
+            <td>3 Years</td>
+            <td><span class="fee-tag">RM 29,768</span></td>
           </tr>
           <tr>
-            <td>Master of Business Administration (MBA)</td>
-            <td>1.5 Years</td>
-            <td><span class="fee-tag">RM 12,700 + Sem 1</span></td>
+            <td>Diploma in Culinary Arts (Reliance)</td>
+            <td>2 Years</td>
+            <td><span class="fee-tag">RM 16,168</span></td>
           </tr>
         </tbody>
       </table>
@@ -231,15 +266,15 @@
     </div>
 
     <div class="table-action-bar">
-      <a href="iukl-fees.html" class="full-chart-btn">
+      <a href="../../pages/universities/bac-university.html" class="full-chart-btn">
         <i class="fas fa-unlock-alt"></i> View Detailed Fee Chart & Full List
       </a>
     </div>
   </div>
 
   <div style="margin-top: 50px; background: white; padding: 40px; border-radius: 20px;">
-    <h3 style="color: var(--brand-blue); margin-bottom: 15px;">Why Study at IUKL?</h3>
-    <p>Infrastructure University Kuala Lumpur (IUKL) is the first infrastructure university in Malaysia. It is well-known for its strength in Engineering, Architecture, and Business. IUKL offers a 30% scholarship for foundation, diploma, and degree programs, making high-quality education more accessible to international students.</p>
+    <h3 style="color: var(--brand-blue); margin-bottom: 15px;">Why Study at BAC?</h3>
+    <p>BAC Education Group is Malaysia's fastest-growing education group, offering over 300 qualifications across various disciplines. Whether you choose Law at BAC, Digital Tech at UNIMY, or Creative Arts at IACT, you are choosing a pathway to global employability.</p>
   </div>
 </div>
 
@@ -247,7 +282,7 @@
   <i class="fab fa-whatsapp"></i> Apply via YSSF
 </a>
 
-<a href="index.html" style="position: absolute; top: 20px; left: 20px; color: white; text-decoration: none; font-weight: bold;">
+<a href="../../index.html" style="position: absolute; top: 20px; left: 20px; color: white; text-decoration: none; font-weight: bold;">
   <i class="fas fa-arrow-left"></i> Back Home
 </a>
 
@@ -258,11 +293,7 @@
         Aot# A5, House: 16, Road: 2/3, Block L<br>
         Bonani, Chairman Bari, Dhanmondi 1213</p>
       </div>
-
-      <div class="footer-logo">
-        <img src="ys_logo.png" alt="YS Logo">
-      </div>
-
+      <div class="footer-logo"><img src="../../assets/images/ys_logo.png" alt="YS Logo"></div>
       <div class="office right">
         <p><strong>Malaysia Office</strong><br>
         De Tropicana, 52, Jalan Kuchai Maju 13<br>
@@ -270,7 +301,7 @@
         58200 Kuala Lumpur, Malaysia</p>
       </div>
     </div>
-    
+
     <div class="footer-bottom">
       <div class="menu">
         <div class="toggle"><ion-icon name="share-social"></ion-icon></div>
@@ -280,7 +311,7 @@
         <li style="--i: 6; --clr: #000000"><a href="https://www.tiktok.com/@sabu_555" target="_blank"><i class="fab fa-tiktok"></i></a></li>
       </div>
     </div>
-    <div class="developer-bar" style="background-color: #002040; color: #ccc; padding: 10px 0; text-align: center; font-size: 12px;">
+    <div class="developer-bar" style="background-color: #002040; color: #ccc; padding: 10px 0; text-align: center; font-size: 12px; width: 100%;">
       Developed by: Bhuiyan Mohamed Nahid Jahan.
     </div>
 </footer>
