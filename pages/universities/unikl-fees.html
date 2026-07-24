@@ -1,0 +1,810 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Universiti Kuala Lumpur (UniKL) - International Fee Structure</title>
+<style>
+   body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0 0 80px 0; /* space for footer */
+  background: #f9f9f9;
+}
+
+header {
+  background: #004080;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+footer {
+  background: #004080;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: auto;
+}
+
+.panel {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  background-color: white;
+  display: none;
+  border: 1px solid #e0e6ed;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  margin-bottom: 25px;
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch; 
+}
+
+table {
+  min-width: 700px;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 10px 0;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 95%;
+}
+
+.accordion {
+  background: #ffffff;
+  color: #004080;
+  cursor: pointer;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  width: 100%; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid #e0e6ed;
+  outline: none;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.accordion.active {
+  background: #004080;
+  color: #ffffff;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0;
+  box-shadow: none;
+}
+
+th {
+  background-color: #004080;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 15px 12px;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #f0f2f5;
+  color: #444;
+  font-size: 14px;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+tr:hover {
+  background-color: #f1f7ff !important;
+  transition: background-color 0.2s ease;
+}
+
+tr.highlight {
+  background-color: #fff9c4 !important;
+  font-weight: bold;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+.note {
+  background: #f8f9fa;
+  border-left: 6px solid #004080;
+  padding: 25px;
+  margin: 25px 0;
+  border-radius: 12px;
+  color: #333;
+  line-height: 1.6;
+  font-size: 15px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+  position: relative;
+}
+
+.search-container {
+  background: #f1f3f5;
+  margin: 0 auto 30px auto;
+  padding: 30px 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+  border-bottom: 1px solid #e9ecef;
+  border-radius: 12px;
+}
+
+.search-container input[type="text"] {
+  padding: 15px 25px;
+  width: 100%;
+  max-width: 600px;
+  border: 2px solid #dde2e7;
+  border-radius: 50px;
+  font-size: 16px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.search-container input[type="text"]:focus {
+  outline: none;
+  border-color: #0066cc;
+  width: 100%;
+  max-width: 650px;
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.15);
+  transform: translateY(-2px);
+}
+
+.search-container input[type="text"]::placeholder {
+  color: #adb5bd;
+  transition: opacity 0.3s;
+}
+
+.search-container input[type="text"]:focus::placeholder {
+  opacity: 0.5;
+}
+
+.download-bar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: #0066cc;
+  color: #ffffff !important;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  float: right;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+}
+
+.download-bar span {
+  color: #ffffff !important;
+  margin: 0 !important;
+}
+
+.download-bar:hover {
+  background: #004080;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 64, 128, 0.3);
+}
+
+.note::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  </style>
+  <link rel="stylesheet" href="../../assets/css/global.css">
+</head>
+<body>
+
+<div class="global-navbar">
+  <a href="../../" class="nav-brand">YSSF</a>
+  <a href="../../" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+</div>
+
+<header>
+  <h1>Universiti Kuala Lumpur (UniKL)</h1>
+  <h2>International Fee Structure</h2>
+  <p></p>
+</header>
+
+<div class="container">
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search program name..." onkeyup="filterPrograms()" />
+  </div>
+
+<button class="accordion"> FOUNDATION PROGRAMMES</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES (YEAR)</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Foundation in Medical Sciences</td><td>RCMP</td><td>July & Oct</td><td>1</td><td>21,200</td></tr>
+      <tr><td>2</td><td>Foundation in Science and Technology</td><td>MIDI</td><td>Jan & July</td><td>1</td><td>19,080**</td></tr>
+      <tr><td>3</td><td>Foundation in Creative Art and Design</td><td>MIDI</td><td>Jan, July & Oct</td><td>1</td><td>19,080**</td></tr>
+      <tr><td>4</td><td>Foundation in Computer Technology</td><td>MIIT</td><td>July</td><td>1</td><td>21,083**</td></tr>
+      <tr><td>5</td><td>Foundation in Business</td><td>BIS</td><td>July</td><td>1</td><td>18,020***</td></tr>
+      <tr><td>6</td><td>Foundation in Science</td><td>MICET</td><td>July</td><td>1</td><td>20,670**</td></tr>
+      <tr><td>7</td><td>Foundation in Science and Arts</td><td>MSI</td><td>July</td><td>1</td><td>19,080**</td></tr>
+      <tr><td>8</td><td>Foundation in Arts</td><td>BMI</td><td>Jan & July</td><td>1</td><td>18,200**</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80<br><br>Disclaimer: The fees provided are for general information purposes only.
+    </div>
+  </div>
+
+<button class="accordion"> ALLIED & HEALTH SCIENCES PROGRAMMES</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES (YEAR)</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Diploma in Pharmacy</td><td>RCMP</td><td>July</td><td>3</td><td>19,822</td></tr>
+      <tr><td>2</td><td>Diploma in Physiotherapy</td><td>RCMP</td><td>July</td><td>3</td><td>23,150</td></tr>
+      <tr><td>3</td><td>Diploma in Nursing</td><td>RCMP</td><td>July</td><td>3</td><td>19,326</td></tr>
+      <tr><td>4</td><td>Diploma in Medical Imaging</td><td>RCMP</td><td>July</td><td>3</td><td>18,989</td></tr>
+      <tr><td>5</td><td>Diploma of Medical Laboratory Technology</td><td>MESTECH</td><td>July</td><td>3</td><td>16,506</td></tr>
+      <tr><td>6</td><td>Diploma in Medical and Health Sciences</td><td>MESTECH</td><td>July</td><td>3</td><td>16,506</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80
+    </div>
+  </div>
+
+<button class="accordion"> INFORMATION TECHNOLOGY & MULTIMEDIA PROGRAMMES</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES (YEAR)</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Diploma in Information Technology</td><td>MIIT</td><td>July</td><td>2.5</td><td>15,775</td></tr>
+      <tr><td>2</td><td>Diploma in Networking Technology</td><td>MIIT</td><td>July</td><td>2.5</td><td>19,011</td></tr>
+      <tr><td>3</td><td>Diploma in Multimedia</td><td>MIIT</td><td>July</td><td>2.5</td><td>15,775</td></tr>
+      <tr><td>4</td><td>Diploma in Animation</td><td>MIIT</td><td>July</td><td>2.5</td><td>22,787</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80
+    </div>
+  </div>
+
+<button class="accordion"> ENGINEERING TECHNOLOGY PROGRAMMES (DIPLOMA)</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES (YEAR)</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Diploma of Electrical and Electronics Engineering Technology</td><td>BMI</td><td>Feb & July</td><td>3</td><td>15,843</td></tr>
+      <tr><td>2</td><td>Diploma of Engineering Technology in Welding</td><td>MFI</td><td>Feb & July</td><td>3</td><td>16,769</td></tr>
+      <tr><td>3</td><td>Diploma of Engineering Technology in Automotive Maintenance</td><td>MFI</td><td>Feb & July</td><td>3</td><td>16,324</td></tr>
+      <tr><td>4</td><td>Diploma of Engineering Technology in Avionics Maintenance</td><td>MIAT</td><td>Feb & July</td><td>3</td><td>17,914</td></tr>
+      <tr><td>5</td><td>Diploma of Engineering Technology in Aeroplane Maintenance</td><td>MIAT</td><td>Feb & July</td><td>3</td><td>17,914</td></tr>
+      <tr><td>6</td><td>Diploma of Engineering Technology in Marine Engineering</td><td>MIMET</td><td>Feb & July</td><td>3</td><td>18,989</td></tr>
+      <tr><td>7</td><td>Diploma of Engineering Technology in Electrical & Electronics (Marine)</td><td>MIMET</td><td>July</td><td>3</td><td>17,528</td></tr>
+      <tr><td>8</td><td>Diploma of Engineering Technology (Naval Architecture and Shipbuilding)</td><td>MIMET</td><td>Feb & July</td><td>3</td><td>24,157</td></tr>
+      <tr><td>9</td><td>Diploma of Engineering Technology in Mechanical Design & Development</td><td>MSI</td><td>July</td><td>3</td><td>15,843</td></tr>
+      <tr><td>10</td><td>Diploma of Electronic Engineering Technology (Industrial Automation and Control)</td><td>MSI</td><td>July</td><td>3</td><td>14,946</td></tr>
+      <tr><td>11</td><td>Diploma of Engineering Technology (Railway System)</td><td>MIDI</td><td>July</td><td>3</td><td>18,020</td></tr>
+      <tr><td>12</td><td>Diploma in Chemical Engineering Technology (Food) - UniKL MICET</td><td>MICET</td><td>July</td><td>3</td><td>16,324</td></tr>
+      <tr><td>13</td><td>Diploma in Chemical Engineering Technology - UniKL MICET</td><td>MICET</td><td>July</td><td>3</td><td>19,982</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80
+    </div>
+  </div>
+
+<button class="accordion"> LOGISTICS & MARITIME PROGRAMMES (DIPLOMA)</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES (YEAR)</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Diploma in Maritime Management</td><td>MIMET</td><td>Feb & July</td><td>2.5</td><td>19,807</td></tr>
+      <tr><td>2</td><td>Diploma in Industrial Logistics</td><td>MITEC</td><td>Feb & July</td><td>3</td><td>15,582</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80
+    </div>
+  </div>
+
+<button class="accordion"> PROGRAMMES OFFERED (PROFESSIONAL CERTIFICATE) - AIRCRAFT MAINTENANCE LICENSE PROGRAM</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES (YEAR)</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>EASA Part 66</td><td>MIAT</td><td>Jan</td><td>2</td><td>66,500</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80
+    </div>
+  </div>
+
+<button class="accordion"> MEDICAL & ALLIED HEALTH SCIENCES PROGRAMMES (BACHELOR)</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES YEAR</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Bachelor of Medicine and Bachelor of Surgery (MBBS)</td><td>RCMP</td><td>Oct</td><td>5</td><td>80,560</td></tr>
+      <tr><td>2</td><td>Bachelor of Pharmacy with Honours</td><td>RCMP</td><td>Oct</td><td>4</td><td>37,100</td></tr>
+      <tr><td>3</td><td>Bachelor of Nursing Science (Honours)</td><td>RCMP</td><td>Sept</td><td>4</td><td>21,200</td></tr>
+      <tr><td>4</td><td>Bachelor of Physiotherapy (Honours)</td><td>RCMP</td><td>Oct</td><td>4</td><td>25,440</td></tr>
+      <tr><td>5</td><td>Bachelor in Pharmaceutical Technology (Honours)</td><td>RCMP</td><td>Oct</td><td>3.5</td><td>27,348</td></tr>
+      <tr><td>6</td><td>Bachelor of Science in Psychology (Honours)</td><td>RCMP</td><td>Feb & Oct</td><td>3</td><td>24,910</td></tr>
+      <tr><td>7</td><td>Bachelor of Biomedical Science (Honours)</td><td>MESTECH</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>8</td><td>Bachelor of Environmental Health (Hons)</td><td>MESTECH</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>9</td><td>Bachelor of Occupational Safety & Health (Honours)</td><td>MESTECH</td><td>Feb & Oct</td><td>4</td><td>22,769</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80
+    </div>
+  </div>
+
+<button class="accordion"> ENGINEERING PROGRAMMES (BACHELOR)</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES YEAR</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Bachelor of Electrical Engineering with Honours</td><td>BMI</td><td>Feb & Oct</td><td>4</td><td>23,371</td></tr>
+      <tr><td>2</td><td>Bachelor of Mechanical Engineering with Honours</td><td>MFI</td><td>Feb & Oct</td><td>4</td><td>17,638</td></tr>
+      <tr><td>3</td><td>Bachelor of Mechanical Engineering with Honours</td><td>MSI</td><td>Feb & Oct</td><td>4</td><td>22,366</td></tr>
+      <tr><td>4</td><td>Bachelor of Chemical Engineering with Honours</td><td>MICET</td><td>Feb & Oct</td><td>4</td><td>24,019</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80
+    </div>
+  </div>
+
+<button class="accordion"> ENGINEERING TECHNOLOGY PROGRAMMES (BACHELOR)</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES YEAR</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Bachelor of Aircraft Engineering Technology With Honours</td><td>MIAT</td><td>Jan & July</td><td>4</td><td>23,484</td></tr>
+      <tr><td>2</td><td>Bachelor of Aircraft Engineering Technology (Honours) in Avionics</td><td>MIAT</td><td>Jan & July</td><td>4</td><td>23,484</td></tr>
+      <tr><td>3</td><td>Bachelor of Marine Engineering Technology with Honours</td><td>MIMET</td><td>Jan & July</td><td>4</td><td>27,836</td></tr>
+      <tr><td>4</td><td>Bachelor of Electrical and Electronics Engineering Technology (Marine) with Honours</td><td>MIMET</td><td>July</td><td>4</td><td>22,809</td></tr>
+      <tr><td>5</td><td>Bachelor of Engineering Technology (Naval Architecture and Shipbuilding) with Honours</td><td>MIMET</td><td>Jan & July</td><td>4</td><td>21,910</td></tr>
+      <tr><td>6</td><td>Bachelor of Engineering Technology (Offshore) with Honours</td><td>MIMET</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>7</td><td>Bachelor of Computer Engineering Technology (Networking Systems) with Honours</td><td>MIIT</td><td>Feb & Oct</td><td>4</td><td>20,670</td></tr>
+      <tr><td>8</td><td>Bachelor of Electrical Engineering Technology with Honours</td><td>BMI</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>9</td><td>Bachelor of Electronic Engineering Technology with Honours</td><td>BMI</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>10</td><td>Bachelor of Electronic Engineering Technology (Medical Electronics) With Honours</td><td>BMI</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>11</td><td>Bachelor of Electronic Engineering Technology (Microelectronics)</td><td>BMI</td><td>Feb & Oct</td><td>4</td><td>24,804</td></tr>
+      <tr><td>12</td><td>Bachelor of Telecommunication Engineering Technology with Honours</td><td>BMI</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>13</td><td>Bachelor of Electrical Engineering Technology (Sustainable Energy) with Honours</td><td>BMI</td><td>Feb & Oct</td><td>4</td><td>26,966</td></tr>
+      <tr><td>14</td><td>Bachelor of Engineering Technology (Honours) in Railway System</td><td>MIDI</td><td>Feb & Oct</td><td>44</td><td>21,704</td></tr>
+      <tr><td>15</td><td>Bachelor of Engineering Technology (Manufacturing Systems) with Honours</td><td>MIDI</td><td>Feb & Oct</td><td>-</td><td>20,670</td></tr>
+      <tr><td>16</td><td>Bachelor of Engineering Technology (Hons) in Facilities Maintenance Engineering</td><td>MITEC</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>17</td><td>Bachelor of Engineering Technology (Hons) in Instrumentation and Control Engineering</td><td>MITEC</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>18</td><td>Bachelor of Petroleum Engineering Technology (Operation and Safety) with Honours</td><td>MITEC</td><td>Feb & Oct</td><td>4</td><td>25,122</td></tr>
+      <tr><td>19</td><td>Bachelor of Engineering Technology (Quality Engineering) with Honours</td><td>MITEC</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>20</td><td>Bachelor of Engineering Technology (Hons) in Manufacturing (Automotive)</td><td>MSI</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>21</td><td>Bachelor of Engineering Technology (Hons.) in Mechanical (Design)</td><td>MSI</td><td>Feb & Oct</td><td>444</td><td>20,670</td></tr>
+      <tr><td>22</td><td>Bachelor of Engineering Technology (Hons.) in Applied Electronics</td><td>MSI</td><td>Feb & Oct</td><td>-</td><td>20,670</td></tr>
+      <tr><td>23</td><td>Bachelor of Mechatronics Engineering Technology (Automotive) with Honours</td><td>MSI</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>24</td><td>Bachelor of Chemical Engineering Technology (Bioprocess) with Honours</td><td>MICET</td><td>Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>25</td><td>Bachelor of Chemical Engineering Technology (Food) with Honours</td><td>MICET</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>26</td><td>Bachelor of Mechatronics Engineering Technology with Honours</td><td>MFI</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>27</td><td>Bachelor of Engineering Technology (Water Engineering and Energy) with Honours</td><td>MFI</td><td>Feb & Oct</td><td>4</td><td>25,440</td></tr>
+      <tr><td>28</td><td>Bachelor of Mechanical Engineering Technology (Industrial Refrigeration and Air Conditioning System) with Honours</td><td>MFI</td><td>Feb & Oct</td><td>4</td><td>23,087</td></tr>
+      <tr><td>29</td><td>Bachelor of Engineering Technology (Automation and Robotics) with Honours</td><td>MFI</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>30</td><td>Bachelor of Mechanical Engineering Technology (Machine Manufacturing) with Honours</td><td>MFI</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>31</td><td>Bachelor of Engineering Technology (Welding and Quality Inspection) with Honours</td><td>MFI</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+      <tr><td>32</td><td>Bachelor of Automotive Engineering Technology (Maintenance) with Honours</td><td>MFI</td><td>Feb & Oct</td><td>4</td><td>21,910</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80
+    </div>
+  </div>
+
+<button class="accordion"> INFORMATION TECHNOLOGY PROGRAMMES (BACHELOR)</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES YEAR</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Bachelor of Information Technology (Hons) in Software Engineering</td><td>MIIT</td><td>Feb & Oct</td><td>3</td><td>25,215</td></tr>
+      <tr><td>2</td><td>Bachelor of Information Technology (Hons) in Computer System Security</td><td>MIIT</td><td>Feb & Oct</td><td>3</td><td>26,118</td></tr>
+      <tr><td>3</td><td>Bachelor in Information Technology (Honours) (Internet of Things)</td><td>MIIT</td><td>Feb & Oct</td><td>3.5</td><td>24,600</td></tr>
+      <tr><td>4</td><td>Bachelor of Artificial Intelligence Technology with Honours</td><td>MIIT</td><td>Feb & Oct</td><td>3</td><td>38,400</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80
+    </div>
+  </div>
+
+<button class="accordion"> MULTIMEDIA PROGRAMMES (BACHELOR)</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES YEAR</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Bachelor of Multimedia Technology (Hons) in Interactive Multimedia Design</td><td>MIIT</td><td>Feb & Oct</td><td>3</td><td>26,366</td></tr>
+      <tr><td>2</td><td>Bachelor of Multimedia Technology (Hons) in Computer Animation</td><td>MIIT</td><td>Feb & Oct</td><td>3</td><td>28,938</td></tr>
+      <tr><td>3</td><td>Bachelor of Game Development Technology with Honours</td><td>MIIT</td><td>Feb & Oct</td><td>3</td><td>34,147</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80
+    </div>
+  </div>
+
+<button class="accordion"> MANAGEMENT & ACCOUNTING PROGRAMMES (BACHELOR)</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES YEAR</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Bachelor of Accounting (Hons)</td><td>BIS</td><td>Feb, July & Oct</td><td>4</td><td>18,989</td></tr>
+      <tr><td>2</td><td>Bachelor of Business Administration (Hons) (Management and Entrepreneurship)</td><td>BIS</td><td>Feb, July & Oct</td><td>3</td><td>17,528</td></tr>
+      <tr><td>3</td><td>Bachelor in Islamic Finance With Honours</td><td>BIS</td><td>Feb, July & Oct</td><td>3</td><td>20,458</td></tr>
+      <tr><td>4</td><td>Bachelor of Business Administration (Hons.) in Marketing</td><td>BIS</td><td>Feb, July & Oct</td><td>3</td><td>18,989</td></tr>
+      <tr><td>5</td><td>Bachelor of Business Administration (Hons.) in International Business</td><td>BIS</td><td>Feb, July & Oct</td><td>3</td><td>18,989</td></tr>
+      <tr><td>6</td><td>Bachelor in Tourism Planning and Development (Honours)</td><td>BIS</td><td>Feb, July & Oct</td><td>3</td><td>18,989</td></tr>
+      <tr><td>7</td><td>Bachelor of Science (Honours) in Analytical Economics</td><td>BIS</td><td>Feb, July & Oct</td><td>3</td><td>23,775</td></tr>
+      <tr><td>8</td><td>Bachelor in Financial Technology with Honours</td><td>BIS</td><td>Feb, July & Oct</td><td>3</td><td>32,245</td></tr>
+      <tr><td>9</td><td>Bachelor of Technology Management (Hons)</td><td>MIDI</td><td>Feb & Oct</td><td>3</td><td>17,263</td></tr>
+      <tr><td>10</td><td>Bachelor of Project Management (Honours)</td><td>MIDI</td><td>Feb & Oct</td><td>3</td><td>26,156</td></tr>
+      <tr><td>11</td><td>Bachelor of Aviation Management (Hons)</td><td>MIAT</td><td>Feb & Oct</td><td>3.5</td><td>24,798</td></tr>
+      <tr><td>12</td><td>Bachelor in Maritime Operations (Honours)</td><td>MIMET</td><td>Feb & Oct</td><td>3.5</td><td>23,371</td></tr>
+      <tr><td>13</td><td>Bachelor of Business Technology (Honours) in Automotive Management</td><td>MSI</td><td>Feb & Oct</td><td>3.5</td><td>26,182</td></tr>
+      <tr><td>14</td><td>Bachelor of Industrial Logistics (Honours)</td><td>MITEC</td><td>Feb & Oct</td><td>3.5</td><td>25,618</td></tr>
+      <tr><td>15</td><td>Bachelor of Environmental Management and Sustainability Technology with Honours</td><td>MICET</td><td>Feb & Oct</td><td>3.5</td><td>21,348</td></tr>
+      <tr><td>16</td><td>Bachelor of Food Safety and Quality Technology with Honours</td><td>MICET</td><td>Feb & Oct</td><td>3</td><td>21,910</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80
+    </div>
+  </div>
+
+<button class="accordion"> CREATIVE, ART & DESIGN PROGRAMMES (BACHELOR)</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES YEAR</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Bachelor of Design (Honours) in Industrial Design</td><td>MIDI</td><td>Feb & Oct</td><td>3</td><td>25,562</td></tr>
+      <tr><td>2</td><td>Bachelor in Fashion Design With Marketing (Honours)</td><td>MIDI</td><td>Feb & Oct</td><td>3</td><td>28,938</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80
+    </div>
+  </div>
+
+<button class="accordion"> MASTER (COURSEWORK) PROGRAMMES</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES YEAR</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Master of Business Administration</td><td>BIS</td><td>Feb & Oct</td><td>1-1.5</td><td>34,726</td></tr>
+      <tr><td>2</td><td>Master of Business Administration (Entrepreneurship)</td><td>BIS</td><td>Feb & Oct</td><td>1-1.5</td><td>34,726</td></tr>
+      <tr><td>3</td><td>Master of Public Health</td><td>RCMP</td><td>Feb & Oct</td><td>1</td><td>27,240</td></tr>
+      <tr><td>4</td><td>Master of Science in Public Health</td><td>RCMP</td><td>Feb & Oct</td><td>1</td><td>26,039</td></tr>
+      <tr><td>5</td><td>Master in Computer Science (Open and Distance Learning)</td><td>MIIT</td><td>Jan & Sept</td><td>1.5</td><td>20,374</td></tr>
+      <tr><td>6</td><td>Master in Manufacturing Management</td><td>MIDI</td><td>Feb & Oct</td><td>1.5-2.5</td><td>21,540</td></tr>
+      <tr><td>7</td><td>Master of Science (Water and Hydropower Engineering)</td><td>MFI</td><td>Sept</td><td>2-3</td><td>59,403</td></tr>
+      <tr><td>8</td><td>Master of Engineering in Structural Integrity</td><td>MFI</td><td>Mar</td><td>1.5-3</td><td>22,232</td></tr>
+      <tr><td>9</td><td>Master in Mechanical Engineering</td><td>MFI</td><td>Feb & Oct</td><td>1.5-3</td><td>22,232</td></tr>
+      <tr><td>10</td><td>Master of Maritime Operations and Management</td><td>MIMET</td><td>Feb & Oct</td><td>1.5-3</td><td>25,642</td></tr>
+      <tr><td>11</td><td>Master in Supply Chain Management</td><td>MITEC</td><td>Feb & Oct</td><td>1.5-3</td><td>23,267</td></tr>
+      <tr><td>12</td><td>Master of Quality Engineering and Management</td><td>MITEC</td><td>Feb & Oct</td><td>1.5-3</td><td>26,136</td></tr>
+      <tr><td>13</td><td>Master of Business Technology</td><td>MSI</td><td>Feb & Oct</td><td>1-3</td><td>33,569</td></tr>
+      <tr><td>14</td><td>Master of Science (MSc) in Food Processing and Innovation</td><td>MICET</td><td>Jan & July</td><td>1.5-3</td><td>24,516</td></tr>
+      <tr><td>15</td><td>Master in Aviation Management</td><td>MIAT</td><td>Feb & Oct</td><td>1.5-3</td><td>29,309</td></tr>
+      <tr><td>16</td><td>Master of Engineering Technology in Biomedical Engineering</td><td>BMI</td><td>Feb & Oct</td><td>1-3</td><td>27,370</td></tr>
+      <tr><td>17</td><td>Master of Electrical Engineering</td><td>BMI</td><td>Feb & Oct</td><td>1-3</td><td>34,853</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>Disclaimer: The fees provided are for general information purposes only. Postgraduate fees may differ from the published undergraduate fees and will be confirmed at the time of offer or enrolment. Indicative postgraduate fees range from approximately RM3,139 to RM6,018, depending on the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80
+    </div>
+  </div>
+
+<button class="accordion"> MASTER (RESEARCH) PROGRAMMES</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES YEAR</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Master of Management</td><td>BIS</td><td>Jan & July</td><td>2</td><td>9,000</td></tr>
+      <tr><td>2</td><td>Master Medical Science</td><td>RCMP</td><td>Jan & July</td><td>2-3</td><td>12,021</td></tr>
+      <tr><td>3</td><td>Master of Science (Pharmacy)</td><td>RCMP</td><td>Jan & July</td><td>2-4</td><td>17,151</td></tr>
+      <tr><td>4</td><td>Master of Engineering Technology in Industrial Automation</td><td>MFI</td><td>Jan & July</td><td>1-3</td><td>10,749</td></tr>
+      <tr><td>5</td><td>Master of Engineering Technology (Mechanical)</td><td>MICET</td><td>Jan & Sept</td><td>1-3</td><td>7,167</td></tr>
+      <tr><td>6</td><td>Master of Engineering Technology (Chemical Engineering)</td><td>MICET</td><td>Jan & July</td><td>1.5-3</td><td>7,167</td></tr>
+      <tr><td>7</td><td>Master of Engineering Technology (Electrical and Electronics)</td><td>BMI</td><td>Jan & July</td><td>2-3</td><td>6,594</td></tr>
+      <tr><td>8</td><td>Master of Engineering Technology (Manufacturing)</td><td>MIDI</td><td>Jan & July</td><td>1.5-3</td><td>7,167</td></tr>
+      <tr><td>9</td><td>Master of Engineering Technology (Aerospace)</td><td>MIAT</td><td>Jan & July</td><td>2-4</td><td>6,594</td></tr>
+      <tr><td>10</td><td>Master of Engineering Technology (Maritime)</td><td>MIMET</td><td>Jan & July</td><td>2-3</td><td>6,594</td></tr>
+      <tr><td>11</td><td>Master of Information Technology</td><td>MIIT</td><td>Jan & July</td><td>1.5-3</td><td>7,124</td></tr>
+      <tr><td>12</td><td>Master in Creative Digital Media</td><td>MIIT</td><td>Jan & July</td><td>2-3</td><td>6,551</td></tr>
+      <tr><td>13</td><td>Master of Applied Bioscience</td><td>MESTECH</td><td>Jan & July</td><td>2-3</td><td>6,594</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>Disclaimer: The fees provided are for general information purposes only. Postgraduate fees may differ from the published undergraduate fees and will be confirmed at the time of offer or enrolment. Indicative postgraduate fees range from approximately RM3,139 to RM6,018, depending on the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80
+    </div>
+  </div>
+
+<button class="accordion"> PhD (RESEARCH) PROGRAMMES</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Programme</th>
+        <th>CAMPUS (UniKL)</th>
+        <th>INTAKE</th>
+        <th>DURATION OF STUDIES YEAR</th>
+        <th>TUITION FEES 1 YEAR (RM)</th>
+      </tr>
+      <tr><td>1</td><td>Doctor of Philosophy in Management</td><td>BIS</td><td>Jan & July</td><td>3-7</td><td>5,830</td></tr>
+      <tr><td>2</td><td>Doctor of Philosophy in Islamic Finance</td><td>BIS</td><td>Jan & July</td><td>3-7</td><td>10,005</td></tr>
+      <tr><td>3</td><td>Doctor of Philosophy in Accounting</td><td>BIS</td><td>Jan & July</td><td>3-7</td><td>5,830</td></tr>
+      <tr><td>4</td><td>Doctor of Philosophy (Medical Sciences)</td><td>RCMP</td><td>Jan & July</td><td>3-5</td><td>13,611</td></tr>
+      <tr><td>5</td><td>Doctor of Philosophy (Pharmacy)</td><td>RCMP</td><td>Jan & Sept</td><td>3-6</td><td>16,409</td></tr>
+      <tr><td>6</td><td>Doctor of Philosophy (Manufacturing)</td><td>MIDI</td><td>Jan & July</td><td>3-7</td><td>5,830</td></tr>
+      <tr><td>7</td><td>Doctor of Philosophy (Industrial Automation)</td><td>MFI</td><td>Jan & July</td><td>3-7</td><td>5,830</td></tr>
+      <tr><td>8</td><td>Doctor of Philosophy (Mechanical)</td><td>MFI</td><td>Jan & July</td><td>3-7</td><td>5,830</td></tr>
+      <tr><td>9</td><td>Doctor of Philosophy (Information Technology)</td><td>MIIT</td><td>Jan & July</td><td>3-7</td><td>5,830</td></tr>
+      <tr><td>10</td><td>Doctor of Philosophy (Chemical Engineering)</td><td>MICET</td><td>Jan & July</td><td>3-7</td><td>5,830</td></tr>
+      <tr><td>11</td><td>Doctor of Philosophy (Maritime)</td><td>MIMET</td><td>Jan & July</td><td>3-7</td><td>5,830</td></tr>
+      <tr><td>12</td><td>Doctor of Philosophy (Electric and Electronic)</td><td>BMI</td><td>Jan & July</td><td>3-7</td><td>5,830</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('unikl-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All fees are inclusive of a 6% Sales & Service Tax (SST). The tax rate and applicable items may be amended in accordance with government regulations. Any changes shall apply to all fees for the full duration of the programme.<br><br>Disclaimer: The fees provided are for general information purposes only. Postgraduate fees may differ from the published undergraduate fees and will be confirmed at the time of offer or enrolment. Indicative postgraduate fees range from approximately RM3,139 to RM6,018, depending on the programme.<br><br>FEES AND PAYMENT STRUCTURE<br>FIRST PAYMENT<br>- Student Visa (All Nationalities | Indonesian): RM 3,300 | RM 3,600<br>SECOND PAYMENT (AFTER VISA APPROVED)<br>- Tuition Fees SST: Based on programme<br>- Security Bond (Immigration): Based on Nationality<br>- Student Deposit: RM 1,000<br>- Accomodation (per semester): Based on campus<br>- Admission Payment SST: RM 3,370.80
+    </div>
+  </div>
+
+</div>
+<footer>
+  <p>&copy; 2026 Universiti Kuala Lumpur (UniKL).</p>
+</footer>
+
+<script>
+const acc = document.querySelectorAll(".accordion");
+acc.forEach(btn => {
+  btn.addEventListener("click", function() {
+    this.classList.toggle("active");
+    const panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+});
+
+function filterPrograms() {
+  const input = document.getElementById("searchInput").value.toLowerCase().trim();
+  const tables = document.querySelectorAll("table");
+
+  tables.forEach(table => {
+    const rows = table.querySelectorAll("tr");
+    let foundInTable = false;
+
+    for (let i = 1; i < rows.length; i++) {
+      const rowText = rows[i].textContent.toLowerCase();
+      if (input !== "" && rowText.includes(input)) {
+        rows[i].style.display = "";
+        rows[i].classList.add("highlight");
+        foundInTable = true;
+      } else if (input === "") {
+        rows[i].style.display = "";
+        rows[i].classList.remove("highlight");
+      } else {
+        rows[i].style.display = "none";
+        rows[i].classList.remove("highlight");
+      }
+    }
+
+    const panel = table.closest(".panel");
+    const accordion = panel.previousElementSibling;
+    
+    if (foundInTable && input !== "") {
+      panel.style.display = "block";
+      accordion.classList.add("active");
+    } else if (input === "") {
+      panel.style.display = "none";
+      accordion.classList.remove("active");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const searchTerm = new URLSearchParams(window.location.search).get('q');
+  if (searchTerm) {
+    const input = document.getElementById('searchInput');
+    input.value = decodeURIComponent(searchTerm);
+    filterPrograms();
+    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+
+function downloadPDF(programKey) {
+  const link = document.createElement("a");
+  link.href = programKey + (programKey.endsWith('.pdf') ? '' : '.pdf'); 
+  link.download = programKey + (programKey.endsWith('.pdf') ? '' : '.pdf');
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+</script>
+  <script src="../../assets/js/global.js"></script>
+</body>
+</html>

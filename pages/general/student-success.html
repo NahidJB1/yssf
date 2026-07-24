@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Success Wall | YS Study Focus</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --brand-blue: #004080;
+      --brand-yellow: #FFD700;
+      --brand-red: #ff0000;
+      --bg-light: #f4f7f9;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+
+    body { background-color: var(--bg-light); color: #333; line-height: 1.6; }
+
+    /* Navigation Bar */
+    nav {
+      background: white;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo img { height: 50px; }
+    .back-btn {
+      text-decoration: none;
+      color: var(--brand-blue);
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0, 64, 128, 0.9), rgba(0, 64, 128, 0.9)), url('../../assets/images/yscover.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+    .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+
+    /* Stats Ribbon */
+    .stats-ribbon {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      background: white;
+      padding: 30px;
+      margin-top: -40px;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .stat-item { text-align: center; }
+    .stat-item h2 { color: var(--brand-blue); font-size: 2rem; }
+    .stat-item p { font-size: 0.9rem; color: #666; font-weight: 600; }
+
+    /* Success Grid */
+    .success-container {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+    .filter-bar {
+      margin-bottom: 40px;
+      text-align: center;
+    }
+    .filter-btn {
+      padding: 10px 25px;
+      margin: 5px;
+      border: none;
+      background: white;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .filter-btn.active { background: var(--brand-blue); color: white; }
+
+    .success-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    /* Student Card */
+    .student-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      transition: 0.4s;
+      position: relative;
+    }
+    .student-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+    
+    .visa-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #25d366;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    .photo-area {
+      height: 320px;
+      overflow: hidden;
+      background: #eee;
+    }
+    .photo-area img { width: 100%; height: 100%; object-fit: cover; }
+
+    .info-area { padding: 20px; text-align: center; }
+    .info-area h3 { color: var(--brand-blue); margin-bottom: 5px; }
+    .info-area p { font-size: 0.9rem; color: #555; }
+    .uni-tag {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 4px 12px;
+      background: #f0f7ff;
+      border-radius: 5px;
+      color: var(--brand-blue);
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    /* CTA Section */
+    .cta-footer {
+      background: var(--brand-blue);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+      margin-top: 100px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--brand-yellow);
+      color: #000;
+      padding: 15px 40px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 800;
+      margin-top: 25px;
+      transition: 0.3s;
+    }
+    .cta-btn:hover { transform: scale(1.05); background: white; }
+
+    /* --- SHARE STORY NOTE BAR STYLES --- */
+.share-story-note {
+  background-color: #ffffff;
+  border: 2px dashed #004080;
+  border-radius: 15px;
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.note-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.note-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.note-text p {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.note-text i {
+  color: #004080;
+  margin-right: 8px;
+}
+
+.sub-note {
+  font-size: 14px !important;
+  color: #666 !important;
+  font-style: italic;
+}
+
+.share-btn {
+  background-color: #25d366;
+  color: white;
+  text-decoration: none;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.share-btn:hover {
+  background-color: #1ebe57;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+  .share-story-note {
+    width: 90%;
+    text-align: center;
+    padding: 20px;
+  }
+  .note-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .stats-ribbon { flex-direction: column; gap: 20px; width: 90%; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../assets/css/global.css">
+</head>
+<body>
+
+<div class="global-navbar">
+  <a href="../../" class="nav-brand">YSSF</a>
+  <a href="../../" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+</div>
+
+
+  <nav>
+    <a href="../../" class="logo"><img src="../../assets/images/ys_logo.png" alt="YS Logo"></a>
+    <a href="../../" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  </nav>
+
+  <header class="hero">
+    <h1>Our Success Wall</h1>
+    <p>Every visa stamp is a dream realized. Join the hundreds of students who started their Malaysian journey with YS Study Focus.</p>
+  </header>
+
+  <section class="stats-ribbon">
+    <div class="stat-item">
+      <h2 id="finalCount">126+</h2>
+      <p>TOTAL ADMISSIONS</p>
+    </div>
+    <div class="stat-item">
+      <h2>100%</h2>
+      <p>GUIDANCE RATE</p>
+    </div>
+    <div class="stat-item">
+      <h2>13+</h2>
+      <p>PARTNER UNIVERSITIES</p>
+    </div>
+  </section>
+
+  <main class="success-container">
+    <div class="filter-bar">
+      <button class="filter-btn active">All Students</button>
+      <button class="filter-btn">City University</button>
+      <button class="filter-btn">IUKL</button>
+      <button class="filter-btn">Alfa</button>
+      <button class="filter-btn">UCMI</button>
+    </div>
+
+    <div class="success-grid">
+      <div class="student-card">
+        <div class="visa-badge">VISA APPROVED</div>
+        <div class="photo-area">
+          <img src="../../assets/images/student_profile1.jpg" alt="Student">
+        </div>
+        <div class="info-area">
+          <h3>Maruf Rahman</h3>
+         
+          <div class="uni-tag">UTM Space</div>
+        </div>
+      </div>
+
+      <div class="student-card">
+        <div class="visa-badge">VISA APPROVED</div>
+        <div class="photo-area">
+          <img src="../../assets/images/student_profile2.jpg" alt="Student">
+        </div>
+        <div class="info-area">
+          <h3>Meem Chowdhory</h3>
+         
+          <div class="uni-tag">King's University</div>
+        </div>
+      </div>
+
+      <div class="student-card">
+        <div class="visa-badge">VISA APPROVED</div>
+        <div class="photo-area">
+          <img src="../../assets/images/student_profile3.jpg" alt="Student">
+        </div>
+        <div class="info-area">
+          <h3>Adlina Halder</h3>
+        
+          <div class="uni-tag">Alfa University</div>
+        </div>
+      </div>
+
+      <div class="student-card">
+        <div class="visa-badge">VISA APPROVED</div>
+        <div class="photo-area">
+          <img src="../../assets/images/student_profile4.jpg" alt="Student">
+        </div>
+        <div class="info-area">
+          <h3>Lamiya Ahmed</h3>
+          
+          <div class="uni-tag">Genovasi University</div>
+        </div>
+      </div>
+
+      <div class="student-card">
+        <div class="visa-badge">VISA APPROVED</div>
+        <div class="photo-area">
+          <img src="../../assets/images/student_profile5.jpg" alt="Student">
+        </div>
+        <div class="info-area">
+          <h3>Ismamzaman Shuptoo</h3>
+          
+          <div class="uni-tag">UCMI</div>
+        </div>
+      </div>
+
+      <div class="student-card">
+        <div class="visa-badge">VISA APPROVED</div>
+        <div class="photo-area">
+          <img src="../../assets/images/student_profile6.jpg" alt="Student">
+        </div>
+        <div class="info-area">
+          <h3>Govenda Sarkar</h3>
+        
+          <div class="uni-tag">Alfa University</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+<section class="share-story-note">
+  <div class="note-content">
+    <div class="note-text">
+      <p><i class="fas fa-user-shield"></i> <strong>Your Privacy Matters:</strong> We strictly do not share your success story unless you explicitly ask us to.</p>
+      <p class="sub-note">The website is currently under development. If you would like us to add your story to our board, please share a small text about your experience along with your photo.</p>
+    </div>
+    <a href="https://wa.me/601139660706" target="_blank" rel="noopener noreferrer" class="share-btn">
+      <i class="fab fa-whatsapp"></i> Share Story & Photo
+    </a>
+  </div>
+</section>
+
+  <section class="cta-footer">
+    <h2>Ready to be our next Success Story?</h2>
+    <p>The processing for next intake is already open.</p>
+    <a href="https://forms.gle/iFXQ3ohvY4JqCbWA9" target="_blank" rel="noopener noreferrer" class="cta-btn">APPLY FOR ASSESSMENT</a>
+  </section>
+
+  <script>
+    // Keeping the dynamic counter consistent with index
+    function updateCount() {
+      const startDate = new Date(2025, 11, 21); 
+      const today = new Date();
+      const diffInMs = today - startDate;
+      const weeksPassed = Math.floor(diffInMs / (1000 * 60 * 60 * 24 * 7));
+      const currentCount = 126 + (weeksPassed > 0 ? weeksPassed : 0);
+      document.getElementById("finalCount").innerText = currentCount + "+";
+    }
+    updateCount();
+  </script>
+  <script src="../../assets/js/global.js"></script>
+</body>
+</html>

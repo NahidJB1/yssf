@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Partnership Hub | YS Study Focus</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --brand-blue: #004080;
+      --brand-yellow: #FFD700;
+      --accent-mint: #00cba9;
+      --text-dark: #2d3436;
+      --glass: rgba(255, 255, 255, 0.9);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+    body {
+      background: #f0f2f5;
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+/* --- NEW PREMIUM HERO --- */
+    .hero {
+      position: relative;
+      background: linear-gradient(135deg, rgba(0, 64, 128, 0.9), rgba(0, 203, 169, 0.7)), url('../../assets/images/yscover.png');
+      background-size: cover;
+      background-position: center;
+      padding: 160px 20px 220px;
+      text-align: center;
+      color: white;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 50% 100%, 0 85%);
+    }
+
+    .hero h1 { 
+      font-size: 4rem; 
+      font-weight: 900; 
+      text-transform: uppercase;
+      letter-spacing: -2px;
+      margin-bottom: 15px;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .hero p { 
+      font-size: 1.4rem; 
+      font-weight: 300;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.95; 
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      padding: 10px 25px;
+      border-radius: 50px;
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* --- FLOATING SEARCH BOX --- */
+    .search-container {
+      max-width: 750px;
+      margin: -110px auto 80px; /* Pulls it up into the hero area */
+      position: relative;
+      z-index: 20;
+      padding: 0 20px;
+    }
+
+    .search-wrapper {
+      position: relative;
+      background: white;
+      padding: 10px;
+      border-radius: 100px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 15px 30px;
+      border: none;
+      font-size: 1.1rem;
+      outline: none;
+      border-radius: 100px;
+      color: var(--text-dark);
+    }
+
+    .search-btn {
+      background: var(--brand-blue);
+      color: white;
+      border: none;
+      padding: 15px 35px;
+      border-radius: 100px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .search-btn:hover {
+      background: var(--accent-mint);
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+      .hero { padding: 100px 20px 150px; }
+      .search-wrapper { flex-direction: column; border-radius: 20px; }
+      .search-btn { width: 100%; margin-top: 10px; }
+    }
+    /* --- PARTNER GRID --- */
+    .container { max-width: 1250px; margin: 0 auto; padding: 0 20px; }
+    
+    /* --- ENHANCED SEARCH RESULTS UI --- */
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
+      margin-bottom: 100px;
+      min-height: 400px; /* Prevents layout jump when searching */
+    }
+
+    /* Animation for cards appearing */
+    @keyframes cardAppear {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .uni-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+      border: 1px solid rgba(0,0,0,0.03);
+      animation: cardAppear 0.5s ease backwards; /* Smooth entry */
+    }
+
+    /* Result Count Text Style */
+    .results-status {
+      max-width: 1250px;
+      margin: -30px auto 30px;
+      padding: 0 20px;
+      font-weight: 600;
+      color: var(--brand-blue);
+      font-size: 1.1rem;
+      display: none; /* Shown via JS */
+    }
+
+    /* No Results State */
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 80px 20px;
+      background: white;
+      border-radius: 30px;
+      border: 2px dashed #e0e0e0;
+    }
+    
+    .no-results i { font-size: 3rem; color: #ccc; margin-bottom: 15px; }
+
+    /* Scholarship Pulse Badge */
+    .scholarship-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #e74c3c;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: bold;
+      z-index: 5;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+      100% { transform: scale(1); }
+    }
+
+    .img-box { height: 200px; overflow: hidden; }
+    .img-box img { width: 100%; height: 100%; object-fit: cover; }
+
+    .card-body { padding: 30px; text-align: center; }
+    .card-body h3 { margin-bottom: 20px; color: var(--brand-blue); font-size: 1.4rem; }
+
+    .btn-wrap { display: flex; gap: 12px; }
+    .btn {
+      flex: 1;
+      padding: 14px;
+      border-radius: 15px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+    .btn-l { border: 2px solid var(--brand-blue); color: var(--brand-blue); }
+    .btn-l:hover { background: var(--brand-blue); color: white; }
+    .btn-f { background: var(--brand-blue); color: white; }
+
+    /* --- STEP-BY-STEP TIMELINE SECTION --- */
+    .timeline-section {
+      background: var(--brand-blue);
+      color: white;
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+  
+
+/* --- MODERN NON-SHIFTING TIMELINE --- */
+.timeline-section {
+  background: var(--brand-blue);
+  color: white;
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+}
+
+/* --- FIXED WIDTH VERTICAL EXPANSION --- */
+.timeline-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 50px;
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.step-card {
+  background: rgba(255,255,255,0.1);
+  padding: 30px 20px;
+  border-radius: 25px;
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  /* FIXED WIDTH - Prevents side-way expansion */
+  width: 280px; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+}
+
+/* Hover remains subtle */
+.step-card:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-5px);
+}
+
+/* Active State - NO WIDTH CHANGE */
+.step-card.active {
+  background: var(--brand-yellow);
+  color: var(--brand-blue);
+  border-color: var(--brand-yellow);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  transform: scale(1.02); /* Very slight scale up, no width change */
+}
+
+/* Hidden Content Logic - Clean Up/Down only */
+.step-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  text-align: left;
+  width: 100%;
+}
+
+.step-card.active .step-details {
+  max-height: 500px; /* Big enough to fit content */
+  opacity: 1;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 64, 128, 0.1);
+}
+
+.step-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.step-details li {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .step-card { width: 100%; max-width: 350px; }
+}
+
+/* The Active (Expanded) State */
+.step-card.active {
+  background: var(--brand-yellow);
+  color: var(--brand-blue);
+  width: 350px; /* Expands wider on desktop */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.step-card i {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.step-card.active i {
+  transform: scale(1.2);
+}
+
+.step-card h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+/* Hidden Content Logic */
+.step-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  text-align: left;
+  width: 100%;
+  margin-top: 0;
+}
+
+.step-card.active .step-details {
+  max-height: 300px; /* Allows enough room for the list */
+  opacity: 1;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 64, 128, 0.1);
+}
+
+.step-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.step-details ul li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.step-details ul li i {
+  font-size: 1rem;
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .step-card { width: 100%; } /* Stacks vertically on mobile */
+  .step-card.active { width: 100%; }
+}
+
+  </style>
+  <link rel="stylesheet" href="../../assets/css/global.css">
+</head>
+<body>
+
+<div class="global-navbar">
+  <a href="../../" class="nav-brand">YSSF</a>
+  <a href="../../" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+</div>
+
+
+  <header class="hero">
+    <h1>Our University Partners in Malaysia</h1>
+    <p>Direct Partnerships. Expert Guidance. Successful Futures.</p>
+  </header>
+
+<div class="search-container">
+    <div class="search-wrapper">
+      <input type="text" id="uniSearch" class="search-input" placeholder="Search for your dream university..." onkeyup="filterUnis()">
+      <button class="search-btn">Search</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="partner-grid" id="partnerGrid">
+        </div>
+  </div>
+
+  <section class="timeline-section">
+  <h2 style="font-size: 2.5rem; font-weight: 800;">How Your Journey Starts</h2>
+  <p style="margin-bottom: 20px; opacity: 0.8;">Click on a step to see the requirements</p>
+  
+  <div class="timeline-container">
+    
+    <div class="step-card" onclick="toggleStep(this)">
+      <i class="fas fa-file-medical"></i>
+      <h3>Step 1</h3>
+      <p>Document Submission</p>
+      <div class="step-details">
+        <p><strong>Documents To Start:</strong></p><br>
+        <ul>
+          <li><i class="fas fa-check-circle"></i> A. All Certificates (SSC, HSC, etc.)</li>
+          <li><i class="fas fa-check-circle"></i> B. All Mark Sheets (SSC, HSC, etc.)</li>
+          <li><i class="fas fa-check-circle"></i> C. Passport (Full scanned copy)</li>
+          <li><i class="fas fa-check-circle"></i> D. Photo (White BG, 35x45mm)</li>
+        </ul>
+        <p style="margin-top:10px; font-size: 12px; font-style: italic;">*That is all you need to begin!</p>
+      </div>
+    </div>
+
+    <div class="step-card" onclick="toggleStep(this)">
+      <i class="fas fa-university"></i>
+      <h3>Step 2</h3>
+      <p>Offer Letter (OL)</p>
+      <div class="step-details">
+        <p><strong>The Application:</strong></p><br>
+        <p>We will officially apply to your chosen university. We will secure your Offer Letter for you within <strong>3-7 working days</strong>.</p>
+      </div>
+    </div>
+
+    <div class="step-card" onclick="toggleStep(this)">
+      <i class="fas fa-passport"></i>
+      <h3>Step 3</h3>
+      <p>Visa Processing</p>
+      <div class="step-details">
+        <p><strong>EVAL & Approval:</strong></p><br>
+        <p>EMGS will issue your EVAL (Electronic Visa Approval Letter). Once approved, we will handle your final Visa endorsement application.</p>
+      </div>
+    </div>
+
+    <div class="step-card" onclick="toggleStep(this)">
+      <i class="fas fa-plane-departure"></i>
+      <h3>Step 4</h3>
+      <p>The Flight</p>
+      <div class="step-details">
+        <p><strong>Dream Big:</strong></p><br>
+        <p>Pack your bags! It's time to fly to your dream destination in Malaysia with the full support of YS Study Focus.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <a href="https://wa.me/601139660706" class="fab-contact" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script>
+    const partners = [
+      { name: "City University Malaysia", img: "cityu_main.jpg", learn: "city-details.html", fees: "city-university.html", scholarship: true },
+      { name: "IUKL", img: "iukl_main.jpg", learn: "iukl-details.html", fees: "iukl-fees.html", scholarship: false },
+      { name: "BAC Education", img: "bac_main.jpg", learn: "bac-details.html", fees: "bac-university.html", scholarship: true },
+      { name: "Alfa University", img: "alfa_main.jpg", learn: "alfa-details.html", fees: "alfa-university.html", scholarship: false },
+      { name: "University of Cyberjaya", img: "cyberjaya_main.jpg", learn: "cyberjaya-details.html", fees: "university-of-cyberjaya.html", scholarship: false },
+      { name: "INTI International University", img: "inti_main.jpg", learn: "inti-details.html", fees: "inti-university.html", scholarship: true },
+      { name: "SEGi University", img: "segi_main.jpg", learn: "segi-details.html", fees: "segi-university.html", scholarship: false },
+      { name: "Genovasi University", img: "genovasi_main.jpg", learn: "genovasi-details.html", fees: "genovasi-university.html", scholarship: false },
+      { name: "Cybernetics (KTAC)", img: "cybernetics_main.jpg", learn: "cybernetics-details.html", fees: "cybernetics-university.html", scholarship: false },
+      { name: "UCMI University", img: "ucmi_main.jpg", learn: "ucmi-details.html", fees: "ucmi-university.html", scholarship: false },
+      { name: "Taylor's University", img: "taylors_main.jpg", learn: "taylors-details.html", fees: "taylors-university.html", scholarship: false },
+      { name: "Binary University", img: "binary_main.jpg", learn: "binary-details.html", fees: "binary-university.html", scholarship: true },
+      { name: "King's University", img: "kings_main.jpg", learn: "kings-details.html", fees: "kings-university.html", scholarship: false }
+    ];
+
+    function renderCards(data) {
+      const grid = document.getElementById('partnerGrid');
+      const status = document.getElementById('resultsStatus');
+      
+      grid.innerHTML = '';
+      
+      if (data.length === 0) {
+        grid.innerHTML = `
+          <div class="no-results">
+            <i class="fas fa-search"></i>
+            <h3>No Universities Found</h3>
+            <p>Try searching for a different name or location.</p>
+          </div>`;
+        if(status) status.style.display = 'none';
+        return;
+      }
+
+      data.forEach((uni, index) => {
+        const card = document.createElement('div');
+        card.className = 'uni-card';
+        // This adds a slight delay to each card for a "staggered" look
+        card.style.animationDelay = `${index * 0.1}s`; 
+        
+        card.innerHTML = `
+            ${uni.scholarship ? '<div class="scholarship-badge"><i class="fas fa-graduation-cap"></i> Up to 50% Scholarship</div>' : ''}
+            <div class="img-box">
+              <img src="${uni.img}" alt="${uni.name}">
+            </div>
+            <div class="card-body">
+              <h3>${uni.name}</h3>
+              <div class="btn-wrap">
+                <a href="${uni.learn}" class="btn btn-l">View Details</a>
+                <a href="${uni.fees}" class="btn btn-f">Check Fees <i class="fas fa-chevron-right" style="font-size:10px; margin-left:5px;"></i></a>
+              </div>
+            </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+function filterUnis() {
+      const val = document.getElementById('uniSearch').value.toLowerCase();
+      const status = document.getElementById('resultsStatus');
+      const filtered = partners.filter(u => u.name.toLowerCase().includes(val));
+      
+      if (val !== "") {
+        if(status) {
+          status.style.display = 'block';
+          status.innerHTML = `Found <span style="color:var(--brand-blue); font-weight:800;">${filtered.length}</span> matching universities`;
+        }
+      } else {
+        if(status) status.style.display = 'none';
+      }
+      
+      renderCards(filtered);
+    }
+
+function toggleStep(element) {
+      const isActive = element.classList.contains('active');
+      
+      // Close all other cards first
+      document.querySelectorAll('.step-card').forEach(card => {
+        card.classList.remove('active');
+      });
+
+      // If it wasn't active, open it
+      if (!isActive) {
+        element.classList.add('active');
+      }
+    }
+
+
+    // Initial render
+    renderCards(partners);
+
+  </script>
+  <script src="../../assets/js/global.js"></script>
+</body>
+</html>

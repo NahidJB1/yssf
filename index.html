@@ -1,0 +1,2574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YS Study Focus</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+  background-color: #f8f8f8;
+  color: #333;
+  overflow-x: hidden; /* Add this to prevent horizontal scrolling */
+  width: 100%;        /* Ensure it stays locked to viewport width */
+}
+    header {
+      position: relative;
+      height: 65vh; /* Adjusted from 100vh to be slimmer */
+      background-color: #000;
+      color: yellow;
+      overflow: hidden;
+      display: flex;
+      align-items: center; /* Centers text overlay vertically */
+    }
+
+    /* Logo positioning */
+    .header-logo-link {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      z-index: 1002; /* Ensures it stays above the slider and overlays */
+      display: block;
+    }
+
+    .header-logo {
+      height: 60px; /* Adjust this to make the logo bigger or smaller */
+      width: auto;
+      filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5)); /* Adds shadow for visibility */
+      transition: transform 0.3s ease;
+    }
+
+    .header-logo:hover {
+      transform: scale(1.05);
+    }
+
+    /* Responsive adjustment for mobile */
+    @media (max-width: 600px) {
+      .header-logo {
+        height: 45px; 
+      }
+      .header-logo-link {
+        top: 20px;
+        left: 15px;
+      }
+    }
+
+
+    /* Container for top right icons */
+.top-right-actions {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 20px; 
+  z-index: 1001;
+  align-items: center;
+}
+
+/* Style for both the Search and Menu icons */
+.action-icon {
+  font-size: 30px;
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.action-icon:hover {
+  color: #FFD700; /* Golden hover effect */
+}
+
+/* We remove absolute position from the old menu-icon so it stays inside the flex container */
+.menu-icon {
+  position: static !important;
+}
+    /* --- UPDATED MENU STYLES --- */
+.nav-menu {
+  /* Position and Layout */
+  position: absolute;
+  top: 80px; /* Pushes it just below the header bar */
+  right: 25px;
+  width: 220px;
+  
+  /* Visual Style (Glassmorphism) */
+  background: rgba(0, 20, 40, 0.95); /* Deep blue/black transparent */
+  backdrop-filter: blur(10px);       /* Blurs background behind it */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 15px 0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  
+  /* Animation Setup (Hidden State) */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px) scale(0.95); /* Slightly higher and smaller */
+  transform-origin: top right;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy smooth effect */
+  z-index: 2000;
+}
+
+/* The Active State (Visible) - JS will add this class */
+.nav-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+/* Menu Links */
+.nav-menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  padding: 12px 25px;
+  text-decoration: none;
+  font-size: 16px;
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+}
+
+/* Hover Effect for Links */
+.nav-menu a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-left: 3px solid #FFD700; /* Gold accent */
+  color: #FFD700;
+  padding-left: 30px; /* Slight movement to the right */
+}
+
+/* Icon style inside links */
+.nav-menu a i {
+  width: 20px;
+  text-align: center;
+  color: #00BFFF; /* Light blue icons */
+}
+
+    /* Header Slider Styles */
+    .header-slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out; /* Smooth cross-fade */
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    /* Darken the images slightly so text is readable */
+    .header-slider::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4); 
+      z-index: 1;
+    }
+
+    .text-overlay {
+      position: absolute;
+      top: 30%;
+      left: 5%;
+      width: 90%;
+      z-index: 1;
+      color: white;
+    }
+    .text-overlay h3 {
+      font-size: 18px;
+    }
+    .text-overlay h1 {
+      font-size: 26px;
+      margin: 10px 0;
+    }
+    .start-btn {
+      background-color: red;
+      color: white;
+      padding: 10px 20px;
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+
+    .about-section {
+      display: flex;
+      padding: 40px;
+      background-color: #fff;
+      flex-wrap: wrap;
+    }
+    .about-text {
+      flex: 1;
+      padding-right: 20px;
+    }
+    .about-text h2 {
+      margin-bottom: 10px;
+    }
+    .collage {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .collage-preview {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .collage-preview img {
+      width: 100px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .collage-preview img.middle {
+      transform: translateY(10px);
+      z-index: 1;
+    }
+
+    .programmes-bar {
+      background-color: #eee;
+      padding: 20px;
+      text-align: center;
+    }
+    .uni-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      max-width: 400px;
+      margin: 10px auto 0;
+    }
+    .uni-grid div {
+      background-color: #fff;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    footer {
+      background-color: #004080;
+      color: white;
+      padding: 30px 20px 10px 20px; /* Slimmer footer */
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .footer-logo {
+      order: 2; /* Logo in the middle */
+      flex: 0 0 auto;
+      text-align: center;
+    }
+    .footer-logo img {
+      width: 130px; 
+      height: auto;
+    }
+    .office {
+      flex: 1;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .office.left {
+      order: 1;
+      text-align: left;
+    }
+    .office.right {
+      order: 3;
+      text-align: right;
+    }
+    .footer-bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      min-height: 80px; 
+    }
+    /* SLIM DEVELOPER BAR */
+    .developer-bar {
+      background-color: #001a33; 
+      color: #888; 
+      padding: 5px 0; /* Very slim */
+      text-align: center; 
+      font-size: 11px; 
+      width: 100%;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .office.left, .office.right {
+        text-align: center;
+        order: 3;
+      }
+      .footer-logo {
+        order: 1;
+        margin-bottom: 15px;
+      }
+    }
+    
+    .search-section {
+  background-color: #f0f8ff; /* light blue to stand out from About Us */
+  padding: 30px;
+  text-align: center;
+}
+
+.search-section h2 {
+  margin-bottom: 15px;
+}
+
+/* --- NEW Search Bar Styling (Button Inside) --- */
+
+/* The Container - acts as the anchor */
+.search-box {
+  position: relative;        /* Necessary for absolute positioning of the button */
+  display: block;            
+  width: 95%;                /* Responsive width */
+  max-width: 600px;          /* Maximum width on desktop */
+  margin: 0 auto;            /* Center the box */
+}
+
+/* The Input Field - now larger and pill-shaped */
+.search-bar {
+  width: 100%;
+  padding: 18px 140px 18px 30px; /* Right padding is huge to make room for the button */
+  border: 2px solid #007BFF;     /* Blue border */
+  border-radius: 50px;           /* Full rounded corners */
+  font-size: 17px;
+  outline: none;                 /* Remove default browser outline */
+  background: white;
+  box-shadow: 0 5px 20px rgba(0, 123, 255, 0.05); /* Subtle shadow */
+  transition: all 0.3s ease;
+}
+
+/* Add a glow when the user clicks to type */
+.search-bar:focus {
+  box-shadow: 0 5px 20px rgba(0, 123, 255, 0.15);
+  border-color: #0056b3;
+}
+
+/* The Search Button - Floating inside */
+.search-box button {
+  position: absolute;        /* Floats over the input */
+  top: 6px;                  /* Spacing from top */
+  right: 6px;                /* Spacing from right */
+  bottom: 6px;               /* Spacing from bottom (stretches height auto) */
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 40px;       /* Inner pill shape */
+  padding: 0 35px;           /* Width of the button */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+}
+
+.search-box button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  transform: scale(1.02);    /* Subtle pop effect */
+}
+
+/* Mobile Adjustment: Make text smaller if screen is tiny */
+@media (max-width: 500px) {
+  .search-bar {
+    padding: 15px 110px 15px 20px;
+    font-size: 15px;
+  }
+  .search-box button {
+    padding: 0 20px;
+    font-size: 14px;
+  }
+}
+
+/* Container for search results */
+#searchResults {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 10px;
+}
+
+/* Individual Result Card */
+.search-result-item {
+  background: white;
+  border-radius: 15px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  border-left: 5px solid #007BFF; /* Blue accent on the left */
+}
+
+.result-info {
+  flex: 1;
+}
+
+.result-info h4 {
+  color: #004080;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.result-info p {
+  color: #777;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* The "View Fees" Button */
+.go-to-fees {
+  background-color: #003366; /* Deep blue */
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1.2;
+  min-width: 80px;
+  transition: transform 0.2s;
+}
+
+/* Yellow button for Bachelor degrees (as seen in your image) */
+.search-result-item.bachelor .go-to-fees {
+  background-color: #FFD700;
+  color: #003366;
+}
+
+.go-to-fees:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+/* Container adjustment for stability and look */
+.uni-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); 
+  gap: 20px;
+  max-width: 1100px;
+  margin: 30px auto 0;
+  width: 95%;
+  padding: 10px;
+}
+
+/* Stylish Animated Buttons */
+.uni-grid div {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px; /* Smooth rounded corners */
+  padding: 0; /* Let the link handle padding */
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  min-height: 80px;
+}
+
+/* Make the entire box clickable and styled */
+.uni-grid div a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px 15px;
+  text-decoration: none;
+  color: #004080; /* Professional brand blue */
+  font-weight: 600;
+  font-size: 15px;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+/* Hover Effects */
+.uni-grid div:hover {
+  transform: translateY(-8px); /* Lifts the card up */
+  box-shadow: 0 12px 20px rgba(0, 64, 128, 0.15);
+  border-color: #007BFF;
+}
+
+/* Subtle Animated Background Gradient on Hover */
+.uni-grid div::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(0, 123, 255, 0.05), transparent);
+  transition: all 0.6s ease;
+}
+
+.uni-grid div:hover::before {
+  left: 100%;
+}
+
+.uni-grid div:hover a {
+  color: #007BFF; /* Brightens text on hover */
+}
+
+/* Creative Square Card Design */
+.about-section {
+  padding: 40px 0 !important; /* Reduces vertical empty space */
+  background-color: #f8f8f8; /* Matches your body background */
+}
+
+.stats-row {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 25px; /* Space between the squares */
+  max-width: 1000px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: white;
+  padding: 30px 20px;
+  width: 280px; /* Fixed square-ish width */
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: all 0.3s ease;
+  border-bottom: 5px solid #004080; /* Branding accent */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Creativity: Hover Animation */
+.stat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,64,128,0.15);
+}
+
+.stat-icon-circle {
+  width: 70px;
+  height: 70px;
+  background-color: #004080;
+  border-radius: 18px; /* Slightly rounded square icon */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 15px;
+  color: yellow; /* High contrast from your brand colors */
+  font-size: 28px;
+  animation: pulse-blue 2s infinite; /* Continuous subtle animation */
+}
+
+@keyframes pulse-blue {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 64, 128, 0.4); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 64, 128, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 64, 128, 0); }
+}
+
+.stat-card h2 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.stat-card p b {
+  display: block;
+  font-size: 16px;
+  color: #000;
+}
+
+.stat-subtext {
+  font-size: 10px !important; /* Smaller text */
+  font-style: italic;
+  color: #999;
+  margin-top: 8px;
+}
+/* --- THE GOLDEN SNAKE EFFECT --- */
+
+/* 1. This class makes the middle card act as a container for the light */
+.middle-card {
+  position: relative;
+  overflow: hidden; /* This "clips" the light so it only shows at the edge */
+  border-bottom: none !important; /* Removes the static blue line to let the gold shine */
+  z-index: 1;
+}
+
+/* 2. The Golden Light (The Snake) */
+.middle-card::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  /* A conic gradient creates the single "head" of the snake */
+  background: conic-gradient(transparent, transparent, transparent, #FFD700); 
+  left: -25%;
+  top: -25%;
+  animation: rotate-snake 4s linear infinite;
+  z-index: -2;
+}
+
+/* 3. The Inner Cover (Keeps the card white inside) */
+.middle-card::after {
+  content: '';
+  position: absolute;
+  inset: 4px; /* Adjust this (e.g., 2px or 5px) to change the snake's thickness */
+  background: white;
+  border-radius: 16px; /* Matches your card's 20px radius minus the 4px inset */
+  z-index: -1;
+}
+
+/* 4. Animation: 360 to 0 makes it travel Anti-Clockwise */
+@keyframes rotate-snake {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* Styling for the new Header Section */
+.about-header {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 40px;
+  padding: 0 20px;
+}
+
+.about-header h2 {
+  color: #004080; /* Your Brand Blue */
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.about-header p {
+  max-width: 800px;
+  margin: 0 auto;
+  color: #444;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Ensure the about section centers everything vertically */
+.about-section {
+  display: flex;
+  flex-direction: column; /* Stacks header over cards */
+  align-items: center;
+  padding: 60px 0 !important;
+  background-color: #f8f8f8;
+}
+
+/* Container for top right icons */
+.top-right-actions {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 20px; /* Space between search and menu icon */
+  z-index: 1001;
+  align-items: center;
+}
+
+/* Container for top right icons */
+.top-right-actions {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 15px; 
+  z-index: 1001;
+  align-items: center;
+}
+
+/* Matching button style for both icons */
+.action-icon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px; /* Uniform size for both icons */
+  cursor: pointer;
+  color: white;
+  background: rgba(255, 255, 255, 0.1); /* Subtle background circle */
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.action-icon:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: #FFD700; /* Golden hover */
+  transform: scale(1.1);
+}
+
+/* Ensure menu-icon behaves as a child of the flex container */
+.menu-icon {
+  position: static !important;
+}
+
+/* Update the existing menu-icon to remove its absolute positioning */
+.menu-icon {
+  position: static; /* Overriding previous absolute position */
+}
+
+/* Tight, clean footer bar by default */
+.footer-bottom {
+  position: relative;
+  padding: 20px 0; /* Minimal space when closed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: padding 0.5s ease; /* Smooth expansion */
+}
+
+/* When the menu is active, increase padding to fit the icons */
+.footer-bottom:has(.menu.active) {
+  padding: 100px 0; 
+}
+
+.menu {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.menu .toggle {
+  position: relative;
+  height: 60px;
+  width: 60px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: 1.25s;
+  z-index: 5;
+}
+
+/* Standard animation logic */
+.menu.active .toggle { transform: rotate(315deg); }
+
+.menu li {
+  position: absolute;
+  list-style: none;
+  transition: 0.5s;
+  transform: rotate(calc(360deg / 8 * var(--i))) translateX(0px);
+  scale: 0;
+  opacity: 0;
+}
+
+.menu.active li {
+  transform: rotate(calc(360deg / 8 * var(--i))) translateX(-95px); 
+  scale: 1;
+  opacity: 1;
+}
+
+.menu li a {
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: var(--clr);
+  box-shadow: 0 3px 4px rgba(0,0,0,0.15);
+  transition: 0.5s;
+  transform: rotate(calc(360deg / -8 * var(--i))); 
+}
+
+
+.contact-left {
+  flex: 1.2;
+  min-width: 320px;
+}
+
+.contact-left h2 {
+  font-size: 48px;
+  color: #004080;
+  margin-bottom: 15px;
+  font-weight: 800;
+}
+
+/* --- UPDATED WHATSAPP BUTTON WITH ANIMATIONS --- */
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #25d366;
+  color: white !important;
+  padding: 18px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+  
+  /* Applying the continuous pulse animation */
+  animation: pulse-green 2s infinite, wiggle 5s infinite;
+}
+
+/* 1. The Pulse Effect (Glowing outer ring) */
+@keyframes pulse-green {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* 2. The Wiggle Effect (Subtle shake every 5 seconds) */
+@keyframes wiggle {
+  0%, 90%, 100% { transform: rotate(0); }
+  92% { transform: rotate(3deg); }
+  94% { transform: rotate(-3deg); }
+  96% { transform: rotate(2deg); }
+  98% { transform: rotate(-2deg); }
+}
+
+/* 3. The Shimmer (White light passing through the button) */
+.whatsapp-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 20%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: rotate(30deg);
+  transition: none;
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -60%; }
+  20% { left: 120%; }
+  100% { left: 120%; }
+}
+
+.whatsapp-btn:hover {
+  background-color: #1ebe57;
+  transform: translateY(-5px) scale(1.05); /* Lifts up and grows slightly */
+  animation: none; /* Stop pulsing when user is hovering */
+  box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+}
+
+.contact-right {
+  flex: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 300px;
+}
+
+.photo-collage {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.collage-img {
+  width: 130px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.collage-img.tall {
+  height: 240px;
+  border: 4px solid #fff;
+}
+
+.collage-img:hover {
+  transform: scale(1.1) rotate(2deg);
+  z-index: 5;
+}
+
+@media (max-width: 768px) {
+  .contact-cta-section {
+    text-align: center;
+    padding: 60px 20px;
+  }
+  .contact-right {
+    order: -1; 
+    margin-bottom: 30px;
+  }
+}
+
+/* --- PAPER PLANE & FIREWORK STYLES --- */
+#flight-path {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allows clicking through to the button */
+  z-index: 100;
+}
+
+/* --- 1. Container Stability --- */
+/* Ensures the plane never causes scrollbars or shaking on mobile */
+.contact-cta-section {
+  position: relative;
+  overflow: hidden; /* CRITICAL: Clips anything flying outside */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10%;
+  background-color: #ffffff;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+/* --- 2. The Paper Plane Animation --- */
+#flight-path {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* --- 2. The Paper Plane Animation --- */
+.paper-plane {
+  position: absolute;
+  color: #004080; 
+  font-size: 28px; 
+  opacity: 0;
+  z-index: 102;
+  
+  /* FIXED: Replaced "90%" with "1100" (pixels). 
+     This creates the loop and swoops to the right side of the screen. */
+  offset-path: path("M 50,50 C -50,150 50,300 150,200 S 800,400 1100,80");
+  
+  /* The fly animation */
+  animation: fly 5s infinite linear;
+}
+
+/* Keyframes - No changes needed here, but kept for context */
+@keyframes fly {
+  0% { offset-distance: 0%; opacity: 0; transform: scale(0.5); }
+  10% { opacity: 1; transform: scale(1); }
+  85% { opacity: 1; transform: scale(1); }
+  95% { opacity: 0; transform: scale(1.5); }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+/* --- 3. Mobile Specific Path --- */
+@media (max-width: 768px) {
+  .paper-plane {
+    /* FIXED: Replaced "90%" with "320".
+       Mobile screens are narrower, so 320px lands it on the right side. */
+    offset-path: path("M 20,350 C -30,250 80,250 50,380 S 200,150 320,50");
+  }
+  
+  .contact-cta-section {
+    padding: 60px 20px; 
+  }
+}
+
+/* --- 4. The Malaysia Flag Particle --- */
+.flag-particle {
+  position: absolute;
+  font-size: 20px; /* Size of the flag emoji */
+  pointer-events: none;
+  z-index: 103;
+  user-select: none;
+  will-change: transform, opacity;
+}
+
+/* Specific fixes for mobile phones */
+@media (max-width: 500px) {
+  .uni-grid {
+    grid-template-columns: repeat(2, 1fr) !important; /* Force 2 columns */
+    gap: 10px;
+    width: 98%;
+  }
+  
+  .uni-grid div {
+    min-height: 80px;
+  }
+
+  .uni-grid div a {
+    font-size: 13px;
+    padding: 10px 5px;
+  }
+}
+.testimonials-section {
+  padding: 20px 0; /* Reduced from 60px */
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  color: #004080;
+  margin-bottom: 10px; /* Reduced from 40px */
+  font-weight: bold;
+}
+
+.section-title span {
+  color: #007BFF;
+  border-bottom: 3px solid #FFD700;
+}
+
+/* Slider Container - Scrollbar now visible */
+.testimonial-slider {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  padding: 20px;
+  /* Removed scroll-behavior: smooth to prevent conflict with JS auto-scroll */
+  scrollbar-width: auto; 
+  -ms-overflow-style: auto;
+}
+
+/* Scrollbar Styling */
+.testimonial-slider::-webkit-scrollbar {
+  height: 8px;
+}
+.testimonial-slider::-webkit-scrollbar-thumb {
+  background: #004080;
+  border-radius: 10px;
+}
+.testimonial-slider::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.testimonial-card {
+    min-width: 350px;
+    max-width: 350px;
+    background: #fff;
+    border-radius: 20px;
+    padding: 0; /* No internal padding */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    border: none; /* Borders removed */
+    overflow: hidden; /* Keeps the image corners rounded */
+    transition: all 0.4s ease;
+}
+
+  .photo-review-container {
+    width: 100%;
+    height: 250px; /* Fixed height for the review image */
+    background-color: #f0f0f0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+
+  .photo-review-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures the whole review image is visible */
+    background: #fff;
+  }
+
+  .student-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #f1f1f1;
+  }
+
+  .student-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #007BFF;
+  }
+
+  .student-details h4 {
+    font-size: 15px;
+    margin: 0;
+  }
+
+  .student-details p {
+    font-size: 12px;
+    margin: 0;
+    color: #666;
+  }
+
+  /* --- UNIVERSITY FLIP CARDS SECTION --- */
+.uni-flip-section {
+  padding: 60px 20px;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+
+.uni-flip-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 40px auto 0;
+}
+
+/* The Flip Card Logic */
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 400px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner, 
+.flip-card.active .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Front Side Styling */
+.flip-card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.curved-blue-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #000055; /* Dark Blue from SS */
+  color: white;
+  padding: 25px 10px;
+  border-radius: 50% 50% 0 0 / 30px 30px 0 0; /* Creates the curve */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.curved-blue-bar i {
+  color: #40E0D0; /* Turquoise pin color */
+  font-size: 20px;
+}
+
+.curved-blue-bar span {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Back Side Styling */
+.flip-card-back {
+  background-color: #00cba9; /* Mint green color from your SS */
+  color: #000055;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.flip-card-back p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.study-btn {
+  background-color: #000055;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.3s;
+}
+
+.study-btn:hover {
+  background-color: #007BFF;
+}
+
+@media (max-width: 600px) {
+  .flip-card { height: 350px; }
+}
+
+/* Custom styles for the Show More functionality */
+.hidden-card {
+  display: none !important;
+}
+
+.see-more-container {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#seeMoreBtn {
+  background-color: #004080;
+  color: white;
+  padding: 15px 40px;
+  border-radius: 30px;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 64, 128, 0.2);
+}
+
+#seeMoreBtn:hover {
+  background-color: #007BFF;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+}
+
+/* --- Filter Bar Styling --- */
+.filter-container {
+  display: none; /* Hidden by default, shown via JS */
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px auto 10px;
+  max-width: 800px;
+  animation: fadeIn 0.5s ease;
+}
+
+.filter-btn {
+  padding: 8px 18px;
+  border: 1px solid #004080;
+  background-color: white;
+  color: #004080;
+  border-radius: 25px; /* Pill shape */
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.filter-btn:hover {
+  background-color: #e6f0ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 64, 128, 0.15);
+}
+
+.filter-btn.active {
+  background-color: #004080;
+  color: white; /* White text on blue background */
+  box-shadow: 0 4px 8px rgba(0, 64, 128, 0.3);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+     /* --- UPDATED DEVELOPER BAR STYLES --- */
+.dev-bar-container {
+  width: 100%;
+  background-color: #001220; /* Very dark blue */
+  padding: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.dev-bar-link {
+  display: block;
+  text-decoration: none;
+  padding: 12px 0;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(90deg, #001220, #002540, #001220);
+  background-size: 200% 100%;
+  animation: bg-shift 5s infinite linear;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.dev-bar-link:hover {
+  padding: 18px 0; /* Expands slightly on hover */
+  background-color: #002540;
+}
+
+.dev-content {
+  font-family: 'Courier New', monospace; /* Code-like font */
+  font-size: 13px;
+  color: #8899a6;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: color 0.3s;
+}
+
+.dev-bar-link:hover .dev-content {
+  color: #FFD700; /* Turns Gold on Hover */
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+.dev-name {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.code-icon {
+  opacity: 0.5;
+  font-size: 14px;
+}
+
+/* A subtle "shine" effect passing through */
+.dev-bar-link::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+  transform: skewX(-25deg);
+  animation: shine-pass 3s infinite;
+}
+
+@keyframes bg-shift {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@keyframes shine-pass {
+  0% { left: -100%; }
+  20% { left: 200%; } /* Fast pass */
+  100% { left: 200%; } /* Wait */
+}
+
+/* Mobile Tweak */
+@media (max-width: 600px) {
+  .dev-content { font-size: 11px; }
+}
+
+
+/* --- CUSTOM RECRUITMENT MODAL STYLES --- */
+.recruitment-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 20, 40, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.recruitment-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.recruitment-modal-box {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 35px 25px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  transform: translateY(-30px) scale(0.95);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+.recruitment-modal-overlay.active .recruitment-modal-box {
+  transform: translateY(0) scale(1);
+}
+
+.recruitment-modal-box i.warning-icon {
+  font-size: 45px;
+  color: #ff3b30;
+  margin-bottom: 15px;
+}
+
+.recruitment-modal-box h3 {
+  color: #004080;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.recruitment-modal-box p {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 25px;
+  line-height: 1.5;
+}
+
+.recruitment-modal-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-return-index {
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  flex: 1;
+  min-width: 140px;
+}
+
+.btn-return-index:hover {
+  background: #e0e0e0;
+}
+
+.btn-view-anyway {
+  background: #004080;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+  flex: 1;
+  min-width: 140px;
+}
+
+.btn-view-anyway:hover {
+  background: #007BFF;
+}
+  </style>
+  <link rel="stylesheet" href="assets/css/global.css">
+</head>
+<body>
+
+   <header>
+  
+
+  <div class="nav-menu" id="navMenu">
+  <a href="#"><i class="fas fa-home"></i> Home</a>
+  <a href="#about"><i class="fas fa-info-circle"></i> About Us</a>
+  <a href="pages/general/university-requirements"><i class="fas fa-list-check"></i> Requirements</a>
+  <a href="#contact"><i class="fas fa-envelope"></i> Contact Us</a>
+</div>
+  
+  <div class="header-slider">
+    <img src="assets/images/cityu_main.jpg" class="slide active" alt="City University">
+    <img src="assets/images/iukl_main.jpg" class="slide" alt="IUKL">
+    <img src="assets/images/cyberjaya_main.jpg" class="slide" alt="University of Cyberjaya">
+    <img src="assets/images/inti_main.jpg" class="slide" alt="INTI">
+    <img src="assets/images/segi_main.jpg" class="slide" alt="SEGi">
+    <img src="assets/images/binary_main.jpg" class="slide" alt="Binary">
+    <img src="assets/images/taylors_main.jpg" class="slide" alt="Taylors">
+    <img src="assets/images/kings_main.jpg" class="slide" alt="Kings">
+  </div>
+
+  <div class="text-overlay">
+    <h3>STUDENT GATEWAY TO MALAYSIA</h3>
+    <h1>YS STUDY FOCUS, THE BEST AND THE MOST TRUSTED PLACE TO START YOUR PROCESSING FOR MALAYSIA</h1>
+    <a href="https://forms.gle/iFXQ3ohvY4JqCbWA9" target="_blank" rel="noopener noreferrer" class="start-btn">START YOUR PROCESSING</a>
+  </div>
+
+  <a href="/" class="header-logo-link">
+    <img src="assets/images/ys_logo.png" alt="YS Logo" class="header-logo">
+  </a>
+
+  <div class="top-right-actions">
+    <div class="action-icon" onclick="scrollToSearch()" title="Search">
+      <i class="fas fa-search"></i>
+    </div>
+    <div class="action-icon menu-icon" onclick="toggleMenu(event)" title="Menu">
+      <i class="fas fa-bars"></i>
+    </div>
+</header>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+<section class="about-section" id="about">
+  <div class="about-header">
+    <h2>Top Reasons to Choose YSSF</h2>
+    <p>
+      YS Study Focus provides expert, reliable guidance and direct university partnerships, 
+      ensuring a seamless transition and successful admission process for Bangladeshi students 
+      to study in Malaysia.
+    </p>
+  </div>
+
+  <div class="stats-row">
+  <div class="stat-card" onclick="window.location.href="pages/general/university-Partnerships";" style="cursor: pointer;">
+    <div class="stat-icon-circle"><i class="fas fa-university"></i></div>
+    <h2>13+</h2>
+    <p><b>Official University Partnerships</b></p>
+    <p class="stat-subtext">View Partner List</p>
+  </div>
+
+  <div class="stat-card middle-card" onclick="window.location.href="pages/general/student-success";" style="cursor: pointer;">
+    <div class="stat-icon-circle"><i class="fas fa-user-graduate"></i></div>
+    <h2 id="dynamicStudentCount">126</h2>
+    <p><b>Successful Student Admissions</b></p>
+    <p class="stat-subtext">*Updated weekly based on processing</p>
+  </div>
+
+
+<div class="stat-card" onclick="window.location.href="pages/general/expert-agents";" style="cursor: pointer;">
+    <div class="stat-icon-circle"><i class="fas fa-user-graduate"></i></div>
+    <p><b>Dedicated Expert Agents</b></p>
+    <p class="stat-subtext">View agent List</p>
+  </div>
+</section>
+
+<section class="search-section">
+  <h2><i class="fas fa-graduation-cap"></i> Find Your University</h2>
+  <p style="margin-bottom: 20px; color: #666;">Enter a subject (e.g. "Business", "IT") to see available universities.</p>
+  <div class="search-box">
+    <input type="text" id="subjectInput" placeholder="What do you want to study?" class="search-bar" onkeyup="searchUniversities()">
+    <button onclick="searchUniversities()">
+      <i class="fas fa-search"></i> Search
+    </button>
+  </div>
+
+  <div class="filter-container" id="filterBar">
+    <button class="filter-btn active" onclick="filterResults('All', this)">All</button>
+    <button class="filter-btn" onclick="filterResults('Foundation', this)">Foundation</button>
+    <button class="filter-btn" onclick="filterResults('Diploma', this)">Diploma</button>
+    <button class="filter-btn" onclick="filterResults('Bachelor', this)">Bachelor</button>
+    <button class="filter-btn" onclick="filterResults('Master', this)">Masters</button>
+    <button class="filter-btn" onclick="filterResults('Certificate', this)">Certificate</button>
+    <button class="filter-btn" onclick="filterResults('PhD', this)">PhD</button>
+  </div>
+  <div id="searchResults"></div>
+</section>
+
+
+
+<section class="programmes-bar" id="requirements">
+
+    <h2>University Programmes and Tuition Fees</h2>
+
+<div class="uni-grid">
+  <div id="city-university"><a href="pages/universities/city-university">City University</a></div>
+  <div id="iukl"><a href="pages/universities/iukl-fees">IUKL</a></div>
+  <div id="bac"><a href="pages/universities/bac-university">BAC</a></div>
+  <div id="alfa-university"><a href="pages/universities/alfa-university">Alfa University</a></div>
+  <div id="university-of-cyberjaya"><a href="pages/universities/university-of-cyberjaya">University of Cyberjaya</a></div>
+  <div id="inti"><a href="pages/universities/inti-university">INTI</a></div>
+  <div id="segi"><a href="pages/universities/segi-university">SEGi</a></div>
+  <div id="taylors-university"><a href="pages/universities/taylors-university">Taylor's University</a></div>
+  <div id="unirazak"><a href="pages/universities/unirazak-university">UniRazak</a></div>
+  <div id="kings-university"><a href="pages/universities/kings-university">King's University</a></div>
+  <div id="unikl"><a href="pages/universities/unikl">UniKL</a></div>
+  <div id="lsbf"><a href="pages/universities/lsbf">LSBF</a></div>
+
+
+  <div id="genovasi"><a href="pages/universities/genovasi-university" class="paused-recruitment">Genovasi</a></div>
+  <div id="cybernetics"><a href="pages/universities/cybernetics-university" class="paused-recruitment">Cybernetics</a></div>
+  <div id="ucmi"><a href="pages/universities/ucmi-university" class="paused-recruitment">UCMI</a></div>
+  <div id="binary-university"><a href="pages/universities/binary-university" class="paused-recruitment">Binary University</a></div>
+  <div id="VISION University"><a href="pages/universities/vision-fees" class="paused-recruitment">Vision University</a></div>
+</div>
+ 
+
+  </section>
+
+ <section class="testimonials-section">
+  <h2 class="section-title">Student <span>Success Stories</span></h2>
+  
+  <div class="testimonial-slider" id="testimonialSlider">
+    
+    <div class="testimonial-card">
+      <div class="photo-review-container">
+        <img src="assets/images/review1.jpg" alt="Student Review">
+      </div>
+      
+      <div class="student-info">
+        <img src="assets/images/student_profile1.jpg" alt="Profile" class="student-img">
+        <div class="student-details">
+          <h4>Maruf Rahman</h4>
+          <p>UTM Space <img src="https://flagcdn.com/w20/my.png" class="flag-icon"></p>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="photo-review-container">
+        <img src="assets/images/review2.jpg" alt="Student Review">
+      </div>
+      <div class="student-info">
+        <img src="assets/images/student_profile2.jpg" alt="Profile" class="student-img">
+        <div class="student-details">
+          <h4>Meem Chowdhory</h4>
+          <p>King's University <img src="https://flagcdn.com/w20/my.png" class="flag-icon"></p>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="photo-review-container">
+        <img src="assets/images/review3.jpg" alt="Student Review">
+      </div>
+      <div class="student-info">
+        <img src="assets/images/student_profile3.jpg" alt="Profile" class="student-img">
+        <div class="student-details">
+          <h4>Adlina Halder</h4>
+          <p>Alfa University College <img src="https://flagcdn.com/w20/my.png" class="flag-icon"></p>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="photo-review-container">
+        <img src="assets/images/review4.jpg" alt="Student Review">
+      </div>
+      <div class="student-info">
+        <img src="assets/images/student_profile4.jpg" alt="Profile" class="student-img">
+        <div class="student-details">
+          <h4>lamiya ahmed asmi</h4>
+          <p>Genovasi University Colege <img src="https://flagcdn.com/w20/my.png" class="flag-icon"></p>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="photo-review-container">
+        <img src="assets/images/review5.jpg" alt="Student Review">
+      </div>
+      <div class="student-info">
+        <img src="assets/images/student_profile5.jpg" alt="Profile" class="student-img">
+        <div class="student-details">
+          <h4>Ismamzaman Shuptoo</h4>
+          <p>UCMI <img src="https://flagcdn.com/w20/my.png" class="flag-icon"></p>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="photo-review-container">
+        <img src="assets/images/review6.jpg" alt="Student Review">
+      </div>
+      <div class="student-info">
+        <img src="assets/images/student_profile6.jpg" alt="Profile" class="student-img">
+        <div class="student-details">
+          <h4>Govenda Sarkar </h4>
+          <p>Alfa University College <img src="https://flagcdn.com/w20/my.png" class="flag-icon"></p>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="photo-review-container">
+        <img src="assets/images/review7.jpg" alt="Student Review">
+      </div>
+      <div class="student-info">
+        <img src="assets/images/student_profile7.jpg" alt="Profile" class="student-img">
+        <div class="student-details">
+          <h4>Shimanto Hasan </h4>
+          <p>UNIMY <img src="https://flagcdn.com/w20/my.png" class="flag-icon"></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="uni-flip-section">
+  <h2 class="section-title">Choose your favourite <span>Study Destination</span></h2>
+  
+  <div class="uni-flip-container" id="uniFlipContainer">
+    
+    <div class="flip-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/cityu_main.jpg" alt="City University">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>City University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>City University Malaysia is known for its industry-focused programs and vibrant campus life.</p>
+          <a href="pages/universities/city-details" class="study-btn">Study in City &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/iukl_main.jpg" alt="IUKL">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>IUKL</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Infrastructure University Kuala Lumpur (IUKL) excels in engineering and technology.</p>
+          <a href="pages/universities/iukl-details" class="study-btn">Study in IUKL &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/bac_main.jpg" alt="BAC">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>BAC Education</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>BAC Education Group is Malaysia's fastest-growing law and business school.</p>
+          <a href="pages/universities/bac-details" class="study-btn">Study in BAC &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/alfa_main.jpg" alt="Alfa University">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Alfa University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Alfa University offers creative and technical programs designed for global industries.</p>
+          <a href="pages/universities/alfa-details" class="study-btn">Study in Alfa &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/cyberjaya_main.jpg" alt="University of Cyberjaya">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Cyberjaya</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>A leading healthcare and science university in Malaysia's tech hub.</p>
+          <a href="pages/universities/cyberjaya-details" class="study-btn">Study in Cyberjaya &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/inti_main.jpg" alt="INTI">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>INTI University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>INTI International University offers high-quality programs with global connections.</p>
+          <a href="pages/universities/inti-details" class="study-btn">Study in INTI &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/segi_main.jpg" alt="SEGi">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>SEGi University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>SEGi University offers a wide range of industry-driven programs.</p>
+          <a href="pages/universities/segi-details" class="study-btn">Study in SEGi &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+   
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/taylors_main.jpg" alt="Taylors">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Taylor's University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>One of Malaysia's most prestigious private universities globally ranked.</p>
+          <a href="pages/universities/taylors-details" class="study-btn">Study in Taylor's &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+ 
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/kings_main.jpg" alt="Kings">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>King's University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Offering specialized programs designed for modern career paths.</p>
+          <a href="pages/universities/kings-details" class="study-btn">Study in King's &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/binary_main.jpg" alt="Binary">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Binary University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Specializing in Management and Entrepreneurship with industry placement.</p>
+          <a href="pages/universities/binary-details" class="study-btn paused-recruitment">Study in Binary &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/ucmi_main.jpg" alt="UCMI">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>UCMI</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>University College MAIWP International focuses on healthcare and business.</p>
+          <a href="pages/universities/ucmi-details" class="study-btn paused-recruitment">Study in UCMI &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/genovasi_main.jpg" alt="Genovasi">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Genovasi</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>A design-thinking university that fosters innovation and creative solving.</p>
+          <a href="pages/universities/genovasi-details" class="study-btn paused-recruitment">Study in Genovasi &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/cybernetics_main.jpg" alt="Cybernetics">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Cybernetics</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Leading the way in technical and vocational training with modern facilities.</p>
+          <a href="pages/universities/cybernetics-details" class="study-btn paused-recruitment">Study in Cybernetics &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+ 
+ 
+
+  </div> <div class="see-more-container">
+    <button id="seeMoreBtn" onclick="revealUniversities()">See More Universities</button>
+  </div>
+</section>
+
+
+<section class="contact-cta-section" style="position: relative;">
+  <div id="flight-path">
+     <div class="paper-plane" id="plane"><i class="fas fa-paper-plane"></i></div>
+  </div>
+
+  <div class="contact-left">
+    <h2>Contact <span id="plane-origin">Us</span> Today!</h2>
+    <p style="margin-bottom: 30px; color: #444; font-size: 19px; line-height: 1.5;">
+      Start your journey to Malaysia with expert guidance. <br>
+      Message us now for a free consultation!
+    </p>
+    <a href="https://wa.me/601139660706" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+      <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+    </a>
+  </div>
+
+  <div class="contact-right">
+    <div class="photo-collage" id="collage-end">
+      <img src="assets/images/cityu.jpg" alt="City University" class="collage-img">
+      <img src="assets/images/inti.jpeg" alt="Inti University" class="collage-img tall">
+      <img src="assets/images/iukl.jpg" alt="IUKL" class="collage-img">
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+    <div class="footer-container">
+      <div class="office left">
+        <p><strong>Bangladesh Office</strong><br>
+        80/A/1 Shahjalal Tower, Level-07,<br>
+        CID office এর opposite, Malibagh Mor, Dhaka</p>
+      </div>
+
+      <div class="footer-logo">
+        <img src="assets/images/ys_logo.png" alt="YS Logo">
+      </div>
+
+      <div class="office right">
+        <p><strong>Malaysia Office</strong><br>
+        De Tropicana, 52, Jalan Kuchai Maju 13<br>
+        Kuchai Entrepreneurs Park<br>
+        58200 Kuala Lumpur, Malaysia</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="menu">
+        <div class="toggle">
+          <ion-icon name="share-social"></ion-icon>
+        </div>
+        <li style="--i: 0; --clr: #1877f2">
+          <a href="https://web.facebook.com/people/YS-Study-Focus/61571694410231/?_rdc=1&_rdr" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+        </li>
+        <li style="--i: 2; --clr: #25d366">
+          <a href="https://wa.me/601139660706" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+        </li>
+        <li style="--i: 4; --clr: #ff0000">
+          <a href="https://youtube.com/@sabrina367sabu?si=GRfgbwVUAxxH5Ke_" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+        </li>
+        <li style="--i: 6; --clr: #000000">
+          <a href="https://www.tiktok.com/@sabu_555?_r=1&_t=ZS-92OvdlsEIcy" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+        </li>
+      </div>
+    </div>
+  </footer>
+
+  <div class="dev-bar-container">
+  <a href="https://nahidjahanbhuiyan.com" target="_blank" rel="noopener noreferrer" class="dev-bar-link" title="Click to view Developer Profile">
+    <span class="dev-content">
+      <i class="fas fa-code code-icon"></i>
+      Developed by: <span class="dev-name">&lt; Bhuiyan Mohamed Nahid Jahan /&gt;</span>
+      <i class="fas fa-external-link-alt" style="font-size: 10px; margin-left: 5px;"></i>
+    </span>
+  </a>
+</div>
+  </footer>
+
+
+ <script>
+// --- 1. Global Variables to manage "See More" logic ---
+  let ALL_PROGRAMS = []; 
+  let currentMatches = []; // Stores all results found
+  let visibleCount = 0;    // Tracks how many are currently shown
+  const BATCH_SIZE = 10;   // How many to show at a time
+
+  // University Links Mapping
+  const uniLinks = {
+    "City University Malaysia": "city-university.html",
+    "Infrastructure University Kuala Lumpur (IUKL)": "iukl-fees.html",
+    "BAC EDUCATION GROUP": "bac-university.html",
+    "ALFA UNIVERSITY MALAYSIA": "alfa-university.html",
+    "INTI International University": "inti-university.html",
+    "UNIVERSITY OF CYBERJAYA": "university-of-cyberjaya.html",
+    "University College MAIWP International (UCMI)": "ucmi-university.html",
+    "CYBERNETICS MALAYSIA (KTAC)": "cybernetics-university.html",
+    "GENOVASI UNIVERSITY MALAYSIA": "genovasi-university.html",
+    "SEGI UNIVERSITY MALAYSIA": "segi-university.html",
+    "Taylor's University": "taylors-university.html",
+    "Binary University": "binary-university.html",
+    "King's University": "kings-university.html",
+    "Universiti Tun Abdul Razak (UNIRAZAK)": "unirazak-university.html", 
+    "Binary University of Management & Entrepreneurship": "binary-university.html", 
+    "Kings University College": "kings-university.html",
+    "VISION University College": "vision-fees.html"
+  };
+
+  async function fetchAllPrograms() {
+    try {
+      const response = await fetch('universities.json');
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      ALL_PROGRAMS = await response.json();
+      console.log("Programs data loaded successfully.");
+    } catch (error) {
+      console.error("Could not fetch programs data:", error);
+      document.getElementById('searchResults').innerHTML = '<p style="color: red;">Error loading university data.</p>';
+    }
+  }
+// --- Global Variable for Filtering ---
+  let baseSearchResults = []; // Stores the original list of matches
+
+  // --- 2. Updated Search Function ---
+  function searchUniversities() {
+    const input = document.getElementById("subjectInput").value.toLowerCase().trim();
+    const resultBox = document.getElementById("searchResults");
+    const filterBar = document.getElementById("filterBar");
+    
+    // Reset Display
+    resultBox.innerHTML = "";
+    baseSearchResults = []; 
+    currentMatches = [];
+    visibleCount = 0;
+
+    // Hide filter bar initially
+    if(filterBar) filterBar.style.display = 'none';
+
+    if (input.length < 2) return;
+
+    const searchTerms = input.split(' ').filter(term => term.length > 0);
+    
+    // 1. Find ALL matches based on text input
+    ALL_PROGRAMS.forEach(uni => {
+      const universityName = uni.name;
+      const universityLink = uniLinks[universityName] || "#"; 
+      
+      uni.programs.forEach(program => {
+        const programNameLower = program.name.toLowerCase();
+        const allTermsMatch = searchTerms.every(term => programNameLower.includes(term));
+        
+        if (allTermsMatch) {
+          // Push to baseSearchResults instead of currentMatches immediately
+          baseSearchResults.push({
+            uni: universityName,
+            campus: program.campus,
+            program: program.name,
+            link: universityLink
+          });
+        }
+      });
+    });
+
+    // 2. Logic to Show/Hide Filter Bar
+    if (baseSearchResults.length >= 10) {
+      if(filterBar) {
+        filterBar.style.display = 'flex'; // Show filters
+        // Reset active button to 'All'
+        const btns = document.querySelectorAll('.filter-btn');
+        btns.forEach(btn => btn.classList.remove('active'));
+        if(btns[0]) btns[0].classList.add('active');
+      }
+    }
+
+    // 3. Initial Render (Show All)
+    currentMatches = [...baseSearchResults];
+
+    if (currentMatches.length > 0) {
+      renderNextBatch();
+    } else {
+      resultBox.innerHTML = "<div style='padding:20px; color:#666;'>No results found.</div>";
+    }
+  }
+
+  // --- New Filter Logic ---
+  function filterResults(category, btnElement) {
+    // 1. Visual Update (Change active button color)
+    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+    btnElement.classList.add('active');
+
+    // 2. Reset Display
+    const resultBox = document.getElementById("searchResults");
+    resultBox.innerHTML = "";
+    visibleCount = 0;
+    
+    // 3. Filter the Data
+    if (category === 'All') {
+      currentMatches = [...baseSearchResults];
+    } else {
+      // Filter the original search results based on the button clicked
+      // We use 'includes' so 'Bachelor' matches 'Bachelor of Science'
+      // We use 'Master' for 'Masters' to catch 'Master of Arts' etc.
+      const searchKey = category === 'Masters' ? 'Master' : category;
+      
+      currentMatches = baseSearchResults.filter(item => 
+        item.program.toLowerCase().includes(searchKey.toLowerCase())
+      );
+    }
+
+    // 4. Render
+    if (currentMatches.length > 0) {
+      renderNextBatch();
+    } else {
+      resultBox.innerHTML = "<div style='padding:20px; color:#666;'>No " + category + " programmes found for this search.</div>";
+    }
+  }
+
+  // --- 3. Function to Render the Next 10 Results ---
+  function renderNextBatch() {
+    const resultBox = document.getElementById("searchResults");
+    
+    // Remove the "See More" button if it exists (so we can move it to the bottom later)
+    const existingBtn = document.getElementById("seeMoreBtnContainer");
+    if (existingBtn) existingBtn.remove();
+
+    // Slice the next 10 items from the list
+    const nextBatch = currentMatches.slice(visibleCount, visibleCount + BATCH_SIZE);
+
+    nextBatch.forEach(match => {
+      const campusDisplay = match.campus ? ` — ${match.campus}` : '';
+      const encodedProgram = encodeURIComponent(match.program);
+      
+      // Bachelor style check
+      const isBachelor = match.program.toLowerCase().includes('bachelor');
+      const itemClass = isBachelor ? 'search-result-item bachelor' : 'search-result-item';
+
+      // Append new result to the list
+      resultBox.innerHTML += `
+        <div class="${itemClass}">
+          <div class="result-info">
+             <h4>${match.program}</h4>
+             <p>${match.uni}${campusDisplay}</p>
+          </div>
+          <button onclick="window.location.href='${match.link}?q=${encodedProgram}';" class="go-to-fees">
+            View<br>Fees
+          </button>
+        </div>
+      `;
+    });
+
+    // Update the counter
+    visibleCount += nextBatch.length;
+
+    // --- 4. If there are MORE matches left, show the button again ---
+    if (visibleCount < currentMatches.length) {
+      const remaining = currentMatches.length - visibleCount;
+      resultBox.innerHTML += `
+        <div id="seeMoreBtnContainer" style="text-align: center; margin-top: 15px;">
+          <button onclick="renderNextBatch()" style="
+            background-color: #004080; 
+            color: white; 
+            border: none; 
+            padding: 10px 25px; 
+            border-radius: 20px; 
+            cursor: pointer; 
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: 0.3s;
+          " onmouseover="this.style.backgroundColor='#007BFF'" 
+            onmouseout="this.style.backgroundColor='#004080'">
+            See More Universities (${remaining} more)
+          </button>
+        </div>
+      `;
+    }
+  }
+
+  // Run the fetch function on page load
+  document.addEventListener('DOMContentLoaded', fetchAllPrograms);
+  function updateStudentCount() {
+  // 1. Set the date you want the count to start from (Year, Month index 0-11, Day)
+  // Example: Dec 21, 2025
+  const startDate = new Date(2025, 11, 21); 
+  const today = new Date();
+  
+  // 2. Calculate the difference in milliseconds
+  const diffInMs = today - startDate;
+  
+  // 3. Convert milliseconds to weeks (1000ms * 60s * 60m * 24h * 7d)
+  const weeksPassed = Math.floor(diffInMs / (1000 * 60 * 60 * 24 * 7));
+  
+  // 4. Starting number (68) + weeks passed
+  const currentCount = 126 + (weeksPassed > 0 ? weeksPassed : 0);
+  
+  // 5. Update the HTML element
+  const countElement = document.getElementById("dynamicStudentCount");
+  if (countElement) {
+    countElement.innerText = currentCount + "+";
+  }
+}
+
+// Run the function when the page loads
+document.addEventListener('DOMContentLoaded', updateStudentCount);
+
+function scrollToSearch() {
+  const searchSection = document.querySelector(".search-section");
+  if (searchSection) {
+    searchSection.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+/* --- IMPROVED PLANE & FIREWORK LOGIC --- */
+
+function triggerMalaysianFirework() {
+  const container = document.querySelector('.contact-cta-section');
+  if (!container) return;
+
+  // 1. Determine the "Hit Point" (Where the plane ends)
+  // We calculate this based on the container size to ensure it hits the "images" area.
+  const width = container.offsetWidth;
+  const height = container.offsetHeight;
+  
+  let explosionX, explosionY;
+
+  if (window.innerWidth > 768) {
+    // DESKTOP HIT POINT: Top Right corner (near the 3rd image)
+    // Matches the end of the SVG path: "90%, 100" (approx coordinate)
+    explosionX = width * 0.90; 
+    explosionY = 100; // Fixed pixels from top
+  } else {
+    // MOBILE HIT POINT: Top Right corner
+    // Matches the end of the Mobile SVG path: "90%, 50"
+    explosionX = width * 0.90;
+    explosionY = 50; 
+  }
+
+  // 2. Create Particles (The Malaysia Flags)
+  const particleCount = 15; // Number of flags to burst
+  
+  for (let i = 0; i < particleCount; i++) {
+    const p = document.createElement('div');
+    p.classList.add('flag-particle');
+    p.innerText = '🇲🇾'; // The Malaysia Flag Emoji
+    
+    // Set starting position (the explosion center)
+    p.style.left = explosionX + 'px';
+    p.style.top = explosionY + 'px';
+    
+    container.appendChild(p);
+
+    // Randomize the explosion direction
+    // Random angle (0 to 360 degrees)
+    const angle = Math.random() * Math.PI * 2;
+    // Random distance (burst spread)
+    const velocity = Math.random() * 80 + 40; 
+    
+    const tx = Math.cos(angle) * velocity;
+    const ty = Math.sin(angle) * velocity;
+    
+    // Animate the particle
+    p.animate([
+      { transform: 'translate(0, 0) scale(0.5)', opacity: 1 },
+      { transform: `translate(${tx}px, ${ty}px) scale(1.2) rotate(${Math.random() * 30}deg)`, opacity: 0 }
+    ], {
+      duration: 1000 + Math.random() * 500, // Random duration between 1s and 1.5s
+      easing: 'cubic-bezier(0, .9, .57, 1)', // "Pop" effect easing
+      fill: 'forwards'
+    }).onfinish = () => {
+      p.remove(); // Clean up DOM after animation
+    };
+  }
+}
+
+// 3. Sync Logic
+// The CSS animation is 5 seconds long.
+// We want the firework to blast exactly when the plane disappears (around 95%).
+// So we set the interval to 5000ms, and delay the burst slightly to match the end frame.
+
+function startPlaneAnimationLoop() {
+  const plane = document.querySelector('.paper-plane');
+  
+  // Initial run
+  setTimeout(() => {
+    triggerMalaysianFirework();
+  }, 4500); // Trigger at 4.5s (just before the 5s loop ends)
+
+  // Loop every 5 seconds
+  setInterval(() => {
+    triggerMalaysianFirework();
+  }, 5000);
+}
+
+// Start the loop when page loads
+document.addEventListener('DOMContentLoaded', startPlaneAnimationLoop);
+
+</script>
+<script>
+  const menu = document.querySelector(".menu");
+  const toggle = document.querySelector(".toggle");
+  if(toggle) {
+    toggle.addEventListener("click", () => {
+      menu.classList.toggle("active");
+    });
+  }
+
+function initTestimonialSlider() {
+  const slider = document.getElementById('testimonialSlider');
+  if (!slider) return;
+
+  // --- 1. CLONE CONTENT FOR ENDLESS LOOP ---
+  // We duplicate the inner HTML so the list is twice as long.
+  // When we scroll past the halfway point (the end of the original list),
+  // we instantly reset to 0. This creates the illusion of an infinite loop.
+  if (!slider.getAttribute('data-cloned')) {
+    slider.innerHTML += slider.innerHTML;
+    slider.setAttribute('data-cloned', 'true');
+  }
+
+  // --- Configuration ---
+  const RESUME_DELAY = 10000; // 10 seconds wait time
+  const SCROLL_SPEED = 1;     // Higher number = faster scroll
+  const REFRESH_RATE = 20;    // Update every 20ms
+
+  let autoScrollInterval;
+  let resumeTimeout;
+  let isAutoScrolling = true;
+
+  // --- Drag Variables ---
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  // 2. The Auto Scroll Loop
+  function startLoop() {
+    clearInterval(autoScrollInterval); 
+    autoScrollInterval = setInterval(() => {
+
+      if (slider.scrollLeft >= slider.scrollWidth / 2) {
+  slider.scrollLeft = 0;
+}
+      // Logic: Infinite Scroll Check
+      // If we have scrolled past half the total width (meaning we finished the original set),
+      // we reset to 0 immediately. This happens invisibly.
+      if (slider.scrollLeft >= slider.scrollWidth / 2) {
+        slider.scrollLeft = 0;
+      }
+
+      if (isAutoScrolling) {
+        slider.scrollLeft += SCROLL_SPEED;
+      }
+    }, REFRESH_RATE);
+  }
+
+  // 3. Pause Logic (Stops scroll, waits 10s, then resumes)
+  function triggerPause() {
+    isAutoScrolling = false; 
+    clearTimeout(resumeTimeout); 
+
+    resumeTimeout = setTimeout(() => {
+      isAutoScrolling = true; 
+    }, RESUME_DELAY);
+  }
+
+  // --- Event Listeners for Interaction ---
+
+  // Mouse Down (Start of Drag)
+  slider.addEventListener('mousedown', (e) => {
+    triggerPause();
+    isDown = true;
+    slider.style.cursor = 'grabbing';
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  });
+
+  // Mouse Leave
+  slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.style.cursor = 'default';
+  });
+
+  // Mouse Up
+  slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.style.cursor = 'default';
+  });
+
+  // Mouse Move (Dragging)
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    triggerPause();
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2;
+    slider.scrollLeft = scrollLeft - walk;
+  });
+
+  // Touch & Wheel Events
+  slider.addEventListener('touchstart', triggerPause, { passive: true });
+  slider.addEventListener('touchmove', triggerPause, { passive: true });
+  slider.addEventListener('wheel', triggerPause, { passive: true });
+
+  // Initialize
+  startLoop();
+}
+
+// Run the function
+document.addEventListener('DOMContentLoaded', initTestimonialSlider);
+
+
+function revealUniversities() {
+  // Find all cards with the hidden-card class
+  const hiddenCards = document.querySelectorAll('.hidden-card');
+  const btn = document.getElementById('seeMoreBtn');
+  
+  hiddenCards.forEach(card => {
+    // Remove the class to make them visible
+    card.classList.remove('hidden-card');
+  });
+
+  // Hide the button after clicking since all are revealed
+  btn.style.display = 'none';
+}
+
+</script>
+
+
+
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+
+  function nextSlide() {
+    // Remove active class from current image
+    slides[currentSlide].classList.remove('active');
+    
+    // Move to next image (loop back to 0 at the end)
+    currentSlide = (currentSlide + 1) % slides.length;
+    
+    // Add active class to new image
+    slides[currentSlide].classList.add('active');
+  }
+
+setInterval(nextSlide, 4000);
+
+// --- MENU TOGGLE FUNCTIONALITY ---
+// --- FIXED MENU TOGGLE FUNCTIONALITY ---
+function toggleMenu(event) {
+  // CRITICAL FIX: Stop the click from traveling to the document listener
+  if (event) event.stopPropagation();
+
+  const menu = document.getElementById("navMenu");
+  const menuBtn = document.querySelector(".menu-icon");
+  
+  // Toggle the 'active' class
+  menu.classList.toggle("active");
+  
+  // Swap the icon
+  if (menu.classList.contains("active")) {
+    menuBtn.innerHTML = '<i class="fas fa-times"></i>'; // Change to X
+  } else {
+    menuBtn.innerHTML = '<i class="fas fa-bars"></i>'; // Back to Bars
+  }
+}
+
+// Close menu when clicking ANYWHERE outside of it
+document.addEventListener('click', function(event) {
+  const menu = document.getElementById("navMenu");
+  const menuBtn = document.querySelector(".menu-icon");
+  
+  // Only close if the menu is actually open
+  if (menu.classList.contains("active")) {
+    // Check if the click was OUTSIDE the menu
+    // Note: We don't need to check menuBtn here because stopPropagation handled it
+    if (!menu.contains(event.target)) {
+      menu.classList.remove("active");
+      menuBtn.innerHTML = '<i class="fas fa-bars"></i>'; // Reset icon
+    }
+  }
+});
+
+// Close menu automatically when a link inside it is clicked
+document.querySelectorAll('.nav-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+     const menu = document.getElementById("navMenu");
+     const menuBtn = document.querySelector(".menu-icon");
+     menu.classList.remove("active");
+     menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+  });
+});
+
+// Close menu automatically when a link inside it is clicked
+document.querySelectorAll('.nav-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+     const menu = document.getElementById("navMenu");
+     const menuBtn = document.querySelector(".menu-icon");
+     menu.classList.remove("active");
+     menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const pausedLinks = document.querySelectorAll('.paused-recruitment');
+  const modalOverlay = document.getElementById('recruitmentOverlay');
+  const proceedBtn = document.getElementById('proceedToUniBtn');
+  let pendingUrl = '';
+
+  pausedLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+      // Stop the link from opening immediately
+      event.preventDefault(); 
+      // Stop flip-card from flipping back when clicking the button
+      event.stopPropagation(); 
+      
+      pendingUrl = link.getAttribute('href');
+      modalOverlay.classList.add('active');
+    });
+  });
+
+  // Handle "View Anyway" click
+  proceedBtn.addEventListener('click', () => {
+    if (pendingUrl) {
+      window.location.href = pendingUrl;
+    }
+  });
+});
+
+// Handle "See another university" click
+function closeRecruitmentModal() {
+  document.getElementById('recruitmentOverlay').classList.remove('active');
+}
+</script>
+
+
+<div class="recruitment-modal-overlay" id="recruitmentOverlay">
+  <div class="recruitment-modal-box">
+    <i class="fas fa-exclamation-triangle warning-icon"></i>
+    <h3>Admission Paused</h3>
+    <p>This university is currently not recruiting students. Would you like to view another university instead?</p>
+    <div class="recruitment-modal-buttons">
+      <button class="btn-return-index" onclick="closeRecruitmentModal()">See another</button>
+      <button class="btn-view-anyway" id="proceedToUniBtn">View Anyway</button>
+    </div>
+  </div>
+</div>
+
+  <script src="assets/js/global.js"></script>
+</body>
+</html>

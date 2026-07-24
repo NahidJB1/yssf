@@ -1,0 +1,2074 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lincoln University College - International Fee Structure</title>
+<style>
+   body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0 0 80px 0; /* space for footer */
+  background: #f9f9f9;
+}
+
+header {
+  background: #004080;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+footer {
+  background: #004080;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: auto;
+}
+
+.panel {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  background-color: white;
+  display: none;
+  border: 1px solid #e0e6ed;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  margin-bottom: 25px;
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch; 
+}
+
+table {
+  min-width: 700px;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 10px 0;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 95%;
+}
+
+.accordion {
+  background: #ffffff;
+  color: #004080;
+  cursor: pointer;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  width: 100%; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid #e0e6ed;
+  outline: none;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.accordion.active {
+  background: #004080;
+  color: #ffffff;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0;
+  box-shadow: none;
+}
+
+th {
+  background-color: #004080;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 15px 12px;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #f0f2f5;
+  color: #444;
+  font-size: 14px;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+tr:hover {
+  background-color: #f1f7ff !important;
+  transition: background-color 0.2s ease;
+}
+
+tr.highlight {
+  background-color: #fff9c4 !important;
+  font-weight: bold;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+.note {
+  background: #f8f9fa;
+  border-left: 6px solid #004080;
+  padding: 25px;
+  margin: 25px 0;
+  border-radius: 12px;
+  color: #333;
+  line-height: 1.6;
+  font-size: 15px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+  position: relative;
+}
+
+.search-container {
+  background: #f1f3f5;
+  margin: 0 auto 30px auto;
+  padding: 30px 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+  border-bottom: 1px solid #e9ecef;
+  border-radius: 12px;
+}
+
+.search-container input[type="text"] {
+  padding: 15px 25px;
+  width: 100%;
+  max-width: 600px;
+  border: 2px solid #dde2e7;
+  border-radius: 50px;
+  font-size: 16px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.search-container input[type="text"]:focus {
+  outline: none;
+  border-color: #0066cc;
+  width: 100%;
+  max-width: 650px;
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.15);
+  transform: translateY(-2px);
+}
+
+.search-container input[type="text"]::placeholder {
+  color: #adb5bd;
+  transition: opacity 0.3s;
+}
+
+.search-container input[type="text"]:focus::placeholder {
+  opacity: 0.5;
+}
+
+.download-bar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: #0066cc;
+  color: #ffffff !important;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  float: right;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+}
+
+.download-bar span {
+  color: #ffffff !important;
+  margin: 0 !important;
+}
+
+.download-bar:hover {
+  background: #004080;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 64, 128, 0.3);
+}
+
+.note::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  </style>
+  <link rel="stylesheet" href="../../assets/css/global.css">
+</head>
+<body>
+
+<div class="global-navbar">
+  <a href="../../" class="nav-brand">YSSF</a>
+  <a href="../../" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+</div>
+
+<header>
+  <h1>Lincoln University College</h1>
+  <h2>International Fee Structure</h2>
+  <p></p>
+</header>
+
+<div class="container">
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search program name..." onkeyup="filterPrograms()" />
+  </div>
+
+<button class="accordion"> Faculty of Medicine</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Program Name</th>
+        <th>Level</th>
+        <th>Mode</th>
+        <th>Duration (Years)</th>
+        <th>Year</th>
+        <th>Total Tuition fee (MYR)</th>
+        <th>Tuition Fee (MYR/ YEAR)</th>
+        <th>EMGS Visa Fee/ Renewal fee (MYR)</th>
+        <th>Registration Fee (MYR)</th>
+        <th>Security Bond (MYR)</th>
+        <th>Total Fee (MYR)</th>
+        <th>Program Total (MYR)</th>
+      </tr>
+      <tr><td>1</td><td>PhD in Medical Anatomy</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>47,000</td><td>15,667
+15,667
+15,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>26,667
+17,267
+17,267</td><td>61,200</td></tr>
+      <tr><td>2</td><td>Doctor of Philosophy (PhD) in Medical Physiology</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>47,000</td><td>15,667
+15,667
+15,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>26,667
+17,267
+17,267</td><td>61,200</td></tr>
+      <tr><td>3</td><td>Doctor of Philosophy in Medical Sciences</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>47,000</td><td>15,667
+15,667
+15,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>26,667
+17,267
+17,267</td><td>61,200</td></tr>
+      <tr><td>4</td><td>Master in Medical Ultrasound</td><td>Master</td><td>Coursework</td><td>2</td><td>Year 1
+Year 2</td><td>29,000</td><td>14,500
+14,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>25,500
+16,100</td><td>41,600</td></tr>
+      <tr><td>-</td><td>Master of Medical Sciences</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>29,000</td><td>14,500
+14,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>25,500
+16,100</td><td>41,600</td></tr>
+      <tr><td>-</td><td>Master of Science in Public Health</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>29,000</td><td>19,333
+9,667</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>30,333
+11,267</td><td>41,600</td></tr>
+      <tr><td>-</td><td>Master of Science in Public Health (by Research)</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>29,000</td><td>14,500
+14,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>25,500
+16,100</td><td>41,600</td></tr>
+      <tr><td>-</td><td>Post Graduate Diploma in Wound Care Management</td><td>Master</td><td>Coursework</td><td>1</td><td>Year 1</td><td>29,000</td><td>29,000</td><td>3,500</td><td>6,000</td><td>1,500</td><td>40,000</td><td>40,000</td></tr>
+      <tr><td>5</td><td>Doctor of Medicine (MD)</td><td>Bachelor</td><td>Coursework</td><td>5</td><td>Year 1
+Year 2
+Year 3
+Year 4
+Year 5</td><td>412,000</td><td>82,400
+82,400
+82,400
+82,400
+82,400</td><td>3,500
+1,600
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>93,400
+84,000
+84,000
+84,000
+84,000</td><td>429,400</td></tr>
+      <tr><td>6</td><td>Bachelor of Cardiopulmonary and Perfusion Technology (Honours)</td><td>Bachelor</td><td>Coursework</td><td>4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>71,000</td><td>17,750
+17,750
+17,750
+17,750</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>28,750
+19,350
+19,350
+19,350</td><td>86,800</td></tr>
+      <tr><td>7</td><td>Bachelor of Medical Imaging (Hons)</td><td>Bachelor</td><td>Coursework</td><td>4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>71,000</td><td>17,750
+17,750
+17,750
+17,750</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>28,750
+19,350
+19,350
+19,350</td><td>86,800</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('lincoln-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All charges are Inclusive of the 6% SST Service Fee.<br>Miscellaneous Fees (If Applicable):<br>- Lab Fee (Per Year): 1100 MYR<br>- Intensive English Program (Per Level): 1750 MYR<br>- Pre requisite Course: 2000 MYR
+    </div>
+  </div>
+
+<button class="accordion"> Faculty of Dentistry</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Program Name</th>
+        <th>Level</th>
+        <th>Mode</th>
+        <th>Duration (Years)</th>
+        <th>Year</th>
+        <th>Total Tuition fee (MYR)</th>
+        <th>Tuition Fee (MYR/ YEAR)</th>
+        <th>EMGS Visa Fee/ Renewal fee (MYR)</th>
+        <th>Registration Fee (MYR)</th>
+        <th>Security Bond (MYR)</th>
+        <th>Total Fee (MYR)</th>
+        <th>Program Total (MYR)</th>
+      </tr>
+      <tr><td>12</td><td>Doctor of Philosophy in Dentistry</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>47,000</td><td>15,667
+15,667
+15,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>26,667
+17,267
+17,267</td><td>61,200</td></tr>
+      <tr><td>13</td><td>Master of Science in Dentistry</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>29,000</td><td>14,500
+14,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>25,500
+16,100</td><td>41,600</td></tr>
+      <tr><td>14</td><td>Doctor of Dental Surgery (DDS)</td><td>Bachelor</td><td>Coursework</td><td>5</td><td>Year 1
+Year 2
+Year 3
+Year 4
+Year 5</td><td>412,000</td><td>82,400
+82,400
+82,400
+82,400
+82,400</td><td>3,500
+1,600
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>93,400
+84,000
+84,000
+84,000
+84,000</td><td>429,400</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('lincoln-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All charges are Inclusive of the 6% SST Service Fee.<br>Miscellaneous Fees (If Applicable):<br>- Lab Fee (Per Year): 1100 MYR<br>- Intensive English Program (Per Level): 1750 MYR<br>- Pre requisite Course: 2000 MYR
+    </div>
+  </div>
+
+<button class="accordion"> Faculty of Pharmacy</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Program Name</th>
+        <th>Level</th>
+        <th>Mode</th>
+        <th>Duration (Years)</th>
+        <th>Year</th>
+        <th>Total Tuition fee (MYR)</th>
+        <th>Tuition Fee (MYR/ YEAR)</th>
+        <th>EMGS Visa Fee/ Renewal fee (MYR)</th>
+        <th>Registration Fee (MYR)</th>
+        <th>Security Bond (MYR)</th>
+        <th>Total Fee (MYR)</th>
+        <th>Program Total (MYR)</th>
+      </tr>
+      <tr><td>15</td><td>Doctor of Philosophy (Ph.D.) in Pharmacy</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>47,000</td><td>15,667
+15,667
+15,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>26,667
+17,267
+17,267</td><td>61,200</td></tr>
+      <tr><td>16</td><td>Master of Pharmacy</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>29,000</td><td>14,500
+14,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>25,500
+16,100</td><td>41,600</td></tr>
+      <tr><td>17</td><td>Bachelor of Pharmacy with Honours</td><td>Bachelor</td><td>Coursework</td><td>4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>71,000</td><td>17,750
+17,750
+17,750
+17,750</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>28,750
+19,350
+19,350
+19,350</td><td>86,800</td></tr>
+      <tr><td>18</td><td>Bachelor in Cosmetic Science (Honours)</td><td>Bachelor</td><td>Coursework</td><td>4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>71,000</td><td>17,750
+17,750
+17,750
+17,750</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>28,750
+19,350
+19,350
+19,350</td><td>86,800</td></tr>
+      <tr><td>19</td><td>Diploma in Pharmacy</td><td>Diploma</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>11,667
+11,667
+11,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>22,667
+13,267
+13,267</td><td>49,200</td></tr>
+      <tr><td>20</td><td>Diploma in Pharmacy</td><td>Diploma</td><td>ODL</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>11,667
+11,667
+11,667</td><td>1,000
+-
+-</td><td>6,000</td><td>-</td><td>18,667
+11,667
+11,667</td><td>42,000</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('lincoln-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All charges are Inclusive of the 6% SST Service Fee.<br>Miscellaneous Fees (If Applicable):<br>- Lab Fee (Per Year): 1100 MYR<br>- Intensive English Program (Per Level): 1750 MYR<br>- Pre requisite Course: 2000 MYR
+    </div>
+  </div>
+
+<button class="accordion"> Faculty of Nursing</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Program Name</th>
+        <th>Level</th>
+        <th>Mode</th>
+        <th>Duration (Years)</th>
+        <th>Year</th>
+        <th>Total Tuition fee (MYR)</th>
+        <th>Tuition Fee (MYR/ YEAR)</th>
+        <th>EMGS Visa Fee/ Renewal fee (MYR)</th>
+        <th>Registration Fee (MYR)</th>
+        <th>Security Bond (MYR)</th>
+        <th>Total Fee (MYR)</th>
+        <th>Program Total (MYR)</th>
+      </tr>
+      <tr><td>21</td><td>Doctor of Philosophy (PhD) in Nursing</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>47,000</td><td>15,667
+15,667
+15,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>26,667
+17,267
+17,267</td><td>61,200</td></tr>
+      <tr><td>22</td><td>Master of Science in Healthcare</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>29,000</td><td>14,500
+14,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>25,500
+16,100</td><td>41,600</td></tr>
+      <tr><td>23</td><td>Master in Nursing</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>29,000</td><td>14,500
+14,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>25,500
+16,100</td><td>41,600</td></tr>
+      <tr><td>24</td><td>Master in Nursing (Education)</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>29,000</td><td>19,333
+9,667</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>30,333
+11,267</td><td>41,600</td></tr>
+      <tr><td>25</td><td>Master of Nursing (Midwifery)</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>29,000</td><td>19,333
+9,667</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>30,333
+11,267</td><td>41,600</td></tr>
+      <tr><td>26</td><td>Master of Nursing (Public Health)</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>29,000</td><td>19,333
+9,667</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>30,333
+11,267</td><td>41,600</td></tr>
+      <tr><td>27</td><td>Master of Nursing (Public Health)</td><td>Master</td><td>ODL</td><td>2</td><td>Year 1
+Year 2</td><td>29,000</td><td>14,500
+14,500</td><td>1,000
+-</td><td>6,000</td><td>-</td><td>21,500
+14,500</td><td>36,000</td></tr>
+      <tr><td>28</td><td>Post Basic Renal Care Nursing</td><td>Master</td><td>Coursework</td><td>0.5</td><td>Year 1</td><td>12,000</td><td>12,000</td><td>3,500</td><td>6,000</td><td>1,500</td><td>23,000</td><td>23,000</td></tr>
+      <tr><td>29</td><td>Post Basic Certificate in Teaching Methodology For Nurses</td><td>Master</td><td>Coursework</td><td>0.5</td><td>Year 1</td><td>12,000</td><td>12,000</td><td>3,500</td><td>6,000</td><td>1,500</td><td>23,000</td><td>23,000</td></tr>
+      <tr><td>30</td><td>Bachelor of Nursing (Public Health) (Honours)</td><td>Bachelor</td><td>Coursework</td><td>4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>71,000</td><td>17,750
+17,750
+17,750
+17,750</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>28,750
+19,350
+19,350
+19,350</td><td>86,800</td></tr>
+      <tr><td>31</td><td>Bachelor of Nursing Sciences (Honours) (ODL)</td><td>Bachelor</td><td>ODL</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>71,000</td><td>23,667
+23,667
+23,667</td><td>1,000
+-
+-</td><td>6,000</td><td>-</td><td>30,667
+23,667
+23,667</td><td>78,000</td></tr>
+      <tr><td>32</td><td>Bachelor of Nursing Sciences (Hons)</td><td>Bachelor</td><td>Coursework</td><td>4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>71,000</td><td>17,750
+17,750
+17,750
+17,750</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>28,750
+19,350
+19,350
+19,350</td><td>86,800</td></tr>
+      <tr><td>33</td><td>Diploma in Nursing</td><td>Diploma</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>11,667
+11,667
+11,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>22,667
+13,267
+13,267</td><td>49,200</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('lincoln-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All charges are Inclusive of the 6% SST Service Fee.<br>Miscellaneous Fees (If Applicable):<br>- Lab Fee (Per Year): 1100 MYR<br>- Intensive English Program (Per Level): 1750 MYR<br>- Pre requisite Course: 2000 MYR
+    </div>
+  </div>
+
+<button class="accordion"> Faculty of Science</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Program Name</th>
+        <th>Level</th>
+        <th>Mode</th>
+        <th>Duration (Years)</th>
+        <th>Year</th>
+        <th>Total Tuition fee (MYR)</th>
+        <th>Tuition Fee (MYR/ YEAR)</th>
+        <th>EMGS Visa Fee/ Renewal fee (MYR)</th>
+        <th>Registration Fee (MYR)</th>
+        <th>Security Bond (MYR)</th>
+        <th>Total Fee (MYR)</th>
+        <th>Program Total (MYR)</th>
+      </tr>
+      <tr><td>34</td><td>PhD in Health Sciences</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>47,000</td><td>15,667
+15,667
+15,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>26,667
+17,267
+17,267</td><td>61,200</td></tr>
+      <tr><td>35</td><td>Doctor of Philosophy (Ph.D.) in Traditional Chinese Medicine</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>47,000</td><td>15,667
+15,667
+15,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>26,667
+17,267
+17,267</td><td>61,200</td></tr>
+      <tr><td>36</td><td>Doctor of Philosophy in Agriculture</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>47,000</td><td>15,667
+15,667
+15,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>26,667
+17,267
+17,267</td><td>61,200</td></tr>
+      <tr><td>37</td><td>Doctor of Philosophy in Applied Sciences</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>47,000</td><td>15,667
+15,667
+15,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>26,667
+17,267
+17,267</td><td>61,200</td></tr>
+      <tr><td>38</td><td>Doctor of Philosophy in Nutrition</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>47,000</td><td>15,667
+15,667
+15,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>26,667
+17,267
+17,267</td><td>61,200</td></tr>
+      <tr><td>39</td><td>Doctor of Philosophy in Physiotherapy</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>47,000</td><td>15,667
+15,667
+15,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>26,667
+17,267
+17,267</td><td>61,200</td></tr>
+      <tr><td>40</td><td>Master of Agriculture</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>29,000</td><td>14,500
+14,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>25,500
+16,100</td><td>41,600</td></tr>
+      <tr><td>41</td><td>Master of Physiotherapy (By Research)</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>29,000</td><td>14,500
+14,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>25,500
+16,100</td><td>41,600</td></tr>
+      <tr><td>42</td><td>Master of Science in Applied Geology</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>29,000</td><td>19,333
+9,667</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>30,333
+11,267</td><td>41,600</td></tr>
+      <tr><td>43</td><td>Master of Science in Biotechnology</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>29,000</td><td>19,333
+9,667</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>30,333
+11,267</td><td>41,600</td></tr>
+      <tr><td>44</td><td>Master of Science in Biotechnology (by Research)</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>29,000</td><td>14,500
+14,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>25,500
+16,100</td><td>41,600</td></tr>
+      <tr><td>45</td><td>Master of Science in Biotechnology</td><td>Master</td><td>ODL</td><td>1.5</td><td>Year 1
+Year 2</td><td>29,000</td><td>19,333
+9,667</td><td>1,000
+-</td><td>6,000</td><td>-</td><td>26,333
+9,667</td><td>36,000</td></tr>
+      <tr><td>46</td><td>Master of Science in Microbiology</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>29,000</td><td>19,333
+9,667</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>30,333
+11,267</td><td>41,600</td></tr>
+      <tr><td>47</td><td>Master of Science in Nutrition</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>29,000</td><td>14,500
+14,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>25,500
+16,100</td><td>41,600</td></tr>
+      <tr><td>48</td><td>Master of Traditional Chinese Medicine</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>29,000</td><td>14,500
+14,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>25,500
+16,100</td><td>41,600</td></tr>
+      <tr><td>49</td><td>Bachelor of Biomedical Sciences (Honours)</td><td>Bachelor</td><td>Coursework</td><td>4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>53,000</td><td>13,250
+13,250
+13,250
+13,250</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,250
+14,850
+14,850
+14,850</td><td>68,800</td></tr>
+      <tr><td>50</td><td>Bachelor of Biotechnology (Honours)</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>53,000</td><td>17,667
+17,667
+17,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>28,667
+19,267
+19,267</td><td>67,200</td></tr>
+      <tr><td>51</td><td>Bachelor of Homeopathic Medical Science</td><td>Bachelor</td><td>Coursework</td><td>4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>53,000</td><td>13,250
+13,250
+13,250
+13,250</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,250
+14,850
+14,850
+14,850</td><td>68,800</td></tr>
+      <tr><td>52</td><td>Bachelor of Physiotherapy (Honours)</td><td>Bachelor</td><td>Coursework</td><td>4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>53,000</td><td>13,250
+13,250
+13,250
+13,250</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,250
+14,850
+14,850
+14,850</td><td>68,800</td></tr>
+      <tr><td>53</td><td>Bachelor of Science in Agriculture (Hons)</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>53,000</td><td>17,667
+17,667
+17,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>28,667
+19,267
+19,267</td><td>67,200</td></tr>
+      <tr><td>54</td><td>Bachelor in Nutrition (Honours)</td><td>Bachelor</td><td>Coursework</td><td>3.6</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>53,000</td><td>14,722
+14,722
+14,722
+8,833</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>25,722
+16,322
+16,322
+10,433</td><td>68,800</td></tr>
+      <tr><td>55</td><td>Bachelor of Science in Sports and Fitness</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>53,000</td><td>17,667
+17,667
+17,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>28,667
+19,267
+19,267</td><td>67,200</td></tr>
+      <tr><td>56</td><td>Bachelor of Ayurvedic Medicine</td><td>Bachelor</td><td>Coursework</td><td>5</td><td>Year 1
+Year 2
+Year 3
+Year 4
+Year 5</td><td>53,000</td><td>10,600
+10,600
+10,600
+10,600
+10,600</td><td>3,500
+1,600
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>21,600
+12,200
+12,200
+12,200
+12,200</td><td>70,400</td></tr>
+      <tr><td>57</td><td>Diploma in Medical and Health Sciences</td><td>Diploma</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>11,667
+11,667
+11,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>22,667
+13,267
+13,267</td><td>49,200</td></tr>
+      <tr><td>58</td><td>Diploma in Traditional Chinese Medicine</td><td>Diploma</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>11,667
+11,667
+11,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>22,667
+13,267
+13,267</td><td>49,200</td></tr>
+      <tr><td>59</td><td>Diploma in Physiotherapy</td><td>Diploma</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>11,667
+11,667
+11,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>22,667
+13,267
+13,267</td><td>49,200</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('lincoln-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All charges are Inclusive of the 6% SST Service Fee.<br>Miscellaneous Fees (If Applicable):<br>- Lab Fee (Per Year): 1100 MYR<br>- Intensive English Program (Per Level): 1750 MYR<br>- Pre requisite Course: 2000 MYR
+    </div>
+  </div>
+
+<button class="accordion"> Faculty of Engineering</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Program Name</th>
+        <th>Level</th>
+        <th>Mode</th>
+        <th>Duration (Years)</th>
+        <th>Year</th>
+        <th>Total Tuition fee (MYR)</th>
+        <th>Tuition Fee (MYR/ YEAR)</th>
+        <th>EMGS Visa Fee/ Renewal fee (MYR)</th>
+        <th>Registration Fee (MYR)</th>
+        <th>Security Bond (MYR)</th>
+        <th>Total Fee (MYR)</th>
+        <th>Program Total (MYR)</th>
+      </tr>
+      <tr><td>60</td><td>Doctor of Philosophy (Engineering)</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>47,000</td><td>15,667
+15,667
+15,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>26,667
+17,267
+17,267</td><td>61,200</td></tr>
+      <tr><td>61</td><td>Master in Construction Management</td><td>Master</td><td>Coursework</td><td>1.4</td><td>Year 1
+Year 2</td><td>29,000</td><td>20,714
+8,286</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>31,714
+9,886</td><td>41,600</td></tr>
+      <tr><td>62</td><td>Master in Construction Management</td><td>Master</td><td>ODL</td><td>1.4</td><td>Year 1
+Year 2</td><td>29,000</td><td>20,714
+8,286</td><td>1,000
+-</td><td>6,000</td><td>-</td><td>27,714
+8,286</td><td>36,000</td></tr>
+      <tr><td>63</td><td>Master of Engineering</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>29,000</td><td>14,500
+14,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>25,500
+16,100</td><td>41,600</td></tr>
+      <tr><td>64</td><td>Master of Mechanical Engineering</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>29,000</td><td>19,333
+9,667</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>30,333
+11,267</td><td>41,600</td></tr>
+      <tr><td>65</td><td>Master of Science in Civil Engineering</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>29,000</td><td>19,333
+9,667</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>30,333
+11,267</td><td>41,600</td></tr>
+      <tr><td>66</td><td>Master of Science in Electrical & Electronics Engineering</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>29,000</td><td>19,333
+9,667</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>30,333
+11,267</td><td>41,600</td></tr>
+      <tr><td>67</td><td>Master of Water Resource Management</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>29,000</td><td>14,500
+14,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>25,500
+16,100</td><td>41,600</td></tr>
+      <tr><td>68</td><td>Master of Science in Telecommunication Engineering</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>29,000</td><td>19,333
+9,667</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>30,333
+11,267</td><td>41,600</td></tr>
+      <tr><td>69</td><td>Bachelor of Civil Engineering Technology with Honours</td><td>Bachelor</td><td>Coursework</td><td>4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>53,000</td><td>13,250
+13,250
+13,250
+13,250</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,250
+14,850
+14,850
+14,850</td><td>68,800</td></tr>
+      <tr><td>70</td><td>Bachelor of Electrical and Electronics Engineering Technology With Honours</td><td>Bachelor</td><td>Coursework</td><td>4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>53,000</td><td>13,250
+13,250
+13,250
+13,250</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,250
+14,850
+14,850
+14,850</td><td>68,800</td></tr>
+      <tr><td>71</td><td>Bachelor of Mechanical Engineering Technology Aeronautics (Hons)</td><td>Bachelor</td><td>Coursework</td><td>4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>53,000</td><td>13,250
+13,250
+13,250
+13,250</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,250
+14,850
+14,850
+14,850</td><td>68,800</td></tr>
+      <tr><td>72</td><td>Bachelor of Mechanical Engineering Technology with Honours</td><td>Bachelor</td><td>Coursework</td><td>4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>53,000</td><td>13,250
+13,250
+13,250
+13,250</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,250
+14,850
+14,850
+14,850</td><td>68,800</td></tr>
+      <tr><td>73</td><td>Bachelor of Mechatronics Engineering Technology with Honours</td><td>Bachelor</td><td>Coursework</td><td>4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>53,000</td><td>13,250
+13,250
+13,250
+13,250</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,250
+14,850
+14,850
+14,850</td><td>68,800</td></tr>
+      <tr><td>74</td><td>Diploma in Aeronautical Engineering Technology (Aircraft Maintenance)</td><td>Diploma</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>11,667
+11,667
+11,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>22,667
+13,267
+13,267</td><td>49,200</td></tr>
+      <tr><td>75</td><td>Diploma in Electrical & Electronic Engineering</td><td>Diploma</td><td>Coursework</td><td>2.5</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>14,000
+14,000
+7,000</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>25,000
+15,600
+8,600</td><td>49,200</td></tr>
+      <tr><td>76</td><td>Diploma in Electrical & Electronic Engineering</td><td>Diploma</td><td>ODL</td><td>2.5</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>14,000
+14,000
+7,000</td><td>1,000
+-
+-</td><td>6,000</td><td>-</td><td>21,000
+14,000
+7,000</td><td>42,000</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('lincoln-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All charges are Inclusive of the 6% SST Service Fee.<br>Miscellaneous Fees (If Applicable):<br>- Lab Fee (Per Year): 1100 MYR<br>- Intensive English Program (Per Level): 1750 MYR<br>- Pre requisite Course: 2000 MYR
+    </div>
+  </div>
+
+<button class="accordion"> Faculty of Social Sciences Arts and Humanities</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Program Name</th>
+        <th>Level</th>
+        <th>Mode</th>
+        <th>Duration (Years)</th>
+        <th>Year</th>
+        <th>Total Tuition fee (MYR)</th>
+        <th>Tuition Fee (MYR/ YEAR)</th>
+        <th>EMGS Visa Fee/ Renewal fee (MYR)</th>
+        <th>Registration Fee (MYR)</th>
+        <th>Security Bond (MYR)</th>
+        <th>Total Fee (MYR)</th>
+        <th>Program Total (MYR)</th>
+      </tr>
+      <tr><td>77</td><td>Doctor of Philosophy (PhD) in Social Sciences</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>78</td><td>Doctor of Philosophy in Creative Arts and Design</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>79</td><td>Doctor of Philosophy in Education</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>80</td><td>Doctor of Philosophy in English</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>81</td><td>Doctor of Philosophy in Mass Communication</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>82</td><td>Doctor of Philosophy in Psychology</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>83</td><td>Doctor of Philosophy (PhD) in Social Sciences</td><td>PhD</td><td>ODL</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>1,000
+-
+-</td><td>6,000</td><td>-</td><td>20,667
+13,667
+13,667</td><td>48,000</td></tr>
+      <tr><td>84</td><td>Master of Arts in Teaching of English as Second Language (MATESL)</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>27,000
+9,600</td><td>36,600</td></tr>
+      <tr><td>85</td><td>Master of Arts in Teaching of English as Second Language (MATESL)</td><td>Master</td><td>ODL</td><td>1</td><td>Year 1</td><td>24,000</td><td>24,000</td><td>1,000</td><td>6,000</td><td>-</td><td>31,000</td><td>31,000</td></tr>
+      <tr><td>86</td><td>Master of Communication</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>27,000
+9,600</td><td>36,600</td></tr>
+      <tr><td>87</td><td>Master of Education (By Research)</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>24,000</td><td>12,000
+12,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>23,000
+13,600</td><td>36,600</td></tr>
+      <tr><td>88</td><td>Master of Education</td><td>Master</td><td>Coursework</td><td>1</td><td>Year 1</td><td>24,000</td><td>24,000</td><td>3,500</td><td>6,000</td><td>1,500</td><td>35,000</td><td>35,000</td></tr>
+      <tr><td>89</td><td>Master of Education</td><td>Master</td><td>ODL</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>1,000
+-</td><td>6,000</td><td>-</td><td>23,000
+8,000</td><td>31,000</td></tr>
+      <tr><td>90</td><td>Master of International Relations (By Research)</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>24,000</td><td>12,000
+12,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>23,000
+13,600</td><td>36,600</td></tr>
+      <tr><td>91</td><td>Master of International Relations and Policies</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>27,000
+9,600</td><td>36,600</td></tr>
+      <tr><td>92</td><td>Master of Mass Communication</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>24,000</td><td>12,000
+12,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>23,000
+13,600</td><td>36,600</td></tr>
+      <tr><td>93</td><td>Master of Science (Psychology)</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>24,000</td><td>12,000
+12,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>23,000
+13,600</td><td>36,600</td></tr>
+      <tr><td>94</td><td>Master of Social Work</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>27,000
+9,600</td><td>36,600</td></tr>
+      <tr><td>95</td><td>Master of Social Work</td><td>Master</td><td>ODL</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>1,000
+-</td><td>6,000</td><td>-</td><td>23,000
+8,000</td><td>31,000</td></tr>
+      <tr><td>96</td><td>Master of Teaching and Learning</td><td>Master</td><td>Research</td><td>1</td><td>Year 1</td><td>24,000</td><td>24,000</td><td>3,500</td><td>6,000</td><td>1,500</td><td>35,000</td><td>35,000</td></tr>
+      <tr><td>97</td><td>Postgraduate Diploma in Education</td><td>Master</td><td>Coursework</td><td>1</td><td>Year 1</td><td>24,000</td><td>24,000</td><td>3,500</td><td>6,000</td><td>1,500</td><td>35,000</td><td>35,000</td></tr>
+      <tr><td>98</td><td>Postgraduate Diploma In Teaching</td><td>Master</td><td>Coursework</td><td>1</td><td>Year 1</td><td>24,000</td><td>24,000</td><td>3,500</td><td>6,000</td><td>1,500</td><td>35,000</td><td>35,000</td></tr>
+      <tr><td>99</td><td>Bachelor of Arts in Mass Communication (Honours)</td><td>Bachelor</td><td>Coursework</td><td>3.2</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>41,000</td><td>12,813
+12,813
+12,813
+2,563</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>23,813
+14,413
+14,413
+4,163</td><td>56,800</td></tr>
+      <tr><td>100</td><td>Bachelor of Early Childhood Education</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>101</td><td>Bachelor of Early Childhood Education</td><td>Bachelor</td><td>ODL</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>1,000
+-
+-</td><td>6,000</td><td>-</td><td>20,667
+13,667
+13,667</td><td>48,000</td></tr>
+      <tr><td>102</td><td>Bachelor of Education (Teaching of English as a Second Language -TESL)</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>103</td><td>Bachelor of Psychology (Honours)</td><td>Bachelor</td><td>Coursework</td><td>3.4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>41,000</td><td>12,059
+12,059
+12,059
+4,824</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>23,059
+13,659
+13,659
+6,424</td><td>56,800</td></tr>
+      <tr><td>104</td><td>Bachelor of Psychology (Honours)</td><td>Bachelor</td><td>ODL</td><td>3.4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>41,000</td><td>12,059
+12,059
+12,059
+4,824</td><td>1,000
+-
+-
+-</td><td>6,000</td><td>-</td><td>19,059
+12,059
+12,059
+4,824</td><td>48,000</td></tr>
+      <tr><td>105</td><td>Bachelor in Fashion Design Management (Honours)</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>106</td><td>Bachelor of Islamic Studies (Hons)</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>107</td><td>Bachelor of Education (Honours)</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>108</td><td>Diploma in Early Childhood Education</td><td>Diploma</td><td>Coursework</td><td>2.5</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>14,000
+14,000
+7,000</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>25,000
+15,600
+8,600</td><td>49,200</td></tr>
+      <tr><td>109</td><td>Diploma in Psychology</td><td>Diploma</td><td>Coursework</td><td>2.5</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>14,000
+14,000
+7,000</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>25,000
+15,600
+8,600</td><td>49,200</td></tr>
+      <tr><td>110</td><td>Diploma in Teaching English as a Second Language</td><td>Diploma</td><td>Coursework</td><td>2.5</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>14,000
+14,000
+7,000</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>25,000
+15,600
+8,600</td><td>49,200</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('lincoln-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All charges are Inclusive of the 6% SST Service Fee.<br>Miscellaneous Fees (If Applicable):<br>- Lab Fee (Per Year): 1100 MYR<br>- Intensive English Program (Per Level): 1750 MYR<br>- Pre requisite Course: 2000 MYR
+    </div>
+  </div>
+
+<button class="accordion"> Faculty of AI Computing and Multimedia</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Program Name</th>
+        <th>Level</th>
+        <th>Mode</th>
+        <th>Duration (Years)</th>
+        <th>Year</th>
+        <th>Total Tuition fee (MYR)</th>
+        <th>Tuition Fee (MYR/ YEAR)</th>
+        <th>EMGS Visa Fee/ Renewal fee (MYR)</th>
+        <th>Registration Fee (MYR)</th>
+        <th>Security Bond (MYR)</th>
+        <th>Total Fee (MYR)</th>
+        <th>Program Total (MYR)</th>
+      </tr>
+      <tr><td>111</td><td>PHD in Information Technology</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>112</td><td>PHD in Information Technology</td><td>PhD</td><td>ODL</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>1,000
+-
+-</td><td>6,000</td><td>-</td><td>20,667
+13,667
+13,667</td><td>48,000</td></tr>
+      <tr><td>113</td><td>Doctor of Philosophy (PhD) in Computer Science</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>114</td><td>Doctor of Philosophy in Data Science</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>115</td><td>Doctor of Philosophy in Cybersecurity</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>116</td><td>Master in Financial Technology</td><td>Master</td><td>Coursework</td><td>1</td><td>Year 1</td><td>24,000</td><td>24,000</td><td>3,500</td><td>6,000</td><td>1,500</td><td>35,000</td><td>35,000</td></tr>
+      <tr><td>117</td><td>Master of Computer Science</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>27,000
+9,600</td><td>36,600</td></tr>
+      <tr><td>118</td><td>Master of Computer Science</td><td>Master</td><td>ODL</td><td>2</td><td>Year 1
+Year 2</td><td>24,000</td><td>12,000
+12,000</td><td>1,000
+-</td><td>6,000</td><td>-</td><td>19,000
+12,000</td><td>31,000</td></tr>
+      <tr><td>119</td><td>Master of Science (Data Science and Analytics)</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>27,000
+9,600</td><td>36,600</td></tr>
+      <tr><td>120</td><td>Bachelor of Arts (HONOURS) in Creative Multimedia Technology</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>121</td><td>Bachelor of Computer Science (Honours) (Artificial Intelligence)</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>122</td><td>Bachelor of Computer Science (HONS) (Network Technology and Cybersecurity)</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>123</td><td>Bachelor of Information Technology (Honours) (Data Analytics)</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>124</td><td>Bachelor of Information Technology (Honours) (Internet Technology and Cloud Computing)</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>125</td><td>Bachelor of Information Technology (Honours)</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>126</td><td>Bachelor of Information Technology (Honours)</td><td>Bachelor</td><td>ODL</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>1,000
+-
+-</td><td>6,000</td><td>-</td><td>20,667
+13,667
+13,667</td><td>48,000</td></tr>
+      <tr><td>127</td><td>Bachelor of Computer Science with E-Commerce</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>128</td><td>Bachelor in Digital Film Technology (Honours)</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>129</td><td>Diploma in Computer Science</td><td>Diploma</td><td>Coursework</td><td>2.5</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>14,000
+14,000
+7,000</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>25,000
+15,600
+8,600</td><td>49,200</td></tr>
+      <tr><td>130</td><td>Diploma in Multimedia Applications</td><td>Diploma</td><td>Coursework</td><td>2.5</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>14,000
+14,000
+7,000</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>25,000
+15,600
+8,600</td><td>49,200</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('lincoln-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All charges are Inclusive of the 6% SST Service Fee.<br>Miscellaneous Fees (If Applicable):<br>- Lab Fee (Per Year): 1100 MYR<br>- Intensive English Program (Per Level): 1750 MYR<br>- Pre requisite Course: 2000 MYR
+    </div>
+  </div>
+
+<button class="accordion"> Faculty of Business</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Program Name</th>
+        <th>Level</th>
+        <th>Mode</th>
+        <th>Duration (Years)</th>
+        <th>Year</th>
+        <th>Total Tuition fee (MYR)</th>
+        <th>Tuition Fee (MYR/ YEAR)</th>
+        <th>EMGS Visa Fee/ Renewal fee (MYR)</th>
+        <th>Registration Fee (MYR)</th>
+        <th>Security Bond (MYR)</th>
+        <th>Total Fee (MYR)</th>
+        <th>Program Total (MYR)</th>
+      </tr>
+      <tr><td>131</td><td>Doctor of Business Administration</td><td>PhD</td><td>Mixed</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>132</td><td>Doctor of Philosophy (PhD) in Accounting</td><td>PhD</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>41,000</td><td>20,500
+20,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>31,500
+22,100</td><td>53,600</td></tr>
+      <tr><td>133</td><td>Doctor of Philosophy (PhD) in Accounting</td><td>PhD</td><td>ODL</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>1,000
+-
+-</td><td>6,000</td><td>-</td><td>20,667
+13,667
+13,667</td><td>48,000</td></tr>
+      <tr><td>134</td><td>Doctor of Philosophy (PhD) in Industrial Management</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>135</td><td>Doctor of Philosophy (PhD) in Management</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>136</td><td>Doctor of Philosophy (PhD) in Management</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>1,000
+-
+-</td><td>6,000</td><td>-</td><td>20,667
+13,667
+13,667</td><td>48,000</td></tr>
+      <tr><td>137</td><td>Doctor of Philosophy (PhD) in Strategic Management</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>138</td><td>Doctor of Philosophy in Business Administration</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>139</td><td>Master in Business Administration (Global Business)</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>27,000
+9,600</td><td>36,600</td></tr>
+      <tr><td>140</td><td>Master in Management (By Research)</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>24,000</td><td>12,000
+12,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>23,000
+13,600</td><td>36,600</td></tr>
+      <tr><td>141</td><td>Master in Railway Infrastructure Management</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>27,000
+9,600</td><td>36,600</td></tr>
+      <tr><td>142</td><td>Master of Accountancy</td><td>Master</td><td>Coursework</td><td>1.4</td><td>Year 1
+Year 2</td><td>24,000</td><td>17,143
+6,857</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>28,143
+8,457</td><td>36,600</td></tr>
+      <tr><td>143</td><td>Master of Business Administration</td><td>Master</td><td>Coursework</td><td>1</td><td>Year 1</td><td>24,000</td><td>24,000</td><td>3,500</td><td>6,000</td><td>1,500</td><td>35,000</td><td>35,000</td></tr>
+      <tr><td>144</td><td>Master of Business Administration</td><td>Master</td><td>ODL</td><td>1</td><td>Year 1</td><td>24,000</td><td>24,000</td><td>1,000</td><td>6,000</td><td>-</td><td>31,000</td><td>31,000</td></tr>
+      <tr><td>145</td><td>Master of Business Administration in Healthcare Management</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>27,000
+9,600</td><td>36,600</td></tr>
+      <tr><td>146</td><td>Master of Business Administration in Human Resource Management</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>27,000
+9,600</td><td>36,600</td></tr>
+      <tr><td>147</td><td>Master of Business Administration in Human Resource Management</td><td>Master</td><td>ODL</td><td>1.4</td><td>Year 1
+Year 2</td><td>24,000</td><td>17,143
+6,857</td><td>1,000
+-</td><td>6,000</td><td>-</td><td>24,143
+6,857</td><td>31,000</td></tr>
+      <tr><td>148</td><td>Master of Business Administration in Project Management</td><td>Master</td><td>Coursework</td><td>1.4</td><td>Year 1
+Year 2</td><td>24,000</td><td>17,143
+6,857</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>28,143
+8,457</td><td>36,600</td></tr>
+      <tr><td>149</td><td>Master of Business Administration in Project Management</td><td>Master</td><td>ODL</td><td>1.4</td><td>Year 1
+Year 2</td><td>24,000</td><td>17,143
+6,857</td><td>1,000
+-</td><td>6,000</td><td>-</td><td>24,143
+6,857</td><td>31,000</td></tr>
+      <tr><td>150</td><td>Master of Business Information Systems</td><td>Master</td><td>Coursework</td><td>1.4</td><td>Year 1
+Year 2</td><td>24,000</td><td>17,143
+6,857</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>28,143
+8,457</td><td>36,600</td></tr>
+      <tr><td>151</td><td>Master of Economics</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>27,000
+9,600</td><td>36,600</td></tr>
+      <tr><td>152</td><td>Master of Islamic Banking</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>24,000</td><td>12,000
+12,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>23,000
+13,600</td><td>36,600</td></tr>
+      <tr><td>153</td><td>Master of Public Administration</td><td>Master</td><td>Research</td><td>2</td><td>Year 1
+Year 2</td><td>24,000</td><td>12,000
+12,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>23,000
+13,600</td><td>36,600</td></tr>
+      <tr><td>154</td><td>Bachelor (HONS) in Business Administration</td><td>Bachelor</td><td>ODL</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>1,000
+-
+-</td><td>6,000</td><td>-</td><td>20,667
+13,667
+13,667</td><td>48,000</td></tr>
+      <tr><td>155</td><td>Bachelor (HONS) in Business Administration</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>156</td><td>Bachelor of Accountancy</td><td>Bachelor</td><td>Coursework</td><td>3.2</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>41,000</td><td>12,813
+12,813
+12,813
+2,563</td><td>3,500
+1,600
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>23,813
+14,413
+14,413
+4,163</td><td>56,800</td></tr>
+      <tr><td>157</td><td>Bachelor of Accountancy</td><td>Bachelor</td><td>ODL</td><td>3.4</td><td>Year 1
+Year 2
+Year 3
+Year 4</td><td>41,000</td><td>12,059
+12,059
+12,059
+4,824</td><td>1,000
+-
+-
+-</td><td>6,000</td><td>-</td><td>19,059
+12,059
+12,059
+4,824</td><td>48,000</td></tr>
+      <tr><td>158</td><td>Bachelor of Business Administration in Accounting</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>159</td><td>Bachelor of Business Administration in Human Resource Management</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>160</td><td>Bachelor of Business Administration in Human Resource Management</td><td>Bachelor</td><td>ODL</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>1,000
+-
+-</td><td>6,000</td><td>-</td><td>20,667
+13,667
+13,667</td><td>48,000</td></tr>
+      <tr><td>161</td><td>Bachelor in Business Administration with Health Administration (Honours)</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>162</td><td>Bachelor of Business Entrepreneurship</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>163</td><td>Bachelor of Business Information Systems</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>164</td><td>Bachelor of Management (Oil and Gas)</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>165</td><td>BBA in Airline and Airport Management</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>166</td><td>Bachelor of Finance</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>167</td><td>Diploma in Accounting</td><td>Diploma</td><td>Coursework</td><td>2.5</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>14,000
+14,000
+7,000</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>25,000
+15,600
+8,600</td><td>49,200</td></tr>
+      <tr><td>168</td><td>Diploma in Accounting</td><td>Diploma</td><td>ODL</td><td>2.5</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>14,000
+14,000
+7,000</td><td>1,000
+-
+-</td><td>6,000</td><td>-</td><td>21,000
+14,000
+7,000</td><td>42,000</td></tr>
+      <tr><td>169</td><td>Diploma in Business Administration</td><td>Diploma</td><td>Coursework</td><td>2.5</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>14,000
+14,000
+7,000</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>25,000
+15,600
+8,600</td><td>49,200</td></tr>
+      <tr><td>170</td><td>Diploma in Business Administration</td><td>Diploma</td><td>ODL</td><td>2.5</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>14,000
+14,000
+7,000</td><td>1,000
+-
+-</td><td>6,000</td><td>-</td><td>21,000
+14,000
+7,000</td><td>42,000</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('lincoln-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All charges are Inclusive of the 6% SST Service Fee.<br>Miscellaneous Fees (If Applicable):<br>- Lab Fee (Per Year): 1100 MYR<br>- Intensive English Program (Per Level): 1750 MYR<br>- Pre requisite Course: 2000 MYR
+    </div>
+  </div>
+
+<button class="accordion"> Faculty of Hospitality</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Program Name</th>
+        <th>Level</th>
+        <th>Mode</th>
+        <th>Duration (Years)</th>
+        <th>Year</th>
+        <th>Total Tuition fee (MYR)</th>
+        <th>Tuition Fee (MYR/ YEAR)</th>
+        <th>EMGS Visa Fee/ Renewal fee (MYR)</th>
+        <th>Registration Fee (MYR)</th>
+        <th>Security Bond (MYR)</th>
+        <th>Total Fee (MYR)</th>
+        <th>Program Total (MYR)</th>
+      </tr>
+      <tr><td>171</td><td>Doctor of Philosophy (PH.D.) in Tourism and Hospitality Management</td><td>PhD</td><td>Research</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>172</td><td>Master in Tourism Management</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>27,000
+9,600</td><td>36,600</td></tr>
+      <tr><td>173</td><td>Master of Business Administration in Hospitality Management</td><td>Master</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>27,000
+9,600</td><td>36,600</td></tr>
+      <tr><td>174</td><td>Master of Business Administration in Hospitality Management</td><td>Master</td><td>ODL</td><td>1.5</td><td>Year 1
+Year 2</td><td>24,000</td><td>16,000
+8,000</td><td>1,000
+-</td><td>6,000</td><td>-</td><td>23,000
+8,000</td><td>31,000</td></tr>
+      <tr><td>175</td><td>Bachelor in Tourism Management</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>176</td><td>Bachelor of Science (Hons) in Hospitality Management</td><td>Bachelor</td><td>Coursework</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>24,667
+15,267
+15,267</td><td>55,200</td></tr>
+      <tr><td>177</td><td>Bachelor of Science (Hons) in Hospitality Management</td><td>Bachelor</td><td>ODL</td><td>3</td><td>Year 1
+Year 2
+Year 3</td><td>41,000</td><td>13,667
+13,667
+13,667</td><td>1,000
+-
+-</td><td>6,000</td><td>-</td><td>20,667
+13,667
+13,667</td><td>48,000</td></tr>
+      <tr><td>178</td><td>Diploma in Culinary Arts</td><td>Diploma</td><td>Coursework</td><td>2</td><td>Year 1
+Year 2</td><td>35,000</td><td>17,500
+17,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>28,500
+19,100</td><td>51,450</td></tr>
+      <tr><td>179</td><td>Diploma in Hotel Management</td><td>Diploma</td><td>Coursework</td><td>2.5</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>14,000
+14,000
+7,000</td><td>3,500
+1,600
+1,600</td><td>6,000</td><td>1,500</td><td>25,000
+15,600
+8,600</td><td>49,200</td></tr>
+      <tr><td>180</td><td>Diploma in Hotel Management</td><td>Diploma</td><td>ODL</td><td>2.5</td><td>Year 1
+Year 2
+Year 3</td><td>35,000</td><td>14,000
+14,000
+7,000</td><td>1,000
+-
+-</td><td>6,000</td><td>-</td><td>21,000
+14,000
+7,000</td><td>42,000</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('lincoln-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All charges are Inclusive of the 6% SST Service Fee.<br>Miscellaneous Fees (If Applicable):<br>- Lab Fee (Per Year): 1100 MYR<br>- Intensive English Program (Per Level): 1750 MYR<br>- Pre requisite Course: 2000 MYR
+    </div>
+  </div>
+
+<button class="accordion"> Foundation</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Program Name</th>
+        <th>Level</th>
+        <th>Mode</th>
+        <th>Duration (Years)</th>
+        <th>Year</th>
+        <th>Total Tuition fee (MYR)</th>
+        <th>Tuition Fee (MYR/ YEAR)</th>
+        <th>EMGS Visa Fee/ Renewal fee (MYR)</th>
+        <th>Registration Fee (MYR)</th>
+        <th>Security Bond (MYR)</th>
+        <th>Total Fee (MYR)</th>
+        <th>Program Total (MYR)</th>
+      </tr>
+      <tr><td>181</td><td>Foundation in Arts</td><td>Foundation</td><td>Coursework</td><td>1</td><td>Year 1</td><td>18,000</td><td>18,000</td><td>3,500</td><td>6,000</td><td>1,500</td><td>29,000</td><td>29,000</td></tr>
+      <tr><td>182</td><td>Foundation in Business and Computing</td><td>Foundation</td><td>Coursework</td><td>1.5</td><td>Year 1
+Year 2</td><td>18,000</td><td>12,000
+6,000</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>23,000
+7,600</td><td>30,600</td></tr>
+      <tr><td>183</td><td>Foundation in Science</td><td>Foundation</td><td>Coursework</td><td>1</td><td>Year 1</td><td>18,000</td><td>18,000</td><td>3,500</td><td>6,000</td><td>1,500</td><td>29,000</td><td>29,000</td></tr>
+      <tr><td>184</td><td>Foundation in Science</td><td>Foundation</td><td>ODL</td><td>1</td><td>Year 1</td><td>18,000</td><td>18,000</td><td>1,000</td><td>6,000</td><td>-</td><td>25,000</td><td>25,000</td></tr>
+      <tr><td>185</td><td>Foundation in Arts</td><td>Foundation</td><td>ODL</td><td>1</td><td>Year 1</td><td>18,000</td><td>18,000</td><td>1,000</td><td>6,000</td><td>-</td><td>25,000</td><td>25,000</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('lincoln-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All charges are Inclusive of the 6% SST Service Fee.<br>Miscellaneous Fees (If Applicable):<br>- Lab Fee (Per Year): 1100 MYR<br>- Intensive English Program (Per Level): 1750 MYR<br>- Pre requisite Course: 2000 MYR
+    </div>
+  </div>
+
+<button class="accordion"> American Degree Transfer Programme</button>
+  <div class="panel">
+    <table>
+      <tr>
+        <th>No</th>
+        <th>Program Name</th>
+        <th>Level</th>
+        <th>Mode</th>
+        <th>Duration (Years)</th>
+        <th>Year</th>
+        <th>Total Tuition fee (MYR)</th>
+        <th>Tuition Fee (MYR/ YEAR)</th>
+        <th>EMGS Visa Fee/ Renewal fee (MYR)</th>
+        <th>Registration Fee (MYR)</th>
+        <th>Security Bond (MYR)</th>
+        <th>Total Fee (MYR)</th>
+        <th>Program Total (MYR)</th>
+      </tr>
+      <tr><td>186</td><td>American Degree Transfer Programme (ARTS)</td><td>A Level</td><td>Coursework</td><td>2</td><td>Year 1
+Year 2</td><td>53,000</td><td>26,500
+26,500</td><td>3,500
+1,600</td><td>6,000</td><td>1,500</td><td>37,500
+28,100</td><td>65,600</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('lincoln-fees')">
+        <span>Download PDF</span>
+        <span>â¬‡ï¸</span>
+      </div>
+      All charges are Inclusive of the 6% SST Service Fee.<br>Miscellaneous Fees (If Applicable):<br>- Lab Fee (Per Year): 1100 MYR<br>- Intensive English Program (Per Level): 1750 MYR<br>- Pre requisite Course: 2000 MYR
+    </div>
+  </div>
+
+</div>
+<footer>
+  <p>&copy; 2026 Lincoln University College.</p>
+</footer>
+
+<script>
+const acc = document.querySelectorAll(".accordion");
+acc.forEach(btn => {
+  btn.addEventListener("click", function() {
+    this.classList.toggle("active");
+    const panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+});
+
+function filterPrograms() {
+  const input = document.getElementById("searchInput").value.toLowerCase().trim();
+  const tables = document.querySelectorAll("table");
+
+  tables.forEach(table => {
+    const rows = table.querySelectorAll("tr");
+    let foundInTable = false;
+
+    for (let i = 1; i < rows.length; i++) {
+      const rowText = rows[i].textContent.toLowerCase();
+      if (input !== "" && rowText.includes(input)) {
+        rows[i].style.display = "";
+        rows[i].classList.add("highlight");
+        foundInTable = true;
+      } else if (input === "") {
+        rows[i].style.display = "";
+        rows[i].classList.remove("highlight");
+      } else {
+        rows[i].style.display = "none";
+        rows[i].classList.remove("highlight");
+      }
+    }
+
+    const panel = table.closest(".panel");
+    const accordion = panel.previousElementSibling;
+    
+    if (foundInTable && input !== "") {
+      panel.style.display = "block";
+      accordion.classList.add("active");
+    } else if (input === "") {
+      panel.style.display = "none";
+      accordion.classList.remove("active");
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  const searchTerm = new URLSearchParams(window.location.search).get('q');
+  if (searchTerm) {
+    const input = document.getElementById('searchInput');
+    input.value = decodeURIComponent(searchTerm);
+    filterPrograms();
+    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+});
+
+function downloadPDF(programKey) {
+  const link = document.createElement("a");
+  link.href = programKey + (programKey.endsWith('.pdf') ? '' : '.pdf'); 
+  link.download = programKey + (programKey.endsWith('.pdf') ? '' : '.pdf');
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+</script>
+  <script src="../../assets/js/global.js"></script>
+</body>
+</html>

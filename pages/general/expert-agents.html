@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Expert Team | YS Study Focus</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --brand-blue: #004080;
+      --brand-gold: #FFD700;
+      --brand-light-blue: #007BFF;
+      --glass: rgba(255, 255, 255, 0.85);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', Arial, sans-serif; }
+
+    body { 
+      background-color: #f4f7f9; 
+      color: #333; 
+      overflow-x: hidden;
+    }
+
+    /* --- BRILLIANT HERO HEADER --- */
+    .hero-section {
+      height: 70vh;
+      background: linear-gradient(rgba(0, 64, 128, 0.9), rgba(0, 26, 51, 0.95)), url('office-bg.jpg'); 
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      padding: 20px;
+    }
+
+    .hero-section h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .hero-section p {
+      max-width: 700px;
+      font-size: 1.1rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+    }
+
+    /* --- BACK BUTTON --- */
+    .back-home {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      color: white;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 30px;
+      backdrop-filter: blur(10px);
+      transition: 0.3s;
+      z-index: 100;
+      font-weight: bold;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .back-home:hover { background: var(--brand-gold); color: #000; transform: translateX(-5px); }
+
+    /* --- THE AGENT GRID --- */
+    .agents-wrapper {
+      max-width: 1200px;
+      margin: -100px auto 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      padding: 20px;
+    }
+
+    /* --- MODERN AGENT CARD --- */
+    .agent-card {
+      background: var(--glass);
+      backdrop-filter: blur(15px);
+      border-radius: 30px;
+      padding: 40px 30px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+      border: 1px solid rgba(255,255,255,0.4);
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      overflow: hidden;
+    }
+
+    /* Glowing Border Effect */
+    .agent-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(transparent, transparent, var(--brand-gold), transparent);
+      animation: rotate 6s linear infinite;
+      z-index: -1;
+      opacity: 0;
+      transition: 0.5s;
+    }
+
+    .agent-card:hover::before { opacity: 1; }
+
+    .agent-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 30px 60px rgba(0, 64, 128, 0.2);
+    }
+
+    .profile-frame {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto 25px;
+      border-radius: 50%;
+      padding: 8px;
+      background: linear-gradient(45deg, var(--brand-blue), var(--brand-gold));
+      position: relative;
+    }
+
+    .profile-frame img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #fff;
+      border: 4px solid #fff;
+    }
+
+    .agent-status {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      width: 20px;
+      height: 20px;
+      background: #25d366;
+      border: 3px solid #fff;
+      border-radius: 50%;
+      animation: pulse-green 2s infinite;
+    }
+
+    @keyframes pulse-green {
+      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+    }
+
+    .agent-card h3 {
+      font-size: 1.6rem;
+      color: var(--brand-blue);
+      margin-bottom: 8px;
+    }
+
+    .agent-role {
+      font-size: 0.9rem;
+      color: var(--brand-light-blue);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .contact-icons a {
+      width: 45px;
+      height: 45px;
+      border-radius: 15px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--brand-blue);
+      text-decoration: none;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: 0.3s;
+      font-size: 1.2rem;
+    }
+
+    .contact-icons a:hover {
+      background: var(--brand-blue);
+      color: #fff;
+      transform: translateY(-5px);
+    }
+
+    .consult-btn {
+      background: var(--brand-blue);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: bold;
+      display: inline-block;
+      transition: 0.3s;
+      border: 2px solid transparent;
+    }
+
+    .consult-btn:hover {
+      background: transparent;
+      color: var(--brand-blue);
+      border-color: var(--brand-blue);
+      letter-spacing: 1px;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* --- SUPPORTING AGENTS SECTION --- */
+    .supporting-section-title {
+      text-align: center;
+      color: var(--brand-blue);
+      font-size: 2rem;
+      margin: 60px 0 40px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .supporting-wrapper {
+      max-width: 1200px;
+      margin: 0 auto 100px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+
+    /* Square Card Modifier */
+    .agent-card.square {
+      border-radius: 15px;
+      padding: 30px 20px;
+    }
+
+    .agent-card.square .profile-frame {
+      border-radius: 10px;
+      width: 120px;
+      height: 120px;
+    }
+
+    .agent-card.square .profile-frame img {
+      border-radius: 8px;
+    }
+
+    .agent-card.square::before {
+      border-radius: 15px;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 768px) {
+      .hero-section { height: 50vh; padding-top: 80px; }
+      .agents-wrapper { margin-top: -50px; }
+    }
+
+    /* --- SABRINA'S SPECIAL BORDER ANIMATION --- */
+    .active-glow {
+      position: relative;
+      background: #fff; 
+      z-index: 1;
+    }
+
+    .active-glow::before {
+      content: '';
+      position: absolute;
+      top: -2px; 
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: conic-gradient(
+        from 0deg,
+        transparent 0%,
+        transparent 70%,
+        var(--brand-gold) 100%
+      );
+      border-radius: 32px;
+      z-index: -1;
+      animation: rotateGlow 4s linear infinite;
+    }
+
+    .active-glow::after {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      background: #fff;
+      border-radius: 28px;
+      z-index: -1;
+    }
+
+    @keyframes rotateGlow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .center-card {
+      transform: translateY(-40px);
+      z-index: 10;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.2); 
+    }
+
+    .center-card:hover {
+      transform: translateY(-55px) scale(1.02);
+      box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+    }
+
+    .left-card, .right-card {
+      transform: translateY(20px);
+      z-index: 5;
+    }
+
+    /* --- NEW FOOTER STYLES (Copied from Index) --- */
+    footer {
+      background-color: #004080;
+      color: white;
+      padding: 30px 20px 10px 20px;
+      text-align: left; /* Reset alignment for new layout */
+    }
+    
+    .footer-container {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-logo {
+      order: 2; /* Logo in the middle */
+      flex: 0 0 auto;
+      text-align: center;
+    }
+
+    .footer-logo img {
+      width: 130px; 
+      height: auto;
+      margin-bottom: 0; /* Override old margin */
+    }
+
+    .office {
+      flex: 1;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .office.left {
+      order: 1;
+      text-align: left;
+    }
+
+    .office.right {
+      order: 3;
+      text-align: right;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      min-height: 80px; 
+      position: relative;
+      transition: padding 0.5s ease;
+    }
+
+    /* Developer Bar */
+    .developer-bar {
+      background-color: #001a33; 
+      color: #888; 
+      padding: 5px 0; 
+      text-align: center; 
+      font-size: 11px; 
+      width: 100%;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    @media (max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+      .office.left, .office.right {
+        text-align: center;
+        order: 3;
+      }
+      .footer-logo {
+        order: 1;
+        margin-bottom: 15px;
+      }
+    }
+
+    /* Menu Toggle Styles */
+    .footer-bottom:has(.menu.active) {
+      padding: 100px 0; 
+    }
+
+    .menu {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .menu .toggle {
+      position: relative;
+      height: 60px;
+      width: 60px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: 1.25s;
+      z-index: 5;
+    }
+
+    .menu.active .toggle { transform: rotate(315deg); }
+
+    .menu li {
+      position: absolute;
+      list-style: none;
+      transition: 0.5s;
+      transform: rotate(calc(360deg / 8 * var(--i))) translateX(0px);
+      scale: 0;
+      opacity: 0;
+    }
+
+    .menu.active li {
+      transform: rotate(calc(360deg / 8 * var(--i))) translateX(-95px); 
+      scale: 1;
+      opacity: 1;
+    }
+
+    .menu li a {
+      width: 50px;
+      height: 50px;
+      background-color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      color: var(--clr);
+      box-shadow: 0 3px 4px rgba(0,0,0,0.15);
+      transition: 0.5s;
+      transform: rotate(calc(360deg / -8 * var(--i))); 
+    }
+
+  </style>
+  <link rel="stylesheet" href="../../assets/css/global.css">
+</head>
+<body>
+
+<div class="global-navbar">
+  <a href="../../" class="nav-brand">YSSF</a>
+  <a href="../../" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+</div>
+
+
+  
+
+  <header class="hero-section">
+    <h1>Our Elite Agents</h1>
+    <p>Success starts with the right advice. Meet the industry experts dedicated to making your Malaysian education dreams a reality.</p>
+  </header>
+
+  <div class="agents-wrapper">
+    
+    <div class="agent-card left-card">
+      <div class="profile-frame">
+        <img src="../../assets/images/agent2.jpg" alt="Nahid Jahan">
+        <div class="agent-status"></div>
+      </div>
+      <h3>Nahid Jahan</h3>
+      <span class="agent-role">Lead Consultant</span>
+      <div class="contact-icons">
+        <a href="https://wa.me/601119359497"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/share/1HgdrevJLH/"><i class="fab fa-facebook-messenger"></i></a>
+        <a href="mailto:nahidjahan696@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+      <a href="https://forms.gle/iFXQ3ohvY4JqCbWA9" class="consult-btn">Book Consult With Nahid</a>
+    </div>
+
+    <div class="agent-card center-card middle-card">
+      <div class="profile-frame">
+        <img src="../../assets/images/agent1.jpg" alt="Sabrina Jannat">
+        <div class="agent-status"></div>
+      </div>
+      <h3>Sabrina Jannat</h3>
+      <span class="agent-role">Founder & Executive</span>
+      <div class="contact-icons">
+        <a href="https://wa.me/601151114520"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/share/17qGtjTTiH/"><i class="fab fa-facebook-messenger"></i></a>
+        <a href="mailto:sabrinajannat367@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+      <a href="https://forms.gle/iFXQ3ohvY4JqCbWA9" class="consult-btn">Book Consult With Sabrina</a>
+    </div>
+
+    <div class="agent-card right-card">
+      <div class="profile-frame">
+        <img src="../../assets/images/student_profile5.jpg" alt="Ismam Zaman">
+        <div class="agent-status"></div>
+      </div>
+      <h3>Ismam Zaman</h3>
+      <span class="agent-role">Student Coordinator</span>
+      <div class="contact-icons">
+        <a href="https://wa.me/601151142045"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.facebook.com/share/1ARZ6NPRib/"><i class="fab fa-facebook-messenger"></i></a>
+        <a href="mailto:ismamzamanshuptooo@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+      <a href="https://forms.gle/iFXQ3ohvY4JqCbWA9" class="consult-btn">Book Consult With Ismam</a>
+    </div>
+
+  </div>
+
+  <h2 class="supporting-section-title">Support Team</h2>
+  <div class="supporting-wrapper">
+    
+    <div class="agent-card square">
+      <div class="profile-frame">
+        <img src="../../assets/images/support1.jpg" alt="Miadul Nijjon">
+      </div>
+      <h3>Miadul Nijjon</h3>
+      <span class="agent-role">Administrative Support</span>
+    </div>
+
+    <div class="agent-card square">
+      <div class="profile-frame">
+        <img src="../../assets/images/support2.jpg" alt="Adiba Mim">
+      </div>
+      <h3>Adiba Mim</h3>
+      <span class="agent-role">Student Counselor</span>
+    </div>
+
+    <div class="agent-card square">
+      <div class="profile-frame">
+        <img src="../../assets/images/support3.jpg" alt="Polash Ahmed">
+      </div>
+      <h3>Polash Ahmed</h3>
+      <span class="agent-role">Documentation Officer</span>
+    </div>
+
+    <div class="agent-card square">
+      <div class="profile-frame">
+        <img src="../../assets/images/support4.jpg" alt="Rover Abdul Kaium">
+      </div>
+      <h3>Rover Abdul Kaium</h3>
+      <span class="agent-role">Liaison Officer</span>
+    </div>
+
+    <div class="agent-card square">
+      <div class="profile-frame">
+        <img src="../../assets/images/support5.jpg" alt="Mohamed Bin Fariaz">
+      </div>
+      <h3>M. Bin Fariaz</h3>
+      <span class="agent-role">Regional Coordinator</span>
+    </div>
+
+    <div class="agent-card square">
+      <div class="profile-frame">
+        <img src="../../assets/images/support6.jpg" alt="Rayhan Mollah">
+      </div>
+      <h3>Rayhan Mollah</h3>
+      <span class="agent-role">Academic Advisor</span>
+    </div>
+
+  </div>
+
+  <footer id="contact">
+    <div class="footer-container">
+      <div class="office left">
+        <p><strong>Bangladesh Office</strong><br>
+        Aot# A5, House: 16, Road: 2/3, Block L<br>
+        Bonani, Chairman Bari, Dhanmondi 1213</p>
+      </div>
+
+      <div class="footer-logo">
+        <img src="../../assets/images/ys_logo.png" alt="YS Logo">
+      </div>
+
+      <div class="office right">
+        <p><strong>Malaysia Office</strong><br>
+        De Tropicana, 52, Jalan Kuchai Maju 13<br>
+        Kuchai Entrepreneurs Park<br>
+        58200 Kuala Lumpur, Malaysia</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="menu">
+        <div class="toggle">
+          <ion-icon name="share-social"></ion-icon>
+        </div>
+        <li style="--i: 0; --clr: #1877f2">
+          <a href="https://web.facebook.com/people/YS-Study-Focus/61571694410231/?_rdc=1&_rdr" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+        </li>
+        <li style="--i: 2; --clr: #25d366">
+          <a href="https://wa.me/601139660706" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+        </li>
+        <li style="--i: 4; --clr: #ff0000">
+          <a href="https://youtube.com/@sabrina367sabu?si=GRfgbwVUAxxH5Ke_" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+        </li>
+        <li style="--i: 6; --clr: #000000">
+          <a href="https://www.tiktok.com/@sabu_555?_r=1&_t=ZS-92OvdlsEIcy" target="_blank" rel="noopener noreferrer"><i class="fab fa-tiktok"></i></a>
+        </li>
+      </div>
+    </div>
+  </footer>
+
+  <div class="developer-bar">
+    Developed by: Bhuiyan Mohamed Nahid Jahan.
+  </div>
+
+  
+  
+
+  <script>
+    const menu = document.querySelector(".menu");
+    const toggle = document.querySelector(".toggle");
+    if(toggle) {
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("active");
+      });
+    }
+  </script>
+
+  <script src="../../assets/js/global.js"></script>
+</body>
+</html>
