@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -797,9 +797,13 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function downloadPDF(programKey) {
+  let fileName = programKey + (programKey.endsWith('.pdf') ? '' : '.pdf');
+  if (programKey === 'unikl-fees') {
+    fileName = 'UniKL International Booklet 2026.pdf';
+  }
   const link = document.createElement("a");
-  link.href = programKey + (programKey.endsWith('.pdf') ? '' : '.pdf'); 
-  link.download = programKey + (programKey.endsWith('.pdf') ? '' : '.pdf');
+  link.href = "../../assets/documents/" + fileName; 
+  link.download = fileName;
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
