@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mantissa College Malaysia - International Fee Structure</title>
+<style>
+   body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0 0 80px 0; /* space for footer */
+  background: #f9f9f9;
+}
+
+header {
+  background: #004080;
+  color: white;
+  padding: 30px 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+footer {
+  background: #004080;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: auto;
+}
+
+.panel {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 15px;
+  background-color: white;
+  display: none;
+  border: 1px solid #e0e6ed;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  margin-bottom: 25px;
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch; 
+}
+
+table {
+  min-width: 700px;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 10px 0;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 95%;
+}
+
+.accordion {
+  background: #ffffff;
+  color: #004080;
+  cursor: pointer;
+  padding: 18px 20px;
+  margin-bottom: 12px;
+  width: 100%; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  border: 1px solid #e0e6ed;
+  outline: none;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.accordion.active {
+  background: #004080;
+  color: #ffffff;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: 0;
+  box-shadow: none;
+}
+
+th {
+  background-color: #004080;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 15px 12px;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #f0f2f5;
+  color: #444;
+  font-size: 14px;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+tr:hover {
+  background-color: #f1f7ff !important;
+  transition: background-color 0.2s ease;
+}
+
+tr.highlight {
+  background-color: #fff9c4 !important;
+  font-weight: bold;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+.note {
+  background: #f8f9fa;
+  border-left: 6px solid #004080;
+  padding: 25px;
+  margin: 25px 0;
+  border-radius: 12px;
+  color: #333;
+  line-height: 1.6;
+  font-size: 15px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
+  position: relative;
+}
+
+.search-container {
+  background: #f1f3f5;
+  margin: 0 auto 30px auto;
+  padding: 30px 20px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+  border-bottom: 1px solid #e9ecef;
+  border-radius: 12px;
+}
+
+.search-container input[type="text"] {
+  padding: 15px 25px;
+  width: 100%;
+  max-width: 600px;
+  border: 2px solid #dde2e7;
+  border-radius: 50px;
+  font-size: 16px;
+  background: #ffffff;
+  box-sizing: border-box;
+}
+
+.search-container input[type="text"]:focus {
+  outline: none;
+  border-color: #0066cc;
+  width: 100%;
+  max-width: 650px;
+  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.15);
+  transform: translateY(-2px);
+}
+
+.search-container input[type="text"]::placeholder {
+  color: #adb5bd;
+  transition: opacity 0.3s;
+}
+
+.search-container input[type="text"]:focus::placeholder {
+  opacity: 0.5;
+}
+
+.download-bar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: #0066cc;
+  color: #ffffff !important;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  float: right;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
+}
+
+.download-bar span {
+  color: #ffffff !important;
+  margin: 0 !important;
+}
+
+.download-bar:hover {
+  background: #004080;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 64, 128, 0.3);
+}
+
+.note::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  </style>
+  <link rel="stylesheet" href="../../assets/css/global.css">
+</head>
+<body>
+
+<div class="global-navbar">
+  <a href="../../" class="nav-brand">YSSF</a>
+  <a href="../../" class="nav-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+</div>
+
+<header>
+  <h1>MANTISSA COLLEGE MALAYSIA</h1>
+  <h2>International Fee Structure 2026</h2>
+  <p></p>
+</header>
+
+<div class="container">
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search program name..." onkeyup="filterPrograms()" />
+  </div>
+
+  <button class="accordion">DIPLOMA PROGRAMS</button>
+  <div class="panel">
+    <table>
+      <tr><th>No</th><th>Programme</th><th>Duration</th><th>Year 1 (RM)</th><th>Year 2 (RM)</th><th>Year 3 (RM)</th><th>Total Fee (MYR)</th></tr>
+      <tr><td>1</td><td>Diploma in Digital Marketing (ODL)</td><td>2.5 years</td><td>8,000</td><td>8,000</td><td>8,000</td><td>24,000</td></tr>
+      <tr><td>2</td><td>Diploma in Information Technology(DITL)</td><td>2.5 years</td><td>8,000</td><td>8,000</td><td>8,000</td><td>24,000</td></tr>
+      <tr><td>3</td><td>Diploma in Business Administration(DIBA)</td><td>2.5 years</td><td>8,000</td><td>8,000</td><td>8,000</td><td>24,000</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('mantissa-fees')">
+        <span>Download PDF</span><span>â¬‡ï¸</span>
+      </div>
+      <strong>First Payment Breakdown (Initial Fees):</strong><br>
+      EMGS Fee: RM3,500<br>
+      1st Year Tuition Fee: RM8,000<br>
+      Administration Fee: RM500<br>
+      Application Fee: RM500<br>
+      Security Deposit: RM300<br>
+      Facilities Fee: RM500<br>
+      Registration Fee: RM1,000<br><br>
+      <strong>Total Initial Fees: RM14,300</strong>
+    </div>
+  </div>
+
+  <button class="accordion">BACHELOR PROGRAMS</button>
+  <div class="panel">
+    <table>
+      <tr><th>No</th><th>Programme</th><th>Duration</th><th>Year 1 (RM)</th><th>Year 2 (RM)</th><th>Year 3 (RM)</th><th>Total Fee (MYR)</th></tr>
+      <tr><td>1</td><td>Bachelor in Business Administration(BBA)</td><td>3 years</td><td>12,200</td><td>11,000</td><td>11,000</td><td>34,200</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('mantissa-fees')">
+        <span>Download PDF</span><span>â¬‡ï¸</span>
+      </div>
+      <strong>First Payment Breakdown (Initial Fees):</strong><br>
+      EMGS Fee: RM3,500<br>
+      1st Year Tuition Fee: RM12,200<br>
+      Administration Fee: RM500<br>
+      Application Fee: RM500<br>
+      Security Deposit: RM500<br>
+      Exam Fee: RM1,800<br><br>
+      <strong>Total Initial Fees: RM19,000</strong>
+    </div>
+  </div>
+
+  <button class="accordion">CERTIFICATE PROGRAMS</button>
+  <div class="panel">
+    <table>
+      <tr><th>No</th><th>Programme</th><th>Duration</th><th>Year 1 (RM)</th><th>Total Fee (MYR)</th></tr>
+      <tr><td>1</td><td>Certificate in English Language(CIEL)</td><td>1 year</td><td>11,000</td><td>11,000</td></tr>
+      <tr><td>2</td><td>Certificate in Business Studies (CBS)</td><td>1 year</td><td>11,000</td><td>11,000</td></tr>
+    </table>
+    <div class="note">
+      <div class="download-bar" onclick="downloadPDF('mantissa-fees')">
+        <span>Download PDF</span><span>â¬‡ï¸</span>
+      </div>
+      <strong>First Payment Breakdown (Initial Fees):</strong><br>
+      EMGS Fee: RM3,500<br>
+      1st Year Tuition Fee: RM11,000<br>
+      Administration Fee: RM500<br>
+      Application Fee: RM500<br><br>
+      <strong>Total Initial Fees: RM15,500</strong>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Mantissa College Malaysia.</p>
+</footer>
+
+<script>
+const acc = document.querySelectorAll(".accordion");
+acc.forEach(btn => {
+  btn.addEventListener("click", function() {
+    this.classList.toggle("active");
+    const panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+});
+
+function filterPrograms() {
+  const input = document.getElementById("searchInput").value.toLowerCase().trim();
+  const tables = document.querySelectorAll("table");
+
+  tables.forEach(table => {
+    const rows = table.querySelectorAll("tr");
+    let foundInTable = false;
+
+    for (let i = 1; i < rows.length; i++) {
+      const rowText = rows[i].textContent.toLowerCase();
+      if (input !== "" && rowText.includes(input)) {
+        rows[i].style.display = "";
+        rows[i].classList.add("highlight");
+        foundInTable = true;
+      } else if (input === "") {
+        rows[i].style.display = "";
+        rows[i].classList.remove("highlight");
+      } else {
+        rows[i].style.display = "none";
+        rows[i].classList.remove("highlight");
+      }
+    }
+
+    const panel = table.closest(".panel");
+    const accordion = panel.previousElementSibling;
+    
+    if (foundInTable && input !== "") {
+      panel.style.display = "block";
+      accordion.classList.add("active");
+    } else if (input === "") {
+      panel.style.display = "none";
+      accordion.classList.remove("active");
+    }
+  });
+}
+
+function downloadPDF() {
+  const link = document.createElement("a");
+  link.href = "../../assets/documents/Fees Stracture mantissa.pdf"; 
+  link.download = "Fees Stracture mantissa.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+</script>
+<script src="../../assets/js/global.js"></script>
+</body>
+</html>

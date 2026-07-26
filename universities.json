@@ -4927,5 +4927,101 @@
                              "duration":  "3 Years"
                          }
                      ]
+    },
+    {
+        "campuses":  [
+                         "Main Campus"
+                     ],
+        "programs":  [
+                         {
+                             "duration":  "2.5 years",
+                             "name":  "Diploma in Digital Marketing (ODL)",
+                             "level":  "DIPLOMA"
+                         },
+                         {
+                             "duration":  "2.5 years",
+                             "name":  "Diploma in Information Technology(DITL)",
+                             "level":  "DIPLOMA"
+                         },
+                         {
+                             "duration":  "2.5 years",
+                             "name":  "Diploma in Business Administration(DIBA)",
+                             "level":  "DIPLOMA"
+                         },
+                         {
+                             "duration":  "3 years",
+                             "name":  "Bachelor in Business Administration(BBA)",
+                             "level":  "BACHELOR"
+                         },
+                         {
+                             "duration":  "1 year",
+                             "name":  "Certificate in English Language(CIEL)",
+                             "level":  "CERTIFICATE"
+                         },
+                         {
+                             "duration":  "1 year",
+                             "name":  "Certificate in Business Studies (CBS)",
+                             "level":  "CERTIFICATE"
+                         }
+                     ],
+        "name":  "MANTISSA COLLEGE MALAYSIA"
+    },
+    {
+        "campuses":  [
+                         "Main Campus"
+                     ],
+        "programs":  [
+                         {
+                             "duration":  "1 year",
+                             "name":  "Foundation in Arts",
+                             "level":  "FOUNDATION"
+                         },
+                         {
+                             "duration":  "2 years 4 months",
+                             "name":  "Diploma in Business Studies",
+                             "level":  "DIPLOMA"
+                         },
+                         {
+                             "duration":  "1 year 4 months",
+                             "name":  "Graduate Diploma in Business Management",
+                             "level":  "DIPLOMA"
+                         },
+                         {
+                             "duration":  "3 years",
+                             "name":  "Bachelor of Business Administration",
+                             "level":  "BACHELOR"
+                         },
+                         {
+                             "duration":  "3 years",
+                             "name":  "Bachelor of Information \u0026 Communication Technology",
+                             "level":  "BACHELOR"
+                         },
+                         {
+                             "duration":  "1 year",
+                             "name":  "Master in Management",
+                             "level":  "MASTER"
+                         },
+                         {
+                             "duration":  "1 year 6 months",
+                             "name":  "Master of Business Administration",
+                             "level":  "MASTER"
+                         },
+                         {
+                             "duration":  "2 - 4 years",
+                             "name":  "Master of Science (Management)",
+                             "level":  "MASTER"
+                         },
+                         {
+                             "duration":  "3 - 6 years",
+                             "name":  "PhD in Education",
+                             "level":  "PHD"
+                         },
+                         {
+                             "duration":  "3 - 6 years",
+                             "name":  "PhD in Business Administration",
+                             "level":  "PHD"
+                         }
+                     ],
+        "name":  "ASIA e UNIVERSITY"
     }
 ]
