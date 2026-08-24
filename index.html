@@ -1567,14 +1567,14 @@
   </div>
 
   <div class="stats-row">
-  <div class="stat-card" onclick="window.location.href="pages/general/university-Partnerships";" style="cursor: pointer;">
+  <div class="stat-card" onclick="window.location.href='pages/general/university-Partnerships';" style="cursor: pointer;">
     <div class="stat-icon-circle"><i class="fas fa-university"></i></div>
     <h2>13+</h2>
     <p><b>Official University Partnerships</b></p>
     <p class="stat-subtext">View Partner List</p>
   </div>
 
-  <div class="stat-card middle-card" onclick="window.location.href="pages/general/student-success";" style="cursor: pointer;">
+  <div class="stat-card middle-card" onclick="window.location.href='pages/general/student-success';" style="cursor: pointer;">
     <div class="stat-icon-circle"><i class="fas fa-user-graduate"></i></div>
     <h2 id="dynamicStudentCount">126</h2>
     <p><b>Successful Student Admissions</b></p>
@@ -1582,7 +1582,7 @@
   </div>
 
 
-<div class="stat-card" onclick="window.location.href="pages/general/expert-agents";" style="cursor: pointer;">
+<div class="stat-card" onclick="window.location.href='pages/general/expert-agents';" style="cursor: pointer;">
     <div class="stat-icon-circle"><i class="fas fa-user-graduate"></i></div>
     <p><b>Dedicated Expert Agents</b></p>
     <p class="stat-subtext">View agent List</p>
@@ -1613,37 +1613,310 @@
 
 
 
-<section class="programmes-bar" id="requirements">
+<section class="uni-flip-section">
+  <h2 class="section-title">Choose your favourite <span>Study Destination</span></h2>
+  
+  <div class="uni-flip-container" id="uniFlipContainer">
+    
+    <div class="flip-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/cityu_main.jpg" alt="City University">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>City University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>City University Malaysia is known for its industry-focused programs and vibrant campus life.</p>
+          <a href="pages/universities/city-university" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/city-details" class="study-btn">Study in City &rarr;</a>
+        </div>
+      </div>
+    </div>
 
-    <h2>University Programmes and Tuition Fees</h2>
+    <div class="flip-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/iukl_main.jpg" alt="IUKL">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>IUKL</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Infrastructure University Kuala Lumpur (IUKL) excels in engineering and technology.</p>
+          <a href="pages/universities/iukl-fees" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/iukl-details" class="study-btn">Study in IUKL &rarr;</a>
+        </div>
+      </div>
+    </div>
 
-<div class="uni-grid">
-  <div id="city-university"><a href="pages/universities/city-university.html">City University</a></div>
-  <div id="iukl"><a href="pages/universities/iukl-fees.html">IUKL</a></div>
-  <div id="bac"><a href="pages/universities/bac-university.html">BAC</a></div>
-  <div id="alfa-university"><a href="pages/universities/alfa-university.html">Alfa University</a></div>
-  <div id="university-of-cyberjaya"><a href="pages/universities/university-of-cyberjaya.html">University of Cyberjaya</a></div>
-  <div id="inti"><a href="pages/universities/inti-university.html">INTI</a></div>
-  <div id="segi"><a href="pages/universities/segi-university.html">SEGi</a></div>
-  <div id="taylors-university"><a href="pages/universities/taylors-university.html">Taylor's University</a></div>
-  <div id="unirazak"><a href="pages/universities/unirazak-university.html">UniRazak</a></div>
-  <div id="kings-university"><a href="pages/universities/kings-university.html">King's University</a></div>
-  <div id="unikl"><a href="pages/universities/unikl-fees.html">UniKL</a></div>
-  <div id="lincoln"><a href="pages/universities/lincoln-fees.html">Lincoln</a></div>
-  <div id="apu"><a href="pages/universities/apu-fees.html">APU</a></div>
-  <div id="lsbf"><a href="pages/universities/lsbf.html">LSBF</a></div>
-  <div id="mantissa"><a href="pages/universities/mantissa-college.html">Mantissa College</a></div>
-  <div id="asia-e"><a href="pages/universities/asia-e-university.html">Asia e University</a></div>
+    <div class="flip-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/bac_main.jpg" alt="BAC">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>BAC Education</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>BAC Education Group is Malaysia's fastest-growing law and business school.</p>
+          <a href="pages/universities/bac-university" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/bac-details" class="study-btn">Study in BAC &rarr;</a>
+        </div>
+      </div>
+    </div>
 
-  <div id="genovasi"><a href="pages/universities/genovasi-university.html" class="paused-recruitment">Genovasi</a></div>
-  <div id="cybernetics"><a href="pages/universities/cybernetics-university.html" class="paused-recruitment">Cybernetics</a></div>
-  <div id="ucmi"><a href="pages/universities/ucmi-university.html" class="paused-recruitment">UCMI</a></div>
-  <div id="binary-university"><a href="pages/universities/binary-university.html" class="paused-recruitment">Binary University</a></div>
-  <div id="VISION University"><a href="pages/universities/vision-fees.html" class="paused-recruitment">Vision University</a></div>
-</div>
+    <div class="flip-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/alfa_main.jpg" alt="Alfa University">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Alfa University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Alfa University offers creative and technical programs designed for global industries.</p>
+          <a href="pages/universities/alfa-university" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/alfa-details" class="study-btn">Study in Alfa &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/cyberjaya_main.jpg" alt="University of Cyberjaya">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Cyberjaya</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>A leading healthcare and science university in Malaysia's tech hub.</p>
+          <a href="pages/universities/university-of-cyberjaya" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/cyberjaya-details" class="study-btn">Study in Cyberjaya &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/inti_main.jpg" alt="INTI">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>INTI University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>INTI International University offers high-quality programs with global connections.</p>
+          <a href="pages/universities/inti-university" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/inti-details" class="study-btn">Study in INTI &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/segi_main.jpg" alt="SEGi">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>SEGi University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>SEGi University offers a wide range of industry-driven programs.</p>
+          <a href="pages/universities/segi-university" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/segi-details" class="study-btn">Study in SEGi &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+   
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/taylors_main.jpg" alt="Taylors">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Taylor's University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>One of Malaysia's most prestigious private universities globally ranked.</p>
+          <a href="pages/universities/taylors-university" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/taylors-details" class="study-btn">Study in Taylor's &rarr;</a>
+        </div>
+      </div>
+    </div>
+
  
 
-  </section>
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/kings_main.jpg" alt="Kings">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>King's University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Offering specialized programs designed for modern career paths.</p>
+          <a href="pages/universities/kings-university" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/kings-details" class="study-btn">Study in King's &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/binary_main.jpg" alt="Binary">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Binary University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Specializing in Management and Entrepreneurship with industry placement.</p>
+          <a href="pages/universities/binary-university" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/binary-details" class="study-btn paused-recruitment">Study in Binary &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/ucmi_main.jpg" alt="UCMI">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>UCMI</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>University College MAIWP International focuses on healthcare and business.</p>
+          <a href="pages/universities/ucmi-university" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/ucmi-details" class="study-btn paused-recruitment">Study in UCMI &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/genovasi_main.jpg" alt="Genovasi">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Genovasi</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>A design-thinking university that fosters innovation and creative solving.</p>
+          <a href="pages/universities/genovasi-university" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/genovasi-details" class="study-btn paused-recruitment">Study in Genovasi &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/cybernetics_main.jpg" alt="Cybernetics">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Cybernetics</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Leading the way in technical and vocational training with modern facilities.</p>
+          <a href="pages/universities/cybernetics-university" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/cybernetics-details" class="study-btn paused-recruitment">Study in Cybernetics &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+ 
+ 
+
+
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/unirazak_main.jpg" alt="UniRazak">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>UniRazak</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Study at UniRazak and explore excellent programs and opportunities.</p>
+          <a href="pages/universities/unirazak-university" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/unirazak-details" class="study-btn">Study in UniRazak &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/unikl_main.jpg" alt="UniKL">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>UniKL</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Study at UniKL and explore excellent programs and opportunities.</p>
+          <a href="pages/universities/unikl-fees" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/unikl-details" class="study-btn">Study in UniKL &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/lincoln_main.jpg" alt="Lincoln University College">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Lincoln University College</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Study at Lincoln University College and explore excellent programs and opportunities.</p>
+          <a href="pages/universities/lincoln-fees" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/lincoln-details" class="study-btn">Study in Lincoln University College &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/apu_main.jpg" alt="APU">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>APU</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Study at APU and explore excellent programs and opportunities.</p>
+          <a href="pages/universities/apu-fees" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/apu-details" class="study-btn">Study in APU &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/lsbf_main.jpg" alt="LSBF">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>LSBF</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Study at LSBF and explore excellent programs and opportunities.</p>
+          <a href="pages/universities/lsbf" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/lsbf-details" class="study-btn">Study in LSBF &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/mantissa_main.jpg" alt="Mantissa College">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Mantissa College</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Study at Mantissa College and explore excellent programs and opportunities.</p>
+          <a href="pages/universities/mantissa-college" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/mantissa-details" class="study-btn">Study in Mantissa College &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/asia-e_main.jpg" alt="Asia e University">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Asia e University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Study at Asia e University and explore excellent programs and opportunities.</p>
+          <a href="pages/universities/asia-e-university" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/asia-e-details" class="study-btn">Study in Asia e University &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img src="assets/images/vision_main.jpg" alt="Vision University">
+          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Vision University</span></div>
+        </div>
+        <div class="flip-card-back">
+          <p>Study at Vision University and explore excellent programs and opportunities.</p>
+          <a href="pages/universities/vision-fees" class="study-btn" style="margin-bottom: 10px; background-color: #ff9800; color: #fff;">Fees</a>
+          <a href="pages/universities/vision-details" class="study-btn">Study in Vision University &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div> <div class="see-more-container">
+    <button id="seeMoreBtn" onclick="revealUniversities()">See More Universities</button>
+  </div>
+</section>
 
  <section class="testimonials-section">
   <h2 class="section-title">Student <span>Success Stories</span></h2>
@@ -1740,192 +2013,7 @@
 </section>
 
 
-<section class="uni-flip-section">
-  <h2 class="section-title">Choose your favourite <span>Study Destination</span></h2>
-  
-  <div class="uni-flip-container" id="uniFlipContainer">
-    
-    <div class="flip-card" onclick="this.classList.toggle('active')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="assets/images/cityu_main.jpg" alt="City University">
-          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>City University</span></div>
-        </div>
-        <div class="flip-card-back">
-          <p>City University Malaysia is known for its industry-focused programs and vibrant campus life.</p>
-          <a href="pages/universities/city-details.html" class="study-btn">Study in City &rarr;</a>
-        </div>
-      </div>
-    </div>
 
-    <div class="flip-card" onclick="this.classList.toggle('active')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="assets/images/iukl_main.jpg" alt="IUKL">
-          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>IUKL</span></div>
-        </div>
-        <div class="flip-card-back">
-          <p>Infrastructure University Kuala Lumpur (IUKL) excels in engineering and technology.</p>
-          <a href="pages/universities/iukl-details.html" class="study-btn">Study in IUKL &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card" onclick="this.classList.toggle('active')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="assets/images/bac_main.jpg" alt="BAC">
-          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>BAC Education</span></div>
-        </div>
-        <div class="flip-card-back">
-          <p>BAC Education Group is Malaysia's fastest-growing law and business school.</p>
-          <a href="pages/universities/bac-details.html" class="study-btn">Study in BAC &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card" onclick="this.classList.toggle('active')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="assets/images/alfa_main.jpg" alt="Alfa University">
-          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Alfa University</span></div>
-        </div>
-        <div class="flip-card-back">
-          <p>Alfa University offers creative and technical programs designed for global industries.</p>
-          <a href="pages/universities/alfa-details.html" class="study-btn">Study in Alfa &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card" onclick="this.classList.toggle('active')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="assets/images/cyberjaya_main.jpg" alt="University of Cyberjaya">
-          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Cyberjaya</span></div>
-        </div>
-        <div class="flip-card-back">
-          <p>A leading healthcare and science university in Malaysia's tech hub.</p>
-          <a href="pages/universities/cyberjaya-details.html" class="study-btn">Study in Cyberjaya &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card" onclick="this.classList.toggle('active')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="assets/images/inti_main.jpg" alt="INTI">
-          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>INTI University</span></div>
-        </div>
-        <div class="flip-card-back">
-          <p>INTI International University offers high-quality programs with global connections.</p>
-          <a href="pages/universities/inti-details.html" class="study-btn">Study in INTI &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="assets/images/segi_main.jpg" alt="SEGi">
-          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>SEGi University</span></div>
-        </div>
-        <div class="flip-card-back">
-          <p>SEGi University offers a wide range of industry-driven programs.</p>
-          <a href="pages/universities/segi-details.html" class="study-btn">Study in SEGi &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-   
-
-    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="assets/images/taylors_main.jpg" alt="Taylors">
-          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Taylor's University</span></div>
-        </div>
-        <div class="flip-card-back">
-          <p>One of Malaysia's most prestigious private universities globally ranked.</p>
-          <a href="pages/universities/taylors-details.html" class="study-btn">Study in Taylor's &rarr;</a>
-        </div>
-      </div>
-    </div>
-
- 
-
-    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="assets/images/kings_main.jpg" alt="Kings">
-          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>King's University</span></div>
-        </div>
-        <div class="flip-card-back">
-          <p>Offering specialized programs designed for modern career paths.</p>
-          <a href="pages/universities/kings-details.html" class="study-btn">Study in King's &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="assets/images/binary_main.jpg" alt="Binary">
-          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Binary University</span></div>
-        </div>
-        <div class="flip-card-back">
-          <p>Specializing in Management and Entrepreneurship with industry placement.</p>
-          <a href="pages/universities/binary-details.html" class="study-btn paused-recruitment">Study in Binary &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="assets/images/ucmi_main.jpg" alt="UCMI">
-          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>UCMI</span></div>
-        </div>
-        <div class="flip-card-back">
-          <p>University College MAIWP International focuses on healthcare and business.</p>
-          <a href="pages/universities/ucmi-details.html" class="study-btn paused-recruitment">Study in UCMI &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="assets/images/genovasi_main.jpg" alt="Genovasi">
-          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Genovasi</span></div>
-        </div>
-        <div class="flip-card-back">
-          <p>A design-thinking university that fosters innovation and creative solving.</p>
-          <a href="pages/universities/genovasi-details.html" class="study-btn paused-recruitment">Study in Genovasi &rarr;</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card hidden-card" onclick="this.classList.toggle('active')">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <img src="assets/images/cybernetics_main.jpg" alt="Cybernetics">
-          <div class="curved-blue-bar"><i class="fas fa-map-marker-alt"></i><span>Cybernetics</span></div>
-        </div>
-        <div class="flip-card-back">
-          <p>Leading the way in technical and vocational training with modern facilities.</p>
-          <a href="pages/universities/cybernetics-details.html" class="study-btn paused-recruitment">Study in Cybernetics &rarr;</a>
-        </div>
-      </div>
-    </div>
-
- 
- 
-
-  </div> <div class="see-more-container">
-    <button id="seeMoreBtn" onclick="revealUniversities()">See More Universities</button>
-  </div>
-</section>
 
 
 <section class="contact-cta-section" style="position: relative;">
@@ -1939,9 +2027,21 @@
       Start your journey to Malaysia with expert guidance. <br>
       Message us now for a free consultation!
     </p>
-    <a href="https://wa.me/601139660706" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
-      <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-    </a>
+    <style>
+      .cta-buttons { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px; }
+      @media (max-width: 768px) {
+        .cta-buttons { justify-content: center; }
+        .contact-left h2, .contact-left p { text-align: center; }
+      }
+    </style>
+    <div class="cta-buttons">
+      <a href="https://wa.me/601139660706" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+      <a href="book-consult" class="whatsapp-btn" style="background-color: #0056b3;">
+        <i class="fas fa-calendar-alt"></i> Book Consult
+      </a>
+    </div>
   </div>
 
   <div class="contact-right">
@@ -1958,7 +2058,7 @@
       <div class="office left">
         <p><strong>Bangladesh Office</strong><br>
         80/A/1 Shahjalal Tower, Level-07,<br>
-        CID office এর opposite, Malibagh Mor, Dhaka</p>
+        CID office à¦à¦° opposite, Malibagh Mor, Dhaka</p>
       </div>
 
       <div class="footer-logo">
@@ -2015,28 +2115,28 @@
 
   // University Links Mapping
   const uniLinks = {
-    "City University Malaysia": "city-university.html",
-    "Infrastructure University Kuala Lumpur (IUKL)": "iukl-fees.html",
-    "BAC EDUCATION GROUP": "bac-university.html",
-    "ALFA UNIVERSITY MALAYSIA": "alfa-university.html",
-    "INTI International University": "inti-university.html",
-    "UNIVERSITY OF CYBERJAYA": "university-of-cyberjaya.html",
-    "University College MAIWP International (UCMI)": "ucmi-university.html",
-    "CYBERNETICS MALAYSIA (KTAC)": "cybernetics-university.html",
-    "GENOVASI UNIVERSITY MALAYSIA": "genovasi-university.html",
-    "SEGI UNIVERSITY MALAYSIA": "segi-university.html",
-    "Taylor's University": "taylors-university.html",
-    "Binary University": "binary-university.html",
-    "King's University": "kings-university.html",
-    "Universiti Tun Abdul Razak (UNIRAZAK)": "unirazak-university.html", 
-    "Binary University of Management & Entrepreneurship": "binary-university.html", 
-    "Kings University College": "kings-university.html",
-    "VISION University College": "vision-fees.html",
-    "Lincoln University College": "lincoln-fees.html",
-    "Universiti Kuala Lumpur (UniKL)": "unikl-fees.html",
-    "Asia Pacific University (APU)": "apu-fees.html",
-    "MANTISSA COLLEGE MALAYSIA": "mantissa-college.html",
-    "ASIA e UNIVERSITY": "asia-e-university.html"
+    "City University Malaysia": "city-university",
+    "Infrastructure University Kuala Lumpur (IUKL)": "iukl-fees",
+    "BAC EDUCATION GROUP": "bac-university",
+    "ALFA UNIVERSITY MALAYSIA": "alfa-university",
+    "INTI International University": "inti-university",
+    "UNIVERSITY OF CYBERJAYA": "university-of-cyberjaya",
+    "University College MAIWP International (UCMI)": "ucmi-university",
+    "CYBERNETICS MALAYSIA (KTAC)": "cybernetics-university",
+    "GENOVASI UNIVERSITY MALAYSIA": "genovasi-university",
+    "SEGI UNIVERSITY MALAYSIA": "segi-university",
+    "Taylor's University": "taylors-university",
+    "Binary University": "binary-university",
+    "King's University": "kings-university",
+    "Universiti Tun Abdul Razak (UNIRAZAK)": "unirazak-university", 
+    "Binary University of Management & Entrepreneurship": "binary-university", 
+    "Kings University College": "kings-university",
+    "VISION University College": "vision-fees",
+    "Lincoln University College": "lincoln-fees",
+    "Universiti Kuala Lumpur (UniKL)": "unikl-fees",
+    "Asia Pacific University (APU)": "apu-fees",
+    "MANTISSA COLLEGE MALAYSIA": "mantissa-college",
+    "ASIA e UNIVERSITY": "asia-e-university"
   };
 
   async function fetchAllPrograms() {
@@ -2159,7 +2259,7 @@
     const nextBatch = currentMatches.slice(visibleCount, visibleCount + BATCH_SIZE);
 
     nextBatch.forEach(match => {
-      const campusDisplay = match.campus ? ` — ${match.campus}` : '';
+      const campusDisplay = match.campus ? ` â€” ${match.campus}` : '';
       const encodedProgram = encodeURIComponent(match.program);
       
       // Bachelor style check
@@ -2272,7 +2372,7 @@ function triggerMalaysianFirework() {
   for (let i = 0; i < particleCount; i++) {
     const p = document.createElement('div');
     p.classList.add('flag-particle');
-    p.innerText = '🇲🇾'; // The Malaysia Flag Emoji
+    p.innerText = 'ðŸ‡²ðŸ‡¾'; // The Malaysia Flag Emoji
     
     // Set starting position (the explosion center)
     p.style.left = explosionX + 'px';
@@ -2580,4 +2680,7 @@ function closeRecruitmentModal() {
   <script src="assets/js/global.js"></script>
 </body>
 </html>
+
+
+
 
