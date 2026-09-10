@@ -6,229 +6,115 @@
   <title>About Us | YS Study Focus</title>
   <link rel="icon" type="image/png" href="../../favicon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="../../assets/css/global.css">
   <style>
-    :root {
-      --brand-blue: #004080;
-      --brand-yellow: #FFD700;
-      --bg-light: #f4f7f9;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
-    body { background-color: var(--bg-light); color: #333; line-height: 1.6; }
-
-    nav {
-      background: white;
-      padding: 15px 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .logo img { height: 50px; }
-    .back-btn {
-      text-decoration: none;
-      color: var(--brand-blue);
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .hero {
-      background: linear-gradient(rgba(0, 64, 128, 0.9), rgba(0, 64, 128, 0.9)), url('../../assets/images/cityu_main.jpg');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-      padding: 80px 20px;
-    }
-    .hero h1 { font-size: 3rem; margin-bottom: 10px; color: var(--brand-yellow); }
-    .hero p { font-size: 1.2rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
-
-    .content-container {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-
-    .box-card {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      margin-bottom: 30px;
-      border-top: 4px solid var(--brand-yellow);
-    }
-
-    h2 {
-      color: var(--brand-blue);
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    p {
-      margin-bottom: 15px;
-      color: #555;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-    }
-    @media (max-width: 768px) {
-      .grid-2 { grid-template-columns: 1fr; gap: 0; }
-    }
-
     .services-list {
       list-style: none;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    @media (max-width: 768px) {
-      .services-list { grid-template-columns: 1fr; }
+      padding: 0;
+      margin-top: 1.5rem;
     }
     .services-list li {
       display: flex;
       align-items: center;
       gap: 10px;
-      color: #444;
+      color: var(--color-text);
       font-weight: 500;
-      background: #f8f9fa;
+      background: var(--color-surface);
       padding: 12px 20px;
       border-radius: 8px;
-      border-left: 3px solid var(--brand-yellow);
+      border-left: 3px solid var(--color-accent);
     }
     .services-list li i {
-      color: var(--brand-blue);
-    }
-
-    footer {
-      background: var(--brand-blue);
-      color: white;
-      margin-top: 50px;
-    }
-    .footer-content {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 50px 20px;
-      text-align: center;
-    }
-    .footer-content h2 {
-      color: var(--brand-yellow);
-      justify-content: center;
-    }
-    .footer-content p {
-      color: #ddd;
-    }
-    .contact-info {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 30px;
-    }
-    .contact-info p {
-      background: rgba(255,255,255,0.1);
-      padding: 10px 20px;
-      border-radius: 30px;
-      color: white;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 0;
-      text-align: left;
-    }
-    .contact-info a {
-      color: white;
-      text-decoration: none;
-    }
-    .contact-info i {
-      color: var(--brand-yellow);
-    }
-
-    .footer-bottom {
-      background: #002855;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      font-weight: bold;
-      letter-spacing: 1px;
+      color: var(--color-primary);
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="../../index.html" class="logo"><img src="../../assets/images/ys_logo.png" alt="YS Study Focus"></a>
-    <a href="../../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  <nav class="site-nav">
+    <div class="site-nav__inner">
+      <a href="../../" class="site-nav__brand">
+        <img src="../../assets/images/ys_logo.png" alt="YS Study Focus" class="site-nav__logo">
+        <span class="site-nav__brand-text">YS Study Focus</span>
+      </a>
+      <a href="../../" class="site-nav__back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
   </nav>
 
-  <div class="hero">
-    <h1>About YS Study Focus</h1>
-    <p>Your Future Begins With the Right Guidance.</p>
-  </div>
-
-  <div class="content-container">
-    <section class="box-card">
-      <h2><i class="fas fa-building"></i> About Company</h2>
-      <p>YS STUDY FOCUS is a Malaysia-focused education consultancy committed to helping Bangladeshi students make informed and confident decisions about their higher education journey.</p>
-      <p>We provide reliable information and personalized guidance on university and course selection, admissions, tuition fees, scholarships, documentation, and student visa processing. Our recommendations are tailored to each student’s academic profile, budget, career goals, and future aspirations.</p>
-      <p>Our support extends beyond admission. From pre-departure preparation to post-arrival assistance in Malaysia, we remain a trusted partner throughout every step of the student journey.</p>
-    </section>
-
-    <div class="grid-2">
-      <section class="box-card">
-        <h2><i class="fas fa-eye"></i> Vision</h2>
-        <p>To become a trusted and student-first education consultancy for Malaysia, recognized for honest counselling, reliable information, and genuine commitment to students' academic and career success.</p>
-      </section>
-
-      <section class="box-card">
-        <h2><i class="fas fa-bullseye"></i> Mission</h2>
-        <p>Our mission is to provide students with accurate information, transparent guidance, and personalized counselling so they can make informed decisions about their education and future.</p>
-        <p>We aim to support our students at every stage from choosing the right university and program to completing admission and visa procedures, preparing for departure, and settling into their new academic journey in Malaysia.</p>
-      </section>
+  <header class="hero" style="background-image: url('../../assets/images/cityu_main.jpg');">
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1>About YS Study Focus</h1>
+      <p>Your Future Begins With the Right Guidance.</p>
     </div>
+  </header>
 
-    <section class="box-card">
-      <h2><i class="fas fa-concierge-bell"></i> Our Service</h2>
-      <p>Our services are designed to help students make informed decisions based on their academic qualifications, preferred study programs, budget, and future career goals.</p>
-      <ul class="services-list">
-        <li><i class="fas fa-check-circle"></i> Free Study Consultation</li>
-        <li><i class="fas fa-check-circle"></i> University & Course Selection</li>
-        <li><i class="fas fa-check-circle"></i> Admission Application Support</li>
-        <li><i class="fas fa-check-circle"></i> Scholarship Guidance</li>
-        <li><i class="fas fa-check-circle"></i> Student Visa Processing</li>
-        <li><i class="fas fa-check-circle"></i> Document Preparation & Checking</li>
-        <li><i class="fas fa-check-circle"></i> Application & Placement Support</li>
-        <li><i class="fas fa-check-circle"></i> Pre-Departure Guidance</li>
-        <li><i class="fas fa-check-circle"></i> Airport Pickup Assistance</li>
-        <li><i class="fas fa-check-circle"></i> Post-Arrival Student Support</li>
-      </ul>
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="card card--accent-top" style="margin-bottom: 2rem;">
+          <h2><i class="fas fa-building"></i> About Company</h2>
+          <p>YS STUDY FOCUS is a Malaysia-focused education consultancy committed to helping Bangladeshi students make informed and confident decisions about their higher education journey.</p>
+          <p>We provide reliable information and personalized guidance on university and course selection, admissions, tuition fees, scholarships, documentation, and student visa processing. Our recommendations are tailored to each student’s academic profile, budget, career goals, and future aspirations.</p>
+          <p>Our support extends beyond admission. From pre-departure preparation to post-arrival assistance in Malaysia, we remain a trusted partner throughout every step of the student journey.</p>
+        </div>
+
+        <div class="grid--2" style="margin-bottom: 2rem;">
+          <div class="card">
+            <h2><i class="fas fa-eye"></i> Vision</h2>
+            <p>To become a trusted and student-first education consultancy for Malaysia, recognized for honest counselling, reliable information, and genuine commitment to students' academic and career success.</p>
+          </div>
+
+          <div class="card">
+            <h2><i class="fas fa-bullseye"></i> Mission</h2>
+            <p>Our mission is to provide students with accurate information, transparent guidance, and personalized counselling so they can make informed decisions about their education and future.</p>
+            <p>We aim to support our students at every stage from choosing the right university and program to completing admission and visa procedures, preparing for departure, and settling into their new academic journey in Malaysia.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2><i class="fas fa-concierge-bell"></i> Our Service</h2>
+          <p>Our services are designed to help students make informed decisions based on their academic qualifications, preferred study programs, budget, and future career goals.</p>
+          <ul class="services-list grid--2">
+            <li><i class="fas fa-check-circle"></i> Free Study Consultation</li>
+            <li><i class="fas fa-check-circle"></i> University & Course Selection</li>
+            <li><i class="fas fa-check-circle"></i> Admission Application Support</li>
+            <li><i class="fas fa-check-circle"></i> Scholarship Guidance</li>
+            <li><i class="fas fa-check-circle"></i> Student Visa Processing</li>
+            <li><i class="fas fa-check-circle"></i> Document Preparation & Checking</li>
+            <li><i class="fas fa-check-circle"></i> Application & Placement Support</li>
+            <li><i class="fas fa-check-circle"></i> Pre-Departure Guidance</li>
+            <li><i class="fas fa-check-circle"></i> Airport Pickup Assistance</li>
+            <li><i class="fas fa-check-circle"></i> Post-Arrival Student Support</li>
+          </ul>
+        </div>
+      </div>
     </section>
-  </div>
+  </main>
 
-  <footer>
-    <div class="footer-content">
-      <h2><i class="fas fa-address-card"></i> Get In Touch</h2>
-      <p><strong>LET'S MAKE YOUR DREAM A REALITY......</strong></p>
-      <p>Whether you have questions or need expert advice, we're just a message away. Contact us today and take the first step toward studying in Malaysia.</p>
-      
-      <div class="contact-info">
-         <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/601151114520" target="_blank">+60 115111 4520</a></p>
-         <p><i class="fas fa-phone"></i> +88 01996 196196</p>
-         <p><i class="fas fa-globe"></i> <a href="https://www.ysstudyfocus.com" target="_blank">www.ysstudyfocus.com</a></p>
-         <p><i class="fas fa-envelope"></i> <a href="mailto:officeysstudyfocus@gmail.com">officeysstudyfocus@gmail.com</a></p>
-         <p><i class="fas fa-map-marker-alt"></i> 80/A/1 Shahjalal Tower, Level-07, CID office opposite, Malibagh Mor, Dhaka</p>
+  <footer class="site-footer" id="contact">
+    <div class="site-footer__main">
+      <div class="site-footer__office">
+        <h4>Bangladesh Office</h4>
+        <p>80/A/1 Shahjalal Tower, Level-07,<br>Malibagh Mor, Dhaka</p>
+      </div>
+      <div class="site-footer__brand">
+        <img src="../../assets/images/ys_logo.png" alt="YS Study Focus" class="site-footer__logo">
+      </div>
+      <div class="site-footer__office">
+        <h4>Malaysia Office</h4>
+        <p>De Tropicana, 52, Jalan Kuchai Maju 13,<br>Kuchai Entrepreneurs Park,<br>58200 Kuala Lumpur, Malaysia</p>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>YOUR GATEWAY TO HIGHER EDUCATION IN MALAYSIA STARTS HERE.</p>
+    <div class="site-footer__social">
+      <a href="https://facebook.com" target="_blank" class="site-footer__social-link"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://wa.me/601139660706" target="_blank" class="site-footer__social-link"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://youtube.com" target="_blank" class="site-footer__social-link"><i class="fab fa-youtube"></i></a>
+      <a href="https://tiktok.com" target="_blank" class="site-footer__social-link"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <div class="site-footer__bottom">
+      <p class="site-footer__credit">Developed by <a href="https://nahidjahanbhuiyan.com" target="_blank">Bhuiyan Mohamed Nahid Jahan</a></p>
     </div>
   </footer>
+  <script src="../../assets/js/global.js"></script>
 </body>
 </html>

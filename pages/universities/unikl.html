@@ -4,307 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Universiti Kuala Lumpur (UniKL) – International Fee Structure 2026</title>
-
-
-<style>
-   body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0 0 80px 0; /* space for footer */
-  background: #f9f9f9;
-}
-
- /* --- UPDATED RESPONSIVE HEADER & FOOTER --- */
-/* --- FIXED FULL-WIDTH HEADER & FOOTER --- */
-header {
-  background: #004080;
-  color: white;
-  padding: 30px 20px;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-footer {
-  background: #004080;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  width: 100%;
-  box-sizing: border-box;
-  margin-top: auto;
-}
-
-/* --- MOBILE RESPONSIVE PANEL WITH SCROLLBAR --- */
-.panel {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 15px;
-  background-color: white;
-  display: none;
-  border: 1px solid #e0e6ed;
-  border-top: none;
-  border-radius: 0 0 12px 12px;
-  margin-bottom: 25px;
-  /* Horizontal scroll enabled */
-  overflow-x: auto; 
-  -webkit-overflow-scrolling: touch; 
-}
-
-/* --- TABLE PROTECTION --- */
-table {
-  min-width: 800px; /* Ensures table remains readable while scrolling */
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 15px 0;
-  border: 1px solid #e0e6ed;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: #ffffff;
-}
-
-/* --- TABLE FIX --- */
-table {
-  min-width: 700px; /* Forces table to be wide enough to scroll on mobile */
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 10px 0;
-  border: 1px solid #e0e6ed;
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: #ffffff;
-}
-/* --- END FINAL FIX --- */
-
-html, body {
-  height: 100%;
-  overflow-x: hidden; /* Important: Prevents horizontal scrollbar from 100vw trick */
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-}
-
-/* --- STABILIZED CONTAINER --- *//* --- STABILIZED FULL-WIDTH CONTAINER --- */
-.container {
-  max-width: 1100px; /* This is the standard "Big" size of your table */
-  margin: 0 auto;
-  padding: 0 20px;
-  width: 95%; /* Responsive fall-back */
-}
-
-/* --- ALWAYS BIG PROGRAMME BARS --- */.accordion {
-  background: #ffffff;
-  color: #004080;
-  cursor: pointer;
-  padding: 18px 20px; /* Reduced for mobile comfort */
-  margin-bottom: 12px;
-  width: 100%; 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-  border: 1px solid #e0e6ed;
-  outline: none;
-  font-size: 16px; /* Scaled down from 20px */
-  font-weight: 700;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
-  text-align: left; /* Ensures text starts from left on small screens */
-}
-
-/* When the bar is clicked, it stays the same size but changes color */
-.accordion.active {
-  background: #004080;
-  color: #ffffff;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  margin-bottom: 0; /* Connects directly to the table below */
-  box-shadow: none;
-}
-
-    /* --- MODERN TABLE DESIGN --- */
-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin: 25px 0;
-  border: 1px solid #e0e6ed;
-  border-radius: 12px;
-  overflow: hidden; /* Ensures rounded corners work */
-  background-color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-th {
-  background-color: #004080;
-  color: #ffffff;
-  font-weight: 600;
-  padding: 15px 12px;
-  text-transform: uppercase;
-  font-size: 13px;
-  letter-spacing: 0.5px;
-  border: none;
-}
-
-td {
-  padding: 14px 12px;
-  border-bottom: 1px solid #f0f2f5;
-  color: #444;
-  font-size: 14px;
-}
-
-/* Zebra striping for readability */
-tr:nth-child(even) {
-  background-color: #f8f9fa;
-}
-
-/* Hover effect for rows */
-tr:hover {
-  background-color: #f1f7ff !important;
-  transition: background-color 0.2s ease;
-}
-
-/* Search highlight style */
-tr.highlight {
-  background-color: #fff9c4 !important; /* Soft yellow */
-  font-weight: bold;
-}
-
-/* Remove bottom border from the last row to keep it clean */
-tr:last-child td {
-  border-bottom: none;
-}
-    .note {
-  background: #f8f9fa; /* Professional light grey */
-  border-left: 6px solid #004080; /* Bold Navy accent */
-  padding: 25px;
-  margin: 25px 0;
-  border-radius: 12px;
-  color: #333;
-  line-height: 1.6;
-  font-size: 15px;
-  box-shadow: inset 0 0 10px rgba(0,0,0,0.02);
-  position: relative;
-}
-/* --- UPDATED MOBILE-FRIENDLY SEARCH ZONE --- */
-.search-container {
-  background: #f1f3f5;
-  margin: 0 auto 30px auto;
-  padding: 30px 20px;
-  text-align: center;
-  width: 100%; /* Changed from 100vw */
-  box-sizing: border-box; /* Prevents overflow */
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
-  border-bottom: 1px solid #e9ecef;
-  border-radius: 12px; /* Matches the rest of the UI */
-}
-
-.search-container input[type="text"] {
-  padding: 15px 25px;
-  width: 100%;
-  max-width: 600px;
-  border: 2px solid #dde2e7;
-  border-radius: 50px;
-  font-size: 16px;
-  background: #ffffff;
-  box-sizing: border-box; /* Crucial for mobile */
-}
-
-/* Animation when the user clicks the search bar */
-.search-container input[type="text"]:focus {
-  outline: none;
-  border-color: #0066cc;
-  width: 100%;
-  max-width: 650px; /* Expands slightly when active */
-  box-shadow: 0 8px 20px rgba(0, 102, 204, 0.15);
-  transform: translateY(-2px);
-}
-
-/* Subtle placeholder styling */
-.search-container input[type="text"]::placeholder {
-  color: #adb5bd;
-  transition: opacity 0.3s;
-}
-
-.search-container input[type="text"]:focus::placeholder {
-  opacity: 0.5;
-}
-    tr.highlight {
-      background-color: #ffff99 !important;
-    }
-    .download-icon {
-  float: right;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.download-icon:hover {
-  opacity: 0.8;
-}
-.download-bar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 12px 24px;
-  background: #0066cc; /* Action Blue for clickability */
-  color: #ffffff !important;
-  border-radius: 50px; /* Modern Pill Shape */
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  float: right;
-  border: none;
-  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.2);
-}
-
-.download-bar span {
-  color: #ffffff !important;
-  margin: 0 !important; /* Resetting your previous margin */
-}
-
-.download-bar:hover {
-  background: #004080; /* Switches to Navy on hover */
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(0, 64, 128, 0.3);
-}
-
-/* Clearfix to ensure the float doesn't break the box layout */
-.note::after {
-  content: "";
-  display: table;
-  clear: both;
-}
-  </style>
-
-<body>
-
-<link rel="stylesheet" href="../../assets/css/global.css">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../assets/css/global.css">
 </head>
 <body>
 
-<header>
-  <h1>Universiti Kuala Lumpur (UniKL)</h1>
-  <h2>International Fee Structure 2026</h2>
-  <p>Valid for the 2026 Academic Year</p>
+<nav class="site-nav">
+  <div class="site-nav__inner">
+    <a href="../../" class="site-nav__brand">
+      <img src="../../assets/images/ys_logo.png" alt="YS Study Focus" class="site-nav__logo">
+      <span class="site-nav__brand-text">YS Study Focus</span>
+    </a>
+    <a href="../../" class="site-nav__back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  </div>
+</nav>
+
+<header class="hero" style="background-color: var(--color-primary); padding: 3rem 1rem;">
+  <div class="hero__content">
+    <h1>Universiti Kuala Lumpur (UniKL)</h1>
+    <h2>International Fee Structure 2026</h2>
+    <p>Valid for the 2026 Academic Year</p>
+  </div>
 </header>
 
-<div class="container">
+<div class="container section">
 
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search program name or campus..." onkeyup="filterPrograms()" />
+  <div class="search-wrapper">
+    <input type="text" id="searchInput" class="search-input" placeholder="Search program name or campus..." onkeyup="filterPrograms()" />
   </div>
 
-  <button class="accordion">FOUNDATION PROGRAMS</button>
-  <div class="panel">
-    <div class="table-responsive">
-      <table>
+  <button class="accordion-btn">FOUNDATION PROGRAMS</button>
+  <div class="accordion-panel">
+    <div class="table-container">
+      <table class="table">
         <tr>
           <th>No</th><th>Programme</th><th>Campus</th><th>Intake</th><th>Duration (Y)</th><th>1 Year (RM)</th><th>1 Year (USD)</th>
         </tr>
@@ -319,9 +52,9 @@ tr:last-child td {
       </table>
     </div>
     <div class="note">
-      <div class="download-bar" onclick="downloadPDF('foundation')">
-        <span>Download PDF</span><span>&#11015;&#65039;</span>
-      </div>
+      <button class="download-bar" onclick="downloadPDF('foundation')">
+        <span>Download PDF</span><i class="fas fa-download"></i>
+      </button>
       <strong>Scholarship Note:</strong><br>
       • 50% scholarship is available for eligible Foundation students. Terms and conditions apply.<br><br>
       <strong>Misc Fees & Admission Guidelines:</strong><br>
@@ -333,10 +66,10 @@ tr:last-child td {
     </div>
   </div>
 
-  <button class="accordion">DIPLOMA PROGRAMS</button>
-  <div class="panel">
-    <div class="table-responsive">
-      <table>
+  <button class="accordion-btn">DIPLOMA PROGRAMS</button>
+  <div class="accordion-panel">
+    <div class="table-container">
+      <table class="table">
         <tr>
           <th>No</th><th>Programme</th><th>Campus</th><th>Intake</th><th>Duration (Y)</th><th>1 Year (RM)</th><th>1 Year (USD)</th>
         </tr>
@@ -369,9 +102,9 @@ tr:last-child td {
       </table>
     </div>
     <div class="note">
-      <div class="download-bar" onclick="downloadPDF('diploma')">
-        <span>Download PDF</span><span>&#11015;&#65039;</span>
-      </div>
+      <button class="download-bar" onclick="downloadPDF('diploma')">
+        <span>Download PDF</span><i class="fas fa-download"></i>
+      </button>
       <strong>Important Notes:</strong><br>
       • All fees are inclusive of 6% Sales & Service Tax (SST).<br>
       • Fees are payable in Ringgit Malaysia (RM). USD values are for reference only (Based on an exchange rate of USD 1 = RM 4.10).<br>
@@ -379,10 +112,10 @@ tr:last-child td {
     </div>
   </div>
 
-  <button class="accordion">BACHELOR PROGRAMS</button>
-  <div class="panel">
-    <div class="table-responsive">
-      <table>
+  <button class="accordion-btn">BACHELOR PROGRAMS</button>
+  <div class="accordion-panel">
+    <div class="table-container">
+      <table class="table">
         <tr>
           <th>No</th><th>Programme</th><th>Campus</th><th>Intake</th><th>Duration (Y)</th><th>1 Year (RM)</th><th>1 Year (USD)</th>
         </tr>
@@ -459,9 +192,9 @@ tr:last-child td {
       </table>
     </div>
     <div class="note">
-      <div class="download-bar" onclick="downloadPDF('bachelor')">
-        <span>Download PDF</span><span>&#11015;&#65039;</span>
-      </div>
+      <button class="download-bar" onclick="downloadPDF('bachelor')">
+        <span>Download PDF</span><i class="fas fa-download"></i>
+      </button>
       <strong>Important Notes:</strong><br>
       • Programmes marked with *** require an interview.<br>
       • All fees are inclusive of 6% Sales & Service Tax (SST).<br>
@@ -469,10 +202,10 @@ tr:last-child td {
     </div>
   </div>
 
-  <button class="accordion">MASTERS PROGRAMS</button>
-  <div class="panel">
-    <div class="table-responsive">
-      <table>
+  <button class="accordion-btn">MASTERS PROGRAMS</button>
+  <div class="accordion-panel">
+    <div class="table-container">
+      <table class="table">
         <tr>
           <th>No</th><th>Programme</th><th>Type</th><th>Campus</th><th>Intake</th><th>Duration (Y)</th><th>1 Year (RM)</th><th>1 Year (USD)</th>
         </tr>
@@ -509,16 +242,16 @@ tr:last-child td {
       </table>
     </div>
     <div class="note">
-      <div class="download-bar" onclick="downloadPDF('masters')">
-        <span>Download PDF</span><span>&#11015;&#65039;</span>
-      </div>
+      <button class="download-bar" onclick="downloadPDF('masters')">
+        <span>Download PDF</span><i class="fas fa-download"></i>
+      </button>
     </div>
   </div>
 
-  <button class="accordion">PHD PROGRAMS</button>
-  <div class="panel">
-    <div class="table-responsive">
-      <table>
+  <button class="accordion-btn">PHD PROGRAMS</button>
+  <div class="accordion-panel">
+    <div class="table-container">
+      <table class="table">
         <tr>
           <th>No</th><th>Programme</th><th>Type</th><th>Campus</th><th>Intake</th><th>Duration (Y)</th><th>1 Year (RM)</th><th>1 Year (USD)</th>
         </tr>
@@ -538,16 +271,16 @@ tr:last-child td {
       </table>
     </div>
     <div class="note">
-      <div class="download-bar" onclick="downloadPDF('phd')">
-        <span>Download PDF</span><span>&#11015;&#65039;</span>
-      </div>
+      <button class="download-bar" onclick="downloadPDF('phd')">
+        <span>Download PDF</span><i class="fas fa-download"></i>
+      </button>
     </div>
   </div>
 
-  <button class="accordion">PROFESSIONAL & LANGUAGE PROGRAMS</button>
-  <div class="panel">
-    <div class="table-responsive">
-      <table>
+  <button class="accordion-btn">PROFESSIONAL & LANGUAGE PROGRAMS</button>
+  <div class="accordion-panel">
+    <div class="table-container">
+      <table class="table">
         <tr>
           <th>No</th><th>Programme</th><th>Campus</th><th>Duration</th><th>Fee (RM)</th><th>Fee (USD)</th>
         </tr>
@@ -556,22 +289,22 @@ tr:last-child td {
       </table>
     </div>
     <div class="note">
-      <div class="download-bar" onclick="downloadPDF('professional')">
-        <span>Download PDF</span><span>&#11015;&#65039;</span>
-      </div>
+      <button class="download-bar" onclick="downloadPDF('professional')">
+        <span>Download PDF</span><i class="fas fa-download"></i>
+      </button>
     </div>
   </div>
 
 </div>
 
-<footer>
-  <p>&copy; 2026 Universiti Kuala Lumpur (UniKL)</p>
+<footer class="site-footer">
+  <div class="site-footer__bottom">
+    <p class="site-footer__credit">&copy; 2026 Universiti Kuala Lumpur (UniKL) — Fee structure provided by YS Study Focus</p>
+  </div>
 </footer>
 
-<!-- JavaScript to handle accordion and search -->
 <script>
-// 1. Restore Original Accordion Logic
-const acc = document.querySelectorAll(".accordion");
+const acc = document.querySelectorAll(".accordion-btn");
 acc.forEach(btn => {
   btn.addEventListener("click", function() {
     this.classList.toggle("active");
@@ -584,7 +317,6 @@ acc.forEach(btn => {
   });
 });
 
-// 2. Restore Search Filter & Highlight Feature
 function filterPrograms() {
   const input = document.getElementById("searchInput").value.toLowerCase().trim();
   const tables = document.querySelectorAll("table");
@@ -597,7 +329,7 @@ function filterPrograms() {
       const rowText = rows[i].textContent.toLowerCase();
       if (input !== "" && rowText.includes(input)) {
         rows[i].style.display = "";
-        rows[i].classList.add("highlight"); // Restore Highlight
+        rows[i].classList.add("highlight");
         foundInTable = true;
       } else if (input === "") {
         rows[i].style.display = "";
@@ -608,32 +340,31 @@ function filterPrograms() {
       }
     }
 
-    const panel = table.closest(".panel");
-    const accordion = panel.previousElementSibling;
+    const panel = table.closest(".accordion-panel");
+    const accordion = panel ? panel.previousElementSibling : null;
     
-    // Auto-open accordion if a match is found (needed for search from index)
-    if (foundInTable && input !== "") {
-      panel.style.display = "block";
-      accordion.classList.add("active");
-    } else if (input === "") {
-      panel.style.display = "none";
-      accordion.classList.remove("active");
+    if (panel && accordion) {
+      if (foundInTable && input !== "") {
+        panel.style.display = "block";
+        accordion.classList.add("active");
+      } else if (input === "") {
+        panel.style.display = "none";
+        accordion.classList.remove("active");
+      }
     }
   });
 }
 
-// 3. Restore URL Parameter Logic (View Chart Feature)
 document.addEventListener("DOMContentLoaded", function() {
   const searchTerm = new URLSearchParams(window.location.search).get('q');
   if (searchTerm) {
     const input = document.getElementById('searchInput');
     input.value = decodeURIComponent(searchTerm);
-    filterPrograms(); // This triggers the highlight and opens the correct chart
+    filterPrograms();
     input.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 });
 
-// 4. Original PDF Download Logic
 function downloadPDF(programKey) {
   const link = document.createElement("a");
   link.href = "UniKL International Booklet 2026.pdf"; 
@@ -643,7 +374,6 @@ function downloadPDF(programKey) {
   document.body.removeChild(link);
 }
 </script>
-  <script src="../../assets/js/global.js"></script>
+<script src="../../assets/js/global.js"></script>
 </body>
 </html>
-
