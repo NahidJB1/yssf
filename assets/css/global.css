@@ -317,8 +317,7 @@ input, select, textarea {
     padding: var(--space-20) var(--space-8);
   }
 
-  .hero__title {
-    font-size: var(--text-5xl);
+  $14xl);
   }
 
   .hero__subtitle {
@@ -1569,3 +1568,4 @@ input, select, textarea {
 .scroll-mt {
   scroll-margin-top: 80px;
 }
+
