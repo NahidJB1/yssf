@@ -513,21 +513,26 @@ input, select, textarea {
 /* ============================================================
    BUTTONS — .btn
    ============================================================ */
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  line-height: 1;
   padding: var(--space-3) var(--space-6);
-  border-radius: var(--radius-md);
-  border: 1px solid transparent;
-  text-decoration: none;
-  cursor: pointer;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: var(--text-base);
+  min-height: 48px; /* HCI touch target standard */
+  line-height: 1;
   transition: all var(--transition-fast);
-  white-space: nowrap;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid transparent;
 }
 
 .btn--primary {
@@ -1612,6 +1617,11 @@ input, select, textarea {
 .scroll-mt {
   scroll-margin-top: 80px;
 }
+
+
+
+
+
 
 
 
