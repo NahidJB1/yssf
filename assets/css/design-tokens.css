@@ -82,7 +82,7 @@
 /* 96px */
 
   /* ── Layout ──────────────────────────────────────────────── */
-  --container-max:    1280px;
+  --container-max:    100%;
   --container-narrow: 800px;
   --container-wide:   1400px;
 
@@ -124,5 +124,6 @@
    --bp-xl:   1280px   Laptops → desktops
    --bp-2xl:  1536px   Large desktops
    ────────────────────────────────────────────────────────── */
+
 
 
