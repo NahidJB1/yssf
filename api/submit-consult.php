@@ -94,3 +94,4 @@ try {
     echo json_encode(["status" => "error", "message" => "A system error occurred. Please try again later."]);
 }
 ?>
+

@@ -67,3 +67,4 @@ include 'layout_top.php';
 </div>
 
 <?php include 'layout_bottom.php'; ?>
+

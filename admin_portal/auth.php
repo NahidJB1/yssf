@@ -37,3 +37,4 @@ function log_activity($pdo, $user_id, $action_description) {
     }
 }
 ?>
+

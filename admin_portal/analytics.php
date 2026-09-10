@@ -159,3 +159,4 @@ include 'layout_top.php';
 </script>
 
 <?php include 'layout_bottom.php'; ?>
+

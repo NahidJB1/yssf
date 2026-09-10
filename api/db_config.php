@@ -59,3 +59,4 @@ try {
     // Ignore error if table creation fails due to permissions, etc.
 }
 ?>
+

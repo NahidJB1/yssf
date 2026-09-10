@@ -278,3 +278,4 @@ $sidebar_avatar = $current_user_data['profile_picture'] ?? null;
         </header>
         
         <main class="content-area">
+

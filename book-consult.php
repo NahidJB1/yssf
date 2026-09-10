@@ -247,28 +247,55 @@
   </div>
 
   <!-- Footer -->
-  <footer class="site-footer" id="contact">
+    <footer class="site-footer" id="contact">
     <div class="site-footer__main">
       <div class="site-footer__office">
-        <h4>Bangladesh Office</h4>
-        <p>80/A/1 Shahjalal Tower, Level-07,<br>CID office এর opposite, Malibagh Mor, Dhaka</p>
+        <img src="assets/images/ys_logo.png" alt="YS Study Focus" class="site-footer__logo" style="margin-bottom: 1rem;">
+        <p>Your trusted gateway to studying in Malaysia. We provide expert guidance and direct university partnerships.</p>
       </div>
-      <div class="site-footer__brand">
-        <img src="assets/images/ys_logo.png" alt="YS Study Focus" class="site-footer__logo">
-      </div>
+      
       <div class="site-footer__office">
-        <h4>Malaysia Office</h4>
-        <p>De Tropicana, 52, Jalan Kuchai Maju 13,<br>Kuchai Entrepreneurs Park,<br>58200 Kuala Lumpur, Malaysia</p>
+        <h4>Quick Links</h4>
+        <ul class="site-footer__list">
+          <li><a href="index.html" class="site-footer__link">Home</a></li>
+          <li><a href="pages/general/about-us.html" class="site-footer__link">About Us</a></li>
+          <li><a href="pages/general/university-Partnerships.html" class="site-footer__link">Universities</a></li>
+          <li><a href="pages/general/university-requirements.html" class="site-footer__link">Requirements</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__office">
+        <h4>Resources</h4>
+        <ul class="site-footer__list">
+          <li><a href="pages/general/expert-agents.html" class="site-footer__link">Expert Agents</a></li>
+          <li><a href="pages/general/student-success.html" class="site-footer__link">Success Stories</a></li>
+          <li><a href="book-consult.php" class="site-footer__link">Book Consult</a></li>
+          <li><a href="pages/general/developer-profile.html" class="site-footer__link">Developer Profile</a></li>
+        </ul>
+      </div>
+
+      <div class="site-footer__office">
+        <h4>Our Offices</h4>
+        <div style="margin-bottom: 1rem;">
+          <strong style="color: white; font-size: 0.9rem;">Bangladesh:</strong><br>
+          <span style="font-size: 0.85rem;">80/A/1 Shahjalal Tower, Level-07,<br>CID office opposite, Malibagh Mor, Dhaka</span>
+        </div>
+        <div>
+          <strong style="color: white; font-size: 0.9rem;">Malaysia:</strong><br>
+          <span style="font-size: 0.85rem;">De Tropicana, 52, Jalan Kuchai Maju 13,<br>Kuchai Entrepreneurs Park, KL</span>
+        </div>
       </div>
     </div>
+
     <div class="site-footer__social">
-      <a href="https://web.facebook.com/people/YS-Study-Focus/61571694410231/?_rdc=1&_rdr" target="_blank" class="site-footer__social-link"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://wa.me/601139660706" target="_blank" class="site-footer__social-link"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://youtube.com/@sabrina367sabu?si=GRfgbwVUAxxH5Ke_" target="_blank" class="site-footer__social-link"><i class="fab fa-youtube"></i></a>
-      <a href="https://www.tiktok.com/@sabu_555?_r=1&_t=ZS-92OvdlsEIcy" target="_blank" class="site-footer__social-link"><i class="fab fa-tiktok"></i></a>
+      <a href="https://web.facebook.com/people/YS-Study-Focus/61571694410231/?_rdc=1&_rdr" target="_blank" class="site-footer__social-link"><ion-icon name="logo-facebook"></ion-icon></a>
+      <a href="https://wa.me/601139660706" target="_blank" class="site-footer__social-link"><ion-icon name="logo-whatsapp"></ion-icon></a>
+      <a href="https://youtube.com/@sabrina367sabu?si=GRfgbwVUAxxH5Ke_" target="_blank" class="site-footer__social-link"><ion-icon name="logo-youtube"></ion-icon></a>
+      <a href="https://www.tiktok.com/@sabu_555?_r=1&_t=ZS-92OvdlsEIcy" target="_blank" class="site-footer__social-link"><ion-icon name="logo-tiktok"></ion-icon></a>
     </div>
+
     <div class="site-footer__bottom">
-      <p class="site-footer__credit">Developed by <a href="https://nahidjahanbhuiyan.com" target="_blank">Bhuiyan Mohamed Nahid Jahan</a></p>
+      <p class="site-footer__credit">&copy; 2025/2026 YS Study Focus. Developed by <a href="pages/general/developer-profile.html">Bhuiyan Mohamed Nahid Jahan</a></p>
     </div>
   </footer>
 
@@ -423,3 +450,4 @@
   </script>
 </body>
 </html>
+
