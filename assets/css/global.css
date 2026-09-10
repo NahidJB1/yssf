@@ -293,6 +293,7 @@ input, select, textarea {
   padding: var(--space-16) var(--space-5);
   width: 100%;
 }
+.hero__content h1, .hero__content h2, .hero__content h3, .hero__content p { color: var(--color-text-inverse); }
 
 .hero__label {
   font-size: var(--text-xs);
@@ -330,6 +331,7 @@ input, select, textarea {
   .hero__content {
     padding: var(--space-20) var(--space-8);
   }
+.hero__content h1, .hero__content h2, .hero__content h3, .hero__content p { color: var(--color-text-inverse); }
 
   $14xl);
   }
@@ -1617,6 +1619,9 @@ input, select, textarea {
 .scroll-mt {
   scroll-margin-top: 80px;
 }
+
+
+
 
 
 
