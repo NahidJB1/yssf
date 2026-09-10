@@ -7,6 +7,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book Consult - YS Study Focus</title>
+  <meta name="description" content="YS Study Focus - Your trusted educational consultant for studying in Malaysia. Get expert guidance, fee structures, and admission assistance for top Malaysian universities." />
+<meta name="keywords" content="Study in Malaysia, Malaysian Universities, YS Study Focus, study abroad, international students, Malaysia scholarships, student visa Malaysia, Book Consult - YS Study Focus" />
+<meta property="og:title" content="Book Consult - YS Study Focus" />
+<meta property="og:description" content="YS Study Focus - Your trusted educational consultant for studying in Malaysia. Get expert guidance, fee structures, and admission assistance for top Malaysian universities." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nahidjb1.github.io/yssf/book-consult.php" />
+<meta property="og:image" content="https://nahidjb1.github.io/yssf/assets/images/ys_logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Book Consult - YS Study Focus" />
+<meta name="twitter:description" content="YS Study Focus - Your trusted educational consultant for studying in Malaysia. Get expert guidance, fee structures, and admission assistance for top Malaysian universities." />
+<meta name="twitter:image" content="https://nahidjb1.github.io/yssf/assets/images/ys_logo.png" />
+<link rel="canonical" href="https://nahidjb1.github.io/yssf/book-consult.php" />
   
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -450,4 +462,5 @@
   </script>
 </body>
 </html>
+
 

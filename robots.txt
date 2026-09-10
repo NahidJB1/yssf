@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin_portal/
+Disallow: /api/
 
-Sitemap: https://ysstudyfocus.com/sitemap.xml
+Sitemap: https://nahidjb1.github.io/yssf/sitemap.xml

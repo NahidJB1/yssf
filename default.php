@@ -2,6 +2,18 @@
 <html lang="en">
     <head>
         <title>Default page</title>
+  <meta name="description" content="YS Study Focus - Your trusted educational consultant for studying in Malaysia. Get expert guidance, fee structures, and admission assistance for top Malaysian universities." />
+<meta name="keywords" content="Study in Malaysia, Malaysian Universities, YS Study Focus, study abroad, international students, Malaysia scholarships, student visa Malaysia, Default page" />
+<meta property="og:title" content="Default page" />
+<meta property="og:description" content="YS Study Focus - Your trusted educational consultant for studying in Malaysia. Get expert guidance, fee structures, and admission assistance for top Malaysian universities." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://nahidjb1.github.io/yssf/default.php" />
+<meta property="og:image" content="https://nahidjb1.github.io/yssf/assets/images/ys_logo.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Default page" />
+<meta name="twitter:description" content="YS Study Focus - Your trusted educational consultant for studying in Malaysia. Get expert guidance, fee structures, and admission assistance for top Malaysian universities." />
+<meta name="twitter:image" content="https://nahidjb1.github.io/yssf/assets/images/ys_logo.png" />
+<link rel="canonical" href="https://nahidjb1.github.io/yssf/default.php" />
         <link rel="icon" type="image/x-icon" href="https://hpanel.hostinger.com/favicons/hostinger.png">
         <meta charset="utf-8">
         <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
@@ -193,3 +205,4 @@
         </div>
     </body>
 </html>
+
