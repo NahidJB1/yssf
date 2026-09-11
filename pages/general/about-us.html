@@ -1,182 +1,275 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us | YS Study Focus</title>
-  <meta name="description" content="YS Study Focus - Your trusted educational consultant for studying in Malaysia. Get expert guidance, fee structures, and admission assistance for top Malaysian universities." />
-<meta name="keywords" content="Study in Malaysia, Malaysian Universities, YS Study Focus, study abroad, international students, Malaysia scholarships, student visa Malaysia, About Us | YS Study Focus" />
-<meta property="og:title" content="About Us | YS Study Focus" />
-<meta property="og:description" content="YS Study Focus - Your trusted educational consultant for studying in Malaysia. Get expert guidance, fee structures, and admission assistance for top Malaysian universities." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://nahidjb1.github.io/yssf/pages/general/about-us.html" />
-<meta property="og:image" content="https://nahidjb1.github.io/yssf/assets/images/ys_logo.png" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="About Us | YS Study Focus" />
-<meta name="twitter:description" content="YS Study Focus - Your trusted educational consultant for studying in Malaysia. Get expert guidance, fee structures, and admission assistance for top Malaysian universities." />
-<meta name="twitter:image" content="https://nahidjb1.github.io/yssf/assets/images/ys_logo.png" />
-<link rel="canonical" href="https://nahidjb1.github.io/yssf/pages/general/about-us.html" />
-  <link rel="icon" type="image/png" href="../../favicon.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta name="description" content="Learn more about YS Study Focus, your trusted partner for studying in Malaysia." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="../../assets/css/global.css">
   <style>
-    /* Premium About Layout */
+    /* Professional Layout Enhancements */
     .about-intro {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 3rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
       align-items: center;
       margin-bottom: 5rem;
     }
-    @media (min-width: 992px) {
-      .about-intro {
-        grid-template-columns: 1.1fr 0.9fr;
-      }
-    }
-    
-    .about-intro h2 {
-      font-size: var(--text-4xl);
-      margin-bottom: 1.5rem;
+
+    .about-text h2 {
+      font-size: 2.5rem;
       color: var(--color-primary);
-    }
-
-    .about-intro p {
-      font-size: var(--text-lg);
-      line-height: var(--leading-relaxed);
-      color: var(--color-text-secondary);
       margin-bottom: 1.5rem;
+      position: relative;
     }
 
-    /* Asymmetrical Image Grid */
+    .about-text p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--color-text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* Slanted Professional Collage Grid */
     .about-collage {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-template-rows: repeat(2, 200px);
-      gap: 1rem;
+      gap: 1.5rem;
+      position: relative;
     }
+
     .about-collage img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: var(--radius-xl);
+      border-radius: 15px;
       box-shadow: var(--shadow-lg);
-      transition: transform var(--transition-base);
-    }
-    .about-collage img:hover {
-      transform: scale(1.02);
-    }
-    .img-tall {
-      grid-row: span 2;
-    }
-    .img-wide {
-      grid-column: span 1;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    /* Mission / Vision Cards */
+    .about-collage img:hover {
+      transform: scale(1.05);
+      z-index: 10;
+      position: relative;
+    }
+
+    .img-tall {
+      grid-row: 1 / 3;
+      grid-column: 1 / 2;
+      border-top-left-radius: 40px !important;
+      border-bottom-right-radius: 40px !important;
+    }
+
+    .img-wide-top {
+      border-top-right-radius: 40px !important;
+    }
+
+    .img-wide-bottom {
+      border-bottom-left-radius: 40px !important;
+    }
+
+    /* Vision & Mission Cards */
     .vision-mission {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 2rem;
       margin-bottom: 5rem;
     }
-    @media (min-width: 768px) {
-      .vision-mission {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+
     .vm-card {
       background: var(--color-card);
       padding: 3rem;
-      border-radius: var(--radius-2xl);
+      border-radius: 20px;
       box-shadow: var(--shadow-md);
       border-top: 5px solid var(--color-accent);
-      transition: box-shadow var(--transition-fast);
-    }
-    .vm-card:hover {
-      box-shadow: var(--shadow-xl);
-    }
-    .vm-card h2 {
-      font-size: var(--text-2xl);
-      margin-bottom: 1.5rem;
-    }
-    .vm-card p {
-      color: var(--color-text-secondary);
-      line-height: var(--leading-relaxed);
     }
 
-    /* Services Section */
-    .services-wrapper {
-      background: var(--color-primary);
-      color: var(--color-text-inverse);
-      padding: 4rem;
-      border-radius: var(--radius-2xl);
-      margin-bottom: 5rem;
-    }
-    .services-wrapper h2 {
-      color: var(--color-accent);
+    .vm-card h2 {
+      color: var(--color-primary);
       margin-bottom: 1rem;
-      text-align: center;
-      font-size: var(--text-3xl);
+      font-size: 2rem;
     }
-    .services-wrapper > p {
+
+    .vm-card p {
+      color: var(--color-text-muted);
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    /* Services List */
+    .services-wrapper {
+      background: var(--color-surface);
+      padding: 4rem;
+      border-radius: 20px;
+      margin-bottom: 5rem;
       text-align: center;
+    }
+
+    .services-wrapper h2 {
+      font-size: 2.5rem;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+    }
+
+    .services-wrapper > p {
       max-width: 800px;
       margin: 0 auto 3rem auto;
-      color: rgba(255,255,255,0.7);
-    }
-    .services-list {
-      list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-    @media (min-width: 768px) {
-      .services-list {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    .services-list li {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      color: var(--color-primary);
-      font-weight: 600;
-      background: var(--color-surface);
-      padding: 1rem 1.5rem;
-      border-radius: var(--radius-md);
-      transition: transform var(--transition-fast);
-    }
-    .services-list li:hover {
-      transform: translateX(5px);
-    }
-    .services-list li i {
-      color: var(--color-accent);
-      font-size: 1.2rem;
+      color: var(--color-text-muted);
+      font-size: 1.1rem;
     }
 
-    /* e-Trade License Block */
-    .license-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 3rem;
-      border: 2px dashed var(--color-border);
-      border-radius: var(--radius-xl);
-      text-align: center;
-      background: var(--color-surface);
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
+      list-style: none;
+      padding: 0;
+      text-align: left;
+    }
+
+    .services-list li {
+      background: var(--color-card);
+      padding: 1.5rem;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 600;
+      color: var(--color-text);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .services-list i {
+      color: var(--color-success);
+      font-size: 1.5rem;
+    }
+
+    /* License Container Custom Code */
+    .license-container {
+      max-width: 800px;
+      margin: 2rem auto 5rem;
+      padding: 40px;
+      border: 2px solid #2e7d32;
+      border-radius: 20px;
+      background-color: #f1f8f4;
+      font-family: 'Arial', sans-serif;
+      color: #333;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+    .license-header {
+      text-align: center;
+      border-bottom: 2px solid #2e7d32;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
     }
     .license-logo {
-      height: 120px;
-      width: auto;
+      max-width: 120px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    .license-title {
+      font-size: 28px;
+      font-weight: bold;
+      color: #1b5e20;
+      margin: 5px 0;
+    }
+    .license-subtitle {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .license-meta {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+    .license-details {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .license-details th, .license-details td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #c8e6c9;
+      text-align: left;
+      vertical-align: top;
+      font-size: 1.05rem;
+    }
+    .license-details th {
+      width: 40%;
+      font-weight: bold;
+      color: #2e7d32;
+    }
+    .license-details td {
+      width: 60%;
+      font-weight: 500;
+    }
+    .license-footer {
+      text-align: center;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 2px solid #2e7d32;
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #d32f2f;
+    }
+    
+    @media (max-width: 900px) {
+      .about-intro {
+        grid-template-columns: 1fr;
+      }
+      .vision-mission {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .about-collage {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+      .img-tall {
+        grid-row: auto;
+        grid-column: auto;
+        height: 300px;
+      }
+      .about-collage img {
+        height: 250px;
+        border-radius: 20px !important;
+      }
+      .services-wrapper {
+        padding: 2rem 1.5rem;
+      }
+      .license-container {
+        padding: 20px;
+      }
+      .license-meta {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+      .license-details th, .license-details td {
+        display: block;
+        width: 100%;
+      }
+      .license-details th {
+        border-bottom: none;
+        padding-bottom: 2px;
+      }
+      .license-details td {
+        padding-top: 2px;
+        margin-bottom: 10px;
+      }
     }
   </style>
 </head>
 <body>
+
   <nav class="site-nav">
-    <div class="site-nav__inner">
+    <div class="site-nav__container">
       <a href="../../" class="site-nav__brand">
         <img src="../../assets/images/ys_logo.png" alt="YS Study Focus" class="site-nav__logo">
         <span class="site-nav__brand-text">YS Study Focus</span>
@@ -204,8 +297,8 @@
       </div>
       <div class="about-collage">
         <img src="../../assets/images/about/amu_visit.jpeg" alt="University Visit" class="img-tall">
-        <img src="../../assets/images/about/bangladesh_office.jpeg" alt="Office Exterior" class="img-wide">
-        <img src="../../assets/images/about/bangladesh_office1.jpeg" alt="Office Interior" class="img-wide">
+        <img src="../../assets/images/about/bangladesh_office.jpeg" alt="Office Exterior" class="img-wide-top">
+        <img src="../../assets/images/about/bangladesh_office1.jpeg" alt="Office Interior" class="img-wide-bottom">
       </div>
     </div>
 
@@ -240,15 +333,66 @@
       </ul>
     </div>
 
-    <!-- e-Trade License (Placeholder for User's Code) -->
-    <div class="license-block">
-      <img src="../../assets/images/about/dhaka-south-city-corporation-logo.png" alt="Dhaka South City Corporation" class="license-logo">
-      <div style="max-width: 600px;">
-        <h3 style="margin-bottom: 10px;">Official e-Trade License</h3>
-        <p style="color: var(--color-text-muted);">Please insert the custom e-Trade License code here. The code block you mentioned was missing from your previous message.</p>
-        <!-- PASTE E-TRADE LICENSE CODE BELOW -->
-        
-        <!-- END E-TRADE LICENSE CODE -->
+    <!-- E-Trade License Code -->
+    <div class="license-container">
+      <div class="license-header">
+        <img src="../../assets/images/about/dhaka-south-city-corporation-logo.png" alt="Dhaka South City Corporation Logo" class="license-logo">
+        <div class="license-title">ঢাকা দক্ষিণ সিটি কর্পোরেশন</div>
+        <div class="license-subtitle">ই-ট্রেড লাইসেন্স</div>
+      </div>
+
+      <div class="license-meta">
+        <div>ইস্যুর তারিখ: ০৯/০৭/২০২৬</div>
+        <div>লাইসেন্স নং: TRAD/DSCC/000844/2026</div>
+      </div>
+
+      <table class="license-details">
+        <tbody>
+          <tr>
+            <th>ব্যবসা প্রতিষ্ঠানের নাম</th>
+            <td>ওয়াই, এস, স্টাডি ফোকাস</td>
+          </tr>
+          <tr>
+            <th>মালিকের নাম</th>
+            <td>সাবরিনা জামান সূচনা</td>
+          </tr>
+          <tr>
+            <th>পিতা / স্বামীর নাম</th>
+            <td>মোঃ আরফান আলী</td>
+          </tr>
+          <tr>
+            <th>মাতার নাম</th>
+            <td>ছালেহা আক্তার</td>
+          </tr>
+          <tr>
+            <th>ব্যবসার প্রকৃতি</th>
+            <td>অন্যান্য - একক</td>
+          </tr>
+          <tr>
+            <th>ব্যবসার ধরণ</th>
+            <td>কন্সালটেন্সি (শিক্ষামূলক)</td>
+          </tr>
+          <tr>
+            <th>প্রতিষ্ঠানের ঠিকানা</th>
+            <td>৮০/এ/১, সিদ্ধেশ্বরী সার্কুলার রোড, শাহজালাল টাওয়ার, লেভেল - ৭, রমনা, ঢাকা।</td>
+          </tr>
+          <tr>
+            <th>এনআইডি/পাসপোর্ট/জন্ম নিব: নং</th>
+            <td>৪৬৬২৮৮৩৫৪২</td>
+          </tr>
+          <tr>
+            <th>ফোন</th>
+            <td>০১৩৫০৫১০৪৮৪</td>
+          </tr>
+          <tr>
+            <th>অর্থ বছর</th>
+            <td>২০২৬-২০২৭ (নতুন)</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="license-footer">
+        অত্র ট্রেড লাইসেন্স এর মেয়াদ ৩০ শে জুন, 2027 পর্যন্ত
       </div>
     </div>
 
@@ -308,8 +452,9 @@
   <script src="../../assets/js/global.js"></script>
 
   <a href="https://wa.me/601119359497" class="fab fab--whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp" style="font-size: 1.2em;"></i>
+    <i class="fab fa-whatsapp"></i>
   </a>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 </body>
 </html>
 
