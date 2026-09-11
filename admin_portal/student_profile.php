@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // admin_portal/student_profile.php
 require_once 'auth.php';
 require_once 'db_config.php';
@@ -242,4 +242,5 @@ include 'layout_top.php';
 </div>
 
 <?php include 'layout_bottom.php'; ?>
+
 

@@ -640,7 +640,7 @@ input, select, textarea {
   padding: 0 !important;
 }
 
-.fab i {
+.floating-whatsapp i {
   font-size: 34px !important;
   line-height: 1 !important;
   margin: 0 !important;
@@ -648,7 +648,7 @@ input, select, textarea {
   display: block !important;
 }
 
-.fab:hover {
+.floating-whatsapp:hover {
   transform: scale(1.1) !important;
   box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6) !important;
 }
@@ -1387,7 +1387,7 @@ input, select, textarea {
 /* ============================================================
    FLOATING ACTION BUTTON GÇö .fab
    ============================================================ */
-.fab {
+.floating-whatsapp {
   position: fixed !important;
   bottom: 24px !important;
   right: 24px !important;
@@ -1406,7 +1406,7 @@ input, select, textarea {
   padding: 0 !important;
 }
 
-.fab i {
+.floating-whatsapp i {
   font-size: 34px !important;
   line-height: 1 !important;
   margin: 0 !important;
@@ -1414,17 +1414,17 @@ input, select, textarea {
   display: block !important;
 }
 
-.fab:hover {
+.floating-whatsapp:hover {
   transform: scale(1.1) !important;
   box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6) !important;
 }
 
-.fab:hover {
+.floating-whatsapp:hover {
   transform: scale(1.08);
   box-shadow: var(--shadow-xl);
 }
 
-.fab--whatsapp {
+.floating-whatsapp--whatsapp {
   background-color: var(--color-success);
 }
 
@@ -2062,7 +2062,7 @@ input, select, textarea {
   }
 
   /* Fix the WhatsApp Fab Button overlapping and styling */
-  .fab {
+  .floating-whatsapp {
   position: fixed !important;
   bottom: 24px !important;
   right: 24px !important;
@@ -2081,7 +2081,7 @@ input, select, textarea {
   padding: 0 !important;
 }
 
-.fab i {
+.floating-whatsapp i {
   font-size: 34px !important;
   line-height: 1 !important;
   margin: 0 !important;
@@ -2089,11 +2089,11 @@ input, select, textarea {
   display: block !important;
 }
 
-.fab:hover {
+.floating-whatsapp:hover {
   transform: scale(1.1) !important;
   box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6) !important;
 }
-  .fab i {
+  .floating-whatsapp i {
     font-size: 30px !important;
     margin: 0 !important;
   }
@@ -2103,7 +2103,7 @@ input, select, textarea {
 /* ============================================================
    FLOATING ACTION BUTTON — .fab
    ============================================================ */
-.fab {
+.floating-whatsapp {
   position: fixed !important;
   bottom: 24px !important;
   right: 24px !important;
@@ -2122,7 +2122,7 @@ input, select, textarea {
   padding: 0 !important;
 }
 
-.fab i {
+.floating-whatsapp i {
   font-size: 34px !important;
   line-height: 1 !important;
   margin: 0 !important;
@@ -2130,7 +2130,7 @@ input, select, textarea {
   display: block !important;
 }
 
-.fab:hover {
+.floating-whatsapp:hover {
   transform: scale(1.1) !important;
   box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6) !important;
 }
@@ -2277,4 +2277,5 @@ main {
     padding-bottom: 80px !important;
   }
 }
+
 
