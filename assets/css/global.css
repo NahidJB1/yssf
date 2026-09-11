@@ -1791,3 +1791,20 @@ input, select, textarea {
   box-shadow: 0 5px 15px rgba(207, 165, 91, 0.4);
 }
 
+
+/* FIX WHITESPACE AND SPACING */
+.accordion-btn {
+  margin-bottom: 1rem !important;
+  border-radius: var(--radius-md) !important;
+}
+.accordion-panel {
+  margin-bottom: 2rem !important;
+}
+
+/* FIX SEARCH ICON */
+.search-wrapper {
+  max-width: 600px !important;
+  margin: 0 auto 3rem auto !important;
+  position: relative !important;
+}
+
