@@ -203,6 +203,11 @@
             </div>
             
         </div>
-    </body>
+    
+  <a href="https://wa.me/601119359497" class="fab fab--whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <ion-icon name="logo-whatsapp"></ion-icon>
+  </a>
+</body>
 </html>
+
 

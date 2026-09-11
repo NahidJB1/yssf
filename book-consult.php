@@ -301,7 +301,7 @@
 
     <div class="site-footer__social">
       <a href="https://web.facebook.com/people/YS-Study-Focus/61571694410231/?_rdc=1&_rdr" target="_blank" class="site-footer__social-link"><ion-icon name="logo-facebook"></ion-icon></a>
-      <a href="https://wa.me/601139660706" target="_blank" class="site-footer__social-link"><ion-icon name="logo-whatsapp"></ion-icon></a>
+      <a href="https://wa.me/601119359497" target="_blank" class="site-footer__social-link"><ion-icon name="logo-whatsapp"></ion-icon></a>
       <a href="https://youtube.com/@sabrina367sabu?si=GRfgbwVUAxxH5Ke_" target="_blank" class="site-footer__social-link"><ion-icon name="logo-youtube"></ion-icon></a>
       <a href="https://www.tiktok.com/@sabu_555?_r=1&_t=ZS-92OvdlsEIcy" target="_blank" class="site-footer__social-link"><ion-icon name="logo-tiktok"></ion-icon></a>
     </div>
@@ -460,7 +460,12 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
+
+  <a href="https://wa.me/601119359497" class="fab fab--whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <ion-icon name="logo-whatsapp"></ion-icon>
+  </a>
 </body>
 </html>
+
 
 
