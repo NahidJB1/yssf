@@ -101,7 +101,7 @@ input, select, textarea {
   top: 0;
   z-index: var(--z-sticky);
   background-color: var(--color-primary);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(207, 165, 91, 0.2);
 }
 
 .site-nav__inner {
@@ -682,17 +682,25 @@ input, select, textarea {
   border-collapse: collapse;
   font-size: var(--text-sm);
 }
+.table-container {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  margin-bottom: var(--space-8);
+}
 
 .table th {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
-  font-size: var(--text-xs);
+  background-color: var(--color-secondary);
+  color: var(--color-accent);
+  font-size: var(--text-sm);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  padding: var(--space-3) var(--space-4);
+  letter-spacing: 1px;
+  padding: var(--space-4);
   text-align: left;
-  white-space: nowrap;
+  border-bottom: 2px solid var(--color-accent);
 }
 
 .table th:first-child {
@@ -704,9 +712,16 @@ input, select, textarea {
 }
 
 .table td {
-  padding: var(--space-3) var(--space-4);
-  border-bottom: 1px solid var(--color-border-light);
-  color: var(--color-text);
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+.table tr:nth-child(even) td {
+  background-color: var(--color-surface);
+}
+.table tr:hover td {
+  background-color: var(--color-accent-light);
+  color: var(--color-primary);
+  cursor: default;
 }
 
 .table tbody tr:nth-child(even) {
@@ -847,18 +862,32 @@ input, select, textarea {
 .search-input {
   width: 100%;
   padding: var(--space-4) var(--space-5);
-  padding-right: 120px;
+  padding-left: 3rem;
+  padding-right: 90px;
   font-size: var(--text-base);
   background: var(--color-card);
-  border: 1px solid var(--color-border);
+  border: 2px solid var(--color-border);
   border-radius: var(--radius-full);
   outline: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.search-wrapper::before {
+  content: '\f002';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  left: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-accent);
+  font-size: 1.2rem;
+  z-index: 2;
 }
 
 .search-input:focus {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px var(--color-accent-light);
+  box-shadow: 0 8px 30px rgba(207, 165, 91, 0.2);
 }
 
 .search-btn {
@@ -1630,4 +1659,135 @@ input, select, textarea {
 
 
 
+
+
+
+/* Premium Download Button */
+.download-bar {
+  background: var(--color-primary);
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all var(--transition-fast);
+}
+.download-bar:hover {
+  background: var(--color-accent);
+  color: var(--color-primary);
+  box-shadow: 0 5px 15px rgba(207, 165, 91, 0.4);
+}
+
+/* ============================================================
+   PREMIUM FEES PAGE UPGRADES (HERO, SEARCH, TABLES)
+   ============================================================ */
+
+.hero--short {
+  min-height: 350px !important;
+  background: 
+    radial-gradient(circle at top right, rgba(207, 165, 91, 0.25), transparent 60%),
+    radial-gradient(circle at bottom left, rgba(207, 165, 91, 0.1), transparent 50%),
+    var(--color-primary);
+  border-bottom: 2px solid rgba(207, 165, 91, 0.3);
+  box-shadow: inset 0 -20px 50px rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: var(--space-4) var(--space-5);
+  padding-left: 3rem !important;
+  padding-right: 90px;
+  font-size: var(--text-base);
+  background: var(--color-card);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-full);
+  outline: none;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.search-wrapper::before {
+  content: '\f002';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  position: absolute;
+  left: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-accent);
+  font-size: 1.2rem;
+  z-index: 2;
+}
+.search-input:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 8px 30px rgba(207, 165, 91, 0.2);
+}
+
+.table-container {
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  margin-bottom: var(--space-8);
+}
+.table th {
+  background-color: var(--color-secondary);
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: var(--space-4);
+  text-align: left;
+  border-bottom: 2px solid var(--color-accent);
+}
+.table td {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+.table tr:nth-child(even) td {
+  background-color: var(--color-surface);
+}
+.table tr:hover td {
+  background-color: var(--color-accent-light);
+  color: var(--color-primary);
+  cursor: default;
+}
+
+.note {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border-left: 5px solid var(--color-accent) !important;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem !important;
+  background: var(--color-card) !important;
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 768px) {
+  .note { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+
+.download-bar {
+  background: var(--color-primary) !important;
+  color: var(--color-accent) !important;
+  border: 1px solid var(--color-accent) !important;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  transition: all var(--transition-fast);
+}
+@media (min-width: 768px) {
+  .download-bar { margin-top: 0; }
+}
+.download-bar:hover {
+  background: var(--color-accent) !important;
+  color: var(--color-primary) !important;
+  box-shadow: 0 5px 15px rgba(207, 165, 91, 0.4);
+}
 
