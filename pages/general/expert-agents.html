@@ -25,9 +25,9 @@
       margin-bottom: 1rem;
     }
     .profile-frame img {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      border-radius: 50% !important;
       object-fit: cover;
       border: 3px solid var(--color-surface, #eee);
     }
@@ -39,7 +39,7 @@
       height: 15px;
       background-color: #25d366;
       border: 2px solid #fff;
-      border-radius: 50%;
+      border-radius: 50% !important;
     }
     .contact-icons {
       display: flex;
@@ -64,16 +64,16 @@
     </div>
   </nav>
 
-  <header class="section hero text-center">
-    <div class="container">
-      <h1>Our Expert Team</h1>
-      <p>Success starts with the right advice. Meet the industry experts dedicated to making your Malaysian education dreams a reality.</p>
+  <header class="hero hero--short" style="background-image: linear-gradient(135deg, rgba(10, 22, 40, 0.8), rgba(10, 22, 40, 0.9)), url('../../assets/images/yscover.png'); background-size: cover; background-position: center;">
+    <div class="hero__content" style="width: 100%; text-align: center;">
+      <h1 class="hero__title">Our Expert Team</h1>
+      <p class="hero__subtitle" style="color: white; font-size: 1.1rem;">Success starts with the right advice. Meet the industry experts dedicated to making your Malaysian education dreams a reality.</p>
     </div>
   </header>
 
   <section class="section">
     <div class="container">
-      <div class="grid--3">
+      <div class="grid grid--3">
         
         <div class="card card--flush text-center">
           <div class="profile-frame">
@@ -127,7 +127,7 @@
   <section class="section section--alt">
     <div class="container">
       <h2 class="text-center" style="margin-bottom: 2rem;">Support Team</h2>
-      <div class="grid--3">
+      <div class="grid grid--3">
         
         <div class="card card--square text-center">
           <div class="profile-frame">
@@ -250,6 +250,8 @@
   </a>
 </body>
 </html>
+
+
 
 
 
