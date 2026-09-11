@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // book-consult.php
 ?>
 <!DOCTYPE html>
@@ -307,7 +307,7 @@
     </div>
 
     <div class="site-footer__bottom">
-      <p class="site-footer__credit">&copy; 2025/2026 YS Study Focus. Developed by <a href="pages/general/developer-profile.html">Bhuiyan Mohamed Nahid Jahan</a></p>
+      <p class="site-footer__credit">&copy; 2025/2026 YS Study Focus. Developed by <a href="https://nahidjahanbhuiyan.com" target="_blank" rel="noopener noreferrer">Bhuiyan Mohamed Nahid Jahan</a></p>
     </div>
   </footer>
 
@@ -466,6 +466,7 @@
   </a>
 </body>
 </html>
+
 
 
 
