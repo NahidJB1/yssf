@@ -20,24 +20,157 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="../../assets/css/global.css">
   <style>
+    /* Premium About Layout */
+    .about-intro {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 5rem;
+    }
+    @media (min-width: 992px) {
+      .about-intro {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+    }
+    
+    .about-intro h2 {
+      font-size: var(--text-4xl);
+      margin-bottom: 1.5rem;
+      color: var(--color-primary);
+    }
+
+    .about-intro p {
+      font-size: var(--text-lg);
+      line-height: var(--leading-relaxed);
+      color: var(--color-text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Asymmetrical Image Grid */
+    .about-collage {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 200px);
+      gap: 1rem;
+    }
+    .about-collage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      transition: transform var(--transition-base);
+    }
+    .about-collage img:hover {
+      transform: scale(1.02);
+    }
+    .img-tall {
+      grid-row: span 2;
+    }
+    .img-wide {
+      grid-column: span 1;
+    }
+
+    /* Mission / Vision Cards */
+    .vision-mission {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 5rem;
+    }
+    @media (min-width: 768px) {
+      .vision-mission {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .vm-card {
+      background: var(--color-card);
+      padding: 3rem;
+      border-radius: var(--radius-2xl);
+      box-shadow: var(--shadow-md);
+      border-top: 5px solid var(--color-accent);
+      transition: box-shadow var(--transition-fast);
+    }
+    .vm-card:hover {
+      box-shadow: var(--shadow-xl);
+    }
+    .vm-card h2 {
+      font-size: var(--text-2xl);
+      margin-bottom: 1.5rem;
+    }
+    .vm-card p {
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Services Section */
+    .services-wrapper {
+      background: var(--color-primary);
+      color: var(--color-text-inverse);
+      padding: 4rem;
+      border-radius: var(--radius-2xl);
+      margin-bottom: 5rem;
+    }
+    .services-wrapper h2 {
+      color: var(--color-accent);
+      margin-bottom: 1rem;
+      text-align: center;
+      font-size: var(--text-3xl);
+    }
+    .services-wrapper > p {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 3rem auto;
+      color: rgba(255,255,255,0.7);
+    }
     .services-list {
       list-style: none;
       padding: 0;
-      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 768px) {
+      .services-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
     .services-list li {
       display: flex;
       align-items: center;
-      gap: 10px;
-      color: var(--color-text);
-      font-weight: 500;
+      gap: 15px;
+      color: var(--color-primary);
+      font-weight: 600;
       background: var(--color-surface);
-      padding: 12px 20px;
-      border-radius: 8px;
-      border-left: 3px solid var(--color-accent);
+      padding: 1rem 1.5rem;
+      border-radius: var(--radius-md);
+      transition: transform var(--transition-fast);
+    }
+    .services-list li:hover {
+      transform: translateX(5px);
     }
     .services-list li i {
-      color: var(--color-primary);
+      color: var(--color-accent);
+      font-size: 1.2rem;
+    }
+
+    /* e-Trade License Block */
+    .license-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      border: 2px dashed var(--color-border);
+      border-radius: var(--radius-xl);
+      text-align: center;
+      background: var(--color-surface);
+      gap: 1.5rem;
+    }
+    .license-logo {
+      height: 120px;
+      width: auto;
     }
   </style>
 </head>
@@ -52,58 +185,76 @@
     </div>
   </nav>
 
-  <header class="hero" style="background-image: url('../../assets/images/cityu_main.jpg');">
-    <div class="hero__overlay"></div>
+  <header class="hero hero--short" style="background-image: linear-gradient(var(--color-hero-overlay), var(--color-hero-overlay)), url('../../assets/images/cityu_main.jpg'); background-size: cover; background-position: center;">
     <div class="hero__content">
-      <h1>About YS Study Focus</h1>
-      <p>Your Future Begins With the Right Guidance.</p>
+      <h1 class="hero__title">About YS Study Focus</h1>
+      <p class="hero__subtitle">Your Future Begins With the Right Guidance.</p>
     </div>
   </header>
 
-  <main>
-    <section class="section">
-      <div class="container">
-        <div class="card card--accent-top" style="margin-bottom: 2rem;">
-          <h2><i class="fas fa-building"></i> About Company</h2>
-          <p>YS STUDY FOCUS is a Malaysia-focused education consultancy committed to helping Bangladeshi students make informed and confident decisions about their higher education journey.</p>
-          <p>We provide reliable information and personalized guidance on university and course selection, admissions, tuition fees, scholarships, documentation, and student visa processing. Our recommendations are tailored to each student’s academic profile, budget, career goals, and future aspirations.</p>
-          <p>Our support extends beyond admission. From pre-departure preparation to post-arrival assistance in Malaysia, we remain a trusted partner throughout every step of the student journey.</p>
-        </div>
-
-        <div class="grid--2" style="margin-bottom: 2rem;">
-          <div class="card">
-            <h2><i class="fas fa-eye"></i> Vision</h2>
-            <p>To become a trusted and student-first education consultancy for Malaysia, recognized for honest counselling, reliable information, and genuine commitment to students' academic and career success.</p>
-          </div>
-
-          <div class="card">
-            <h2><i class="fas fa-bullseye"></i> Mission</h2>
-            <p>Our mission is to provide students with accurate information, transparent guidance, and personalized counselling so they can make informed decisions about their education and future.</p>
-            <p>We aim to support our students at every stage from choosing the right university and program to completing admission and visa procedures, preparing for departure, and settling into their new academic journey in Malaysia.</p>
-          </div>
-        </div>
-
-        <div class="card">
-          <h2><i class="fas fa-concierge-bell"></i> Our Service</h2>
-          <p>Our services are designed to help students make informed decisions based on their academic qualifications, preferred study programs, budget, and future career goals.</p>
-          <ul class="services-list grid--2">
-            <li><i class="fas fa-check-circle"></i> Free Study Consultation</li>
-            <li><i class="fas fa-check-circle"></i> University & Course Selection</li>
-            <li><i class="fas fa-check-circle"></i> Admission Application Support</li>
-            <li><i class="fas fa-check-circle"></i> Scholarship Guidance</li>
-            <li><i class="fas fa-check-circle"></i> Student Visa Processing</li>
-            <li><i class="fas fa-check-circle"></i> Document Preparation & Checking</li>
-            <li><i class="fas fa-check-circle"></i> Application & Placement Support</li>
-            <li><i class="fas fa-check-circle"></i> Pre-Departure Guidance</li>
-            <li><i class="fas fa-check-circle"></i> Airport Pickup Assistance</li>
-            <li><i class="fas fa-check-circle"></i> Post-Arrival Student Support</li>
-          </ul>
-        </div>
+  <main class="container section">
+    
+    <!-- Intro & Collage -->
+    <div class="about-intro">
+      <div class="about-text">
+        <h2>About Company</h2>
+        <p>YS STUDY FOCUS is a Malaysia-focused education consultancy committed to helping Bangladeshi students make informed and confident decisions about their higher education journey.</p>
+        <p>We provide reliable information and personalized guidance on university and course selection, admissions, tuition fees, scholarships, documentation, and student visa processing. Our recommendations are tailored to each student's academic profile, budget, career goals, and future aspirations.</p>
+        <p>Our support extends beyond admission. From pre-departure preparation to post-arrival assistance in Malaysia, we remain a trusted partner throughout every step of the student journey.</p>
       </div>
-    </section>
+      <div class="about-collage">
+        <img src="../../assets/images/about/amu_visit.jpeg" alt="University Visit" class="img-tall">
+        <img src="../../assets/images/about/bangladesh_office.jpeg" alt="Office Exterior" class="img-wide">
+        <img src="../../assets/images/about/bangladesh_office1.jpeg" alt="Office Interior" class="img-wide">
+      </div>
+    </div>
+
+    <!-- Vision & Mission -->
+    <div class="vision-mission">
+      <div class="vm-card">
+        <h2>Vision</h2>
+        <p>To become a trusted and student-first education consultancy for Malaysia, recognized for honest counselling, reliable information, and genuine commitment to students' academic and career success.</p>
+      </div>
+      <div class="vm-card">
+        <h2>Mission</h2>
+        <p>Our mission is to provide students with accurate information, transparent guidance, and personalized counselling so they can make informed decisions about their education and future.</p>
+        <p style="margin-top: 1rem;">We aim to support our students at every stage from choosing the right university and program to completing admission and visa procedures, preparing for departure, and settling into their new academic journey in Malaysia.</p>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div class="services-wrapper">
+      <h2>Our Services</h2>
+      <p>Our services are designed to help students make informed decisions based on their academic qualifications, preferred study programs, budget, and future career goals.</p>
+      <ul class="services-list">
+        <li><i class="fas fa-check-circle"></i> Free Study Consultation</li>
+        <li><i class="fas fa-check-circle"></i> University & Course Selection</li>
+        <li><i class="fas fa-check-circle"></i> Admission Application Support</li>
+        <li><i class="fas fa-check-circle"></i> Scholarship Guidance</li>
+        <li><i class="fas fa-check-circle"></i> Student Visa Processing</li>
+        <li><i class="fas fa-check-circle"></i> Document Preparation & Checking</li>
+        <li><i class="fas fa-check-circle"></i> Application & Placement Support</li>
+        <li><i class="fas fa-check-circle"></i> Pre-Departure Guidance</li>
+        <li><i class="fas fa-check-circle"></i> Airport Pickup Assistance</li>
+        <li><i class="fas fa-check-circle"></i> Post-Arrival Student Support</li>
+      </ul>
+    </div>
+
+    <!-- e-Trade License (Placeholder for User's Code) -->
+    <div class="license-block">
+      <img src="../../assets/images/about/dhaka-south-city-corporation-logo.png" alt="Dhaka South City Corporation" class="license-logo">
+      <div style="max-width: 600px;">
+        <h3 style="margin-bottom: 10px;">Official e-Trade License</h3>
+        <p style="color: var(--color-text-muted);">Please insert the custom e-Trade License code here. The code block you mentioned was missing from your previous message.</p>
+        <!-- PASTE E-TRADE LICENSE CODE BELOW -->
+        
+        <!-- END E-TRADE LICENSE CODE -->
+      </div>
+    </div>
+
   </main>
 
-    <footer class="site-footer" id="contact">
+  <footer class="site-footer" id="contact">
     <div class="site-footer__main">
       <div class="site-footer__office">
         <img src="../../assets/images/ys_logo.png" alt="YS Study Focus" class="site-footer__logo" style="margin-bottom: 1rem;">
@@ -145,7 +296,7 @@
 
     <div class="site-footer__social">
       <a href="https://web.facebook.com/people/YS-Study-Focus/61571694410231/?_rdc=1&_rdr" target="_blank" class="site-footer__social-link"><ion-icon name="logo-facebook"></ion-icon></a>
-      <a href="https://wa.me/601119359497" target="_blank" class="site-footer__social-link"><ion-icon name="logo-whatsapp"></ion-icon></a>
+      <a href="https://wa.me/601119359497" target="_blank" class="site-footer__social-link"><i class="fab fa-whatsapp" style="font-size: 1.2em;"></i></a>
       <a href="https://youtube.com/@sabrina367sabu?si=GRfgbwVUAxxH5Ke_" target="_blank" class="site-footer__social-link"><ion-icon name="logo-youtube"></ion-icon></a>
       <a href="https://www.tiktok.com/@sabu_555?_r=1&_t=ZS-92OvdlsEIcy" target="_blank" class="site-footer__social-link"><ion-icon name="logo-tiktok"></ion-icon></a>
     </div>
@@ -157,11 +308,8 @@
   <script src="../../assets/js/global.js"></script>
 
   <a href="https://wa.me/601119359497" class="fab fab--whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-    <ion-icon name="logo-whatsapp"></ion-icon>
+    <i class="fab fa-whatsapp" style="font-size: 1.2em;"></i>
   </a>
 </body>
 </html>
-
-
-
 
