@@ -1016,7 +1016,7 @@ input, select, textarea {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(10, 22, 40, 0.95), rgba(10, 22, 40, 0.7) 60%, transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.7) 60%, transparent);
   padding: var(--space-6) var(--space-5) var(--space-5);
   display: flex;
   flex-direction: column;
@@ -1141,7 +1141,7 @@ input, select, textarea {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(10, 22, 40, 0.6);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
@@ -1609,6 +1609,7 @@ input, select, textarea {
 .scroll-mt {
   scroll-margin-top: 80px;
 }
+
 
 
 

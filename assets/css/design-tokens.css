@@ -10,24 +10,24 @@
 
 :root {
   /* ── Color Palette ───────────────────────────────────────── */
-  --color-primary:        #0a1628;
-  --color-secondary:      #1a2a4a;
-  --color-accent:         #c8a84e;
-  --color-accent-hover:   #b8963e;
-  --color-accent-light:   rgba(200, 168, 78, 0.10);
+  --color-primary:        #000000;
+  --color-secondary:      #1a1a1a;
+  --color-accent:         #cfa55b;
+  --color-accent-hover:   #b8924e;
+  --color-accent-light:   rgba(207, 165, 91, 0.15);
 
-  --color-surface:        #fafaf8;
+  --color-surface:        #fff9f0;
   --color-card:           #ffffff;
-  --color-card-hover:     #fefefe;
+  --color-card-hover:     #fffdfa;
 
   --color-text:           #1a1a1a;
   --color-text-secondary: #4a4a4a;
   --color-text-muted:     #6b7280;
-  --color-text-inverse:   #f5f5f3;
+  --color-text-inverse:   #fff9f0;
 
-  --color-border:         #e5e5e0;
-  --color-border-light:   #f0f0eb;
-  --color-divider:        #ebebeb;
+  --color-border:         #eadecc;
+  --color-border-light:   #f5ede1;
+  --color-divider:        #eadecc;
 
   --color-success:        #16a34a;
   --color-success-light:  rgba(22, 163, 74, 0.10);
@@ -124,6 +124,7 @@
    --bp-xl:   1280px   Laptops → desktops
    --bp-2xl:  1536px   Large desktops
    ────────────────────────────────────────────────────────── */
+
 
 
 
