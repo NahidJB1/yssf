@@ -303,7 +303,15 @@
     { name: "Taylor's University", img: "taylors_main.jpg", learn: "taylors-details.html", fees: "taylors-university.html", scholarship: false },
     { name: "Binary University", img: "binary_main.jpg", learn: "binary-details.html", fees: "binary-university.html", scholarship: true },
     { name: "King's University", img: "kings_main.jpg", learn: "kings-details.html", fees: "kings-university.html", scholarship: false }
-  ];
+        { name: "Lincoln University College", img: "lincoln_main.jpg", learn: "lincoln-details.html", fees: "lincoln-fees.html", scholarship: false },
+      { name: "UniRazak", img: "unirazak_main.jpg", learn: "unirazak-details.html", fees: "unirazak-university.html", scholarship: false },
+      { name: "UniKL", img: "unikl_main.jpg", learn: "unikl-details.html", fees: "unikl-fees.html", scholarship: false },
+      { name: "APU", img: "apu_main.jpg", learn: "apu-details.html", fees: "apu-fees.html", scholarship: false },
+      { name: "LSBF", img: "lsbf_main.jpg", learn: "lsbf-details.html", fees: "lsbf.html", scholarship: false },
+      { name: "Mantissa College", img: "mantissa_main.jpg", learn: "mantissa-details.html", fees: "mantissa-college.html", scholarship: false },
+      { name: "Vision University", img: "vision_main.jpg", learn: "vision-details.html", fees: "vision-fees.html", scholarship: false },
+      { name: "Asia e University", img: "asia-e_main.jpg", learn: "asia-e-details.html", fees: "asia-e-university.html", scholarship: false }
+    ];
 
   function renderCards(data) {
     const grid = document.getElementById('partnerGrid');
@@ -329,12 +337,12 @@
       
       card.innerHTML = `
           ${uni.scholarship ? '<div class="badge badge--danger scholarship-badge"><i class="fas fa-graduation-cap"></i> Up to 50% Scholarship</div>' : ''}
-          <img src="${uni.img}" alt="${uni.name}" class="card__image" style="height: 200px; object-fit: cover;">
+          <img src="../../assets/images/${uni.img}" alt="${uni.name}" class="card__image" style="height: 200px; object-fit: cover;">
           <div class="card__body" style="text-align: center; display: flex; flex-direction: column;">
             <h3 class="card__title" style="margin-bottom: 20px;">${uni.name}</h3>
             <div class="card__footer" style="display: flex; gap: 10px; padding: 0; justify-content: center; border-top: none; margin-top: auto;">
-              <a href="${uni.learn}" class="btn btn--secondary" style="flex: 1; text-align: center; font-size: 0.9rem;">View Details</a>
-              <a href="${uni.fees}" class="btn btn--primary" style="flex: 1; text-align: center; font-size: 0.9rem;">Check Fees</a>
+              <a href="../universities/${uni.learn}" class="btn btn--secondary" style="flex: 1; text-align: center; font-size: 0.9rem;">View Details</a>
+              <a href="../universities/${uni.fees}" class="btn btn--primary" style="flex: 1; text-align: center; font-size: 0.9rem;">Check Fees</a>
             </div>
           </div>
       `;
@@ -384,6 +392,7 @@
   </a>
 </body>
 </html>
+
 
 
 
