@@ -62,12 +62,15 @@
       </table>
     </div>
     <div class="note">
-      <button class="download-bar" onclick="downloadPDF()">
-        <span>Download PDF</span><i class="fas fa-download"></i>
-      </button>
       <strong>Detailed Breakdown & Initial Fees:</strong><br>
       Please download the PDF for a detailed year-by-year fee breakdown and the Initial Fees (EMGS, Registration, Visa, etc) payable before arrival for each specific program.
     </div>
+  </div>
+
+  <div class="universal-download">
+    <button class="btn btn--primary btn--lg" onclick="downloadPDF('all')">
+      <i class="fas fa-file-pdf" style="margin-right: 0.5rem;"></i> Download Official PDF
+    </button>
   </div>
 </main><footer class="site-footer" id="contact">
     <div class="site-footer__main">
@@ -189,6 +192,7 @@ function downloadPDF() {
   </a>
 </body>
 </html>
+
 
 
 

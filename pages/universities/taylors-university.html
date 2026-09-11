@@ -60,10 +60,6 @@
       </table>
     </div>
     <div class="note">
-      <div class="download-bar" onclick="downloadPDF('taylors_foundation')">
-        <span>Download PDF</span>
-        <span>⬇️</span>
-      </div>
       <strong>International Entry Fees (Paid in Sem 1):</strong><br>
       Enrolment Fee: RM2,800<br>
       International Student Charge: RM3,000<br>
@@ -91,10 +87,6 @@
       </table>
     </div>
     <div class="note">
-      <div class="download-bar" onclick="downloadPDF('taylors_diploma')">
-  <span>Download PDF</span>
-  <span>⬇️</span>
-</div>
       <strong>Note:</strong> Grand totals include tuition, enrolment, EMGS visa, and medical insurance for the minimum duration.
     </div>
   </div>
@@ -119,10 +111,6 @@
       </table>
     </div>
     <div class="note">
-      <div class="download-bar" onclick="downloadPDF('taylors_bachelor')">
-        <span>Download PDF</span>
-        <span>⬇️</span>
-      </div>
       <strong>Dual Awards:</strong> Many programs offer Dual Awards with University of the West of England (UK) or University of Toulouse (France).
     </div>
   </div>
@@ -145,15 +133,7 @@
       </table>
     </div>
     <div class="note">
-  <div class="download-bar" onclick="downloadPDF('taylors_masters', 'taylors-master-in-hospitality-management-fees-pg-usd-v030524.pdf')" style="margin-bottom: 10px;">
-  <span>Hospitality PDF</span>
-  <span>⬇️</span>
-</div>
   <br>
-  <div class="download-bar" onclick="downloadPDF('taylors_masters_research', 'taylors-master-research-pg-fees-usd-v030524.pdf')">
-  <span>Research PDF</span>
-  <span>⬇️</span>
-</div>
   <strong>Masters Misc Fees:</strong> Application & EMGS: RM3,810; Student Charge: RM8,000.
 </div>
   </div>
@@ -175,14 +155,16 @@
       </table>
     </div>
     <div class="note">
-      <div class="download-bar" onclick="downloadPDF('taylors_phd', 'taylors-fees-dr-philosophy-research-pg-usd-v130825.pdf')">
-  <span>Download PDF</span>
-  <span>⬇️</span>
-</div>
       <strong>Note:</strong> Prior Publication track is available for experienced researchers and has a lower total fee.
     </div>
   </div>
 
+
+  <div class="universal-download">
+    <button class="btn btn--primary btn--lg" onclick="downloadPDF('taylors_foundation')">
+      <i class="fas fa-file-pdf" style="margin-right: 0.5rem;"></i> Download Official PDF
+    </button>
+  </div>
 </main><footer class="site-footer" id="contact">
     <div class="site-footer__main">
       <div class="site-footer__office">
@@ -339,6 +321,7 @@ function downloadPDF(campusName, pdfFileName) {
   </a>
 </body>
 </html>
+
 
 
 

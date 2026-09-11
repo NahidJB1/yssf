@@ -64,9 +64,6 @@
       </table>
     </div>
     <div class="note">
-      <button class="download-bar" onclick="downloadPDF('foundation')">
-        <span>Download PDF</span><i class="fas fa-download"></i>
-      </button>
       <strong>Scholarship Note:</strong><br>
       • 50% scholarship is available for eligible Foundation students. Terms and conditions apply.<br><br>
       <strong>Misc Fees & Admission Guidelines:</strong><br>
@@ -114,9 +111,6 @@
       </table>
     </div>
     <div class="note">
-      <button class="download-bar" onclick="downloadPDF('diploma')">
-        <span>Download PDF</span><i class="fas fa-download"></i>
-      </button>
       <strong>Important Notes:</strong><br>
       • All fees are inclusive of 6% Sales & Service Tax (SST).<br>
       • Fees are payable in Ringgit Malaysia (RM). USD values are for reference only (Based on an exchange rate of USD 1 = RM 4.10).<br>
@@ -204,9 +198,6 @@
       </table>
     </div>
     <div class="note">
-      <button class="download-bar" onclick="downloadPDF('bachelor')">
-        <span>Download PDF</span><i class="fas fa-download"></i>
-      </button>
       <strong>Important Notes:</strong><br>
       • Programmes marked with *** require an interview.<br>
       • All fees are inclusive of 6% Sales & Service Tax (SST).<br>
@@ -254,10 +245,7 @@
       </table>
     </div>
     <div class="note">
-      <button class="download-bar" onclick="downloadPDF('masters')">
-        <span>Download PDF</span><i class="fas fa-download"></i>
-      </button>
-    </div>
+      </div>
   </div>
 
   <button class="accordion-btn">PHD PROGRAMS</button>
@@ -283,10 +271,7 @@
       </table>
     </div>
     <div class="note">
-      <button class="download-bar" onclick="downloadPDF('phd')">
-        <span>Download PDF</span><i class="fas fa-download"></i>
-      </button>
-    </div>
+      </div>
   </div>
 
   <button class="accordion-btn">PROFESSIONAL & LANGUAGE PROGRAMS</button>
@@ -301,12 +286,15 @@
       </table>
     </div>
     <div class="note">
-      <button class="download-bar" onclick="downloadPDF('professional')">
-        <span>Download PDF</span><i class="fas fa-download"></i>
-      </button>
-    </div>
+      </div>
   </div>
 
+
+  <div class="universal-download">
+    <button class="btn btn--primary btn--lg" onclick="downloadPDF('foundation')">
+      <i class="fas fa-file-pdf" style="margin-right: 0.5rem;"></i> Download Official PDF
+    </button>
+  </div>
 </main><footer class="site-footer" id="contact">
     <div class="site-footer__main">
       <div class="site-footer__office">
@@ -437,6 +425,7 @@ function downloadPDF(programKey) {
   </a>
 </body>
 </html>
+
 
 
 

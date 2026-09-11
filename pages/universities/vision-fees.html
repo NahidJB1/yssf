@@ -71,10 +71,6 @@
     </div>
 
 <div class="note" style="border-left: 4px solid var(--color-accent); padding: 1rem; background: #fff; margin-bottom: 1rem;">
-  <button class="download-bar btn" style="float: right;" onclick="downloadPDF('vision')">
-    <i class="fas fa-download"></i> Download PDF
-  </button>
-
   <strong>Additional Required Fees:</strong><br>
   • Application Fee: RM 500 <br>
   • EMGS & Visa Processing Fee: RM 2,750 <br>
@@ -87,6 +83,12 @@
   • 3. English Preparation Course (EPC), if required, will incur additional charges.<br>
   • 4. Additional charges apply for visa renewal.<br>
   • 5. These promotional fees are specific to international students from Bangladesh for 2026/27 intakes.
+
+  <div class="universal-download">
+    <button class="btn btn--primary btn--lg" onclick="downloadPDF('vision')">
+      <i class="fas fa-file-pdf" style="margin-right: 0.5rem;"></i> Download Official PDF
+    </button>
+  </div>
 </main><footer class="site-footer" id="contact">
     <div class="site-footer__main">
       <div class="site-footer__office">
@@ -222,6 +224,7 @@ function downloadPDF(programKey) {
   </a>
 </body>
 </html>
+
 
 
 
