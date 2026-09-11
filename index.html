@@ -1184,6 +1184,81 @@
     const modalOverlay = document.getElementById('recruitmentOverlay');
     if (modalOverlay) modalOverlay.classList.remove('active');
   }
+  function initTestimonialSlider() {
+    const slider = document.getElementById('testimonialSlider');
+    if (!slider) return;
+
+    if (!slider.getAttribute('data-cloned')) {
+      slider.innerHTML += slider.innerHTML;
+      slider.setAttribute('data-cloned', 'true');
+    }
+
+    const RESUME_DELAY = 10000;
+    const SCROLL_SPEED = 1;
+    const REFRESH_RATE = 20;
+
+    let autoScrollInterval;
+    let resumeTimeout;
+    let isAutoScrolling = true;
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    function startLoop() {
+      clearInterval(autoScrollInterval);
+      autoScrollInterval = setInterval(() => {
+        if (slider.scrollLeft >= slider.scrollWidth / 2) {
+          slider.scrollLeft = 0;
+        }
+        if (isAutoScrolling) {
+          slider.scrollLeft += SCROLL_SPEED;
+        }
+      }, REFRESH_RATE);
+    }
+
+    function triggerPause() {
+      isAutoScrolling = false;
+      clearTimeout(resumeTimeout);
+      resumeTimeout = setTimeout(() => {
+        isAutoScrolling = true;
+      }, RESUME_DELAY);
+    }
+
+    slider.addEventListener('mousedown', (e) => {
+      triggerPause();
+      isDown = true;
+      slider.style.cursor = 'grabbing';
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+      isDown = false;
+      slider.style.cursor = 'default';
+    });
+
+    slider.addEventListener('mouseup', () => {
+      isDown = false;
+      slider.style.cursor = 'default';
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      triggerPause();
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2;
+      slider.scrollLeft = scrollLeft - walk;
+    });
+
+    slider.addEventListener('touchstart', triggerPause, { passive: true });
+    slider.addEventListener('touchmove', triggerPause, { passive: true });
+    slider.addEventListener('wheel', triggerPause, { passive: true });
+
+    startLoop();
+  }
+  document.addEventListener('DOMContentLoaded', initTestimonialSlider);
 </script>
 
 <script src="assets/js/global.js"></script>
@@ -1193,6 +1268,7 @@
   </a>
 </body>
 </html>
+
 
 
 
