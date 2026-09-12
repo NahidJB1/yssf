@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // book-consult.php
 ?>
 <!DOCTYPE html>

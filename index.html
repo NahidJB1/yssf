@@ -195,6 +195,7 @@
     .testimonial-card {
       min-width: 320px;
       max-width: 320px;
+      flex-shrink: 0;
       background: var(--color-card);
       border-radius: 15px;
       overflow: hidden;
@@ -289,22 +290,22 @@
 
 <nav class="site-nav">
   <div class="site-nav__inner">
-    <a href="/" class="site-nav__brand">
+    <a href="index.html" class="site-nav__brand">
       <img src="assets/images/ys_logo.png" alt="YS Study Focus" class="site-nav__logo">
       <span class="site-nav__brand-text">YS Study Focus</span>
     </a>
     <div class="site-nav__links">
-      <a href="/" class="site-nav__link">Home</a>
+      <a href="index.html" class="site-nav__link">Home</a>
       <a href="pages/general/about-us.html" class="site-nav__link">About</a>
-      <a href="pages/general/university-requirements" class="site-nav__link">Requirements</a>
+      <a href="pages/general/university-requirements.html" class="site-nav__link">Requirements</a>
       <a href="#contact" class="site-nav__link">Contact</a>
     </div>
     <button class="site-nav__toggle" onclick="toggleMenu(event)"><i class="fas fa-bars"></i></button>
   </div>
   <div class="site-nav__mobile" id="navMenu">
-    <a href="/" class="site-nav__mobile-link"><i class="fas fa-home"></i> Home</a>
+    <a href="index.html" class="site-nav__mobile-link"><i class="fas fa-home"></i> Home</a>
     <a href="pages/general/about-us.html" class="site-nav__mobile-link"><i class="fas fa-info-circle"></i> About Us</a>
-    <a href="pages/general/university-requirements" class="site-nav__mobile-link"><i class="fas fa-list-check"></i> Requirements</a>
+    <a href="pages/general/university-requirements.html" class="site-nav__mobile-link"><i class="fas fa-list-check"></i> Requirements</a>
     <a href="#contact" class="site-nav__mobile-link"><i class="fas fa-envelope"></i> Contact Us</a>
   </div>
 </nav>
@@ -314,7 +315,7 @@
   <div class="hero__overlay"></div>
   <div class="hero__content">
     <span class="hero__label">STUDENT GATEWAY TO MALAYSIA</span>
-    <h1 class="hero__title">YS STUDY FOCUS, THE BEST AND THE MOST TRUSTED PLACE TO START YOUR PROCESSING FOR MALAYSIA</h1>
+    <h1 class="hero__title">YS STUDY FOCUS, THE BEST AND THE MOST TRUSTED PLACE TO START YOUR ADMISSION PROCESS FOR MALAYSIA</h1>
     <a href="book-consult.php" class="btn btn--primary btn--lg">START YOUR PROCESSING</a>
   </div>
 </header>
@@ -345,7 +346,7 @@
       <div class="stat-icon"><i class="fas fa-user-tie"></i></div>
       <h2>Expert</h2>
       <p>Dedicated Expert Agents</p>
-      <p class="stat-subtext">View agent List</p>
+      <p class="stat-subtext">View Agent List</p>
     </div>
   </div>
   </div>
@@ -383,7 +384,7 @@
 
   <section class="section">
   <div class="container">
-  <h2 style="text-align: center; margin-bottom: 2rem;">Choose your favourite Study Destination</h2>
+  <h2 style="text-align: center; margin-bottom: 2rem;">Choose Your Favourite Study Destination</h2>
   <div class="uni-grid" id="uniFlipContainer">
     <div class="uni-card">
       <img src="assets/images/universities/cityu/cityu_main.jpg" alt="City University Campus" class="uni-card__image">
@@ -393,8 +394,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>City University Malaysia is known for its industry-focused programs and vibrant campus life.</p>
-        <a href="pages/universities/city-university" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/city-details" class="btn btn--secondary">Study in City &rarr;</a>
+        <a href="pages/universities/city-university.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/city-details.html" class="btn btn--secondary">Study in City &rarr;</a>
       </div>
     </div>
 
@@ -406,8 +407,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>Infrastructure University Kuala Lumpur (IUKL) excels in engineering and technology.</p>
-        <a href="pages/universities/iukl-fees" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/iukl-details" class="btn btn--secondary">Study in IUKL &rarr;</a>
+        <a href="pages/universities/iukl-fees.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/iukl-details.html" class="btn btn--secondary">Study in IUKL &rarr;</a>
       </div>
     </div>
 
@@ -419,8 +420,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>BAC Education Group is Malaysia's fastest-growing law and business school.</p>
-        <a href="pages/universities/bac-university" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/bac-details" class="btn btn--secondary">Study in BAC &rarr;</a>
+        <a href="pages/universities/bac-university.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/bac-details.html" class="btn btn--secondary">Study in BAC &rarr;</a>
       </div>
     </div>
 
@@ -432,8 +433,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>Alfa University offers creative and technical programs designed for global industries.</p>
-        <a href="pages/universities/alfa-university" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/alfa-details" class="btn btn--secondary">Study in Alfa &rarr;</a>
+        <a href="pages/universities/alfa-university.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/alfa-details.html" class="btn btn--secondary">Study in Alfa &rarr;</a>
       </div>
     </div>
 
@@ -445,8 +446,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>A leading healthcare and science university in Malaysia's tech hub.</p>
-        <a href="pages/universities/university-of-cyberjaya" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/cyberjaya-details" class="btn btn--secondary">Study in Cyberjaya &rarr;</a>
+        <a href="pages/universities/university-of-cyberjaya.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/cyberjaya-details.html" class="btn btn--secondary">Study in Cyberjaya &rarr;</a>
       </div>
     </div>
 
@@ -458,8 +459,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>INTI International University offers high-quality programs with global connections.</p>
-        <a href="pages/universities/inti-university" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/inti-details" class="btn btn--secondary">Study in INTI &rarr;</a>
+        <a href="pages/universities/inti-university.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/inti-details.html" class="btn btn--secondary">Study in INTI &rarr;</a>
       </div>
     </div>
 
@@ -471,8 +472,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>SEGi University offers a wide range of industry-driven programs.</p>
-        <a href="pages/universities/segi-university" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/segi-details" class="btn btn--secondary">Study in SEGi &rarr;</a>
+        <a href="pages/universities/segi-university.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/segi-details.html" class="btn btn--secondary">Study in SEGi &rarr;</a>
       </div>
     </div>
 
@@ -484,8 +485,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>One of Malaysia's most prestigious private universities globally ranked.</p>
-        <a href="pages/universities/taylors-university" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/taylors-details" class="btn btn--secondary">Study in Taylor's &rarr;</a>
+        <a href="pages/universities/taylors-university.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/taylors-details.html" class="btn btn--secondary">Study in Taylor's &rarr;</a>
       </div>
     </div>
 
@@ -497,8 +498,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>Offering specialized programs designed for modern career paths.</p>
-        <a href="pages/universities/kings-university" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/kings-details" class="btn btn--secondary">Study in King's &rarr;</a>
+        <a href="pages/universities/kings-university.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/kings-details.html" class="btn btn--secondary">Study in King's &rarr;</a>
       </div>
     </div>
 
@@ -510,8 +511,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>Specializing in Management and Entrepreneurship with industry placement.</p>
-        <a href="pages/universities/binary-university" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/binary-details" class="btn btn--secondary paused-recruitment">Study in Binary &rarr;</a>
+        <a href="pages/universities/binary-university.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/binary-details.html" class="btn btn--secondary paused-recruitment">Study in Binary &rarr;</a>
       </div>
     </div>
 
@@ -523,8 +524,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>University College MAIWP International focuses on healthcare and business.</p>
-        <a href="pages/universities/ucmi-university" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/ucmi-details" class="btn btn--secondary paused-recruitment">Study in UCMI &rarr;</a>
+        <a href="pages/universities/ucmi-university.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/ucmi-details.html" class="btn btn--secondary paused-recruitment">Study in UCMI &rarr;</a>
       </div>
     </div>
 
@@ -536,8 +537,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>A design-thinking university that fosters innovation and creative solving.</p>
-        <a href="pages/universities/genovasi-university" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/genovasi-details" class="btn btn--secondary paused-recruitment">Study in Genovasi &rarr;</a>
+        <a href="pages/universities/genovasi-university.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/genovasi-details.html" class="btn btn--secondary paused-recruitment">Study in Genovasi &rarr;</a>
       </div>
     </div>
 
@@ -549,8 +550,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>Leading the way in technical and vocational training with modern facilities.</p>
-        <a href="pages/universities/cybernetics-university" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/cybernetics-details" class="btn btn--secondary paused-recruitment">Study in Cybernetics &rarr;</a>
+        <a href="pages/universities/cybernetics-university.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/cybernetics-details.html" class="btn btn--secondary paused-recruitment">Study in Cybernetics &rarr;</a>
       </div>
     </div>
 
@@ -562,8 +563,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>Study at UniRazak and explore excellent programs and opportunities.</p>
-        <a href="pages/universities/unirazak-university" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/unirazak-details" class="btn btn--secondary">Study in UniRazak &rarr;</a>
+        <a href="pages/universities/unirazak-university.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/unirazak-details.html" class="btn btn--secondary">Study in UniRazak &rarr;</a>
       </div>
     </div>
     
@@ -575,8 +576,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>Study at UniKL and explore excellent programs and opportunities.</p>
-        <a href="pages/universities/unikl-fees" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/unikl-details" class="btn btn--secondary">Study in UniKL &rarr;</a>
+        <a href="pages/universities/unikl-fees.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/unikl-details.html" class="btn btn--secondary">Study in UniKL &rarr;</a>
       </div>
     </div>
     
@@ -588,8 +589,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>Study at Lincoln University College and explore excellent programs and opportunities.</p>
-        <a href="pages/universities/lincoln-fees" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/lincoln-details" class="btn btn--secondary">Study in Lincoln &rarr;</a>
+        <a href="pages/universities/lincoln-fees.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/lincoln-details.html" class="btn btn--secondary">Study in Lincoln &rarr;</a>
       </div>
     </div>
     
@@ -601,8 +602,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>Study at APU and explore excellent programs and opportunities.</p>
-        <a href="pages/universities/apu-fees" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/apu-details" class="btn btn--secondary">Study in APU &rarr;</a>
+        <a href="pages/universities/apu-fees.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/apu-details.html" class="btn btn--secondary">Study in APU &rarr;</a>
       </div>
     </div>
     
@@ -614,8 +615,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>Study at LSBF and explore excellent programs and opportunities.</p>
-        <a href="pages/universities/lsbf" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/lsbf-details" class="btn btn--secondary">Study in LSBF &rarr;</a>
+        <a href="pages/universities/lsbf.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/lsbf-details.html" class="btn btn--secondary">Study in LSBF &rarr;</a>
       </div>
     </div>
     
@@ -627,8 +628,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>Study at Mantissa College and explore excellent programs and opportunities.</p>
-        <a href="pages/universities/mantissa-college" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/mantissa-details" class="btn btn--secondary">Study in Mantissa &rarr;</a>
+        <a href="pages/universities/mantissa-college.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/mantissa-details.html" class="btn btn--secondary">Study in Mantissa &rarr;</a>
       </div>
     </div>
     
@@ -640,8 +641,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>Study at Asia e University and explore excellent programs and opportunities.</p>
-        <a href="pages/universities/asia-e-university" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/asia-e-details" class="btn btn--secondary">Study in Asia e &rarr;</a>
+        <a href="pages/universities/asia-e-university.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/asia-e-details.html" class="btn btn--secondary">Study in Asia e &rarr;</a>
       </div>
     </div>
     
@@ -653,8 +654,8 @@
       </div>
       <div class="uni-card__overlay">
         <p>Study at Vision University and explore excellent programs and opportunities.</p>
-        <a href="pages/universities/vision-fees" class="btn btn--primary">Fees</a>
-        <a href="pages/universities/vision-details" class="btn btn--secondary">Study in Vision &rarr;</a>
+        <a href="pages/universities/vision-fees.html" class="btn btn--primary">Fees</a>
+        <a href="pages/universities/vision-details.html" class="btn btn--secondary">Study in Vision &rarr;</a>
       </div>
     </div>
   </div>
