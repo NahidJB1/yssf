@@ -2247,6 +2247,15 @@ input, select, textarea {
   .hero--short {
     min-height: 280px !important;
   }
+  .hero__title {
+    font-size: 1.8rem !important;
+    line-height: 1.3 !important;
+    padding: 0 10px;
+  }
+  .hero__label {
+    font-size: 0.85rem !important;
+    margin-bottom: 0.5rem !important;
+  }
 
   /* Make buttons fully touch friendly */
   .btn--lg, .btn--primary, .btn--secondary, .btn--whatsapp {
