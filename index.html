@@ -271,18 +271,160 @@
         justify-content: center;
       }
     }
-      @media (max-width: 768px) {
-      .hero__title {
-        display: none !important;
+      
+
+    /* ===== REDESIGNED HERO SECTION ===== */
+    .hero--home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero__overlay--home {
+      background: linear-gradient(
+        135deg,
+        rgba(10, 22, 40, 0.85) 0%,
+        rgba(10, 22, 40, 0.6) 40%,
+        rgba(10, 22, 40, 0.4) 100%
+      ) !important;
+    }
+    .hero__content--home {
+      text-align: center !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 6rem 2rem 4rem !important;
+    }
+    .hero__badge {
+      display: inline-block;
+      background: rgba(207, 165, 91, 0.15);
+      border: 1px solid rgba(207, 165, 91, 0.4);
+      color: var(--color-accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 0.6rem 1.8rem;
+      border-radius: 50px;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+    }
+    .hero__title--home {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.15;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    .hero__highlight {
+      color: var(--color-accent);
+      position: relative;
+    }
+    .hero__sub--home {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 550px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+    .hero__actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .hero__cta-btn {
+      padding: 1rem 2rem !important;
+      font-size: 1rem !important;
+      font-weight: 600 !important;
+      border-radius: 50px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 0.5rem !important;
+      transition: all 0.3s ease !important;
+      width: auto !important;
+      margin-bottom: 0 !important;
+    }
+    .hero__cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    .btn--outline {
+      background: transparent !important;
+      border: 2px solid rgba(255,255,255,0.5) !important;
+      color: #fff !important;
+    }
+    .btn--outline:hover {
+      background: rgba(255,255,255,0.1) !important;
+      border-color: #fff !important;
+    }
+    .hero__trust-row {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero__trust-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.85);
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    .hero__trust-pill i {
+      color: var(--color-accent);
+      font-size: 0.9rem;
+    }
+
+    /* Hero Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero--home {
+        min-height: 100vh;
+        min-height: 100dvh;
       }
-      .hero__label {
-        font-size: 1.2rem !important;
-        margin-bottom: 1.5rem !important;
-        font-weight: 700;
-        letter-spacing: 1px;
+      .hero__content--home {
+        padding: 5rem 1.5rem 3rem !important;
       }
-      .hero__content {
-        padding: 2rem 1rem !important;
+      .hero__badge {
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        padding: 0.5rem 1.2rem;
+        margin-bottom: 1.5rem;
+      }
+      .hero__title--home {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      .hero__sub--home {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+      }
+      .hero__actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+        margin-bottom: 2rem;
+      }
+      .hero__cta-btn {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 1rem 1.5rem !important;
+      }
+      .hero__trust-row {
+        gap: 0.5rem;
+      }
+      .hero__trust-pill {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
       }
     }
   </style>
@@ -346,13 +488,22 @@
   </div>
 </nav>
 
-<header class="hero">
+<header class="hero hero--home">
   <img src="assets/images/about/hero.png" alt="YS Study Focus Hero" class="hero__bg">
-  <div class="hero__overlay"></div>
-  <div class="hero__content">
-    <span class="hero__label">STUDENT GATEWAY TO MALAYSIA</span>
-    <h1 class="hero__title">YS STUDY FOCUS, THE BEST AND THE MOST TRUSTED PLACE TO START YOUR ADMISSION PROCESS FOR MALAYSIA</h1>
-    <a href="book-consult.php" class="btn btn--primary btn--lg">START YOUR PROCESSING</a>
+  <div class="hero__overlay hero__overlay--home"></div>
+  <div class="hero__content hero__content--home">
+    <div class="hero__badge">STUDENT GATEWAY TO MALAYSIA</div>
+    <h1 class="hero__title hero__title--home">Your Trusted Path to<br><span class="hero__highlight">Study in Malaysia</span></h1>
+    <p class="hero__subtitle hero__sub--home">Expert guidance &amp; direct university partnerships for Bangladeshi students. From application to arrival &mdash; we handle it all.</p>
+    <div class="hero__actions">
+      <a href="book-consult.php" class="btn btn--primary btn--lg hero__cta-btn"><i class="fas fa-paper-plane"></i> Start Your Application</a>
+      <a href="https://wa.me/601119359497" target="_blank" rel="noopener noreferrer" class="btn btn--outline hero__cta-btn"><i class="fab fa-whatsapp"></i> Chat With Us</a>
+    </div>
+    <div class="hero__trust-row">
+      <div class="hero__trust-pill"><i class="fas fa-university"></i> 13+ Universities</div>
+      <div class="hero__trust-pill"><i class="fas fa-user-graduate"></i> 126+ Students</div>
+      <div class="hero__trust-pill"><i class="fas fa-shield-alt"></i> Licensed Agent</div>
+    </div>
   </div>
 </header>
 
