@@ -105,7 +105,7 @@
   </div>
 
   <div class="universal-download">
-    <button class="btn btn--primary btn--lg" onclick="downloadPDF('genovasi')">
+    <button class="btn btn--primary btn--lg" onclick="downloadPDF('kings')">
       <i class="fas fa-file-pdf" style="margin-right: 0.5rem;"></i> Download Official PDF
     </button>
   </div>
@@ -233,7 +233,7 @@ document.addEventListener("DOMContentLoaded", function() {
 // 4. Original PDF Download Logic
 function downloadPDF(programKey) {
   const link = document.createElement("a");
-  link.href = "kings_fees_Structure_2025.pdf"; 
+  link.href = "../../assets/documents/kings_fees_Structure_2025.pdf"; 
   link.download = "kings_Fee_Structure_2025.pdf";
   document.body.appendChild(link);
   link.click();
@@ -247,6 +247,7 @@ function downloadPDF(programKey) {
   </a>
 </body>
 </html>
+
 
 
 

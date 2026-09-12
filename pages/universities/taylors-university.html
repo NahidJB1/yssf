@@ -305,7 +305,7 @@ function downloadPDF(campusName, pdfFileName) {
   const link = document.createElement("a");
   
   // FIX: Removed "pdf/" because files are in the main GitHub folder
-  link.href = pdfFileName; 
+  link.href = "../../assets/documents/" + pdfFileName; 
   
   link.download = pdfFileName;
   document.body.appendChild(link);
@@ -321,6 +321,7 @@ function downloadPDF(campusName, pdfFileName) {
   </a>
 </body>
 </html>
+
 
 
 

@@ -319,7 +319,7 @@ function downloadPDF(campusName, pdfFileName) {
   // Create a temporary link and trigger the download
   const link = document.createElement("a");
   // Updated path: removed "pdf/" because files are in the root directory
-  link.href = pdfFileName; 
+  link.href = "../../assets/documents/" + pdfFileName; 
   link.download = pdfFileName;
   document.body.appendChild(link);
   link.click();
@@ -335,6 +335,7 @@ function downloadPDF(campusName, pdfFileName) {
   </a>
 </body>
 </html>
+
 
 
 
